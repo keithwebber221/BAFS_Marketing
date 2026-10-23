@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 產品及服務的市場營銷策略（二）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 9px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 680px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .sidebar-layout { display: grid; grid-template-columns: 290px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13px; color: var(--mute); font-weight: 500; flex-shrink: 0; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .case-box {
+      border-left: 4px solid var(--teal);
+      background: var(--teal-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+
+    /* Comparison Table */
+    table.comp-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 16px; }
+    table.comp-table th, table.comp-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.comp-table th { background: var(--surface); font-weight: 800; color: var(--ink); }
+    table.comp-table tr.highlight-row { background: var(--primary-light); }
+
+    /* PLC Stage Stepper */
+    .plc-node {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .plc-node:hover { border-color: var(--primary); background: var(--primary-light); }
+    .plc-node.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.22);
+    }
+
+    /* Toggle Switch Cards */
+    .toggle-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+    }
+    .toggle-card:hover { border-color: var(--primary); }
+    .toggle-card.on {
+      background: var(--green-light);
+      border-color: var(--green);
+      color: #064e3b;
+    }
+    .toggle-pill {
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: var(--mute);
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .toggle-card.on .toggle-pill {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+    .meter-bar { height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin: 8px 0; }
+    .meter-fill { height: 100%; background: var(--primary); transition: width 0.3s ease; }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.correct, .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.wrong, .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .grid4, .sidebar-layout { grid-template-columns: 1fr; }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 6 課：產品及服務的市場營銷策略（二）</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-plc">1. 產品生命週期 (PLC)</button>
+    <button data-tab="sec-service">2. 服務市場學 (4項特性)</button>
+    <button data-tab="sec-emarketing">3. 傳統與電子市場營銷</button>
+    <button data-tab="sec-builder">4. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 產品生命週期 (PLC) ==================== -->
+<section class="view on" id="sec-plc">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元一：產品生命週期 (Product Life Cycle)</span>
+      <h1>產品生命週期的四個階段特徵與市場營銷組合策略</h1>
+      <p>市場營銷管理中的產品生命週期是指產品在其生命過程中經歷的四個不同階段：介紹期、成長期、成熟期和衰退期。由於產品在不同階段會有不同的特徵，企業須採取不同的市場營銷目標，並對市場營銷組合策略（4P）作出相應調整。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('plc', 0, this)">雙曲線模擬與四階段詳解</button>
+      <button onclick="switchSub('plc', 1, this)">四階段總覽表與判斷練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：PLC 動態雙曲線與四階段詳解 -->
+  <div class="sub-view active" id="plc-sub-0">
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+        <div>
+          <span class="badge b-blue">動態圖表模擬</span>
+          <h3 style="font-size:21px;margin-top:4px">拉動滑桿或點擊四個階段，觀察銷售額與利潤變化及對應 4P 策略</h3>
+        </div>
+        <div style="font-size:15px;font-weight:700">
+          <span style="color:var(--primary)">━━ 銷售額曲線</span> &nbsp;|&nbsp; <span style="color:var(--green)">┅┅ 利潤曲線</span>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;text-align:center">
+        <svg viewBox="0 0 800 220" style="width:100%;max-height:210px;overflow:visible">
+          <line x1="200" y1="10" x2="200" y2="195" stroke="#cbd5e1" stroke-dasharray="4 4"/>
+          <line x1="420" y1="10" x2="420" y2="195" stroke="#cbd5e1" stroke-dasharray="4 4"/>
+          <line x1="630" y1="10" x2="630" y2="195" stroke="#cbd5e1" stroke-dasharray="4 4"/>
+          <line x1="30" y1="165" x2="780" y2="165" stroke="#64748b" stroke-width="1.5"/>
+          <text x="35" y="158" font-size="12" font-weight="bold" fill="#475569">0 (收支平衡線；下方為損失或投資)</text>
+          <text x="115" y="25" font-size="14" font-weight="bold" fill="#4f46e5" text-anchor="middle">第 1 階段：介紹期</text>
+          <text x="310" y="25" font-size="14" font-weight="bold" fill="#0d9488" text-anchor="middle">第 2 階段：成長期</text>
+          <text x="525" y="25" font-size="14" font-weight="bold" fill="#d97706" text-anchor="middle">第 3 階段：成熟期</text>
+          <text x="705" y="25" font-size="14" font-weight="bold" fill="#e11d48" text-anchor="middle">第 4 階段：衰退期</text>
+          <path d="M 40 162 Q 130 155, 200 130 T 420 45 Q 530 25, 630 48 T 770 140" fill="none" stroke="#4f46e5" stroke-width="4"/>
+          <path d="M 40 185 Q 130 198, 200 162 Q 310 75, 410 68 Q 525 65, 630 105 T 770 160" fill="none" stroke="#059669" stroke-width="3.5" stroke-dasharray="7 5"/>
+          <line id="svgTimeLine" x1="115" y1="32" x2="115" y2="195" stroke="#d97706" stroke-width="2.5"/>
+          <circle id="svgSalesDot" cx="115" cy="152" r="7" fill="#4f46e5" stroke="#fff" stroke-width="2"/>
+          <circle id="svgProfitDot" cx="115" cy="186" r="7" fill="#059669" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <div style="max-width:680px;margin:6px auto 0;display:flex;align-items:center;gap:14px;font-size:15px">
+          <b>階段切換滑桿：</b>
+          <input type="range" id="plcTimeSlider" min="0" max="3" step="1" value="0" oninput="renderPlcStage(+this.value)" style="flex:1">
+        </div>
+      </div>
+
+      <div class="grid4" id="plcStageBtns" style="margin-bottom:14px"></div>
+      <div id="plcStageDetail"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：四階段特徵與策略總覽表 + 階段判斷練習 -->
+  <div class="sub-view" id="plc-sub-1">
+    <div class="card">
+      <span class="badge b-blue">結構化對照表</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">產品生命週期四個階段的特徵與市場營銷組合策略總結</h3>
+      <table class="comp-table" style="font-size:15px">
+        <thead>
+          <tr>
+            <th style="width:14%">比較項目</th>
+            <th style="width:21.5%">1. 介紹期<br><small style="font-weight:500;color:var(--mute)">產品剛在市場上推出</small></th>
+            <th style="width:21.5%">2. 成長期<br><small style="font-weight:500;color:var(--mute)">銷售額開始急增</small></th>
+            <th style="width:21.5%">3. 成熟期<br><small style="font-weight:500;color:var(--mute)">銷售額增長開始放緩</small></th>
+            <th style="width:21.5%">4. 衰退期<br><small style="font-weight:500;color:var(--mute)">銷售額和利潤均見下降</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>銷售額與利潤</b></td>
+            <td>• 銷售額：<b>低（增長緩慢）</b><br>• 利潤：<b>負數</b>（推廣費用高昂）</td>
+            <td>• 銷售額：<b>急增</b><br>• 利潤：<b>上升（大幅增長）</b>；每名顧客平均成本降低</td>
+            <td>• 銷售額：<b>到達頂點（增長空間有限）</b><br>• 利潤：<b>高但開始下降</b>（價格競爭變得普遍）</td>
+            <td>• 銷售額：<b>下降</b><br>• 利潤：<b>下降</b></td>
+          </tr>
+          <tr>
+            <td><b>顧客與競爭對手</b></td>
+            <td>• 顧客：<b>創新者</b><br>• 競爭對手：<b>少</b></td>
+            <td>• 顧客：<b>早期採用者</b><br>• 競爭對手：<b>數目增加</b>（吸引更多競爭對手進入）</td>
+            <td>• 顧客：<b>大部分消費者</b><br>• 競爭對手：<b>數目穩定</b>（更多對手進入，但較弱的被淘汰）</td>
+            <td>• 顧客：<b>晚用者</b><br>• 競爭對手：<b>數目下降</b>（更多對手被淘汰）</td>
+          </tr>
+          <tr>
+            <td><b>主要市場營銷目標</b></td>
+            <td><b>建立消費者對品牌的認知度和吸引消費者嘗試產品</b></td>
+            <td>在更多競爭對手尚未進入市場前，<b>盡量擴大市場佔有率</b></td>
+            <td>在進入衰退期前，<b>捍衛現有的市場佔有率，並盡量增加短期利潤</b></td>
+            <td><b>減省非必要的開支，並盡量從產品上賺取更多利潤</b></td>
+          </tr>
+          <tr>
+            <td><b>產品策略</b></td>
+            <td>提供<b>最基本的產品型號或版本</b>（因接受程度低）</td>
+            <td>(i) <b>提升產品質素</b>；(ii) <b>加入新的產品特點</b>（功能和顏色）以提供更多版本的產品</td>
+            <td>(i) <b>繼續加入新的產品特點</b>；(ii) <b>推出更多元化的品牌和型號</b>以針對其他市場組別（如產品線延伸）</td>
+            <td><b>逐步淘汰一些較不受歡迎的型號</b>，集中生產較受歡迎的款式</td>
+          </tr>
+          <tr>
+            <td><b>定價策略</b></td>
+            <td>釐定價格時，<b>考慮高昂的推廣成本</b></td>
+            <td><b>降低價格來進一步滲透市場</b></td>
+            <td>定價貼近競爭對手甚至更吸引（<b>定價具競爭力</b>）</td>
+            <td><b>降低價格</b>來刺激顧客購買產品</td>
+          </tr>
+          <tr>
+            <td><b>分銷策略</b></td>
+            <td>由於成本高昂，只能採用<b>選擇性分銷</b></td>
+            <td>顧客數目增加，促使採用<b>密集性分銷</b></td>
+            <td>採用<b>更密集性的分銷方式</b>來擴大市場接觸面</td>
+            <td>採用<b>選擇性分銷</b>，並<b>棄用一些不能獲利的途徑成員</b></td>
+          </tr>
+          <tr>
+            <td><b>推廣策略</b></td>
+            <td>非常依賴<b>廣告和促銷</b>來鼓勵消費者購買產品</td>
+            <td>繼續非常依賴<b>廣告</b>吸引嘗試，但隨着接受程度提升可<b>減少促銷活動</b></td>
+            <td>強調品牌的與別不同之處和獨有特點（<b>產品差異</b>）吸引轉換品牌；透過<b>更多廣告和促銷，甚至個人銷售</b>達成</td>
+            <td><b>盡量減少推廣預算</b>，並<b>集中人力物力留住最忠誠的顧客</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span class="badge b-teal">階段特徵與策略挑戰</span>
+        <span id="plcQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+      </div>
+      <div id="plcQuizQ" style="font-size:17.5px;font-weight:700;margin-bottom:14px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" onclick="checkPlcQuiz('介紹期')">介紹期</button>
+        <button class="btn btn-teal" onclick="checkPlcQuiz('成長期')">成長期</button>
+        <button class="btn" style="background:#334155" onclick="checkPlcQuiz('成熟期')">成熟期</button>
+        <button class="btn" style="background:var(--amber)" onclick="checkPlcQuiz('衰退期')">衰退期</button>
+      </div>
+      <div id="plcQuizFb" style="margin-top:14px;font-size:16px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 服務市場學 (Services Marketing) ==================== -->
+<section class="view" id="sec-service">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元二：服務市場學 (Services Marketing)</span>
+      <h1>服務的四項特性（無形性・不可分割性・異質性・易逝性）與應付方法</h1>
+      <p>服務有四項對市場營銷實務有重大影響的獨特性質：無形性、不可分割性、異質性（多變性）和易逝性。服務業企業必須針對這四項特性採取合適的措施以維持及改善服務質素。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('srv', 0, this)">服務的四項特性與跨行業應用</button>
+      <button onclick="switchSub('srv', 1, this)">易逝性供求調控模擬與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：服務的四項特性與跨行業應用 -->
+  <div class="sub-view active" id="srv-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="srvCharNavList"></div>
+      <div class="card" id="srvCharDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：易逝性供求調控模擬器 + 服務特性判斷挑戰 -->
+  <div class="sub-view" id="srv-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">互動模擬：應付服務的「易逝性」</span>
+        <h3 style="font-size:20.5px;margin:8px 0 6px">協調繁忙時段服務供求以縮短等候時間</h3>
+        <p style="font-size:15.5px;color:var(--ink-sec);margin:0 0 12px">由於服務具有<b>易逝性（不可以儲存起來留待日後銷售或使用）</b>，當繁忙與非繁忙時段需求差距巨大時，企業可從「需求方面」及「供應方面」採取措施協調供求。點擊啟用以下措施：</p>
+        <div id="perishToggles"></div>
+        <div style="background:var(--surface);padding:16px 18px;border-radius:12px;border:1px solid var(--line);margin-top:12px">
+          <div style="display:flex;justify-content:space-between;font-size:15px;margin-bottom:4px">
+            <b>繁忙時段顧客平均等候時間：</b>
+            <b id="perishWaitTxt" style="color:var(--red)">50 分鐘（等候時間過長）</b>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="perishWaitBar" style="width:95%;background:var(--red)"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:15px;margin:10px 0 4px">
+            <b>服務供求協調程度：</b>
+            <b id="perishSatTxt" style="color:var(--green)">20%（供求嚴重失衡）</b>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="perishSatBar" style="width:20%;background:var(--green)"></div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">服務特性診斷練習</span>
+        <h3 style="font-size:20.5px;margin:8px 0 10px">辨識企業正試圖應付哪項服務特性（共 6 題）</h3>
+        <p id="srvQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="srvQuizQ" style="font-size:17px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn" onclick="checkSrvQuiz('無形性')">無形性</button>
+          <button class="btn btn-teal" onclick="checkSrvQuiz('不可分割性')">不可分割性</button>
+          <button class="btn" style="background:#334155" onclick="checkSrvQuiz('異質性')">異質性（多變性）</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkSrvQuiz('易逝性')">易逝性</button>
+        </div>
+        <div id="srvQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 傳統與電子市場營銷 ==================== -->
+<section class="view" id="sec-emarketing">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元三：傳統市場營銷與電子市場營銷策略</span>
+      <h1>比較電子市場營銷與傳統市場營銷的 4P 策略及四大好處</h1>
+      <p>電子市場營銷指企業透過互聯網告知消費者有關產品的消息，推廣和銷售產品。企業在制定市場營銷組合策略時，應考慮電子市場營銷在產品、價格、分銷和推廣上的獨特之處。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('emkt', 0, this)">電子與傳統市場營銷 4P 比較</button>
+      <button onclick="switchSub('emkt', 1, this)">採用電子營銷的好處與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：電子市場營銷 vs 傳統市場營銷 4P 比較 -->
+  <div class="sub-view active" id="emkt-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="emkt4PNavList"></div>
+      <div class="card" id="emkt4PDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：採用電子市場營銷策略的四項好處 + 練習 -->
+  <div class="sub-view" id="emkt-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">四大核心好處</span>
+        <h3 style="font-size:21px;margin:8px 0 12px">採用電子市場營銷策略的好處</h3>
+        <div style="font-size:16.5px;line-height:1.8;color:var(--ink-sec)">
+          <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+            <b style="color:var(--primary)">(i) 節省成本：</b>企業無須開設實體店鋪，可以節省租金和人力成本。如果企業不使用途徑成員，更可以節省分銷成本。
+          </div>
+          <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+            <b style="color:var(--primary)">(ii) 消費者更容易取得產品或服務：</b>電子市場營銷讓消費者可以 24 小時隨時購物；企業也可以將產品出售給世界各地的消費者。
+          </div>
+          <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+            <b style="color:var(--primary)">(iii) 加強推廣：</b>互聯網技術和網上營商手法為企業提供很多高成本效益的方式向目標消費者推廣產品（例如聘請關鍵意見領袖 KOL 在社交媒體網站向特定顧客群組推廣）；企業也可以輕易地為個別顧客度身設計推廣信息，並進行交叉銷售。
+          </div>
+          <div style="padding:10px 0">
+            <b style="color:var(--primary)">(iv) 增進與顧客的關係：</b>電子市場營銷可以促進企業與顧客之間的互動和溝通，讓企業可更容易地收集顧客的回饋，並與他們建立關係。
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">電子市場營銷特點辨析</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨別電子市場營銷的特點與相關 4P 元素（共 5 題）</h3>
+        <p id="emktQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="emktQuizQ" style="font-size:17px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div id="emktQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="emktQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一產品生命週期階段、服務特性或電子營銷好處名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 針對該單一論點結合個案背景與具體行動加以解釋
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一核心概念／階段特徵／服務特性名稱並界定其含義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 設定具體商業例子，解釋企業採取的行動與運作方式<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至顧客滿意度、市場佔有率、成本控制或銷售收益的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 產品生命週期 (PLC) ======
+  const plcStages = [
+    {
+      name: "1. 介紹期 (Introduction Stage)",
+      svgX: 115, svgSalesY: 152, svgProfitY: 186,
+      sub: "產品剛在市場上推出的階段",
+      chars: [
+        "<b>銷售額：</b>由於消費者需要時間接受新產品，新產品的<b>銷售額低且增長緩慢</b>。",
+        "<b>顧客：</b>只有<b>創新者</b>（即最樂於嘗試新產品的消費者）才會購買產品。",
+        "<b>利潤與競爭對手：</b>由於推出新產品時須要投入大量資金（大部分為推廣費用），新產品不能為企業帶來多少利潤（<b>利潤為負數</b>）；市場上<b>競爭對手少</b>。"
+      ],
+      obj: "建立消費者對品牌的認知度和吸引消費者嘗試產品（須在推廣工作上投放大量人力物力）。",
+      mix4p: [
+        "<b>• 產品策略：</b>消費者對產品的接受程度低，企業應集中生產<b>最基本的產品型號或版本</b>。",
+        "<b>• 定價策略：</b>釐定產品價格時，應<b>考慮高昂的推廣成本</b>。",
+        "<b>• 分銷策略：</b>由於成本高昂，企業只能採用<b>選擇性分銷</b>來分銷產品。",
+        "<b>• 推廣策略：</b>企業要非常依賴<b>廣告和促銷</b>來鼓勵消費者購買產品。"
+      ]
+    },
+    {
+      name: "2. 成長期 (Growth Stage)",
+      svgX: 310, svgSalesY: 85, svgProfitY: 105,
+      sub: "產品的銷售額開始急增的階段",
+      chars: [
+        "<b>銷售額與利潤：</b>產品的<b>銷售額和利潤都有大幅增長（上升）</b>。",
+        "<b>顧客與成本：</b>隨着推廣工作漸見成效，消費者對新產品認識加深，<b>早期採用者</b>（比一般消費者更願意嘗試新產品的消費者）會購買產品；企業提升生產量滿足需求，令<b>每名顧客的平均成本降低</b>。",
+        "<b>競爭對手：</b>由於銷售額和利潤持續增長，會<b>吸引更多競爭對手進入市場（競爭對手數目增加）</b>。"
+      ],
+      obj: "在更多競爭對手尚未進入市場前，盡量擴大市場佔有率。",
+      mix4p: [
+        "<b>• 產品策略：</b>企業可以 <b>(i) 提升產品的質素</b>；及 <b>(ii) 加入新的產品特點（如功能和顏色）以提供更多版本的產品</b>（讓現有顧客更感滿意，並吸引其他市場組別的消費者購買，繼而擴大市場佔有率）。",
+        "<b>• 定價策略：</b>企業賺取更多銷售收益和利潤，因而能<b>降低價格來進一步滲透市場</b>。",
+        "<b>• 分銷策略：</b>顧客數目增加促使企業採用<b>密集性分銷</b>來分銷產品。",
+        "<b>• 推廣策略：</b>繼續非常依賴<b>廣告</b>來吸引消費者嘗試產品；然而隨着消費者對產品接受程度快速提升，可以<b>減少促銷活動</b>。"
+      ]
+    },
+    {
+      name: "3. 成熟期 (Maturity Stage)",
+      svgX: 525, svgSalesY: 36, svgProfitY: 72,
+      sub: "產品的銷售額增長開始放緩的階段",
+      chars: [
+        "<b>銷售額與顧客：</b>銷售額到達頂點；<b>大部分有潛力的消費者已經購買產品，銷售額進一步增長的空間十分有限（增長開始放緩）</b>。",
+        "<b>競爭與價格：</b>市場上出現越來越多競爭產品，<b>競爭越趨激烈</b>；激烈的競爭促使企業降低產品價格和投放更多金錢在推廣活動上，<b>價格競爭變得普遍</b>。",
+        "<b>利潤與淘汰：</b>企業的<b>利潤開始下降（高但開始下降）</b>，令<b>一些較弱的競爭對手被市場淘汰</b>（競爭對手數目穩定）。"
+      ],
+      obj: "在產品進入衰退期前，捍衛現有的市場佔有率，並盡量增加短期利潤。",
+      mix4p: [
+        "<b>• 產品策略：</b>為進一步突顯產品與競爭對手的不同之處，可以 <b>(i) 繼續加入新的產品特點</b>；及 <b>(ii) 推出更多元化的品牌和型號，以針對其他市場組別（如產品線延伸）</b>。",
+        "<b>• 定價策略：</b>為免流失顧客，定價須要貼近競爭對手，甚至比對手更加吸引（即<b>定價具競爭力</b>）。",
+        "<b>• 分銷策略：</b>採用<b>更密集性的分銷方式</b>來擴大市場接觸面，確保比對手取得更充足的市場覆蓋率。",
+        "<b>• 推廣策略：</b>強調品牌的與別不同之處和產品的獨有特點（即<b>產品差異</b>），以吸引競爭對手的顧客轉換品牌；可透過<b>更多廣告和促銷，甚至個人銷售</b>來達到這個目的。"
+      ]
+    },
+    {
+      name: "4. 衰退期 (Decline Stage)",
+      svgX: 705, svgSalesY: 98, svgProfitY: 135,
+      sub: "產品的銷售額和利潤均見下降的階段",
+      chars: [
+        "<b>成因與趨勢：</b>原因可能是產品技術過時、消費者口味和喜好轉變或競爭加劇；<b>產品的銷售額和利潤均見下降</b>，產品最後會在這個階段終結時被淘汰。",
+        "<b>顧客與競爭對手：</b>只有<b>晚用者</b>（即風險逆向、最後才試用新產品的消費者）才會購買產品；<b>更多競爭對手被市場淘汰（競爭對手數目下降）</b>。"
+      ],
+      obj: "減省非必要的開支，並盡量從產品上賺取更多利潤（以延長產品在衰退期的壽命）。",
+      mix4p: [
+        "<b>• 產品策略：</b>為減省開支，須要<b>逐步淘汰一些較不受歡迎的型號</b>，並集中生產較受歡迎的款式。",
+        "<b>• 定價策略：</b>須要<b>降低價格</b>來刺激顧客購買產品。",
+        "<b>• 分銷策略：</b>為進一步減少支出，須要採用<b>選擇性分銷</b>，並<b>棄用一些不能獲利的途徑成員</b>。",
+        "<b>• 推廣策略：</b>應<b>盡量減少推廣預算</b>，並<b>集中人力物力留住最忠誠的顧客</b>。"
+      ]
+    }
+  ];
+
+  function renderPlcStage(idx) {
+    document.getElementById('plcTimeSlider').value = idx;
+    document.querySelectorAll('#plcStageBtns .plc-node').forEach((n, i) => n.classList.toggle('active', i === idx));
+    const s = plcStages[idx];
+
+    document.getElementById('svgTimeLine').setAttribute('x1', s.svgX);
+    document.getElementById('svgTimeLine').setAttribute('x2', s.svgX);
+    document.getElementById('svgSalesDot').setAttribute('cx', s.svgX);
+    document.getElementById('svgSalesDot').setAttribute('cy', s.svgSalesY);
+    document.getElementById('svgProfitDot').setAttribute('cx', s.svgX);
+    document.getElementById('svgProfitDot').setAttribute('cy', s.svgProfitY);
+
+    document.getElementById('plcStageDetail').innerHTML = `
+      <div style="background:var(--surface);padding:20px 24px;border-radius:14px;border:1.5px solid var(--primary)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+          <h3 style="color:var(--primary);font-size:20.5px">${s.name} — ${s.sub}</h3>
+          <span class="badge b-blue">主要市場營銷目標：${s.obj}</span>
+        </div>
+        <div class="grid2">
+          <div style="background:var(--card);padding:16px 18px;border-radius:12px;border:1px solid var(--line);font-size:16px">
+            <b style="color:var(--teal);font-size:17px;display:block;margin-bottom:8px">階段特徵（第 6.2A 節）：</b>
+            <ul style="margin:0;padding-left:20px;line-height:1.75">
+              ${s.chars.map(c => `<li style="margin-bottom:6px">${c}</li>`).join('')}
+            </ul>
+          </div>
+          <div style="background:var(--card);padding:16px 18px;border-radius:12px;border:1px solid var(--line);font-size:16px">
+            <b style="color:var(--primary);font-size:17px;display:block;margin-bottom:8px">對應市場營銷組合策略（第 6.2B 節）：</b>
+            <div style="line-height:1.75">
+              ${s.mix4p.map(m => `<div style="margin-bottom:6px">${m}</div>`).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  document.getElementById('plcStageBtns').innerHTML = plcStages.map((s, i) => `
+    <div class="plc-node ${i===0?'active':''}" onclick="renderPlcStage(${i})">
+      <b style="font-size:16px;display:block">${s.name.split(' (')[0]}</b>
+      <small style="opacity:0.85;font-size:13px">${s.sub}</small>
+    </div>
+  `).join('');
+  renderPlcStage(0);
+
+  const plcQuizItems = [
+    { q: "1. 某產品的市場銷售額和利潤都有大幅增長，早期採用者紛紛購買產品，企業提升生產量令每名顧客的平均成本降低，同時吸引更多競爭對手進入市場。", ans: "成長期", exp: "正確。銷售額與利潤大幅增長、早期採用者購買、平均成本降低及吸引更多競爭對手進入，屬於「成長期」的特徵。" },
+    { q: "2. 一家数码配件生產商為減省非必要的開支，決定逐步淘汰一些較不受歡迎的型號、棄用一些不能獲利的途徑成員，並盡量減少推廣預算以集中人力物力留住最忠誠的顧客。", ans: "衰退期", exp: "正確。淘汰不受歡迎型號、棄用不能獲利的途徑成員及減少推廣預算留住忠誠顧客，屬於「衰退期」的市場營銷組合策略。" },
+    { q: "3. 由於消費者對某款全新智能翻譯機的接受程度低，生產商決定集中生產最基本的產品型號，採用選擇性分銷，並非常依賴廣告和促銷來建立品牌認知度和吸引創新者嘗試產品。", ans: "介紹期", exp: "正確。提供最基本產品、採用選擇性分銷及依賴廣告和促銷建立認知度，屬於「介紹期」的策略。" },
+    { q: "4. 某茶飲市場的大部分有潛力消費者已經購買產品，銷售額增長開始放緩，價格競爭變得普遍，一些較弱的競爭對手開始被市場淘汰。", ans: "成熟期", exp: "正確。銷售額增長開始放緩、價格競爭普遍及較弱競爭對手被淘汰，屬於「成熟期」的特徵。" },
+    { q: "5. 某運動飲品生產商在更多競爭對手尚未進入市場前，為盡量擴大市場佔有率，決定提升產品質素並加入新功能與顏色版本，降低價格進一步滲透市場，並改用密集性分銷及減少促銷活動。", ans: "成長期", exp: "正確。提升質素與提供更多版本、降低價格滲透市場、採用密集性分銷及減少促銷活動，屬於「成長期」的市場營銷組合策略。" },
+    { q: "6. 某護膚品牌為捍衛現有的市場佔有率，決定推出更多元化的品牌和型號以針對其他市場組別（產品線延伸），定價貼近競爭對手，並透過更多廣告、促銷甚至個人銷售強調產品差異以吸引對手顧客轉換品牌。", ans: "成熟期", exp: "正確。推出多元化品牌型號、定價具競爭力、採用更密集性分銷及強調產品差異吸引轉換品牌，屬於「成熟期」的策略。" }
+  ];
+  let curPlcQ = 0;
+  function renderPlcQuiz() {
+    document.getElementById('plcQuizProg').textContent = `題目 ${curPlcQ + 1} / ${plcQuizItems.length}`;
+    document.getElementById('plcQuizQ').textContent = plcQuizItems[curPlcQ].q;
+    document.getElementById('plcQuizFb').innerHTML = '';
+  }
+  function checkPlcQuiz(choice) {
+    const item = plcQuizItems[curPlcQ];
+    const fb = document.getElementById('plcQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curPlcQ=(curPlcQ+1)%plcQuizItems.length;renderPlcQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderPlcQuiz();
+
+  // ====== 2. 服務市場學 (Services Marketing) ======
+  const srvIndustries = ["痛症物理治療中心", "連鎖特色餐廳", "專業髮型及美甲屋", "本地零售銀行"];
+  let curSrvInd = 0;
+  let curSrvChar = 0;
+
+  const srvCharsData = [
+    {
+      name: "01 無形性",
+      en: "Intangibility",
+      def: "服務在購買之前是看不到、嚐不到、聽不到、嗅不到和感受不到的。因此，消費者在享用服務前，不會確實知道他們可從服務中得到甚麼，作出購買決定時常感到疑惑和不確定。",
+      methods: "<b>企業可如何應付服務的無形性？</b><br>應向消費者提供<b>有形或實體的證據</b>，證明自身能夠提供優質服務。例如：<br>• <b>(i) 提供清潔和舒適的環境</b>；<br>• <b>(ii) 維持員工的專業外形</b>（例如讓員工穿着特定服飾或制服）；及<br>• <b>(iii) 展示服務成效的照片</b>。",
+      indCases: [
+        "提供明亮清潔和舒適的獨立治療室環境、讓物理治療師穿着整齊專業制服，並在診所展示先進的衝擊波治療儀器及康復案例介紹。",
+        "提供清潔雅致的用餐環境、讓侍應穿着整齊潔淨的制服，並在門外餐牌展示清晰誘人的招牌菜式照片及開放式廚房。",
+        "提供整潔舒適的理髮及美甲座位環境、維持髮型師與美甲師時尚專業的外形與服飾，並向顧客展示過往造型成效的照片作品集。",
+        "維持分行大堂寬敞整潔舒適、要求理財顧問穿着整齊專業西裝制服，並擺放印製精美的理財服務小冊子。"
+      ]
+    },
+    {
+      name: "02 不可分割性",
+      en: "Inseparability",
+      def: "服務的生產和使用在同一時間進行，無法分割；換言之，服務與提供服務的人是不可分割的。消費者經常會把服務提供者視為他們所使用的服務的一部分，與服務提供者的表現及他們與消費者的互動息息相關。",
+      methods: "<b>企業可如何應付服務的不可分割性？</b><br>• <b>(i) 聘請經驗豐富和熟練的員工</b>：聘請經驗豐富，並具備良好溝通技巧、人際關係技巧或其他工作相關技能的員工，從而向消費者提供優質服務。<br>• <b>(ii) 向員工提供培訓</b>：改善他們的技巧（如人際關係技巧）和服務態度，這有助他們為消費者帶來更佳的服務體驗。",
+      indCases: [
+        "聘請臨床經驗豐富且具備良好溝通技巧的註冊物理治療師，並向治療師及接待員提供人際關係技巧與同理心服務態度培訓。",
+        "聘請熟練的廚師與侍應，並向侍應提供待客禮貌、溝通技巧和服務態度培訓，改善侍應與食客之間的現場互動體驗。",
+        "聘請剪染技術熟練且擅長溝通的髮型師，並定期提供人際關係技巧培訓，確保髮型師在理髮過程中與顧客保持良好互動。",
+        "聘請具豐富金融經驗的客戶關係經理，並向櫃員提供人際溝通技巧和服務態度培訓，提升面對面服務體驗。"
+      ]
+    },
+    {
+      name: "03 異質性（多變性）",
+      en: "Heterogeneity / Variability",
+      def: "服務質素視乎由誰提供服務，以及於何時何地和怎樣提供服務而定。在同一家服務業企業中，不同服務提供者所提供的服務質素各有不同；即使是同一名服務提供者，其服務質素在不同時間也會受到生病和情緒起伏等多項因素影響而出現差異。",
+      methods: "<b>企業可如何應付服務的異質性？</b><br>• <b>(i) 將提供服務的程序標準化</b>：為了維持服務的一致性，建立嚴謹的標準，規範員工向顧客提供服務的所有程序。<br>• <b>(ii) 建立良好的招聘和培訓系統</b>（及完善的員工考績制度）：聘請合適的員工並提供適當的培訓，確保所有員工提供的服務都符合品質標準。<br>• <b>(iii) 監察顧客的滿意程度</b>：建立意見及投訴機制（如以問卷方式收集顧客意見和投訴），及早察覺服務質素出現偏差，從而盡快採取補救措施。",
+      indCases: [
+        "將痛症檢查與治療程序標準化（制定標準操作指引）、建立統一的治療師招聘培訓與考績制度，並在每次療程後以電子問卷監察病人的滿意程度。",
+        "制定高度標準化的落單、烹調及傳菜服務程序指引、為各分店廚師及侍應提供統一培訓，並在餐桌上放置二維碼意見問卷以監察食客滿意程度。",
+        "規範洗護、染燙及美甲的標準服務步驟與時間、建立完善的技師培訓與考績制度，並設立顧客意見收集箱及早察覺服務偏差。",
+        "將開戶及櫃位服務程序標準化、為各分行職員提供統一培訓與考績評核，並透過完成交易後的電子評分器實時監察客戶滿意程度。"
+      ]
+    },
+    {
+      name: "04 易逝性",
+      en: "Perishability",
+      def: "服務不可以儲存起來留待日後銷售或使用。服務業企業經常難以在服務供應和消費者需求兩者之間作出協調，尤其是當消費者對服務的需求在繁忙時段和非繁忙時段出現巨大差距的時候。",
+      methods: "<b>企業可如何應付服務的易逝性？（在服務的供求上作出更佳協調以縮短等候時間）</b><br><b>1. 需求方面：</b>(i) 上調繁忙時段的服務收費，並於非繁忙時段提供折扣優惠，把需求由繁忙時段轉移到非繁忙時段；(ii) 設立預約系統，讓消費者透過電話或互聯網提前預約服務。<br><b>2. 供應方面：</b>(i) 聘請兼職員工應付繁忙時段需求；(ii) 要求員工在繁忙時段專注處理重要的工作；(iii) 增加顧客在服務提供過程中的參與程度（如安裝自助點餐機、掃瞄 QR 碼點餐）；(iv) 將部分工序自動化或在服務提供過程中採用新科技；(v) 增加設施來提升企業的服務能力。",
+      indCases: [
+        "設立網上及電話預約系統、在平日上午非繁忙時段提供物理治療八折優惠（需求方面），並在週末繁忙時段聘請兼職治療師及增設治療床位（供應方面）。",
+        "推出下午茶及早鳥時段折扣優惠、設立手機取籌預約系統（需求方面）；並在午晚市繁忙時間只供應數款精選套餐、聘請兼職侍應、安裝自助點餐機及讓顧客掃瞄 QR 碼點餐（供應方面）。",
+        "推行網上預約系統、於星期一至四非繁忙時段提供染髮折扣（需求方面），並在星期六日繁忙時段聘請兼職洗頭助理及要求髮型師專注核心剪染工作（供應方面）。",
+        "提供手機應用程式提前預約開戶服務（需求方面），並在午飯繁忙時段聘請兼職櫃員、增設自動櫃員機及引導客戶使用網上自助銀行服務（供應方面）。"
+      ]
+    }
+  ];
+
+  function renderSrvSection() {
+    document.getElementById('srvCharNavList').innerHTML = srvCharsData.map((c, i) => `
+      <button class="nav-item ${i===curSrvChar?'active':''}" onclick="curSrvChar=${i};renderSrvSection()">
+        <span>${c.name}</span>
+        <span class="sub-txt">${c.en.split(' ')[0]}</span>
+      </button>
+    `).join('');
+
+    const c = srvCharsData[curSrvChar];
+    document.getElementById('srvCharDetailCard').innerHTML = `
+      <h3 style="color:var(--primary);font-size:21px;margin-bottom:8px">${c.name} (${c.en})</h3>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17px"><b>主要獨特性：</b>${c.def}</p>
+      <div style="background:var(--surface);padding:14px 18px;border-radius:12px;border:1px solid var(--line);font-size:16px;line-height:1.75;margin-bottom:14px">
+        ${c.methods}
+      </div>
+      <div style="border-top:1px solid var(--line);padding-top:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+          <b style="font-size:15px;color:var(--mute)">切換服務行業查看應用例子：</b>
+          <div class="chips" style="margin:0">
+            ${srvIndustries.map((ind, i) => `<button class="chip ${i===curSrvInd?'active':''}" style="padding:5px 12px;font-size:14px" onclick="curSrvInd=${i};renderSrvSection()">${ind}</button>`).join('')}
+          </div>
+        </div>
+        <div class="case-box" style="margin-top:0">
+          <b>【${srvIndustries[curSrvInd]}】</b>${c.indCases[curSrvInd]}
+        </div>
+      </div>
+    `;
+  }
+  renderSrvSection();
+
+  const perishMeasures = [
+    { name: "1. 需求方面：上調繁忙時段收費，並於非繁忙時段提供折扣優惠", on: false },
+    { name: "2. 需求方面：設立預約系統，讓消費者透過電話或互聯網提前預約", on: false },
+    { name: "3. 供應方面：聘請兼職員工應付繁忙時段，並要求員工專注處理重要工作", on: false },
+    { name: "4. 供應方面：增加顧客參與程度（如安裝自助點餐機／掃瞄 QR 碼）及將工序自動化", on: false }
+  ];
+
+  function renderPerishSim() {
+    document.getElementById('perishToggles').innerHTML = perishMeasures.map((m, i) => `
+      <div class="toggle-card ${m.on ? 'on' : ''}" onclick="perishMeasures[${i}].on=!perishMeasures[${i}].on;renderPerishSim()">
+        <b>${m.name}</b>
+        <span class="toggle-pill">${m.on ? '已啟用' : '點擊啟用'}</span>
+      </div>
+    `).join('');
+
+    const activeCount = perishMeasures.filter(m => m.on).length;
+    const waitMins = [50, 35, 22, 12, 5][activeCount];
+    const waitPct = Math.round((waitMins / 50) * 95);
+    const satPct = [20, 45, 70, 88, 98][activeCount];
+
+    const waitCol = activeCount >= 3 ? 'var(--green)' : activeCount >= 1 ? 'var(--amber)' : 'var(--red)';
+    const waitLabel = activeCount === 4 ? `${waitMins} 分鐘（供求協調理想，大幅縮短等候時間）` :
+                      activeCount >= 2 ? `${waitMins} 分鐘（等候時間明顯縮短）` :
+                      `${waitMins} 分鐘（繁忙時段嚴重供不應求）`;
+
+    document.getElementById('perishWaitTxt').style.color = waitCol;
+    document.getElementById('perishWaitTxt').textContent = waitLabel;
+    document.getElementById('perishWaitBar').style.width = waitPct + '%';
+    document.getElementById('perishWaitBar').style.background = waitCol;
+
+    document.getElementById('perishSatTxt').textContent = `${satPct}%（已啟用 ${activeCount}/4 項供求協調措施）`;
+    document.getElementById('perishSatBar').style.width = satPct + '%';
+  }
+  renderPerishSim();
+
+  const srvQuizItems = [
+    { q: "1. 一家連鎖米線店聘用兼職員工協助應付午市繁忙時段的人流，並在店內安裝自助點餐機及讓顧客自行掃瞄 QR 碼點餐，以縮短顧客等候時間。", ans: "易逝性", exp: "正確。聘請兼職員工及增加顧客在服務提供過程中的參與程度（自助點餐機／QR 碼點餐），屬於從「供應方面」應付服務「易逝性」的方法。" },
+    { q: "2. 某精品酒店設立顧客意見收集箱及退房電子問卷，收集住客對房間服務的意見，並將客房清潔與接待程序標準化。", ans: "異質性", exp: "正確。將提供服務的程序標準化、建立良好招聘和培訓系統，以及監察顧客的滿意程度（收集意見和投訴），均是應付服務「異質性（多變性）」的方法。" },
+    { q: "3. 一家跨境直通巴士公司為車長及站務員設計時尚整齊的制服，並保持車廂環境清潔舒適，讓乘客對其服務產生信心。", ans: "無形性", exp: "正確。提供清潔和舒適的環境、維持員工的專業外形（穿着制服）及展示服務成效照片，屬於提供有形或實體的證據以應付服務的「無形性」。" },
+    { q: "4. 某私人普拉提運動中心聘請經驗豐富和擁有良好溝通技巧的導師，並向導師提供人際關係技巧和服務態度培訓，以改善導師與學員之間的互動。", ans: "不可分割性", exp: "正確。由於服務與提供服務的人是不可分割的，聘請經驗豐富和熟練的員工並向員工提供培訓以改善溝通技巧與服務態度，是應付「不可分割性」的方法。" },
+    { q: "5. 某室內蹦床遊樂場上調週末繁忙時段的入場收費，並於平日非繁忙時段提供半價折扣優惠，同時設立網上預約系統讓顧客提前預約。", ans: "易逝性", exp: "正確。上調繁忙時段收費並於非繁忙時段提供折扣優惠，以及設立預約系統，屬於從「需求方面」協調供求以應付服務「易逝性」的方法。" },
+    { q: "6. 某醫學美容中心在網站及大堂展示過往療程前後的成效對比照片，並將診所裝修得潔白明亮。", ans: "無形性", exp: "正確。展示服務成效的照片與提供清潔舒適環境，屬於提供有形或實體證據以應付「無形性」。" }
+  ];
+  let curSrvQ = 0;
+  function renderSrvQuiz() {
+    document.getElementById('srvQuizProg').textContent = `題目 ${curSrvQ + 1} / ${srvQuizItems.length}`;
+    document.getElementById('srvQuizQ').textContent = srvQuizItems[curSrvQ].q;
+    document.getElementById('srvQuizFb').innerHTML = '';
+  }
+  function checkSrvQuiz(choice) {
+    const item = srvQuizItems[curSrvQ];
+    const fb = document.getElementById('srvQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curSrvQ=(curSrvQ+1)%srvQuizItems.length;renderSrvQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderSrvQuiz();
+
+  // ====== 3. 傳統市場營銷與電子市場營銷策略 ======
+  const emkt4PData = [
+    {
+      p: "01 產品 (Product)",
+      badge: "得知需要・客製化・電子形式產品",
+      rows: [
+        {
+          emkt: "<b>• 較易得知顧客的需要</b>：企業可輕易追蹤顧客的瀏覽和購買記錄，從而制定更能滿足顧客需要的產品策略。",
+          trad: "<b>• 較難得知顧客的需要</b>：企業須要投入較多人力物力才可找出顧客的需要（可能要進行大量市場研究或自行作出判斷）。"
+        },
+        {
+          emkt: "<b>• 容易提供客製化 (Customisation) 和顧客化 (Customerisation) 的產品</b>：企業可輕易根據過往購買喜好主動向顧客提供度身訂造的產品，也可讓個別顧客自行設計屬於自己的產品（例如選擇顏色、配件或在產品上印製自選圖案）。",
+          trad: "<b>• 主要提供標準化的產品</b>：企業通常會生產標準化的產品來滿足顧客需要。由於客製化的難度較高，很少會主動為個別顧客度身訂造產品。"
+        },
+        {
+          emkt: "<b>• 可銷售電子形式的產品</b>：部分企業可以電子形式設計和銷售產品（例如電子書、電子門票、電子機票及網上預辦登機服務）。顧客可直接透過互聯網購買和下載產品，無須到訪門市，大大簡化購物流程。",
+          trad: "<b>• 主要銷售實體產品</b>：企業在設計產品和包裝時須考慮與運輸相關的因素；即使產品是電腦軟件，在傳統營銷下也要以實體形式出售（例如光碟）。"
+        }
+      ]
+    },
+    {
+      p: "02 價格 (Price)",
+      badge: "價格透明度・反映需求・多樣化定價",
+      rows: [
+        {
+          emkt: "<b>• 價格透明度較高</b>：由於消費者可在互聯網上輕易找到產品的相關資料（如價格和產品特點）並比較不同企業的產品價格，選出最物有所值的產品，因此企業不能隨便抬高價格，在釐定價格時須密切留意競爭對手的定價。",
+          trad: "<b>• 價格透明度較低</b>：消費者比較產品價格的難度較高，因此企業定價時有較大的自由度。"
+        },
+        {
+          emkt: "<b>• 價格更能反映需求／較多樣化的定價策略</b>：互聯網具有互動性，企業可輕易追蹤顧客的需求，對價格作出相應調整，採用較靈活和創新的定價策略來吸引顧客（例如酒店預訂網站按剩餘房間數量不斷更新價格、在某個小時內提供全店特價優惠，或航空公司在每周指定日子降低價格）。",
+          trad: "<b>• 較穩定的定價策略</b>：企業較難預料顧客的需求，作出定價決策時須投入較多人力物力；為產品定價後，價格通常會在一段時間內維持不變。"
+        }
+      ]
+    },
+    {
+      p: "03 分銷 (Place)",
+      badge: "無須實體店・24小時營業・減低依賴中間商",
+      rows: [
+        {
+          emkt: "<b>• 無須開設實體店鋪</b>：交易在網上進行，買賣雙方不受地域限制。企業無須開設實體店鋪來銷售產品，大大減少營運所需的資本投資和經營成本；此外，所有規模不同的企業都可以開拓全球市場。",
+          trad: "<b>• 須要開設實體店鋪</b>：企業須要開設實體店鋪來銷售產品，不少企業更要設立貨倉來貯存存貨；小型企業難以進入全球市場。"
+        },
+        {
+          emkt: "<b>• 24 小時營業（可以 24 小時進行交易）</b>：網上商店可 24 小時營業，消費者可隨時在網上購物，十分方便，有助企業創造更高的銷售額。",
+          trad: "<b>• 有固定的營業時間</b>：實體店鋪通常有固定的營業時間，消費者在營業時間結束後便不能購物。"
+        },
+        {
+          emkt: "<b>• 對途徑成員的依賴程度較低</b>：企業可輕易擺脫途徑成員，直接把產品分銷給消費者，有助企業節省分銷成本和與顧客建立更密切的關係。",
+          trad: "<b>• 對途徑成員的依賴程度較高</b>：沒有自身銷售團隊或分銷網絡的企業須要依賴途徑成員將產品分銷給消費者。"
+        }
+      ]
+    },
+    {
+      p: "04 推廣 (Promotion)",
+      badge: "成本效益高・雙向互動・度身設計推廣信息",
+      rows: [
+        {
+          emkt: "<b>• 成本效益較高</b>：企業可採用大量成本較低且創新的網上推廣方式（包括：<b>公司網站、社交媒體和影片分享網站或平台［如 Instagram、YouTube、Facebook、抖音等］、電郵和電子通訊、網上社群</b>）向全球目標消費者推廣產品，也能輕易量度推廣活動是否有效。",
+          trad: "<b>• 成本效益較低</b>：由於企業通常希望向最多的消費者傳遞推廣信息，因此推廣成本可能十分高昂，部分推廣開支也可能會浪費在非目標消費者身上。"
+        },
+        {
+          emkt: "<b>• 與顧客有較多互動</b>：企業可透過網上方式與顧客有較多互動，以便收集顧客的回饋和增進與顧客的關係。",
+          trad: "<b>• 以單向溝通為主</b>：傳統廣告屬於單向溝通（即只由企業向消費者作出溝通），企業較難收集顧客的回饋。"
+        },
+        {
+          emkt: "<b>• 可以度身設計推廣信息</b>：企業可按照個別顧客的購買記錄（如個人飛行或購票記錄），為他們度身設計推廣信息，因此較容易向顧客作<b>交叉銷售</b>。",
+          trad: "<b>• 難以針對個別顧客度身設計信息</b>：大眾傳媒廣告向所有人發放相同信息。"
+        }
+      ]
+    }
+  ];
+
+  function renderEmkt4P(idx) {
+    document.getElementById('emkt4PNavList').innerHTML = emkt4PData.map((d, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderEmkt4P(${i})">
+        <span>${d.p}</span>
+      </button>
+    `).join('');
+    const d = emkt4PData[idx];
+    document.getElementById('emkt4PDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${d.p} — 電子市場營銷 vs 傳統市場營銷</h3>
+        <span class="badge b-blue">${d.badge}</span>
+      </div>
+      <table class="comp-table" style="margin-top:8px">
+        <thead>
+          <tr>
+            <th style="width:50%">電子市場營銷策略</th>
+            <th style="width:50%">傳統市場營銷策略</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${d.rows.map(r => `<tr><td>${r.emkt}</td><td>${r.trad}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    `;
+  }
+  renderEmkt4P(0);
+
+  const emktQuizItems = [
+    {
+      q: "1. 某運動背包品牌在官方網站讓顧客自行選擇背包的布料顏色、拉鍊款式及刺繡個人名字，並根據顧客的瀏覽記錄推薦相應的防水袋。這體現了電子市場營銷在哪項 4P 元素上的特點？",
+      opts: ["A. 產品 (Product) — 較易得知顧客的需要，以及容易提供客製化和顧客化的產品", "B. 傳統單向廣告"],
+      ans: 0,
+      exp: "正確。追蹤瀏覽記錄了解需要，並讓顧客自行設計屬於自己的產品（客製化和顧客化），屬於電子市場營銷在「產品」元素上的特點。"
+    },
+    {
+      q: "2. 由於消費者可在互聯網上輕易比較不同網店的產品價格並選出最物有所值的產品，企業在釐定網店價格時須密切留意競爭對手的定價，同時可在指定一小時內提供全店閃購特價。這體現了哪項 4P 元素的特點？",
+      opts: ["A. 價格 (Price) — 價格透明度較高，以及可採用較多樣化和靈活的定價策略", "B. 須要開設實體店鋪"],
+      ans: 0,
+      exp: "正確。價格透明度較高（不能隨便抬高價格）及較多樣化的定價策略（更能反映需求），屬於電子市場營銷在「價格」元素上的特點。"
+    },
+    {
+      q: "3. 某本地手工皮具品牌關閉了高租金的商場門市，改為透過官方網站 24 小時向全球消費者直接銷售皮具，擺脫了對零售中間商的依賴。這體現了電子市場營銷在「分銷」上的甚麼好處？",
+      opts: ["A. 無須開設實體店鋪（減少資本投資和租金成本，並可開拓全球市場）、24 小時營業，以及對途徑成員的依賴程度較低", "B. 價格透明度較低"],
+      ans: 0,
+      exp: "正確。無須開設實體店鋪、24 小時營業及對途徑成員依賴程度較低，正是電子市場營銷在「分銷」上的三大特點。"
+    },
+    {
+      q: "4. 某旅遊網站按照個別會員過往預訂日本機票的購買記錄，透過電郵向他們度身發送東京酒店及鐵路周遊券的推廣信息，並與旅遊 KOL 在 YouTube 合作宣傳。這體現了電子市場營銷在「推廣」上的甚麼特點？",
+      opts: ["A. 成本效益較高、可與顧客有較多互動，以及可以按照個別顧客的購買記錄度身設計推廣信息（較容易向顧客作交叉銷售）", "B. 只能以單向溝通為主且無法收集回饋"],
+      ans: 0,
+      exp: "正確。電子市場營銷在推廣上具備成本效益較高、與顧客有較多互動，以及可度身設計推廣信息以進行交叉銷售的優勢。"
+    },
+    {
+      q: "5. 下列哪兩項屬於「傳統市場營銷策略」而非「電子市場營銷策略」的特點？",
+      opts: ["A. (1) 消費者比較產品價格的難度較高（價格透明度較低）；(2) 門市有固定的營業時間，營業時間結束後消費者便不能購物", "B. 可銷售電子形式的產品並 24 小時進行交易"],
+      ans: 0,
+      exp: "正確。價格透明度較低（比較價格難度較高）及門市有固定營業時間，屬於傳統市場營銷的特點。"
+    }
+  ];
+  let curEmktQ = 0;
+  function renderEmktQuiz() {
+    const item = emktQuizItems[curEmktQ];
+    document.getElementById('emktQuizProg').textContent = `題目 ${curEmktQ + 1} / ${emktQuizItems.length}`;
+    document.getElementById('emktQuizQ').textContent = item.q;
+    document.getElementById('emktQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkEmktQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('emktQuizFb').innerHTML = '';
+  }
+  function checkEmktQuiz(idx) {
+    const item = emktQuizItems[curEmktQ];
+    const fb = document.getElementById('emktQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curEmktQ=(curEmktQ+1)%emktQuizItems.length;renderEmktQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderEmktQuiz();
+
+  // ====== 4. 論點建構問答工作坊 (12題 100% 原創香港商業情境) ======
+  const workshopQuestions = [
+    // ================= 第一類：短答題／個案題（每個獨立論點滿分 2 分 — 2 步建構） =================
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：北歐智能空氣淨化機（介紹期的目標與特徵）", topic: "產品生命週期：介紹期的市場營銷目標與特徵", maxMarks: 2,
+      scenario: "一家北歐家電生產商剛進入香港市場，新推出的「全屋無濾網離子空氣淨化機」正處於產品生命週期中的「介紹期」。",
+      question: "指出產品生命週期中「介紹期」的主要市場營銷目標（1分），並以上述空氣淨化機生產商為例，描述介紹期的一項特徵（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「介紹期」的主要市場營銷目標（1分）", colorClass: "hl-s1", opts: [
+          { text: "主要市場營銷目標是減省非必要的開支，並逐步淘汰不受歡迎的型號。", score: 0, status: "wrong", comment: "這是「衰退期」的市場營銷目標，而非介紹期。" },
+          { text: "在介紹期，企業的主要市場營銷目標是「建立消費者對品牌的認知度和吸引消費者嘗試產品」。", score: 1, status: "best", comment: "準確寫出介紹期的主要市場營銷目標。" },
+          { text: "主要市場營銷目標是在進入衰退期前捍衛現有的市場佔有率。", score: 0, status: "wrong", comment: "這是「成熟期」的市場營銷目標。" }
+        ]},
+        { label: "第 2 步：以該空氣淨化機生產商為例，描述「介紹期」的一項特徵（1分）", colorClass: "hl-s2", opts: [
+          { text: "由於香港消費者需要時間接受這款全新的無濾網離子空氣淨化機，只有「創新者」才會購買，所以新產品的銷售額低且增長緩慢（或：由於推出新產品時須投入大量推廣費用，故不能為公司帶來多少利潤／錄得負利潤）。", score: 1, status: "best", comment: "緊扣空氣淨化機例子，清楚描述介紹期「銷售額增長緩慢／只有創新者購買／推廣費用高昂致利潤負數」的特徵。" },
+          { text: "市場上出現大量競爭對手大打減價戰，令較弱的對手被淘汰。", score: 0, status: "wrong", comment: "價格競爭變得普遍及較弱對手被淘汰屬於「成熟期」的特徵。" },
+          { text: "這款空氣淨化機具有介紹期的特徵。", score: 0, status: "partial", comment: "同義反覆，未有具體描述介紹期的銷售額、利潤或顧客特徵。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：亮麗專業美甲及護膚中心（應付服務的「無形性」）", topic: "服務市場學：無形性的意思與應付方法", maxMarks: 2,
+      scenario: "「亮麗美甲及護膚中心」為應付服務「無形性」所帶來的問題，決定向消費者提供有形或實體的證據，證明自身能夠提供優質服務。",
+      question: "解釋服務市場學中「無形性」的意思（1分），並舉出一種該中心可向消費者提供實體證據的方法（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：解釋服務市場學中「無形性」的意思（1分）", colorClass: "hl-s1", opts: [
+          { text: "無形性是指服務不可以儲存起來留待日後銷售或使用。", score: 0, status: "wrong", comment: "服務不可以儲存留待日後使用是「易逝性」的意思，並非無形性。" },
+          { text: "「無形性」是指服務在購買之前是看不到、嚐不到、聽不到、嗅不到和感受不到的（消費者在享用服務前不會確實知道可從服務中得到甚麼）。", score: 1, status: "best", comment: "完整寫出「無形性」的標準定義。" },
+          { text: "無形性是指不同美容師提供的服務質素各有不同。", score: 0, status: "wrong", comment: "不同服務提供者的服務質素各有不同是「異質性」的意思。" }
+        ]},
+        { label: "第 2 步：舉出該美甲及護膚中心提供「有形或實體證據」的方法（1分）", colorClass: "hl-s2", opts: [
+          { text: "中心可「提供清潔和舒適的環境」（如整潔明亮的美容房間）、維持美甲師及美容師的「專業外形」（如穿着整齊制服），以及「展示服務成效的照片」（如美甲款式及護膚前後對比照片）。", score: 1, status: "best", comment: "準確舉出提供清潔舒適環境、維持員工專業外形及展示服務成效照片的實體證據方法。" },
+          { text: "中心可上調週末繁忙時段的收費，並於平日非繁忙時段提供折扣優惠。", score: 0, status: "wrong", comment: "調節繁忙與非繁忙時段收費是應付「易逝性」的方法，而非提供實體證據應付無形性。" },
+          { text: "中心可以給顧客看一些證據。", score: 0, status: "partial", comment: "未有具體說明提供甚麼有形或實體證據（如清潔舒適環境、員工專業外形或服務成效照片）。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：高奢珠寶鐘錶店（培訓員工應付服務特性）", topic: "服務市場學：透過培訓應付「不可分割性」與「異質性」", maxMarks: 2,
+      scenario: "不少高檔珠寶鐘錶品牌為了向顧客提供優質服務，會投放大量資源來培訓前線銷售員工。",
+      question: "根據服務的「不可分割性」（1分）和「異質性」（1分），各舉出一個原因解釋為何培訓員工有助品牌維持服務質素。（2 分）",
+      steps: [
+        { label: "第 1 步：根據「不可分割性」解釋培訓員工如何有助維持服務質素（1分）", colorClass: "hl-s1", opts: [
+          { text: "針對「不可分割性」（服務與提供服務的人不可分割，消費者把服務提供者視為服務的一部分）：向員工提供培訓可改善他們的人際關係技巧、溝通技巧和服務態度，在與顧客互動時為顧客帶來更佳的服務體驗。", score: 1, status: "best", comment: "清楚扣連「不可分割性」與「改善人際關係技巧和服務態度以提升互動體驗」。" },
+          { text: "針對不可分割性，培訓員工可以把未賣出的服務放進貨倉儲存。", score: 0, status: "wrong", comment: "服務具有易逝性，無法放進貨倉儲存。" },
+          { text: "因為培訓對不可分割性很有幫助。", score: 0, status: "partial", comment: "未有說明培訓如何改善員工的技巧（如人際關係技巧）和服務態度。" }
+        ]},
+        { label: "第 2 步：根據「異質性（多變性）」解釋培訓員工如何有助維持服務質素（1分）", colorClass: "hl-s2", opts: [
+          { text: "針對「異質性」（不同員工所提供的服務質素各有不同）：透過良好的培訓系統向所有員工教授統一的標準服務程序，可減少不同店員之間的表現差異，確保所有員工提供的服務都符合品質標準（維持服務的一致性）。", score: 1, status: "best", comment: "清楚扣連「異質性」與「統一服務程序、確保所有員工提供的服務都符合品質標準以維持一致性」。" },
+          { text: "針對異質性，培訓可以令所有珠寶的價格每天自動改變。", score: 0, status: "wrong", comment: "與服務異質性無關。" },
+          { text: "因為不同員工有不同的服務。", score: 0, status: "partial", comment: "必須說明培訓如何「確保所有員工提供的服務都符合品質標準，以維持服務的一致性」。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：採用電子市場營銷進行「推廣」的好處", topic: "電子市場營銷：相對於傳統市場營銷在「推廣」上的好處", maxMarks: 2,
+      scenario: "越來越多零售企業在推廣產品時，選擇採用「電子市場營銷策略」而非單靠「傳統市場營銷策略」。",
+      question: "試以其中一項好處為例，描述在「推廣」上採用電子市場營銷策略相對於傳統市場營銷策略的好處。（2 分）",
+      steps: [
+        { label: "第 1 步：指出電子市場營銷在「推廣」上的單一核心好處（1分）", colorClass: "hl-s1", opts: [
+          { text: "電子市場營銷的推廣屬於單向溝通，完全無法收集顧客回饋。", score: 0, status: "wrong", comment: "「以單向溝通為主、較難收集回饋」是傳統市場營銷廣告的缺點，而非電子市場營銷的好處。" },
+          { text: "可以度身設計推廣信息並進行交叉銷售（或選：「成本效益較高且易於量度成效」／「與顧客有較多互動以便收集回饋和增進關係」）。", score: 1, status: "best", comment: "準確指出電子市場營銷在推廣上的三大標準好處之一。" },
+          { text: "同時具有成本效益高、互動多及度身設計信息三項好處。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段應只集中闡釋一項好處。" }
+        ]},
+        { label: "第 2 步：針對該單一好處與傳統市場營銷作具體說明（1分）", colorClass: "hl-s2", opts: [
+          { text: "在傳統營銷中，大眾廣告向所有人發放相同信息，部分開支會浪費在非目標消費者身上；而在電子市場營銷中，企業可按照個別顧客過往的網上瀏覽和購買記錄，透過電郵或社交平台為他們度身設計個人化推廣信息，因此較容易向顧客作交叉銷售。", score: 1, status: "best", comment: "清楚對比傳統營銷與電子營銷，說明如何按顧客購買記錄度身設計推廣信息並進行交叉銷售。" },
+          { text: "因為在網上做推廣比較好。", score: 0, status: "partial", comment: "闡述空泛，未有具體說明如何按購買記錄度身設計信息、與顧客互動或為何成本效益較高。" },
+          { text: "這會令企業必須在電視台購買最昂貴的黃金時段廣告。", score: 0, status: "wrong", comment: "購買傳統電視廣告屬於傳統市場營銷。" }
+        ]}
+      ]
+    },
+
+    // ================= 第二類：進階論述題（每個獨立論點滿分 3 分 — 3 步深度建構，100% 原創商業情境） =================
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：有機能量飲品生產商（成長期的市場營銷組合策略）", topic: "產品生命週期：適用於「成長期」的市場營銷組合策略", maxMarks: 3,
+      scenario: "「綠力飲品」推出的「有機奇亞籽能量飲品」獲得市場廣泛接受，現已進入產品生命週期的「成長期」，銷售額開始急增。試根據市場營銷組合的元素，為這產品建議合適的營銷方法。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「產品策略（或分銷／定價／推廣策略）」為核心，結合「成長期」的目標與特徵建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「成長期」的營銷目標及單一 4P 元素的策略方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "公司可同時在產品、價格、分銷和推廣四方面採取行動。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每個市場營銷組合元素應獨立成段闡述。" },
+          { text: "在成長期，隨着購買產品的消費者越來越多且新競爭對手開始進入市場，公司的主要目標是「盡量擴大市場佔有率」；在「產品策略」上，公司應提升產品質素，並加入新的產品特點（如新口味、新功能和包裝容量）以提供更多版本的產品（或選「分銷策略」：採用密集性分銷）。", score: 1, status: "best", comment: "準確點出成長期「盡量擴大市場佔有率」的目標，以及產品策略「提升質素並提供更多版本」的方向。" },
+          { text: "在成長期，公司應逐步淘汰不受歡迎的型號並棄用不能獲利的途徑成員。", score: 0, status: "wrong", comment: "這是「衰退期」的策略，並非成長期。" }
+        ]},
+        { label: "第 2 步：針對「有機能量飲品」設定具體的成長期產品（或分銷）措施例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如綠力飲品可以推出更多不同版本的飲品。", score: 0, status: "partial", comment: "未有結合有機能量飲品舉出具體的新口味、配方功能或包裝版本例子。" },
+          { text: "例如綠力飲品除了原有的原味奇亞籽飲品外，可加入維他命 C 美肌配方及無糖電解質運動配方，並推出熱帶芒果、百香果等新口味以及 1 公升家庭裝版本（若選分銷策略，則舉例：將飲品鋪貨至全港各大連鎖便利店、超級市場及健身室自動售賣機進行密集性分銷）。", score: 1, status: "best", comment: "緊扣有機能量飲品，具體列舉加入新功能配方、新口味及不同容量版本。" },
+          { text: "例如只生產最基本的單一原味版本，並只在少數專門店作選擇性分銷。", score: 0, status: "wrong", comment: "這是「介紹期」的策略，無法應付成長期擴張市場的需要。" }
+        ]},
+        { label: "第 3 步：深化論述至滿足現有顧客、吸引新市場組別與擴大市場佔有率的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過提升飲品質素及提供更多口味與功能版本，既可讓現有顧客更感滿意，又能吸引其他市場組別（如愛美女士及健身人士）的消費者購買產品，從而在更多競爭對手站穩陣腳前成功擴大公司的市場佔有率。", score: 1, status: "best", comment: "緊扣「讓現有顧客更感滿意，並吸引其他市場組別的消費者購買產品，繼而擴大企業的市場佔有率」。" },
+          { text: "這樣綠力飲品便完成了成長期的策略。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令奇亞籽原料的採購價自動變成零。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：美肌護膚品公司（成熟期的產品與定價策略）", topic: "產品生命週期：以「成熟期」的特徵解釋產品與定價策略建議", maxMarks: 3,
+      scenario: "「雅詩護膚」的草本保濕護膚系列在過去十年深受本地消費者歡迎，惟管理層檢視過去數月的銷售記錄後，發現護膚品的銷售額增長開始放緩，確認產品已進入產品生命週期的「成熟期」。試為該護膚品建議一項「定價策略」（或「產品策略」），並以一項成熟期的特徵來解釋你的建議。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「成熟期的定價策略（或產品策略）」為核心，結合成熟期特徵建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「成熟期」的相關市場特徵（1分）", colorClass: "hl-s1", opts: [
+          { text: "在成熟期，市場上完全沒有競爭對手，且只有創新者才會購買護膚品。", score: 0, status: "wrong", comment: "這是「介紹期」的特徵，而非成熟期。" },
+          { text: "在產品生命週期的「成熟期」，市場上出現越來越多競爭產品，競爭越趨激烈，且大部分有潛力的消費者已經購買產品，導致銷售額增長開始放緩，同業之間的「價格競爭變得普遍」。", score: 1, status: "best", comment: "準確指出成熟期「競爭越趨激烈、銷售額增長放緩及價格競爭變得普遍」的核心特徵。" },
+          { text: "護膚品已經進入了成熟期。", score: 0, status: "partial", comment: "未有描述成熟期的具體市場特徵（如競爭越趨激烈、價格競爭普遍或銷售增長空間有限）。" }
+        ]},
+        { label: "第 2 步：根據該成熟期特徵，針對「雅詩護膚品」提出具體的定價（或產品）策略建議（1分）", colorClass: "hl-s2", opts: [
+          { text: "因此，雅詩護膚應把所有面霜的價格大幅調高兩倍。", score: 0, status: "wrong", comment: "在價格競爭激烈的成熟期盲目大幅加價，會令顧客大量流失予競爭對手。" },
+          { text: "面對激烈的價格競爭，雅詩護膚在「定價策略」上應使定價具競爭力——將保濕護膚品的定價調低至貼近競爭對手，甚至比對手更加吸引（如提供多買折扣或減價優惠）（若選產品策略，則建議：加入抗藍光新特點，並進行產品線延伸推出針對年輕肌及熟齡肌的多元化品牌和型號）。", score: 1, status: "best", comment: "緊扣成熟期特徵，具體建議「定價貼近競爭對手甚至比對手更吸引（定價具競爭力）」。" },
+          { text: "因此公司應該調整一下價格。", score: 0, status: "partial", comment: "未有明確指出應如何調整價格（定價須貼近競爭對手，甚至比對手更加吸引以具競爭力）。" }
+        ]},
+        { label: "第 3 步：深化論述至防止顧客流失、捍衛現有市場佔有率與增加短期利潤的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "採取具競爭力的定價（或推出多元化產品型號突顯差異），能有效防止現有顧客被減價促銷的競爭對手吸納而流失，甚至吸引對手的顧客轉換品牌，從而協助雅詩護膚在成熟期捍衛現有的市場佔有率，並盡量增加短期利潤。", score: 1, status: "best", comment: "清楚推演出「具競爭力定價 → 免流失顧客並吸引對手顧客 → 捍衛現有市場佔有率並增加短期利潤」。" },
+          { text: "這樣雅詩護膚便調整了成熟期的策略。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令所有其他化妝品公司立即倒閉。", score: 0, status: "wrong", comment: "武斷的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：傳統紙本旅遊指南出版社（衰退期的市場營銷組合策略）", topic: "產品生命週期：適用於「衰退期」的市場營銷組合策略", maxMarks: 3,
+      scenario: "隨着智能手機旅遊應用程式普及，某出版社發現旗下的「傳統紙本旅遊指南書籍」銷售額和利潤均持續下降，已進入產品生命週期的「衰退期」。試向該出版社建議適用於這紙本旅遊指南的市場營銷組合策略。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「產品與分銷策略」（或「推廣與定價策略」）為核心，結合衰退期目標建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「衰退期」的營銷目標及單一 4P 元素的策略方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "在衰退期，出版社應投入巨額推廣預算大賣電視廣告，並在全港所有便利店進行更密集性的分銷。", score: 0, status: "wrong", comment: "在銷量持續萎縮的衰退期大灑金錢推廣及密集分銷，會導致嚴重虧損。" },
+          { text: "在產品生命週期的「衰退期」，出版社的主要市場營銷目標是「減省非必要的開支，並盡量從產品上賺取更多利潤」；因此在「產品策略」上應逐步淘汰一些較不受歡迎的型號，並在「分銷策略」上採用選擇性分銷及棄用不能獲利的途徑成員。", score: 1, status: "best", comment: "準確點出衰退期「減省非必要開支、盡量賺取利潤」的目標，以及淘汰不受歡迎型號與棄用不獲利途徑成員的方向。" },
+          { text: "出版社可以改變一下它的 4P 策略。", score: 0, status: "partial", comment: "未能寫出衰退期的具體策略方向（淘汰不受歡迎型號、降低價格、選擇性分銷棄用不獲利成員、減少推廣預算留住忠誠顧客）。" }
+        ]},
+        { label: "第 2 步：針對「傳統紙本旅遊指南」設定具體的衰退期措施例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如出版社可以減少一些書本和書局。", score: 0, status: "partial", comment: "闡述過於簡略，未有結合紙本旅遊指南的不同旅遊冷門／熱門地區版本及分銷渠道作具體說明。" },
+          { text: "例如出版社可停止印刷及逐步淘汰銷量極低的冷門國家紙本旅遊書，只集中出版最受歡迎的日本及台灣旅遊指南（產品策略）；同時停止在一般報攤及小型便利店鋪貨（棄用不能獲利的途徑成員），改為只在數間大型連鎖書店及自家網站作選擇性分銷（分銷策略），並大幅削減推廣預算及減價清貨。", score: 1, status: "best", comment: "緊扣紙本旅遊指南，具體說明淘汰冷門地區版本、集中熱門款式，以及棄用不獲利報攤改為選擇性分銷。" },
+          { text: "例如出版社收購一家航空公司。", score: 0, status: "wrong", comment: "偏離紙本旅遊指南的市場營銷組合策略。" }
+        ]},
+        { label: "第 3 步：深化論述至大幅減省營運分銷開支與維持剩餘利潤的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過淘汰滯銷書種及棄用無利可圖的分銷點，出版社能大幅減省印刷、存貨倉儲及分銷上架等非必要開支，將有限資源集中服務仍然喜愛紙本指南的忠誠讀者（晚用者），從而在產品最終被淘汰前盡量賺取更多利潤。", score: 1, status: "best", comment: "清楚推演出「淘汰滯銷款式與不獲利渠道 → 減省非必要開支、集中服務忠誠顧客 → 盡量賺取更多利潤」。" },
+          { text: "這樣紙本旅遊書便完成了衰退期的調整。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令全球所有人停止使用智能手機。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：大型傳統航空公司（根據服務的「異質性」改善服務質素）", topic: "服務市場學：根據服務的「異質性」改善服務質素", maxMarks: 3,
+      scenario: "鑑於廉價航空公司的數目不斷增加，某大型傳統航空公司發現難以在市場中賺取利潤。為增加銷售額，公司決定針對服務的特性全面改善機艙及地勤服務質素。試根據服務的「異質性（多變性）」，解釋該大型航空公司可如何改善服務質素。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以服務的「異質性 (Heterogeneity)」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「異質性」的意思與核心獨特性（1分）", colorClass: "hl-s1", opts: [
+          { text: "服務有「無形性、不可分割性、異質性和易逝性」四項特性。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每項服務特性應獨立成段闡釋並解釋其意思。" },
+          { text: "服務具有「異質性（又稱多變性）」：這是指服務質素視乎由誰提供服務，以及於何時何地和怎樣提供服務而定（不同機艙服務員所提供的服務質素各有不同，同一服務員在不同時間也會受生病或情緒起伏影響而出現差異）。", score: 1, status: "best", comment: "完整寫出「異質性」的標準定義及成因。" },
+          { text: "異質性是指機位不可以儲存起來留待明天航班使用。", score: 0, status: "wrong", comment: "不可以儲存留待日後使用是「易逝性」，並非異質性。" }
+        ]},
+        { label: "第 2 步：針對「大型航空公司」設定應付異質性的具體方法例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如航空公司要想辦法令所有空姐的服務都一樣好。", score: 0, status: "partial", comment: "未有提出具體管理措施（將提供服務的程序標準化、建立良好招聘和培訓系統、監察顧客滿意程度）。" },
+          { text: "例如該航空公司可：(i) 將提供服務的程序標準化（制定嚴謹的機艙迎賓、派餐及安全檢查標準程序指引）；(ii) 建立良好的招聘、統一培訓和員工考績系統，確保所有機艙及地勤人員提供的服務都符合品質標準；以及 (iii) 在航班結束後透過機上娛樂系統或電郵派發問卷，監察乘客的滿意程度及收集意見。", score: 1, status: "best", comment: "緊扣大型航空公司，完整結合課文三項應付異質性的方法：(i) 將程序標準化、(ii) 良好招聘培訓與考績系統、(iii) 監察顧客滿意程度。" },
+          { text: "例如在非繁忙日子提供特價機票優惠。", score: 0, status: "wrong", comment: "非繁忙時段折扣屬於應付「易逝性」的方法，而非應付異質性。" }
+        ]},
+        { label: "第 3 步：深化論述至維持服務一致性、及早糾正偏差與提升乘客忠誠度的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過將機艙服務程序標準化、嚴格培訓及持續監察乘客滿意度，航空公司能確保不論乘客乘搭哪一班航機或由哪一位機艙人員服務，都能獲得穩定一致的高水準體驗，並能及早察覺服務偏差採取補救措施，從而以優質服務抗衡廉價航空的競爭。", score: 1, status: "best", comment: "清楚推演出「維持服務一致性並及早察覺偏差採取補救措施 → 提升乘客滿意度以抗衡廉航競爭」。" },
+          { text: "這樣航空公司便應付了異質性的問題。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令飛機的燃油消耗量自動減少一半。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：本地連鎖快餐店（根據服務的「易逝性」縮短午膳等候時間）", topic: "服務市場學：根據服務的「易逝性」協調供求以縮短等候時間", maxMarks: 3,
+      scenario: "「快味軒」是一家在香港擁有超過 40 家分店的本地連鎖快餐店。最近市場營銷經理收到不少顧客投訴，指午膳繁忙時段的點餐與取餐等候時間過長，令部分顧客轉為光顧其他外賣飯盒店。試指出該投訴與服務的哪項特性相關，並解釋快餐店可如何應付這項特性所帶來的問題。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以服務的「易逝性 (Perishability)」及從供應與需求方面協調的方法為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：識別「易逝性」特性並解釋其為何導致繁忙時段等候時間過長（1分）", colorClass: "hl-s1", opts: [
+          { text: "這與服務的「無形性」相關，因為顧客在點餐前看不到食物。", score: 0, status: "wrong", comment: "午膳繁忙時段大排長龍、等候時間過長，是因為服務不可預先儲存以致繁忙時段供不應求，關乎「易逝性」而非無形性。" },
+          { text: "顧客投訴午膳時段等候時間過長，與服務的「易逝性」相關：易逝性指服務不可以儲存起來留待日後銷售或使用；由於快餐店無法將非繁忙時段閒置的服務能力儲存起來，當午膳繁忙時段顧客需求急增時，便難以在服務供應與需求之間作出協調，導致大排長龍。", score: 1, status: "best", comment: "準確識別「易逝性」，並清楚解釋服務不可儲存如何導致繁忙時段供求失衡。" },
+          { text: "這與服務的易逝性有關。", score: 0, status: "partial", comment: "漏了解釋「易逝性（服務不可以儲存起來留待日後銷售或使用，導致繁忙時段難以協調供求）」的意思。" }
+        ]},
+        { label: "第 2 步：針對「連鎖快餐店」設定從供應及需求方面協調供求的具體方法（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如快餐店在牆上張貼美食照片並為店員更換新制服。", score: 0, status: "wrong", comment: "張貼照片與更換制服是應付「無形性」的實體證據，無法縮短午市排隊點餐時間。" },
+          { text: "為應付易逝性，快味軒可在供求上作出協調：(1) 供應方面：在全線分店「安裝自助點餐機」及「讓顧客自行掃瞄 QR 碼點餐」（增加顧客在服務提供過程中的參與程度並採用新科技）、「聘請兼職員工」應付午市人流，並要求員工在午市繁忙時間「只專注供應數款精選快餐」；(2) 需求方面：提供早鳥或下午茶非繁忙時段折扣優惠，把部分需求由繁忙時段轉移到非繁忙時段。", score: 1, status: "best", comment: "完整運用供應方面（自助點餐機／掃瞄 QR 碼增加顧客參與、聘請兼職、繁忙時段專注供應數款套餐）及需求方面（非繁忙時段折扣）的標準方法。" },
+          { text: "例如快餐店叫員工動作快一點。", score: 0, status: "partial", comment: "未有提出具體可行的供求協調措施（如安裝自助點餐機、掃瞄 QR 碼點餐、聘請兼職或非繁忙時段折扣）。" }
+        ]},
+        { label: "第 3 步：深化論述至減輕員工工作量、提升效率與縮短等候時間留住顧客的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過安裝自助點餐機增加顧客參與度及增聘兼職人手，能大幅減少收銀員的工作量和提升快餐店整體的出餐效率；配合非繁忙時段優惠分流客源，能有效縮短食客在午膳時段的等候時間，改善用餐體驗並留住顧客。", score: 1, status: "best", comment: "清楚推演出「減少員工工作量、提升整體效率並分流客源 → 縮短等候時間 → 改善體驗並留住顧客」。" },
+          { text: "這樣顧客便不會再投訴了。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令快餐店無須再購買任何食材。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：紙本與電子雜誌社（比較傳統營銷與電子營銷的「產品策略」）", topic: "傳統市場營銷與電子市場營銷比較：產品策略 (Product)", maxMarks: 3,
+      scenario: "某生活品味雜誌社見傳統紙本雜誌銷量放緩，正考慮同時採用「電子市場營銷策略」推出網上及平板電腦版雜誌，以提升公司整體的競爭力。試比較該雜誌社在「傳統市場營銷」和「電子市場營銷」上的「產品策略」。",
+      question: "請遵循雙向對比原則，單獨以「產品策略 (Product)」為核心，從「得知顧客需要、提供客製化產品或銷售電子形式產品」角度建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出電子市場營銷與傳統市場營銷在「產品策略」上的核心比較維度（1分）", colorClass: "hl-s1", opts: [
+          { text: "在產品策略上，電子市場營銷無須開設實體店鋪且可 24 小時營業。", score: 0, status: "wrong", comment: "「無須開設實體店鋪及 24 小時營業」屬於「分銷 (Place)」策略的比較，並非題目指定的「產品 (Product)」策略。" },
+          { text: "在「產品策略」方面，電子市場營銷與傳統市場營銷在「銷售產品的形式（電子形式 vs 實體產品）」、「得知顧客需要的難易程度」以及「提供客製化產品的能力」上均有顯著分別。", score: 1, status: "best", comment: "準確鎖定「產品策略」的三大標準比較維度：(1) 較易得知顧客需要、(2) 容易提供客製化產品、(3) 可銷售電子形式的產品。" },
+          { text: "兩種市場營銷的產品策略完全相同。", score: 0, status: "wrong", comment: "兩者在產品形式、得知需要及客製化能力上截然不同。" }
+        ]},
+        { label: "第 2 步：針對「雜誌社」在傳統市場營銷與電子市場營銷下的產品策略進行雙向對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "在電子市場營銷下，雜誌社可以賣電子雜誌。", score: 0, status: "partial", comment: "比較題必須同時闡述「傳統市場營銷」與「電子市場營銷」兩方面的情況作雙向對比。" },
+          { text: "在「傳統市場營銷」下，雜誌社主要銷售標準化的實體紙本雜誌（設計與印刷時須考慮運輸派發因素），且較難得知個別讀者的閱讀喜好（須投入大量人力物力做市場研究）；相反，在「電子市場營銷」下，雜誌社可以「電子雜誌形式」設計和出售產品，並可輕易追蹤讀者的網上點擊瀏覽記錄以得知其需要，從而為個別讀者度身推薦或自訂感興趣的專題文章（客製化）。", score: 1, status: "best", comment: "完整進行雙向對比：傳統（標準化實體紙本、考慮運輸、難得知個別需要）vs 電子（電子雜誌形式、追蹤瀏覽記錄得知需要、提供客製化內容）。" },
+          { text: "雜誌社在網上把廣告費減半。", score: 0, status: "wrong", comment: "屬於價格或推廣範疇，並非產品策略比較。" }
+        ]},
+        { label: "第 3 步：深化論述至簡化讀者購物流程與更有效滿足顧客需要的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過銷售電子形式的雜誌及根據瀏覽記錄提供客製化內容，讀者可直接透過互聯網在公司網站或平板電腦上購買和即時下載雜誌，無須親身到訪報攤或書店，大大簡化了消費者的購物流程並更能滿足個別讀者的需要。", score: 1, status: "best", comment: "清楚推演出「網上直接購買下載無須到訪門市 → 大大簡化購物流程，並制定更能滿足顧客需要的產品策略」。" },
+          { text: "這樣雜誌社便比較了兩種產品策略。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令所有記者無須再撰寫任何文章。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：連鎖美妝護膚品牌（在「分銷」上採用電子市場營銷策略的好處）", topic: "電子市場營銷：在「分銷 (Place)」上採用電子市場營銷策略的好處", maxMarks: 3,
+      scenario: "「艾溫美妝」是一家在香港設有 15 家實體零售店的護膚品公司。鑑於商場舖租高昂及實體零售市道放緩，管理層決定關閉部分利潤較少的實體店，並同時在「分銷」上採用電子市場營銷策略（設立官方網上商店）。試闡釋該公司在「分銷」上採用電子市場營銷策略的好處。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以分銷上的「無須開設實體店鋪以節省成本並開拓全球市場」（或「24 小時營業」／「減低對途徑成員的依賴」）為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出在「分銷」上採用電子市場營銷的單一核心好處（1分）", colorClass: "hl-s1", opts: [
+          { text: "在分銷上採用電子市場營銷，可以同時無須開設實體店、24小時營業、減低對途徑成員依賴及在電視賣廣告。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，且混入了推廣元素；應每段集中深入闡釋一項分銷好處。" },
+          { text: "在「分銷」上採用電子市場營銷策略的一大好處是「無須開設實體店鋪（可節省營運成本並突破地域限制開拓全球市場）」（或選：「網上商店可 24 小時營業，讓消費者隨時購物」／「對途徑成員的依賴程度較低」）。", score: 1, status: "best", comment: "準確鎖定電子市場營銷在「分銷」上的核心特點與好處。" },
+          { text: "在分銷上採用電子市場營銷會令公司必須租用更多實體店鋪。", score: 0, status: "wrong", comment: "電子市場營銷在網上進行交易，無須開設實體店鋪。" }
+        ]},
+        { label: "第 2 步：針對「艾溫美妝護膚品公司」設定具體的分銷應用例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如艾溫美妝可以在網上賣護膚品。", score: 0, status: "partial", comment: "未有結合關閉低利潤實體門市、減省租金人力成本及跨地域銷售護膚品作具體說明。" },
+          { text: "例如艾溫美妝在關閉部分利潤較少的香港實體門市後，透過官方網上商店在網上進行護膚品交易；由於買賣雙方不受地域限制，除了香港顧客外，身處內地、東南亞以至世界各地的消費者均可直接在網店訂購其護膚品（且網店可 24 小時全天候營業，不受實體店固定營業時間限制）。", score: 1, status: "best", comment: "緊扣艾溫美妝關閉部分實體店轉攻網店的背景，具體說明如何減少實體店租金人力負擔並突破地域與營業時間限制。" },
+          { text: "例如艾溫美妝延遲繳付應付貨款給供應商。", score: 0, status: "wrong", comment: "屬於貿易信貸管理，並非電子市場營銷的分銷好處。" }
+        ]},
+        { label: "第 3 步：深化論述至大幅減少資本投資與經營成本、並創造更高銷售額的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "這不但能協助艾溫美妝大大減少開設及維持實體店鋪所需的資本投資、高昂商場租金和前線售貨員人力成本（節省成本），更能讓世界各地的消費者隨時方便地購買其護膚品，有助公司開拓全球市場並創造更高的銷售額。", score: 1, status: "best", comment: "清楚推演出「減少實體店資本投資、租金與人力成本 ＋ 開拓全球市場讓消費者隨時購物 → 創造更高銷售額」。" },
+          { text: "這樣艾溫美妝便在分銷上用了電子市場營銷。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令護膚品的生產原料完全免費。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：智能煮食鍋公司（採用電子市場營銷策略的整體好處：加強推廣與增進關係）", topic: "採用電子市場營銷策略的好處：加強推廣（配合 KOL 與度身設計信息）及增進顧客關係", maxMarks: 3,
+      scenario: "「尚廚公司」銷售多功能智能煮食鍋，主要顧客是時常瀏覽社交媒體網站以獲取資訊的年輕家庭主婦。為了減低成本及提升銷量，市場營銷經理建議採用「電子市場營銷策略」，包括在社交媒體平台與關鍵意見領袖（KOL）合作及建立網上會員系統。試解釋除了節省成本外，採用電子市場營銷策略可為尚廚公司帶來的好處。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「加強推廣（利用高成本效益網上方式及度身設計推廣信息作交叉銷售）」（或「增進與顧客的關係」）為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出除節省成本外，採用電子市場營銷策略的單一核心好處（1分）", colorClass: "hl-s1", opts: [
+          { text: "好處是可以節省開設實體店鋪的租金和人力成本。", score: 0, status: "wrong", comment: "題目已列明「除了節省成本外」，重複回答節省成本未能得分。" },
+          { text: "除了節省成本外，採用電子市場營銷策略有助企業「加強推廣」：互聯網技術為企業提供很多高成本效益的方式（如社交媒體與 KOL）向目標消費者推廣產品，且企業可輕易為個別顧客度身設計推廣信息並進行交叉銷售（或選：「增進與顧客的關係」／「消費者更容易取得產品」）。", score: 1, status: "best", comment: "準確鎖定課文第 6.4E 節除節省成本外的核心好處——「加強推廣（高成本效益推廣、度身設計推廣信息及交叉銷售）」。" },
+          { text: "好處是可以同時消費者更容易取得產品、加強推廣及增進與顧客的關係。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段只應集中深入闡釋一項好處。" }
+        ]},
+        { label: "第 2 步：針對「尚廚智能煮食鍋與年輕主婦客群」設定具體的電子營銷例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如尚廚公司可以在網上做推廣。", score: 0, status: "partial", comment: "未有結合「智能煮食鍋」、「年輕主婦常瀏覽社交媒體」及「與 KOL 合作／度身設計信息作交叉銷售」的情境。" },
+          { text: "例如由於尚廚公司的主要顧客是時常瀏覽網站的年輕主婦，公司可聘請飲食界關鍵意見領袖（KOL）在社交媒體及影片分享平台示範用智能煮食鍋快速烹調美食，精準向特定年輕主婦群組推廣；同時可根據網上會員過往購買煮食鍋的記錄，透過電郵為她們度身設計推廣信息，推介購買相應的專用烤盤配件及無油煙鍋具（交叉銷售）。", score: 1, status: "best", comment: "緊扣年輕主婦與智能煮食鍋個案，具體展示聘請 KOL 在社交媒體向特定群組推廣，以及按購買記錄度身設計信息進行交叉銷售。" },
+          { text: "例如透過獵頭公司聘請新任高級經理。", score: 0, status: "wrong", comment: "屬於人力資源外部招聘途徑，並非電子市場營銷的好處。" }
+        ]},
+        { label: "第 3 步：深化論述至提升推廣成效、促進與顧客互動及增加整體銷售額的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過 KOL 精準觸達年輕主婦群組及發送個人化交叉銷售信息，不僅避免了傳統大眾廣告將開支浪費在非目標消費者身上，更能促進公司與顧客在社交平台上的雙向互動和溝通（增進顧客關係），有效刺激重複購買並大幅提升整體銷售額。", score: 1, status: "best", comment: "清楚推演出「精準觸達目標客群、避免浪費推廣開支 ＋ 促進互動與交叉銷售 → 提升整體銷售額」。" },
+          { text: "這樣尚廚公司便加強了推廣。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令公司的總資產周轉率必定上升十倍。", score: 0, status: "wrong", comment: "誇大且無根據的推論。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>

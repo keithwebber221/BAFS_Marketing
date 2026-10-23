@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 顧客關係管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 9px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 680px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sidebar-layout { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13px; color: var(--mute); font-weight: 500; flex-shrink: 0; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .case-box {
+      border-left: 4px solid var(--teal);
+      background: var(--teal-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+
+    /* Comparison Table */
+    table.comp-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 16px; }
+    table.comp-table th, table.comp-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.comp-table th { background: var(--surface); font-weight: 800; color: var(--ink); }
+
+    /* Toggle Switch Cards */
+    .toggle-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+    }
+    .toggle-card:hover { border-color: var(--primary); }
+    .toggle-card.on {
+      background: var(--green-light);
+      border-color: var(--green);
+      color: #064e3b;
+    }
+    .toggle-pill {
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: var(--mute);
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .toggle-card.on .toggle-pill {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+    .meter-bar { height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin: 8px 0; }
+    .meter-fill { height: 100%; background: var(--primary); transition: width 0.3s ease; }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.correct, .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.wrong, .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .grid3, .sidebar-layout { grid-template-columns: 1fr; }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 7 課：顧客關係管理</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-nature">1. 顧客關係管理的性質與目標</button>
+    <button data-tab="sec-imp">2. 在市場營銷過程中的重要性</button>
+    <button data-tab="sec-loyalty">3. 顧客忠誠度：影響因素與提升策略</button>
+    <button data-tab="sec-builder">4. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 顧客關係管理的性質與目標 ==================== -->
+<section class="view on" id="sec-nature">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元一：顧客關係管理的性質（特徵與目標）</span>
+      <h1>顧客關係管理的定義、三項主要特徵與三項主要目標</h1>
+      <p>顧客關係管理的概念源自「關係行銷」這個較早期的概念，指企業透過提供優越價值使顧客感到滿意，從而與顧客建立及維持關係，並從中獲利的整體過程（通常涉及到顧客資料庫）。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('nat', 0, this)">三項主要特徵與三項主要目標</button>
+      <button onclick="switchSub('nat', 1, this)">顧客終身價值模擬與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：三項主要特徵與三項主要目標 -->
+  <div class="sub-view active" id="nat-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="natNavList"></div>
+      <div class="card" id="natDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：顧客終身價值與交叉／向上銷售互動模擬 + 目標辨析練習 -->
+  <div class="sub-view" id="nat-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">財務角度分析</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">為何留住現有顧客對企業非常重要？</h3>
+        <div style="font-size:16px;color:var(--ink-sec);line-height:1.8;margin-bottom:14px">
+          在財務角度而言，留住現有顧客（防止<b>顧客流失 Customer Defection</b>，即顧客轉為光顧競爭對手的情況）對企業非常重要，原因有二：<br>
+          • <b>(i) 流失現有顧客等同失去他們帶來的「顧客終身價值」</b>（即一名顧客在其一生中光顧某企業而為該企業帶來的總價值）；及<br>
+          • <b>(ii) 吸引新顧客的成本通常比留住現有顧客高</b>。
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line)">
+          <b style="color:var(--primary);display:block;margin-bottom:8px">顧客終身價值計算模擬（以精品咖啡店常客為例）：</b>
+          <div style="display:flex;justify-content:space-between;font-size:15px;margin-bottom:4px">
+            <span>顧客持續光顧年數：<b id="lblClvYrs" style="color:var(--primary)">20 年</b></span>
+            <span>每年平均消費額：<b>$6,000</b></span>
+          </div>
+          <input type="range" id="clvSlider" min="1" max="40" step="1" value="20" oninput="updateClvSim()">
+          <div id="clvResultBox" style="margin-top:10px;font-size:15.5px"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">目標與概念挑戰</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨析顧客關係管理的特徵與目標（共 5 題）</h3>
+        <p id="natQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="natQuizQ" style="font-size:17px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div id="natQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="natQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 在市場營銷過程中的重要性 ==================== -->
+<section class="view" id="sec-imp">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元二：顧客關係管理在市場營銷過程中的重要性</span>
+      <h1>顧客關係管理在企業市場營銷過程中的四項重要性</h1>
+      <p>顧客關係管理貫穿整個市場營銷過程，幫助企業有效地進行市場區隔和鎖定目標市場、為每名顧客度身設計貨品和服務、準確評估服務個別顧客所需的成本，以及持續與顧客溝通和收集回饋。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('imp', 0, this)">四項重要性詳解與實例</button>
+      <button onclick="switchSub('imp', 1, this)">情境配對練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：四項重要性詳解 -->
+  <div class="sub-view active" id="imp-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="impNavList"></div>
+      <div class="card" id="impDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：情境配對練習 -->
+  <div class="sub-view" id="imp-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">情境配對挑戰</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">指出以下情境展示顧客關係管理的哪項重要性（共 5 題）</h3>
+        <p id="impQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="impQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div id="impQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="impQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">結構化歸納</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">顧客關係管理如何有助提高企業銷售額的三大核心論點</h3>
+        <p style="font-size:16px;color:var(--ink-sec);margin:0 0 12px">當解釋顧客關係管理的目標、重要性，或說明顧客關係管理如何有助提高企業的銷售額時，可聚焦於以下三個環環相扣的核心論點：</p>
+        <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px;margin-bottom:10px;font-size:16px">
+          <b style="color:var(--primary)">1. 更了解現有顧客的需要和要求：</b><br>
+          透過收集和分析顧客資料，更深入了解現有顧客的喜好與消費模式，從而提供更佳的產品或服務，或制定合適的市場營銷策略。
+        </div>
+        <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px;margin-bottom:10px;font-size:16px">
+          <b style="color:var(--teal)">2. 提升現有顧客的忠誠度／留住現有顧客：</b><br>
+          提供度身設計的貨品和服務使顧客感到滿意，鼓勵他們持續重複光顧，減少顧客流失予競爭對手。
+        </div>
+        <div style="background:var(--green-light);padding:14px 18px;border-radius:10px;font-size:16px">
+          <b style="color:var(--green)">3. 促進交叉銷售和向上銷售：</b><br>
+          根據現有顧客的購買紀錄，向他們推介其他相似或相關的產品（交叉銷售）或價格較高的升級產品（向上銷售），增加每名顧客的購買量與消費額。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 顧客忠誠度：影響因素與提升策略 ==================== -->
+<section class="view" id="sec-loyalty">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元三：影響顧客忠誠度的因素與提升策略</span>
+      <h1>影響顧客忠誠度的三大因素 ＆ 有助提升顧客忠誠度的五項策略</h1>
+      <p>提升顧客忠誠度是顧客關係管理的主要目標之一，企業的長期收益很大程度取決於顧客忠誠度。一般來說，顧客忠誠度受三大因素影響，而企業亦可推行五項重要市場營銷策略來提升顧客忠誠度。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('loy', 0, this)">影響顧客忠誠度的三大因素</button>
+      <button onclick="switchSub('loy', 1, this)">有助提升顧客忠誠度的五項策略</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：影響顧客忠誠度的三大因素 -->
+  <div class="sub-view active" id="loy-sub-0">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">影響因素互動診斷</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">影響顧客忠誠度的三大因素</h3>
+        <p style="font-size:15.5px;color:var(--ink-sec);margin:0 0 12px">點擊切換一家精品酒店在以下三大因素上的表現，觀察顧客忠誠度的變化：</p>
+        <div id="loyaltyFactorToggles"></div>
+        <div style="background:var(--surface);padding:16px 18px;border-radius:12px;border:1px solid var(--line);margin-top:12px;font-size:16px" id="loyaltyResultBox"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">三大因素詳解</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">三大影響因素的運作邏輯</h3>
+        <div style="font-size:16px;line-height:1.8;color:var(--ink-sec)">
+          <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+            <b style="color:var(--primary)">1. 顧客滿意度（關鍵因素）：</b><br>
+            顧客會評估產品的表現。如果產品的<b>實際表現與預期表現相符或超越預期表現</b>，顧客便會感到滿意，很可能會再次光顧並成為忠誠顧客；然而，若感到不滿，便很可能會轉而光顧其他品牌或企業。
+          </div>
+          <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+            <b style="color:var(--primary)">2. 與顧客的溝通：</b><br>
+            企業應與重要的顧客保持聯繫，向他們提供<b>適時和準確的產品資訊</b>（如最新推廣活動詳情）。有效的溝通有助企業與顧客建立長遠關係，並鼓勵顧客多光顧和增加消費。
+          </div>
+          <div style="padding:10px 0">
+            <b style="color:var(--primary)">3. 如何處理顧客的投訴：</b><br>
+            現實中每家企業都難免有營運上的問題或曾遭顧客投訴；然而，企業如能夠<b>有效地處理投訴</b>，便可挽回顧客的信心和提升顧客忠誠度。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：有助提升顧客忠誠度的五項市場營銷策略 + 練習 -->
+  <div class="sub-view" id="loy-sub-1">
+    <div class="sidebar-layout" style="margin-bottom:20px">
+      <div class="nav-list" id="loyStratNavList"></div>
+      <div class="card" id="loyStratDetailCard" style="margin-bottom:0"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span class="badge b-teal">提升顧客忠誠度策略辨識練習</span>
+        <span id="loyQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+      </div>
+      <div id="loyQuizQ" style="font-size:17.5px;font-weight:700;margin-bottom:14px"></div>
+      <div id="loyQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+      <div id="loyQuizFb" style="margin-top:14px;font-size:16px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一顧客關係管理特徵、目標、影響因素或提升策略名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 針對該單一論點結合個案背景與具體行動加以解釋
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一核心概念／目標／重要性／提升策略名稱並界定其含義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 設定具體商業例子，解釋企業採取的行動與運作方式<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至顧客滿意度、顧客忠誠度、交叉與向上銷售或長期收益的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 顧客關係管理的性質與目標 ======
+  const natCatalog = [
+    {
+      title: "特徵 (i)：主張顧客導向",
+      badge: "顧客關係管理的特徵",
+      def: "顧客關係管理主張「顧客導向」，主要幫助企業了解顧客的實際或潛在需要和喜好。",
+      detail: `<p style="margin:0 0 10px">企業透過收集及分析顧客資料，能深入掌握顧客真正渴望的產品特點與服務方式，從而以顧客為中心制定各項市場營銷決策。</p>`
+    },
+    {
+      title: "特徵 (ii)：着重為企業創造價值（顧客終身價值）",
+      badge: "顧客關係管理的特徵",
+      def: "顧客關係管理着重為企業創造價值。與一般顧客相比，對企業較忠誠的顧客可以為企業帶來較高的價值。",
+      detail: `<p style="margin:0 0 10px">• <b>顧客終身價值 (Customer Lifetime Value)</b>：在顧客關係管理中，這種價值通常以顧客終身價值表示，即<b>一名顧客在其一生中光顧某企業而為該企業帶來的總價值</b>。</p>
+      <div class="case-box"><b>例子：</b>如果一名顧客從 20 歲起便習慣光顧某連鎖超市，並持續光顧至 60 歲，他在這 40 年間為該超市帶來的累積總消費與利潤貢獻（顧客終身價值）將極為龐大。</div>`
+    },
+    {
+      title: "特徵 (iii)：經常運用資訊科技",
+      badge: "顧客關係管理的特徵",
+      def: "企業在顧客關係管理中經常會運用資訊科技（如顧客資料庫系統），以有效地記錄和儲存顧客資料、與顧客溝通和收集顧客的回饋。",
+      detail: `<p style="margin:0">透過資訊科技建立顧客資料庫，企業能輕易追蹤數以萬計顧客的個人聯絡資料、過往購買記錄、消費金額與偏好，提升管理顧客關係的效率。</p>`
+    },
+    {
+      title: "目標 1：吸引新顧客",
+      badge: "顧客關係管理的目標",
+      def: "企業實行顧客關係管理，可以更深入了解目標顧客的需要，為他們研發合適的產品，並制定針對他們的市場營銷策略。這有助企業吸引新顧客。",
+      detail: `<div class="case-box"><b>商業應用例子（運動裝備品牌）：</b>品牌透過分析資料庫內跑步愛好者的需要，研發出更輕便防滑的夜跑風褸並進行針對性推廣，成功吸引大批新跑手光顧。</div>`
+    },
+    {
+      title: "目標 2：提升顧客忠誠度和留住現有顧客",
+      badge: "顧客關係管理的目標",
+      def: "企業可透過顧客關係管理，了解每名現有顧客的需要和喜好，從而提供度身設計的貨品和服務來滿足他們。感到滿意的顧客會傾向持續光顧企業，較少機會轉為光顧競爭對手（減少顧客流失）。",
+      detail: `<p style="margin:0 0 8px"><b>在財務角度而言，留住現有顧客對企業非常重要，原因包括：</b><br>
+      • (i) 流失現有顧客等同失去他們帶來的<b>顧客終身價值</b>；及<br>
+      • (ii) <b>吸引新顧客的成本通常比留住現有顧客高</b>。</p>`
+    },
+    {
+      title: "目標 3：擴充與顧客的關係（交叉銷售與向上銷售）",
+      badge: "顧客關係管理的目標",
+      def: "顧客關係管理有助企業了解顧客的需要和提升顧客忠誠度，因此可促進「交叉銷售」和「向上銷售」。企業可以藉此向現有顧客銷售更多產品，增加銷售額。",
+      detail: `<p style="margin:0 0 10px">• <b>交叉銷售 (Cross-selling)</b>：向現有顧客銷售<b>其他相似或相關的產品</b>（例如向購買手提電腦的現有顧客推銷滑鼠、電腦袋及打印機）。<br>
+      • <b>向上銷售 (Upselling，又稱上遊銷售)</b>：向現有顧客銷售<b>價格較高的產品</b>（例如向一向購買普通保濕沐浴露的現有顧客，推銷最新推出、保濕功效更佳且價格較高的尊貴沐浴油）。</p>`
+    }
+  ];
+
+  function renderNat(idx) {
+    document.getElementById('natNavList').innerHTML = natCatalog.map((n, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderNat(${i})">
+        <span>${n.title}</span>
+      </button>
+    `).join('');
+    const n = natCatalog[idx];
+    document.getElementById('natDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${n.title}</h3>
+        <span class="badge ${idx<3?'b-blue':'b-teal'}">${n.badge}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17.5px">${n.def}</p>
+      <div style="font-size:16.5px;line-height:1.75;color:var(--ink-sec)">${n.detail}</div>
+    `;
+  }
+  renderNat(0);
+
+  function updateClvSim() {
+    const yrs = +document.getElementById('clvSlider').value;
+    document.getElementById('lblClvYrs').textContent = yrs + ' 年';
+    const totalVal = yrs * 6000;
+    document.getElementById('clvResultBox').innerHTML = `
+      <div>該名顧客帶來的<b>顧客終身價值</b>：<b style="color:var(--green);font-size:19px">$${totalVal.toLocaleString()}</b></div>
+      <div style="font-size:14.5px;color:var(--mute);margin-top:4px">${yrs >= 15 ? '如果顧客能在一生中持續光顧該企業，他為企業帶來的顧客終身價值便會大幅增加；一旦流失該名現有顧客，企業便會失去這筆龐大的長期總價值。' : '若顧客光顧僅數年便轉投競爭對手（顧客流失），企業將失去其後續數十年的潛在顧客終身價值。'}</div>
+    `;
+  }
+  updateClvSim();
+
+  const natQuizItems = [
+    {
+      q: "1. 護膚品店員對一位熟客說：「你想試試我們最新推出的魚子精華面霜嗎？它的抗衰老功效比你一向購買的基礎保濕面霜更佳（售價亦較高）。」這屬於甚麼銷售方式？",
+      opts: ["A. 向上銷售／上遊銷售 (Upselling) — 向現有顧客銷售價格較高的產品", "B. 放棄現有顧客"],
+      ans: 0,
+      exp: "正確。向現有顧客銷售價格較高（升級版）的產品稱為「向上銷售（上遊銷售）」；而銷售其他相似或相關的產品則稱為「交叉銷售」。"
+    },
+    {
+      q: "2. 為什麼從財務角度而言，留住現有顧客對企業來說非常重要？",
+      opts: ["A. 因為 (i) 流失現有顧客等同失去他們帶來的顧客終身價值；及 (ii) 吸引新顧客的成本通常比留住現有顧客高", "B. 因為吸引新顧客完全不需要任何成本"],
+      ans: 0,
+      exp: "正確。留住現有顧客能保住其「顧客終身價值」，而且留住現有顧客的成本低於吸引新顧客。"
+    },
+    {
+      q: "3. 下列哪一項有關「顧客關係管理目標」的陳述是不正確的？",
+      opts: ["A. 企業可透過顧客關係管理，為顧客提供度身設計的貨品和服務來滿足他們，並提升他們對企業的忠誠度", "B. 顧客關係管理讓企業可招聘優秀的銷售團隊，為顧客提供優質服務", "C. 顧客關係管理可促進交叉銷售和向上銷售，有助企業擴充與顧客的關係"],
+      ans: 1,
+      exp: "正確（陳述 B 不正確）。招聘優秀的銷售團隊屬於「人力資源管理」功能，並非顧客關係管理的目標（顧客關係管理的三大目標為：吸引新顧客、提升顧客忠誠度和留住現有顧客、擴充與顧客的關係）。"
+    },
+    {
+      q: "4. 「一名顧客在其一生中光顧某企業而為該企業帶來的總價值」稱為甚麼？",
+      opts: ["A. 顧客終身價值 (Customer Lifetime Value)", "B. 市場佔有率"],
+      ans: 0,
+      exp: "正確。這稱為「顧客終身價值」，體現了顧客關係管理着重為企業創造價值的特徵。"
+    },
+    {
+      q: "5. 某寵物用品店利用資訊系統追蹤現有狗主購買狗糧的紀錄，並主動向他們推介相關的潔齒骨、狗帶及寵物洗毛水。這體現了顧客關係管理的哪項目標？",
+      opts: ["A. 擴充與顧客的關係（透過促進交叉銷售，向現有顧客銷售更多相關產品以增加銷售額）", "B. 削減產品線長度"],
+      ans: 0,
+      exp: "正確。向現有顧客銷售其他相似或相關的產品（交叉銷售），有助擴充與顧客的關係並增加銷售額。"
+    }
+  ];
+  let curNatQ = 0;
+  function renderNatQuiz() {
+    const item = natQuizItems[curNatQ];
+    document.getElementById('natQuizProg').textContent = `題目 ${curNatQ + 1} / ${natQuizItems.length}`;
+    document.getElementById('natQuizQ').textContent = item.q;
+    document.getElementById('natQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkNatQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('natQuizFb').innerHTML = '';
+  }
+  function checkNatQuiz(idx) {
+    const item = natQuizItems[curNatQ];
+    const fb = document.getElementById('natQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curNatQ=(curNatQ+1)%natQuizItems.length;renderNatQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderNatQuiz();
+
+  // ====== 2. 在市場營銷過程中的重要性 ======
+  const impCatalog = [
+    {
+      num: "01",
+      title: "1. 幫助企業有效地進行市場區隔和鎖定目標市場",
+      badge: "劃分市場組別・識別目標顧客",
+      def: "顧客關係管理讓企業收集和儲存顧客的資料。企業仔細分析這些資料，便可以更深入了解顧客的購買習慣、喜好和消費詳情（如購買頻率、交易類別和購物金額）。",
+      points: [
+        "這有助企業：<b>(i) 有效地把顧客劃分為不同的市場組別</b>；及 <b>(ii) 有效地識別目標顧客，並為他們設計合適的市場營銷組合</b>。",
+        "因此，企業可以更有效地進行市場區隔和鎖定目標市場。"
+      ],
+      caseEx: "<b>商業應用例子（航空公司）：</b>航空公司根據顧客資料庫中的飛行頻率、艙等選擇及目的地記錄，有效地按行為反應將旅客劃分為不同的市場組別（如高用量商務旅客與假日休閒旅客），並鎖定高用量商務客群設計專屬市場營銷組合。"
+    },
+    {
+      num: "02",
+      title: "2. 為每名顧客度身設計貨品和服務",
+      badge: "個人營銷／單對單式營銷・增加交叉與向上銷售",
+      def: "企業透過顧客關係管理收集詳細的顧客資料後，便可以根據個別顧客的需要和喜好，為他們度身設計貨品和服務（這種做法稱為「個人營銷」或「單對單式營銷」）。",
+      points: [
+        "這有助<b>提升顧客滿意度，繼而提升顧客忠誠度</b>，企業也因而獲得更多<b>交叉銷售和向上銷售的機會</b>。"
+      ],
+      caseEx: "<b>商業應用例子（網上串流影視平台／銀行）：</b>收費影視平台留意到某客戶經常觀看歐洲足球賽事但甚少觀看劇集，遂主動聯絡該客戶，建議他每月只須多付 $20 即可將劇集組合更換為包含高清歐聯賽事的體育頻道組合（度身設計服務並實現向上銷售）。"
+    },
+    {
+      num: "03",
+      title: "3. 準確地評估服務個別顧客所需的成本",
+      badge: "資源與財務貢獻成正比・減低服務成本",
+      def: "企業要達到利潤最大化的目標，它投放於與個別顧客建立關係的資源，應與該名顧客可帶來的財務貢獻成正比。",
+      points: [
+        "企業可透過顧客關係管理，<b>評估個別顧客的顧客終身價值以及服務每名顧客的成本</b>，從而更有效地運用有限資源，將服務現有顧客的成本減至最低。"
+      ],
+      caseEx: "<b>商業應用例子（零售銀行／高級餐廳）：</b>銀行透過系統評估客戶的資產總值與顧客終身價值後，集中投放資源在財務貢獻較高的尊尚理財客戶身上（如設立專屬貴賓中心及指派專責客戶經理），而對一般低結餘帳戶則引導使用低成本的網上自助服務。"
+    },
+    {
+      num: "04",
+      title: "4. 持續與顧客溝通和收集回饋",
+      badge: "傳送推廣信息・及時發現營運問題並採取糾正行動",
+      def: "企業可以利用顧客資料庫的資料，透過電話、郵件或電子方式（如電郵、即時通訊應用程式或手機應用程式）與個別顧客持續溝通，向顧客傳送推廣信息，並收集他們的回饋，這有助與顧客建立長遠關係。",
+      points: [
+        "發展完善的顧客關係管理系統亦為顧客提供溝通渠道，讓他們隨時發表意見和投訴。這有助企業<b>及時發現營運上的問題，並採取糾正行動</b>。"
+      ],
+      caseEx: "<b>商業應用例子（連鎖超市／公共交通公司）：</b>連鎖超市每天透過手機應用程式向會員發送最新減價推廣信息；同時在應用程式及社交專頁設立意見欄，讓顧客隨時反映分店收銀排隊或貨品質素問題，以便管理層及時採取糾正行動。"
+    }
+  ];
+
+  function renderImp(idx) {
+    document.getElementById('impNavList').innerHTML = impCatalog.map((item, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderImp(${i})">
+        <span>${item.title}</span>
+      </button>
+    `).join('');
+    const item = impCatalog[idx];
+    document.getElementById('impDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${item.title}</h3>
+        <span class="badge b-blue">${item.badge}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17.5px">${item.def}</p>
+      <ul style="margin:0;padding-left:22px;font-size:16.5px;color:var(--ink-sec)">
+        ${item.points.map(p => `<li style="margin-bottom:8px">${p}</li>`).join('')}
+      </ul>
+      <div class="case-box">${item.caseEx}</div>
+    `;
+  }
+  renderImp(0);
+
+  const impQuizItems = [
+    {
+      q: "1. 一家零售銀行根據顧客資料庫中客戶的收入、持有資產總值和儲蓄目標，為個別客戶度身推介不同的儲蓄及投資計劃。",
+      opts: ["A. 為每名顧客度身設計貨品和服務", "B. 準確地評估服務個別顧客所需的成本", "C. 持續與顧客溝通和收集回饋"],
+      ans: 0,
+      exp: "正確。根據個別顧客的狀況、需要和喜好為他們度身設計或推介產品與服務，屬於「為每名顧客度身設計貨品和服務」。"
+    },
+    {
+      q: "2. 某高級餐飲集團評估不同顧客的顧客終身價值及服務成本後，決定集中資源為財務貢獻較高的忠誠熟客提供專屬侍酒師及訂座服務。",
+      opts: ["A. 幫助企業有效地進行市場區隔", "B. 準確地評估服務個別顧客所需的成本（從而更有效地運用有限資源）", "C. 持續與顧客溝通"],
+      ans: 1,
+      exp: "正確。評估顧客終身價值與服務成本，使投放的資源與顧客財務貢獻成正比以有效運用有限資源，屬於「準確地評估服務個別顧客所需的成本」。"
+    },
+    {
+      q: "3. 一家連鎖健身中心根據顧客資料庫中會員的運動頻率、偏好時段及消費金額，有效地把會員劃分為不同的市場組別並鎖定目標市場。",
+      opts: ["A. 幫助企業有效地進行市場區隔和鎖定目標市場", "B. 準確地評估服務個別顧客所需的成本", "C. 持續與顧客溝通和收集回饋"],
+      ans: 0,
+      exp: "正確。分析顧客的購買習慣、喜好和消費詳情以劃分市場組別及識別目標顧客，屬於「幫助企業有效地進行市場區隔和鎖定目標市場」。"
+    },
+    {
+      q: "4. 某大型家品店定期透過手機應用程式向會員發送最新推廣信息，並透過應用程式內的意見欄收集顧客投訴，及時發現送貨延誤問題並採取糾正行動。",
+      opts: ["A. 幫助企業有效地進行市場區隔", "B. 準確地評估服務個別顧客所需的成本", "C. 持續與顧客溝通和收集回饋"],
+      ans: 2,
+      exp: "正確。透過電子方式向顧客傳送推廣信息並提供渠道收集意見和投訴以及時糾正營運問題，屬於「持續與顧客溝通和收集回饋」。"
+    },
+    {
+      q: "5. 企業根據個別顧客的需要和喜好，為每名顧客度身設計貨品和服務的做法，在市場營銷學中又稱為甚麼？",
+      opts: ["A. 個人營銷 (Individual Marketing) 或 單對單式營銷 (One-to-one Marketing)", "B. 無差異營銷（大眾營銷）"],
+      ans: 0,
+      exp: "正確。為個別顧客度身設計貨品和服務的做法稱為「個人營銷」或「單對單式營銷」。"
+    }
+  ];
+  let curImpQ = 0;
+  function renderImpQuiz() {
+    const item = impQuizItems[curImpQ];
+    document.getElementById('impQuizProg').textContent = `題目 ${curImpQ + 1} / ${impQuizItems.length}`;
+    document.getElementById('impQuizQ').textContent = item.q;
+    document.getElementById('impQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkImpQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('impQuizFb').innerHTML = '';
+  }
+  function checkImpQuiz(idx) {
+    const item = impQuizItems[curImpQ];
+    const fb = document.getElementById('impQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curImpQ=(curImpQ+1)%impQuizItems.length;renderImpQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderImpQuiz();
+
+  // ====== 3. 顧客忠誠度：影響因素與提升策略 ======
+  const loyaltyFactors = [
+    { title: "1. 顧客滿意度", goodTxt: "根據顧客回饋改善房間與餐飲質素，實際表現超越顧客預期，顧客深感滿意", badTxt: "房間衛生及服務實際表現遠遜於顧客預期，顧客感到不滿", isGood: true },
+    { title: "2. 與顧客的溝通", goodTxt: "與重要顧客保持聯繫，向他們提供適時和準確的最新住宿推廣活動資訊", badTxt: "從不與顧客聯繫，缺乏適時和準確的產品及推廣資訊", isGood: true },
+    { title: "3. 如何處理顧客的投訴", goodTxt: "以問卷收集建議和投訴，並授權前線員工迅速處理投訴及提供補償，挽回信心", badTxt: "對顧客的投訴置之不理或推卸責任，令顧客失去信心", isGood: false }
+  ];
+
+  function renderLoyaltySim() {
+    document.getElementById('loyaltyFactorToggles').innerHTML = loyaltyFactors.map((f, i) => `
+      <div class="toggle-card ${f.isGood ? 'on' : ''}" onclick="loyaltyFactors[${i}].isGood=!loyaltyFactors[${i}].isGood;renderLoyaltySim()">
+        <div>
+          <b>${f.title}：</b><br>
+          <span style="font-size:14.5px">${f.isGood ? '表現理想：' + f.goodTxt : '表現欠佳：' + f.badTxt}</span>
+        </div>
+        <span class="toggle-pill">${f.isGood ? '表現理想' : '表現欠佳'}</span>
+      </div>
+    `).join('');
+
+    const goodCnt = loyaltyFactors.filter(f => f.isGood).length;
+    const pct = [15, 45, 75, 98][goodCnt];
+    const col = goodCnt === 3 ? 'var(--green)' : goodCnt >= 2 ? 'var(--amber)' : 'var(--red)';
+    const msg = goodCnt === 3 ? "三大因素表現理想：顧客對服務感到滿意、接收適時準確的溝通資訊，且投訴獲迅速有效處理，顧客忠誠度極高，會持續再次光顧。" :
+                goodCnt === 2 ? "顧客忠誠度受影響：請點擊改善表現欠佳的因素（如迅速有效地處理顧客投訴以挽回信心），從而提升顧客忠誠度。" :
+                "顧客忠誠度極低：由於顧客感到不滿、缺乏溝通且投訴無門，顧客很可能會轉而光顧其他競爭對手（顧客流失）。";
+
+    document.getElementById('loyaltyResultBox').innerHTML = `
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+        <b>顧客忠誠度水平評估：</b>
+        <b style="color:${col}">${pct}% (${goodCnt}/3 項因素表現理想)</b>
+      </div>
+      <div class="meter-bar"><div class="meter-fill" style="width:${pct}%;background:${col}"></div></div>
+      <div style="margin-top:6px;font-size:15px">${msg}</div>
+    `;
+  }
+  renderLoyaltySim();
+
+  const loyStratCatalog = [
+    {
+      name: "01 運用顧客關係管理系統制定個人化策略",
+      badge: "個人化產品與推廣信息",
+      def: "企業提升顧客忠誠度的一種常見方法就是為顧客制定個人化的市場營銷策略。企業可以運用發展和管理完善的顧客關係管理系統來達到這個目標。",
+      details: `
+        <p style="margin:0 0 10px">企業透過顧客關係管理系統<b>收集、儲存和分析個別顧客的需要和喜好</b>，便可以為每名顧客度身設計市場營銷策略，例如<b>個人化的產品和推廣信息</b>（如根據會員或顧客的消費記錄為他們提供專屬優惠券）。這有助提升現有顧客的滿意度，繼而提升他們的忠誠度。</p>
+      `
+    },
+    {
+      name: "02 推出會員計劃與顧客建立緊密聯繫",
+      badge: "財務聯繫・社交聯繫",
+      def: "很多企業為提升顧客忠誠度，紛紛推出會員計劃來加強與顧客的聯繫。企業可透過這些會員計劃，與顧客建立「財務聯繫」和「社交聯繫」（註：銀行和信用卡公司已取得所有客戶資料，無須推出會員計劃，但仍會與客戶建立財務和社交聯繫）：",
+      details: `
+        <table class="comp-table" style="margin-top:6px">
+          <thead>
+            <tr>
+              <th style="width:22%">聯繫類別</th>
+              <th style="width:38%">描述</th>
+              <th style="width:40%">具體例子</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b style="color:var(--primary)">1. 財務聯繫<br>(Financial Bond)</b></td>
+              <td>為會員提供<b>財務上的利益</b>，從而提升顧客滿意度和鼓勵他們再次光顧。</td>
+              <td>• 向會員提供<b>優惠待遇</b>，例如購物<b>折扣</b>和<b>服務升級</b>（如優先辦理登機手續）等。<br>• 設立<b>積分獎賞計劃</b>，讓會員可在消費滿一定金額或次數後換領禮品或享有其他優惠待遇。</td>
+            </tr>
+            <tr>
+              <td><b style="color:var(--teal)">2. 社交聯繫<br>(Social Bond)</b></td>
+              <td>與會員<b>建立人際及社群關係</b>，保持緊密互動聯繫。</td>
+              <td>• 為會員<b>舉辦工作坊</b>（如咖啡拉花工作坊、護膚工作坊）。<br>• <b>定期向會員發送電子通訊或信息</b>，告知他們有關企業新產品和推廣活動的詳情。</td>
+            </tr>
+          </tbody>
+        </table>
+      `
+    },
+    {
+      name: "03 提供附加服務（增值服務）",
+      badge: "免費或以合理價格提供額外便利",
+      def: "企業要提升顧客滿意度和忠誠度，可以免費或以合理的價格向顧客提供附加服務（又稱增值服務）。",
+      details: `
+        <div class="case-box" style="margin-top:6px">
+          <b>商業應用例子：</b><br>
+          • 航空公司在航機上提供免費無線上網服務；<br>
+          • 度假酒店為住客提供免費的機場或市中心往返接送服務；<br>
+          • 百貨公司為消費滿一定金額的顧客提供免費送貨上門服務。
+        </div>
+      `
+    },
+    {
+      name: "04 有效地處理顧客投訴（員工授權）",
+      badge: "迅速回應・員工授權・公平處理",
+      def: "如果顧客的投訴得以有效解決，他們會傾向成為忠誠顧客。因此，企業應積極處理顧客的投訴，並迅速作出回應（如設立 24 小時熱線處理顧客投訴）。",
+      details: `
+        <ul style="margin:6px 0 0;padding-left:20px;font-size:16px;line-height:1.8">
+          <li><b>員工授權 (Employee Empowerment)</b>：企業須要<b>授予員工必要的權力，讓他們能夠即時處理顧客的投訴</b>（例如授權酒店員工在不超過指定金額上限下，自行決定向投訴的顧客贈送餐酒或免費將房間升級作即時補償；同時管理人員應信任員工，不懲罰作出不當決定的員工，否則員工日後便不敢再自行作出決定）。</li>
+          <li><b>公平對待與合理補償</b>：企業應對所有顧客<b>一視同仁，公平地處理他們的投訴</b>。顧客對企業的不滿越大，他們期望從企業得到的補償便越多。</li>
+        </ul>
+      `
+    },
+    {
+      name: "05 夥伴關係管理",
+      badge: "與內外各方人士緊密合作提供更高價值",
+      def: "「夥伴關係管理 (Partner Relationship Management)」是指企業的市務人員與內外各方人士緊密合作，共同為顧客提供更高的價值。",
+      details: `
+        <ul style="margin:6px 0 0;padding-left:20px;font-size:16px;line-height:1.8">
+          <li><b>內部合作夥伴</b>：與其他部門的同事（例如<b>研發部、財務部和人力資源部</b>）緊密合作。</li>
+          <li><b>外部商業夥伴</b>：與外部的商業夥伴（例如<b>供應商、分銷商、廣告公司、信用卡公司或餐廳</b>）合作，為顧客帶來更高的價值。<br>
+          <i>例子：百貨公司與信用卡公司合作，為該信用卡持有人提供特別折扣優惠；或飲品生產商與本地餐廳合作推出聯合推廣活動，惠顧指定套餐的顧客可免費將餐飲升級。</i></li>
+        </ul>
+      `
+    }
+  ];
+
+  function renderLoyStrat(idx) {
+    document.getElementById('loyStratNavList').innerHTML = loyStratCatalog.map((s, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderLoyStrat(${i})">
+        <span>${s.name}</span>
+      </button>
+    `).join('');
+    const s = loyStratCatalog[idx];
+    document.getElementById('loyStratDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${s.name}</h3>
+        <span class="badge b-blue">${s.badge}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17px">${s.def}</p>
+      <div>${s.details}</div>
+    `;
+  }
+  renderLoyStrat(0);
+
+  const loyQuizItems = [
+    {
+      q: "1. 一家大型生活百貨公司與某發卡銀行合作，為該銀行的信用卡持有人提供全店九折的特別折扣優惠。該百貨公司採用了哪項提升顧客忠誠度的策略？",
+      opts: ["A. 夥伴關係管理（與外部商業夥伴合作，共同為顧客提供更高價值）", "B. 有效地處理顧客投訴", "C. 員工授權"],
+      ans: 0,
+      exp: "正確。與外部商業夥伴（如信用卡公司、餐廳、供應商）或內部其他部門合作共同為顧客提供更高價值，屬於「夥伴關係管理」。"
+    },
+    {
+      q: "2. 某連鎖烘焙材料店推出會員計劃：(i) 會員每次購物滿 $100 可儲積分換領模具及享九折優惠；(ii) 店舖每月為會員舉辦週末親子蛋糕烘焙工作坊，並定期發送電子食譜通訊。這兩項做法分別與會員建立了甚麼聯繫？",
+      opts: ["A. (i) 屬於「財務聯繫」（提供折扣與積分獎賞等財務利益）；(ii) 屬於「社交聯繫」（舉辦工作坊及發送電子通訊建立關係）", "B. 兩者均屬於處理顧客投訴"],
+      ans: 0,
+      exp: "正確。企業可透過會員計劃與顧客建立「財務聯繫」（折扣、服務升級、積分獎賞）和「社交聯繫」（舉辦工作坊、定期發送電子通訊）。"
+    },
+    {
+      q: "3. 某母嬰用品店根據顧客關係管理系統內每位會員過往購買尿片尺碼的消費記錄，自動向她們發送下一尺碼尿片的專屬優惠券。",
+      opts: ["A. 運用顧客關係管理系統來制定個人化的市場營銷策略", "B. 提供免費送貨附加服務", "C. 夥伴關係管理"],
+      ans: 0,
+      exp: "正確。根據個別顧客的消費記錄為他們度身提供個人化產品和推廣信息（如專屬優惠券），屬於「運用顧客關係管理系統來制定個人化的市場營銷策略」。"
+    },
+    {
+      q: "4. 某五星級酒店為確保顧客的投訴能即時獲得解決，授予前線員工權力，讓他們在無須層層請示下，可自行決定向不滿的住客免費升級房間或贈送餐飲券作補償。這體現了哪項策略？",
+      opts: ["A. 有效地處理顧客投訴（透過「員工授權」讓員工能夠即時處理投訴並作出補償）", "B. 市場區隔"],
+      ans: 0,
+      exp: "正確。授予員工必要的權力（員工授權）讓他們即時處理顧客投訴並給予補償，屬於「有效地處理顧客投訴」的重要做法。"
+    }
+  ];
+  let curLoyQ = 0;
+  function renderLoyQuiz() {
+    const item = loyQuizItems[curLoyQ];
+    document.getElementById('loyQuizProg').textContent = `題目 ${curLoyQ + 1} / ${loyQuizItems.length}`;
+    document.getElementById('loyQuizQ').textContent = item.q;
+    document.getElementById('loyQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkLoyQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('loyQuizFb').innerHTML = '';
+  }
+  function checkLoyQuiz(idx) {
+    const item = loyQuizItems[curLoyQ];
+    const fb = document.getElementById('loyQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curLoyQ=(curLoyQ+1)%loyQuizItems.length;renderLoyQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderLoyQuiz();
+
+  // ====== 4. 論點建構問答工作坊 (12題 100% 原創香港商業情境) ======
+  const workshopQuestions = [
+    // ================= 第一類：短答題／個案題（每個獨立論點滿分 2 分 — 2 步建構） =================
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：留住現有顧客的財務原因", topic: "顧客關係管理的目標：留住現有顧客的重要性", maxMarks: 2,
+      scenario: "許多零售及服務業企業在制定市場營銷預算時，花費在保留現有顧客（提升顧客忠誠度）的人力物力往往比盲目吸引新顧客多。",
+      question: "試從財務角度舉出一個原因，解釋為何留住現有顧客對企業來說非常重要。（2 分）",
+      steps: [
+        { label: "第 1 步：從財務角度指出留住現有顧客的單一核心原因（1分）", colorClass: "hl-s1", opts: [
+          { text: "因為現有顧客永遠不會向企業提出任何退換要求。", score: 0, status: "wrong", comment: "不正確的陳述。" },
+          { text: "吸引新顧客的成本通常比留住現有顧客高（或選：「流失現有顧客等同失去他們帶來的顧客終身價值」）。", score: 1, status: "best", comment: "準確命中財務角度的兩大標準原因之一。" },
+          { text: "同時因為吸引新客成本高、失去顧客終身價值及可進行交叉銷售。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段只應集中闡釋一個原因。" }
+        ]},
+        { label: "第 2 步：針對該單一原因作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "要吸引從未光顧的新顧客，企業往往須投入大量市場研究、廣泛廣告宣傳及首購促銷折扣等高昂開支；相反，維繫已對品牌有認識的現有顧客所需的推廣成本遠較吸引新顧客為低（若選顧客終身價值，則解釋：一名忠誠顧客在一生中持續光顧會為企業帶來龐大的總價值，一旦顧客流失便會失去這筆長期穩定的總收入）。", score: 1, status: "best", comment: "清楚解釋為何吸引新顧客成本較高（或顧客終身價值的含義）。" },
+          { text: "因為留住現有顧客對公司的財務很好。", score: 0, status: "partial", comment: "同義反覆，未有具體說明新客宣傳成本差異或顧客終身價值的概念。" },
+          { text: "這會令企業無須再繳付店舖租金。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：舒視專業配鏡中心（影響顧客忠誠度的因素）", topic: "影響顧客忠誠度的三大因素", maxMarks: 2,
+      scenario: "「舒視配鏡中心」是一家連鎖眼鏡店。店東希望了解有哪些主要因素會影響顧客對眼鏡店的忠誠度。",
+      question: "試以「顧客滿意度」為例，解釋它如何影響「舒視配鏡中心」的顧客忠誠度。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「顧客滿意度」的評估機制（實際表現 vs 預期表現 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "顧客滿意度是指眼鏡店在電視台播放了多少次廣告。", score: 0, status: "wrong", comment: "播放廣告屬於推廣策略，並非顧客滿意度的定義。" },
+          { text: "顧客滿意度是影響顧客忠誠度的關鍵因素：顧客會評估產品和服務的表現，如果實際表現與預期表現相符或超越預期表現，顧客便會感到滿意。", score: 1, status: "best", comment: "清楚點出「實際表現與預期表現相符或超越預期表現便會感到滿意」的核心機制。" },
+          { text: "顧客滿意度就是顧客開不開心。", score: 0, status: "partial", comment: "必須指出「比較產品或服務的實際表現與預期表現」的概念。" }
+        ]},
+        { label: "第 2 步：扣連「舒視配鏡中心」說明其對再次光顧與忠誠度的影響（1分）", colorClass: "hl-s2", opts: [
+          { text: "如果顧客在舒視配鏡中心驗配漸進眼鏡後，發現視力清晰舒適且視光師服務細心（對貨品及服務感到滿意），他們便很可能會再次光顧並成為忠誠顧客；相反，若佩戴後頭暈不適而感到不滿，便很可能會轉而光顧其他眼鏡店（顧客流失）。", score: 1, status: "best", comment: "緊扣配鏡中心情境，完整說明滿意會促使再次光顧成為忠誠顧客，不滿則會轉投其他企業。" },
+          { text: "所以配鏡中心要令顧客滿意。", score: 0, status: "partial", comment: "未有說明感到滿意與感到不滿如何分別影響顧客再次光顧或轉投競爭對手的行為。" },
+          { text: "這會令所有顧客的近視自動痊癒。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：綠野有機農莊市集（夥伴關係管理）", topic: "提升顧客忠誠度的策略：夥伴關係管理", maxMarks: 2,
+      scenario: "「綠野有機市集」是一家售賣本地有機蔬菜及健康食材的商店。面對大型連鎖超市的競爭，商業顧問建議東主採用「夥伴關係管理 (Partner Relationship Management)」來提升顧客忠誠度。",
+      question: "解釋何謂「夥伴關係管理」（1分），並描述該有機食材店可如何透過夥伴關係管理來提升顧客忠誠度（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：準確界定何謂「夥伴關係管理」（1分）", colorClass: "hl-s1", opts: [
+          { text: "夥伴關係管理是指東主與合夥人一起分攤店舖虧損。", score: 0, status: "wrong", comment: "誤解了市場營銷學中「夥伴關係管理」的定義。" },
+          { text: "「夥伴關係管理」是指企業的市務人員與內外各方人士（包括內部其他部門同事及外部商業夥伴）緊密合作，共同為顧客提供更高的價值。", score: 1, status: "best", comment: "100% 準確寫出夥伴關係管理的標準定義。" },
+          { text: "夥伴關係管理是指只向顧客提供折扣優惠。", score: 0, status: "wrong", comment: "未能點出「與內外各方人士緊密合作共同為顧客提供更高價值」的核心概念。" }
+        ]},
+        { label: "第 2 步：扣連「有機食材店」舉出與外部商業夥伴合作的具体例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如綠野有機市集可與同區的「素食餐廳」或「瑜伽健身中心」（外部商業夥伴）合作推出聯合推廣活動：凡在綠野市集購物滿指定金額的會員，可獲贈合作素食餐廳的餐飲升級優惠券或瑜伽中心免費體驗課（反之亦然），共同為顧客帶來更高價值以提升忠誠度。", score: 1, status: "best", comment: "緊扣有機食材店，具體說明如何與外部商業夥伴（素食餐廳／瑜伽中心／信用卡公司）推出聯合推廣為顧客提供更高價值。" },
+          { text: "例如有機市集和夥伴一起合作。", score: 0, status: "partial", comment: "未有舉出具體合作夥伴及如何共同為顧客帶來更高價值。" },
+          { text: "例如東主自己一個人在店內清潔貨架。", score: 0, status: "wrong", comment: "不涉及與商業夥伴合作。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：花語鮮花精品店（透過會員計劃建立聯繫）", topic: "提升顧客忠誠度的策略：透過會員計劃建立財務聯繫與社交聯繫", maxMarks: 2,
+      scenario: "「花語精品店」專門售賣鮮花花束及乾花擺設，店主計劃推出「花語會員計劃」與顧客建立緊密聯繫，以提升顧客忠誠度。",
+      question: "試分別從 (i) 財務聯繫（1分）和 (ii) 社交聯繫（1分）角度，描述該花店可如何透過會員計劃與顧客建立緊密聯繫。（2 分）",
+      steps: [
+        { label: "第 1 步：描述花店如何與會員建立「財務聯繫 (Financial Bond)」（1分）", colorClass: "hl-s1", opts: [
+          { text: "財務聯繫是指要求會員借錢給花店交租。", score: 0, status: "wrong", comment: "錯誤理解財務聯繫的意思。" },
+          { text: "在「財務聯繫」（為會員提供財務上的利益以鼓勵再次光顧）方面：花店可向會員提供買花九折優惠，或設立積分獎賞計劃，讓會員在消費滿一定金額或次數後換領免費永生花禮盒或花瓶。", score: 1, status: "best", comment: "準確說明財務聯繫的意思並結合花店折扣與積分獎賞計劃舉例。" },
+          { text: "花店可以給會員一些好處。", score: 0, status: "partial", comment: "必須明確指出提供「財務上的利益（如會員折扣優惠、服務升級或積分獎賞計劃換領禮品）」。" }
+        ]},
+        { label: "第 2 步：描述花店如何與會員建立「社交聯繫 (Social Bond)」（1分）", colorClass: "hl-s2", opts: [
+          { text: "在「社交聯繫」（與會員建立人際與互動關係）方面：花店可定期為會員舉辦「週末節日插花藝術工作坊」，並定期向會員發送電子通訊或信息，分享鮮花保鮮貼士及告知新到荷蘭鮮花與推廣活動詳情。", score: 1, status: "best", comment: "準確結合課文社交聯繫的兩大標準例子——「為會員舉辦工作坊」及「定期向會員發送電子通訊或信息」。" },
+          { text: "在社交聯繫方面，花店把所有鮮花減價五成出售。", score: 0, status: "wrong", comment: "減價折扣屬於「財務聯繫」，並非「社交聯繫」。" },
+          { text: "花店可以同會員做朋友。", score: 0, status: "partial", comment: "未有舉出具體方法（如為會員舉辦插花工作坊，或定期發送電子通訊告知新產品和推廣詳情）。" }
+        ]}
+      ]
+    },
+
+    // ================= 第二類：進階論述題（每個獨立論點滿分 3 分 — 3 步深度建構，100% 原創商業情境） =================
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：智體私人健身中心（運用 CRM 系統制定個人化策略及擴充關係）", topic: "顧客關係管理的目標與策略：制定個人化市場營銷策略與促進交叉／向上銷售", maxMarks: 3,
+      scenario: "「智體健身中心」在全港設有六間分店，擁有完善的顧客關係管理（CRM）系統。試舉例說明該健身中心的顧客關係管理系統可如何協助中心為個別顧客度身設計市場營銷策略，從而達至擴充與顧客關係的目標。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「運用 CRM 系統度身設計個人化策略並促進交叉銷售與向上銷售」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出運用 CRM 系統制定個人化策略及擴充顧客關係的概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "健身中心可利用 CRM 系統代替所有健身教練教班。", score: 0, status: "wrong", comment: "CRM 系統是管理顧客資料與關係的工具，並非代替教練授課。" },
+          { text: "健身中心可透過顧客關係管理（CRM）系統收集、儲存和分析個別會員的運動習慣、體能數據與消費喜好，從而為每名會員度身設計個人化的市場營銷策略（單對單式營銷），藉此促進「交叉銷售」和「向上銷售」以擴充與顧客的關係。", score: 1, status: "best", comment: "準確點出透過 CRM 系統收集分析個別顧客喜好以度身設計策略，並連結至交叉銷售與向上銷售。" },
+          { text: "健身中心可以用 CRM 系統來管理會員。", score: 0, status: "partial", comment: "未有說明如何收集分析個別會員需要以度身設計個人化產品與推廣信息，以及促進交叉／向上銷售。" }
+        ]},
+        { label: "第 2 步：針對「智體健身中心」設定具體的個人化推薦、交叉銷售與向上銷售例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如向所有會員發送完全一模一樣的傳單。", score: 0, status: "wrong", comment: "向所有人發送相同傳單屬於無差異大眾推廣，並非個人化營銷策略。" },
+          { text: "例如系統追蹤到某會員每週三次參加高強度重訓班並以增肌為目標，中心便可透過手機應用程式向他度身發送推廣信息：一方面向他推介購買中心售賣的高純度乳清蛋白粉、健身手套及運動營養餐（交叉銷售相關產品）；另一方面向他推介由普通大班課升級至收費較高的一對一私人教練增肌特訓課程（向上銷售）。", score: 1, status: "best", comment: "緊扣健身中心情境，具體展示如何根據會員運動紀錄度身推介蛋白粉配件（交叉銷售）及高價私人教練課（向上銷售）。" },
+          { text: "例如健身中心知道會員喜歡做運動，於是叫他們多來。", score: 0, status: "partial", comment: "欠缺具體的個人化產品／推廣信息設計及交叉／向上銷售例子。" }
+        ]},
+        { label: "第 3 步：深化論述至提升會員滿意度、忠誠度與增加中心整體銷售額的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "這些切合個別會員體能需要的個人化產品與課程建議，能令會員感到中心非常了解及重視自己，大幅提升現有會員的滿意度與忠誠度（減少顧客流失），同時讓中心成功向現有會員銷售更多高價值產品與服務，顯著增加整體銷售額。", score: 1, status: "best", comment: "清楚推演出「切合個別需要 → 提升滿意度與忠誠度 ＋ 向現有顧客銷售更多產品 → 增加整體銷售額」。" },
+          { text: "這樣健身中心便完成了個人化策略。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令健身中心的租金開支完全免除。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：卓悅跨國文具及辦公用品公司（CRM 重要性：進行市場區隔與鎖定目標市場）", topic: "顧客關係管理在市場營銷過程中的重要性：有效地進行市場區隔和鎖定目標市場", maxMarks: 3,
+      scenario: "一家跨國文具及辦公用品公司的新任行政總裁深信顧客關係管理（CRM）對市場營銷過程非常重要，因此設立專責團隊管理公司的顧客關係管理系統。試以該文具公司為例，解釋顧客關係管理在市場營銷過程中的重要性。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「幫助企業有效地進行市場區隔和鎖定目標市場」這項重要性為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一重要性名稱與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "CRM 可以同時幫助文具公司進行市場區隔、度身設計產品、評估服務成本及持續溝通收集回饋。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，四項重要性應分為四個獨立段落作答。" },
+          { text: "顧客關係管理（CRM）能「幫助企業有效地進行市場區隔和鎖定目標市場」：CRM 系統讓企業收集、儲存並仔細分析顧客的購買習慣、喜好和消費詳情（如購買頻率、交易類別和購物金額），有助企業把顧客劃分為不同的市場組別並識別目標顧客。", score: 1, status: "best", comment: "準確鎖定第 1 項重要性，並完整點出分析購買習慣、喜好與消費詳情以劃分市場組別及識別目標顧客的概念。" },
+          { text: "CRM 的唯一作用是幫文具公司維修工廠的印刷機。", score: 0, status: "wrong", comment: "維修機器屬於生產與營運管理。" }
+        ]},
+        { label: "第 2 步：針對「跨國文具及辦公用品公司」設定具體的市場區隔與鎖定目標市場例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如文具公司可以把買文具的顧客分成不同組別。", score: 0, status: "partial", comment: "未有結合文具公司的顧客消費詳情（如購買頻率、交易類別、金額）說明如何劃分組別及設計營銷組合。" },
+          { text: "例如該文具公司透過分析 CRM 資料庫內的消費詳情，可將顧客清晰劃分為「每月高頻率大額訂購打印紙及碳粉的商業機構客戶」、「喜愛購買限量版動漫聯名筆記本的學生群組」以及「選購高檔鋼筆禮盒的專業人士」等不同市場組別，並鎖定高利潤的專業人士及高用量的商業客戶為主要目標市場。", score: 1, status: "best", comment: "緊扣文具公司業務，具體展示如何根據購買頻率、交易類別與金額劃分市場組別並鎖定目標顧客。" },
+          { text: "例如文具公司向銀行申請透支額度。", score: 0, status: "wrong", comment: "屬於財務融資決策。" }
+        ]},
+        { label: "第 3 步：深化論述至為目標顧客設計合適市場營銷組合與提升營銷效率的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "準確識別各個市場組別及鎖定目標顧客後，文具公司便能針對不同目標市場設計最合適的市場營銷組合（如向商業客戶提供批量訂購折扣與定期自動送貨，向鋼筆收藏家提供免費刻名服務），避免將營銷資源盲目浪費在非目標客群上，大幅提升市場營銷的精準度與銷售回報。", score: 1, status: "best", comment: "清楚推演出「識別目標顧客 → 為他們設計合適的市場營銷組合 → 提升市場營銷效率與銷售回報」。" },
+          { text: "這樣文具公司便完成了市場區隔和鎖定目標市場。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令全球的紙張價格自動減半。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：卓悅跨國文具及辦公用品公司（CRM 重要性：準確評估服務個別顧客所需的成本）", topic: "顧客關係管理在市場營銷過程中的重要性：準確地評估服務個別顧客所需的成本", maxMarks: 3,
+      scenario: "承上題，該跨國文具及辦公用品公司服務數以萬計規模大小不一的商業及個人客戶。除了協助市場區隔外，試以「準確地評估服務個別顧客所需的成本」為例，解釋顧客關係管理在該公司市場營銷過程中的重要性。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「準確地評估服務個別顧客所需的成本（有效運用有限資源）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一重要性名稱與核心原則（資源與財務貢獻成正比 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "顧客關係管理能讓企業「準確地評估服務個別顧客所需的成本」：企業要達到利潤最大化的目標，投放於與個別顧客建立關係的資源，應與該名顧客可帶來的財務貢獻成正比。", score: 1, status: "best", comment: "100% 準確指出第 3 項重要性，並闡明「投放的資源應與該名顧客可帶來的財務貢獻成正比」的核心原則。" },
+          { text: "企業應該把所有資源平均分配給每一個只買一枝五元鉛筆的過路客。", score: 0, status: "wrong", comment: "若對財務貢獻極低的顧客投放過多高成本專人服務，會導致企業虧損。" },
+          { text: "CRM 可以幫公司計算成本。", score: 0, status: "partial", comment: "必須明確寫出「評估個別顧客的顧客終身價值以及服務每名顧客的成本，使投放的資源與顧客財務貢獻成正比」。" }
+        ]},
+        { label: "第 2 步：針對「跨國文具公司」設定按顧客終身價值與成本分配資源的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如文具公司會看看哪個客人買得多。", score: 0, status: "partial", comment: "未有具體說明如何區分高財務貢獻與低財務貢獻客戶，以及如何配置不同的服務方式以減低成本。" },
+          { text: "例如文具公司透過 CRM 系統評估各客戶的「顧客終身價值」與服務成本後，發現大型跨國企業及學校客戶每年持續採購數十萬元文具（財務貢獻極高），遂集中投放資源指派專責客戶關係經理提供上門洽談及免費專車配送；相反，對每年只買數十元文具的零星客戶，則引導他們使用低成本的網上自助訂購平台。", score: 1, status: "best", comment: "緊扣文具公司，清晰對比高財務貢獻大客戶（集中資源提供專責服務）與低貢獻零星客戶（使用低成本自助平台）。" },
+          { text: "例如文具公司在電視台播放卡通筆廣告。", score: 0, status: "wrong", comment: "屬於大眾廣告推廣，與評估服務個別顧客成本無關。" }
+        ]},
+        { label: "第 3 步：深化論述至有效運用有限資源、減低服務成本與實現利潤最大化的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "這樣做能讓文具公司更有效地運用有限的市場營銷與人力資源，既能重點留住帶來最高利潤的核心大客戶，又能將服務一般現有顧客的平均成本減至最低，從而協助公司達到利潤最大化的目標。", score: 1, status: "best", comment: "緊扣「更有效地運用有限資源，將服務現有顧客的成本減至最低，以達到利潤最大化的目標」。" },
+          { text: "這樣文具公司便評估了服務成本。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令文具公司無須再向員工支薪。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：速達美食及生鮮外送平台（與顧客「持續溝通和收集回饋」的好處）", topic: "顧客關係管理的重要性：持續與顧客溝通和收集回饋的好處", maxMarks: 3,
+      scenario: "「速達外送」是香港一家美食及生鮮食材外送平台，顧客可透過網站或手機應用程式點餐。面對同業激烈競爭，資訊部與市場營銷部一直致力透過顧客關係管理系統，維持顧客與公司之間的持續有效溝通。試描述該外送平台與顧客「持續溝通和收集回饋」的好處。",
+      question: "請遵循「一段一個獨立重點」原則，從「(1) 傳送適時推廣信息鼓勵多光顧」及「(2) 提供渠道收集意見與投訴以及時發現營運問題並採取糾正行動」闡釋持續溝通的好處（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出透過 CRM 系統「持續與顧客溝通和收集回饋」的渠道與核心作用（1分）", colorClass: "hl-s1", opts: [
+          { text: "平台與顧客溝通的唯一目的是為了向顧客借錢。", score: 0, status: "wrong", comment: "不正確的陳述。" },
+          { text: "外送平台可利用顧客資料庫的資料，透過電子方式（如電郵、即時通訊應用程式或平台的手機應用程式）與個別顧客持續溝通，一方面向顧客傳送適時的推廣信息，另一方面為顧客提供溝通渠道以隨時收集他們的回饋、意見和投訴。", score: 1, status: "best", comment: "完整點出持續溝通的電子渠道（電郵、即時通訊、手機應用程式）及「傳送推廣信息＋收集回饋與投訴」的雙向作用。" },
+          { text: "平台可以同顧客傾偈。", score: 0, status: "partial", comment: "表達過於口語化，未有點出「傳送適時準確推廣信息」及「收集回饋以發現營運問題」的核心概念。" }
+        ]},
+        { label: "第 2 步：針對「速達外送平台」設定傳送推廣信息與收集投訴回饋的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如在落雨天或晚餐時段前，平台透過手機應用程式向會員推送「免運費優惠碼」及新加盟餐廳資訊，鼓勵顧客即場落單增加消費；同時在每張訂單送達後彈出評分與意見欄，讓顧客即時反映外賣保溫情況或送遞員遲到等投訴。", score: 1, status: "best", comment: "緊扣美食外送平台，具體列舉推送免運費優惠信息刺激點餐，以及訂單後評分欄收集保溫與遲到回饋。" },
+          { text: "例如平台規定顧客永遠不准給差評。", score: 0, status: "wrong", comment: "堵塞言路會令企業無法察覺營運問題並導致顧客流失。" },
+          { text: "例如平台向顧客發送很多信息。", score: 0, status: "partial", comment: "未有結合外送平台說明發送甚麼推廣信息，以及如何收集顧客對送餐服務的意見和投訴。" }
+        ]},
+        { label: "第 3 步：深化論述至及時發現營運問題採取糾正行動、挽回信心與建立長遠關係的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過向顧客提供適時準確的推廣資訊，能鼓勵顧客多光顧並與平台建立長遠關係；更重要的是，收集顧客的意見和投訴有助平台管理層「及時發現營運上的問題（如某區車手人手不足或保溫袋失效），並迅速採取糾正行動」及補償顧客，從而挽回顧客信心並提升顧客忠誠度。", score: 1, status: "best", comment: "完美結合「鼓勵顧客多光顧建立長遠關係」及「及時發現營運上的問題並採取糾正行動以提升忠誠度」兩大課文重點。" },
+          { text: "這樣平台便與顧客保持了溝通。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令全港所有餐廳自動免費送餐。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：星級連鎖快餐店（提升顧客忠誠度的策略：有效處理顧客投訴與員工授權）", topic: "提升顧客忠誠度的市場營銷策略：有效地處理顧客投訴（員工授權）", maxMarks: 3,
+      scenario: "某大型連鎖快餐店在香港經營超過 50 家分店。今年公司為了增加銷售額並留住現有熟客，打算推行多項策略以提升顧客忠誠度，其中一項重點是改善分店處理顧客投訴的機制。試闡釋該連鎖快餐店可如何透過「有效地處理顧客投訴」來提升顧客忠誠度。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「有效地處理顧客投訴（包含迅速回應、員工授權與公平補償）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「有效地處理顧客投訴」的策略名稱與核心原則（員工授權與公平處理 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "快餐店應拒絕承認任何出餐錯誤，並規定前線店員不准向顧客道歉。", score: 0, status: "wrong", comment: "這會令不滿的顧客永久流失。" },
+          { text: "快餐店可透過「有效地處理顧客投訴」來提升顧客忠誠度：企業應積極處理顧客的投訴並迅速作出回應；為此，企業須「授予員工必要的權力（員工授權）」，讓他們能夠即時處理投訴，並應對所有顧客一視同仁，公平地處理投訴及按不滿程度給予合理補償。", score: 1, status: "best", comment: "完整點出積極迅速回應、授予員工必要權力（員工授權）、一視同仁公平處理及合理補償的核心原則。" },
+          { text: "快餐店要處理好顧客的投訴。", score: 0, status: "partial", comment: "未有點出「迅速作出回應、授予員工必要權力（員工授權）即時處理及給予補償」的關鍵機制。" }
+        ]},
+        { label: "第 2 步：針對「連鎖快餐店」設定員工授權即時處理投訴與補償的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如當顧客投訴薯條變凍或漏執食物時，店員要求顧客自己寫信去總公司等三個月批核。", score: 0, status: "wrong", comment: "程序繁複緩慢會令顧客更加不滿，違背迅速回應與員工授權原則。" },
+          { text: "例如快餐店除了設立 24 小時顧客服務熱線外，更實行「員工授權」：授權各分店值班主任及前線店員在遇到顧客投訴（如食物不熱、送錯餐或等候太久）時，無須層層請示總公司，可即時自行決定為顧客免費更換全新熱食、免費將飲品升級或贈送甜品現金券作補償（且管理層信任員工，不懲罰作出決定的員工）。", score: 1, status: "best", comment: "緊扣連鎖快餐店，具體描述設立熱線及授權分店店員即時免費換餐、升級飲品或送券補償的做法。" },
+          { text: "例如快餐店在報紙刊登新漢堡包廣告。", score: 0, status: "wrong", comment: "屬於廣告推廣，並非處理顧客投訴策略。" }
+        ]},
+        { label: "第 3 步：深化論述至迅速平息不滿、挽回顧客信心與轉化為忠誠顧客的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於前線員工獲授權能即時、公平且大方地為受影響食客提供補償，食客無須經歷漫長等待便能迅速獲得滿意解決；這能有效化解食客的不滿情緒，挽回他們對快餐店的信心，令投訴得以有效解決的顧客傾向成為忠誠顧客並繼續光顧。", score: 1, status: "best", comment: "清楚推演出「員工即時補償 → 顧客迅速獲滿意解決、挽回信心 → 傾向成為忠誠顧客」。" },
+          { text: "這樣快餐店便處理了投訴。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令快餐店的食材成本自動變成零。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：屋邨民生雜貨店（如何透過「會員計劃建立財務與社交聯繫」抗衡大型超市）", topic: "提升顧客忠誠度的市場營銷策略：推出會員計劃建立財務聯繫和社交聯繫", maxMarks: 3,
+      scenario: "志強在大型公共屋邨經營一家本地民生糧油雜貨店，目標顧客是居住在附近的全職家庭主婦。近日一家大型連鎖超級市場宣布在該屋邨開設分店並推出推廣活動，對志強的生意構成嚴重威脅。商業顧問建議志強推出「會員計劃」與街坊顧客建立緊密聯繫以提升顧客忠誠度。試闡釋志強的雜貨店可如何透過會員計劃與顧客建立聯繫。",
+      question: "請遵循清晰分類原則，結合「財務聯繫」與「社交聯繫」，闡釋該屋邨雜貨店可如何透過會員計劃留住家庭主婦熟客（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出推出會員計劃的目標及「財務聯繫」與「社交聯繫」兩大方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "會員計劃是指向每位街坊收取每年一萬元的入會費。", score: 0, status: "wrong", comment: "高昂會費會嚇跑對價格敏感的屋邨家庭主婦。" },
+          { text: "志強的雜貨店可推出會員計劃來加強與街坊顧客的緊密聯繫；企業可透過會員計劃，同時與顧客建立「財務聯繫」（為會員提供財務上的利益以鼓勵再次光顧）和「社交聯繫」（與會員建立人際關係與互動溝通）。", score: 1, status: "best", comment: "準確點出透過會員計劃與顧客建立「財務聯繫」和「社交聯繫」的兩個標準維度。" },
+          { text: "志強可以搞一個會員計劃。", score: 0, status: "partial", comment: "未有指出會員計劃中「財務聯繫」與「社交聯繫」的核心概念。" }
+        ]},
+        { label: "第 2 步：針對「屋邨雜貨店與家庭主婦」設定建立「財務聯繫」與「社交聯繫」的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如給主婦一張會員卡。", score: 0, status: "partial", comment: "未有具體說明會員卡提供甚麼財務利益（折扣／積分換禮品）及如何建立社交聯繫（工作坊／定期信息）。" },
+          { text: "例如：(1) 建立「財務聯繫」：由於屋邨家庭主婦對價格非常敏感，雜貨店可為會員提供逢星期三全店九五折優惠，並設立「儲印仔／積分獎賞計劃」，買滿一定金額即可換領免費食油、雞蛋或現金扣減；(2) 建立「社交聯繫」：定期透過手機即時通訊群組（或店內告示板）向會員發送新到煲湯靚料與減價資訊，並舉辦「街坊時令養生湯水分享會（工作坊）」。", score: 1, status: "best", comment: "緊扣屋邨家庭主婦對價格敏感及常用手機的特點，完整舉出財務聯繫（會員折扣＋積分換食油雞蛋）與社交聯繫（定期發送信息＋養生湯水分享會）。" },
+          { text: "例如將雜貨店改裝為高爾夫球場。", score: 0, status: "wrong", comment: "偏離屋邨民生雜貨店業務。" }
+        ]},
+        { label: "第 3 步：深化論述至提升主婦滿意度、抗衡大型超市競爭與留住熟客的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過財務聯繫提供實質慳錢優惠，配合社交聯繫發揮小店濃厚的人情味與街坊關係，能大幅提升屋邨主婦的滿意度與歸屬感，建立大型連鎖超市難以取代的顧客忠誠度，有效防止熟客流失予新開張的超市。", score: 1, status: "best", comment: "清楚推演出「財務利益＋社交人情味關係 → 提升滿意度與忠誠度 → 防止熟客流失予大型超市」。" },
+          { text: "這樣雜貨店便建立了聯繫。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令大型連鎖超市立即破產。", score: 0, status: "wrong", comment: "誇大的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：連鎖精品咖啡店（提升顧客忠誠度的策略：提供附加服務與夥伴關係管理）", topic: "提升顧客忠誠度的市場營銷策略：提供附加服務（增值服務）與夥伴關係管理", maxMarks: 3,
+      scenario: "「醇香咖啡」是一家在香港設有十家分店的咖啡連鎖店。最近不少顧客轉去光顧鄰近新開業的手搖果茶店，導致營業額下滑。除了推出會員計劃及處理投訴外，市場營銷經理希望透過「提供附加服務」或「夥伴關係管理」來提升顧客忠誠度並刺激銷售。試就此向該咖啡店提出建議。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「提供附加服務（增值服務）」（或結合「夥伴關係管理」）為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「提供附加服務（增值服務）」的策略名稱與核心作用（1分）", colorClass: "hl-s1", opts: [
+          { text: "咖啡店應停止供應所有咖啡，改為只賣白開水。", score: 0, status: "wrong", comment: "放棄核心業務不合邏輯。" },
+          { text: "醇香咖啡可透過「提供附加服務（又稱增值服務）」來提升顧客忠誠度：企業可免費或以合理的價格向顧客提供核心產品以外的額外便利與增值服務，從而提升顧客滿意度和忠誠度（或選「夥伴關係管理」：與外部商業夥伴合作共同為顧客提供更高價值）。", score: 1, status: "best", comment: "準確寫出「提供附加服務（增值服務）」的標準策略名稱及免費或以合理價格提供以提升滿意度和忠誠度的概念。" },
+          { text: "咖啡店可以做多一點服務。", score: 0, status: "partial", comment: "必須準確寫出「提供附加服務（增值服務）」或「夥伴關係管理」的標準術語。" }
+        ]},
+        { label: "第 2 步：針對「醇香咖啡連鎖店」設定具體的附加服務（及夥伴合作）例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如咖啡店賣咖啡給顧客。", score: 0, status: "partial", comment: "賣咖啡只是基本核心產品，並非額外的「附加服務（增值服務）」。" },
+          { text: "例如醇香咖啡可在各分店免費為堂食顧客提供「高速無線上網 (Wi-Fi) 服務、座位手機無線充電設備、免費借用行動電源，以及手機應用程式預先點餐免排隊自取服務」（若結合夥伴關係管理，則可與信用卡公司或本地人氣烘焙餅店合作推出「買手工蛋糕免費升級大杯裝即磨咖啡」聯合推廣）。", score: 1, status: "best", comment: "緊扣連鎖咖啡店，具體列舉免費高速 Wi-Fi、手機充電、預先點餐免排隊等附加服務（及與餅店／信用卡公司聯合推廣）。" },
+          { text: "例如咖啡店調高所有咖啡的再訂購水平。", score: 0, status: "wrong", comment: "再訂購水平屬於存貨管理，並非提升顧客忠誠度的市場營銷策略。" }
+        ]},
+        { label: "第 3 步：深化論述至創造優越消費價值、提升顧客滿意度與防止熟客轉投果茶店的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於外賣手搖果茶店一般只提供立飲買走服務，醇香咖啡透過提供免費 Wi-Fi、充電及預先點餐等貼心附加服務，能為上班族與學生帶來遠超單純飲品的優越價值與舒適空間體驗，大幅提升顧客滿意度與忠誠度，吸引熟客持續重複光顧而非轉投果茶店。", score: 1, status: "best", comment: "清楚推演出「提供外賣果茶店沒有的附加服務與空間價值 → 提升顧客滿意度與忠誠度 → 留住熟客持續光顧」。" },
+          { text: "這樣顧客便會對咖啡店很忠誠。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令咖啡豆永遠不會過期。", score: 0, status: "wrong", comment: "誇大的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：全單元跨課題整合（資訊管理部與人力資源部如何支援市場營銷部實行 CRM）", topic: "跨商業功能協作：資訊管理與人力資源管理對「顧客關係管理 (CRM)」的支援", maxMarks: 3,
+      scenario: "「尚美美容及健康集團」在香港經營十多家大型美容及水療中心。集團行政總裁指出：「要成功實行顧客關係管理（CRM）以留住現有顧客並提高銷售額，除了靠市場營銷部制定策略外，亦必須得到『資訊管理部』及『人力資源部』（內部夥伴）的全力配合支援。」試結合顧客關係管理的知識，闡釋資訊管理部及人力資源部可如何支援市場營銷部實行顧客關係管理。",
+      question: "請遵循跨部門協作（內部夥伴關係管理）原則，闡釋「資訊管理部（維護顧客資料庫與分析數據）」及「人力資源部（培訓與授權員工處理投訴及互動）」如何支援市場營銷部達至 CRM 目標（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：闡釋「資訊管理部」如何透過資訊科技與顧客資料庫支援 CRM（1分）", colorClass: "hl-s1", opts: [
+          { text: "市場營銷部只需要自己一個部門運作，完全不需要其他部門幫忙。", score: 0, status: "wrong", comment: "夥伴關係管理強調市務人員須與內部其他部門同事緊密合作，共同為顧客提供更高價值。" },
+          { text: "首先，由於顧客關係管理經常運用資訊科技並涉及龐大的「顧客資料庫」，資訊管理部可負責建立和維護穩定的 CRM 資訊系統及手機應用程式：協助市場營銷部安全地記錄、儲存和統計分析會員的膚質資料、過往療程購買記錄與消費頻率，並維護與顧客持續溝通及收集回饋的電子系統。", score: 1, status: "best", comment: "準確結合 CRM 的資訊科技特徵，說明資訊管理部如何維護顧客資料庫、分析購買記錄及維護顧客溝通系統。" },
+          { text: "資訊管理部負責替客人做面部護理。", score: 0, status: "wrong", comment: "進行面部護理屬於前線美容師的工作。" }
+        ]},
+        { label: "第 2 步：闡釋「人力資源部」如何透過招聘、培訓及員工授權支援 CRM（1分）", colorClass: "hl-s2", opts: [
+          { text: "其次，由於顧客滿意度和如何處理顧客投訴是影響顧客忠誠度的關鍵因素（且美容服務具不可分割性與異質性），人力資源部可與市場營銷部合作（內部夥伴關係管理）：負責招聘熟練的美容師、為前線員工提供待客禮貌與處理投訴技巧培訓，並配合推行「員工授權」與服務考績獎賞制度，讓前線員工能即時妥善處理顧客投訴及提供優質服務。", score: 1, status: "best", comment: "完美結合人力資源部的招聘、培訓、員工授權與考績制度，以支援提升顧客滿意度及有效處理顧客投訴。" },
+          { text: "人力資源部負責決定每款美容療程的售價。", score: 0, status: "wrong", comment: "釐定產品售價屬於市場營銷部的定價策略職責。" },
+          { text: "人力資源部會請一些員工返來。", score: 0, status: "partial", comment: "未有說明人力資源部如何透過培訓及配合員工授權，協助提升服務質素與有效處理顧客投訴。" }
+        ]},
+        { label: "第 3 步：深化論述至跨部門協同為顧客提供優越價值、提升忠誠度與增加長期收益的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過資訊管理部提供精準的顧客資料庫分析（讓市場營銷部能度身設計個人化療程並進行交叉銷售和向上銷售），配合人力資源部培訓出專業親切、能迅速解決投訴的前線團隊，三個部門緊密合作能共同為顧客提供優越價值，大幅提升顧客忠誠度並為集團創造長期穩定的利潤。", score: 1, status: "best", comment: "清楚總結內部夥伴關係管理如何共同為顧客提供優越價值，達成留住顧客、促進交叉／向上銷售及獲利的 CRM 終極目標。" },
+          { text: "這樣三個部門便合作完成了工作。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令美容院無須再購買任何護膚精華。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>

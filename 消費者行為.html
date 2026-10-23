@@ -1,0 +1,1731 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 消費者行為</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 18px;
+      border-radius: 9px;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 680px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sidebar-layout { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13px; color: var(--mute); font-weight: 500; flex-shrink: 0; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .case-box {
+      border-left: 4px solid var(--teal);
+      background: var(--teal-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+
+    .slider-row {
+      display: grid;
+      grid-template-columns: 190px 1fr 115px;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+    .meter-bar { height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin: 10px 0; }
+    .meter-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--primary)); transition: width 0.3s ease; }
+
+    /* Hierarchy Pyramid */
+    .pyramid { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 16px 0; }
+    .pyr-level {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15.5px;
+      padding: 11px 16px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: 2px solid transparent;
+    }
+    .pyr-level:hover { transform: scale(1.015); }
+    .pyr-level.active { border-color: var(--ink); box-shadow: 0 4px 14px rgba(15, 23, 42, 0.22); }
+
+    /* Comparison Table */
+    table.comp-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 16px; }
+    table.comp-table th, table.comp-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.comp-table th { background: var(--surface); font-weight: 800; color: var(--ink); }
+    table.comp-table tr.highlight-row { background: var(--primary-light); }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.correct, .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.wrong, .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .grid3, .sidebar-layout, .slider-row { grid-template-columns: 1fr; }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 3 課：消費者行為</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-steps">1. 個人消費者決策過程</button>
+    <button data-tab="sec-factors">2. 影響購買決定的因素</button>
+    <button data-tab="sec-b2b">3. 商業消費市場與決策</button>
+    <button data-tab="sec-builder">4. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 個人消費者決策過程 ==================== -->
+<section class="view on" id="sec-steps">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元一：消費者行為與個人決策過程</span>
+      <h1>個人消費者作出購買決定的五個步驟</h1>
+      <p>消費者行為指消費者尋找、購買、使用和評價產品的行為（重點在於購買貨品和服務時怎樣運用時間、金錢及精力）。個人消費者在個人消費市場購買產品自用、在家中使用或作送禮之用時，一般會經歷五個順序步驟。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('steps', 0, this)">五個決策步驟解析</button>
+      <button onclick="switchSub('steps', 1, this)">資料搜集模擬與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：五個決策步驟解析與原創情境示範 -->
+  <div class="sub-view active" id="steps-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="stepNavList"></div>
+      <div>
+        <div class="card" id="stepDetailCard" style="margin-bottom:18px"></div>
+        <div class="card" style="margin-bottom:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+            <div>
+              <span class="badge b-teal">情境應用示範</span>
+              <h3 style="font-size:20px;margin-top:4px">不同產品的個人消費者決策五步驟示範</h3>
+            </div>
+            <div class="chips" id="studentCaseChips" style="margin:0"></div>
+          </div>
+          <div id="studentCaseOutput"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：影響搜集資料數量的四項因素模擬器 + 細節判斷練習 -->
+  <div class="sub-view" id="steps-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">動態模擬</span>
+        <h3 style="font-size:21px;margin:8px 0 6px">影響「搜集資料數量」的四項因素</h3>
+        <p style="font-size:15.5px;color:var(--mute);margin:0 0 12px">拉動滑桿或點選預設情境，觀察消費者在購買前花費時間和精力搜集資料的數量變化：</p>
+
+        <div class="chips" style="margin-bottom:16px">
+          <button class="chip" style="padding:6px 12px;font-size:14px" onclick="setSimPreset(1, 5, 5, 1, '首次買專業電結他')">首次買專業電結他</button>
+          <button class="chip" style="padding:6px 12px;font-size:14px" onclick="setSimPreset(4, 1, 2, 5, '急需買流動充電池')">急需買流動充電池</button>
+          <button class="chip" style="padding:6px 12px;font-size:14px" onclick="setSimPreset(5, 1, 1, 3, '日常買早餐方包')">日常買早餐方包</button>
+        </div>
+
+        <div class="slider-row">
+          <b>1. 消費者對產品的經驗</b>
+          <input type="range" id="simExp" min="1" max="5" value="2" oninput="updateSim()">
+          <span id="lblExp" style="font-weight:700;color:var(--primary)">經驗極少</span>
+        </div>
+        <div class="slider-row">
+          <b>2. 產品價格</b>
+          <input type="range" id="simPrice" min="1" max="5" value="4" oninput="updateSim()">
+          <span id="lblPrice" style="font-weight:700;color:var(--primary)">價格偏高</span>
+        </div>
+        <div class="slider-row">
+          <b>3. 產品對消費者的重要性</b>
+          <input type="range" id="simImp" min="1" max="5" value="4" oninput="updateSim()">
+          <span id="lblImp" style="font-weight:700;color:var(--primary)">相當重要</span>
+        </div>
+        <div class="slider-row">
+          <b>4. 購買產品的迫切性</b>
+          <input type="range" id="simUrg" min="1" max="5" value="2" oninput="updateSim()">
+          <span id="lblUrg" style="font-weight:700;color:var(--primary)">不急於購買</span>
+        </div>
+
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);margin-top:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <b>預計搜集資料的數量與時間：</b>
+            <b id="simScoreText" style="color:var(--primary);font-size:16.5px">搜集大量資料 (85%)</b>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" id="simMeter" style="width:85%"></div></div>
+          <div id="simConclusion" style="font-size:15.5px;color:var(--ink-sec);margin-top:6px"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">情境判斷練習</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">決策過程細節辨析（資料途徑・購買決定・購買後行為）</h3>
+        <p id="stepSubQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="stepSubQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div id="stepSubQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="stepSubQuizFb" style="margin-top:14px;font-size:16px;min-height:48px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 影響購買決定的因素 ==================== -->
+<section class="view" id="sec-factors">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元二：影響消費者決定的因素</span>
+      <h1>社會文化因素 (3項) 與 心理因素 (5項)</h1>
+      <p>影響消費者決定的兩種主要因素包括「社會文化因素」（文化、社會階層、參考團體）和「心理因素」（動機、性格和自我概念、感知、學習、信念和態度）。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('fac', 0, this)">社會文化與心理因素體系</button>
+      <button onclick="switchSub('fac', 1, this)">需要階梯互動與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：兩大因素體系詳解 -->
+  <div class="sub-view active" id="fac-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="facNavList"></div>
+      <div class="card" id="facDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：馬斯洛需要階梯金字塔 + 影響因素情境判斷 -->
+  <div class="sub-view" id="fac-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">心理因素：動機</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">馬斯洛的需要階梯理論（五個層次的需要）</h3>
+        <p style="font-size:15.5px;color:var(--mute);margin:0 0 10px">點選一種產品或服務，再點擊金字塔各層次，查看如何由最基本的生理需要開始逐步滿足較高層次的需要：</p>
+        <div class="chips" id="maslowProdChips"></div>
+        <div class="pyramid" id="maslowPyramid"></div>
+        <div id="maslowDetail" class="note-box" style="margin-top:12px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">情境挑戰</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">辨識影響購買決定的具體因素（共 8 題）</h3>
+        <p id="factorQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="factorQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div id="factorQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="factorQuizFb" style="margin-top:14px;font-size:16px;min-height:48px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 商業消費市場與決策 ==================== -->
+<section class="view" id="sec-b2b">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元三：商業消費市場與商業買家決策</span>
+      <h1>商業買家決策五個步驟、四類商業市場與兩大市場分別</h1>
+      <p>商業買家（又稱商業顧客或機構消費者）購買用於機構營運的產品。商業買家首次購買某產品時一般會花費較多時間和精力，並經過完整的五個決策步驟。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('b2b', 0, this)">商業買家決策五步驟詳解</button>
+      <button onclick="switchSub('b2b', 1, this)">四類商業消費市場</button>
+      <button onclick="switchSub('b2b', 2, this)">商業與個人市場的分別</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：商業買家決策五步驟詳解 + 排序練習 -->
+  <div class="sub-view active" id="b2b-sub-0">
+    <div class="sidebar-layout" style="margin-bottom:20px">
+      <div class="nav-list" id="b2bStepNavList"></div>
+      <div class="card" id="b2bStepDetailCard" style="margin-bottom:0"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <span class="badge b-teal">順序排列練習</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">實戰排序：商業買家作出購買決定的五個步驟</h3>
+      <p style="font-size:16px;color:var(--ink-sec);margin:0 0 14px">
+        <b>背景情境：</b>「鮮達冷鏈物流公司」發現現役柴油冷凍貨車日趨老化，正考慮採購新型號的「純電動智能溫控冷凍貨車」以取代現有車隊。請按正確次序（第 1 步至第 5 步）順序點擊下方步驟卡片：
+      </p>
+      <div id="b2bOrderPool" style="display:flex;flex-direction:column;gap:10px"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
+        <span id="b2bOrderStatus" style="font-size:16.5px;font-weight:700;color:var(--primary)">請依正確次序點擊「第 1 步」開始。</span>
+        <button class="btn btn-outline" onclick="initB2BOrderGame()">重新洗牌</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：四類商業消費市場 -->
+  <div class="sub-view" id="b2b-sub-1">
+    <div class="card" style="margin-bottom:0">
+      <span class="badge b-blue">四大類別</span>
+      <h3 style="font-size:22px;margin:8px 0 8px">商業消費市場的主要種類和購買活動</h3>
+      <p style="font-size:16.5px;color:var(--ink-sec);margin:0 0 14px">點擊下方四類商業消費市場（及個人消費市場對照），檢視各類買家的購買目的、運作方式與採購特點：</p>
+      <div class="chips" id="supplyChainChips"></div>
+      <div id="supplyChainDetail" style="background:var(--surface);padding:22px 24px;border-radius:14px;border:1px solid var(--line);margin-top:14px"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3C：商業與個人市場的七項分別 -->
+  <div class="sub-view" id="b2b-sub-2">
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:10px">
+        <div>
+          <span class="badge b-blue">市場比較</span>
+          <h3 style="font-size:21px;margin-top:4px">商業消費市場與個人消費市場的分別（點擊類別高亮顯示）</h3>
+        </div>
+        <div class="chips" id="b2bFilterChips" style="margin:0"></div>
+      </div>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:26%">比較項目與分類</th>
+            <th style="width:37%">個人消費市場（個人消費者）<br><small style="font-weight:500;color:var(--mute)">例：市民購買急凍點心回家自用、買電腦自用</small></th>
+            <th style="width:37%">商業消費市場（商業買家）<br><small style="font-weight:500;color:var(--mute)">例：火鍋店採購急凍點心轉售食客、銀行買大型電腦系統</small></th>
+          </tr>
+        </thead>
+        <tbody id="b2bTableBody"></tbody>
+      </table>
+      <div class="note-box">
+        <b>分析比較題注意事項：</b><br>
+        1. 如題目要求解釋兩個市場的消費者在「購買行為」上的分別，答案便不應包括與購買行為無關的「買家的數目」。<br>
+        2. 比較兩個市場時，常分為四大類：(i) 需求性質／購買目的（引申需求、購貨金額較高、買家較少）、(ii) 買家對價格的敏感度、(iii) 購買決策的複雜程度（多人參與、遵從正式決策或審批程序）、以及 (iv) 買家和賣家的關係。作答時應跨越不同大類闡述。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一核心概念、因素或決策步驟名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 針對該單一論點結合個案背景作具體說明
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一核心概念名稱並界定其含義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 設定具體商業例子，解釋其運作方式或雙向對比<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至顧客購買決定、品牌忠誠度或企業營銷策略的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 個人消費者決策過程 ======
+  const stepsData = [
+    {
+      num: "01", title: "確認需要", sub: "內在刺激 vs 外在刺激",
+      def: "購買的行為始於確認需要（又稱為「刺激」），即消費者發現自己尚有未能滿足的需要時，會開始考慮購買一項產品來滿足這個需要。",
+      points: [
+        "<b>內在刺激</b>：消費者的個人感知，如飢餓、口渴、覺得炎熱或疲倦等。",
+        "<b>外在刺激</b>：外在的人和事的影響，如看到吸引的廣告、朋友口碑推介、店舖櫥窗展示等。"
+      ],
+      tip: "分析決策過程時，必須按第 1 步至第 5 步的順序作答，切勿調亂次序；並須先寫出步驟名稱，再以相關企業或情景為例加以解釋。"
+    },
+    {
+      num: "02", title: "搜集資料", sub: "4項數量因素 · 3種資料途徑",
+      def: "消費者想購買產品來滿足需要時，便會搜集與該項產品相關的資料。",
+      points: [
+        "<b>(a) 影響搜集的資料數量的四項因素</b>：<br>• (i) <b>消費者對產品的經驗</b>（購買和使用頻率越高、經驗越豐富，搜集資料的需要就越低）<br>• (ii) <b>產品價格</b>（購買昂貴產品時會花費較多時間和精力搜集資料；便宜日常用品則未必會搜集）<br>• (iii) <b>產品對消費者的重要性</b>（覺得產品十分重要時，通常會搜集大量資料）<br>• (iv) <b>購買產品的迫切性</b>（若有迫切需要，便未必可以搜集大量資料）。",
+        "<b>(b) 資料來源的三種途徑</b>：<br>• <b>個人途徑</b>：家庭成員及其他親屬、朋友、同事和同學<br>• <b>商業途徑</b>：廣告、銷售人員、包裝和產品展示<br>• <b>公眾途徑</b>：傳媒報道、消費者委員會的報告、不同機構所進行的消費者調查，以及消費者在網上論壇或網站的評價或意見。"
+      ],
+      tip: "分析搜集資料階段時，應清楚區分「影響搜集資料數量的四項因素」與「搜集資料的三種途徑（個人、商業、公眾途徑）」。"
+    },
+    {
+      num: "03", title: "評估方案", sub: "設定評估準則比較篩選",
+      def: "消費者根據所搜集得來的資料，找出可供選擇的產品或品牌，剔除不可接受者，並評估篩選出來的產品或品牌。",
+      points: [
+        "<b>設下評估準則</b>：例如價格、設計、功能、避震能力、地點、衛生、服務等。",
+        "<b>準則與比重因人而異</b>：不同的消費者可能會採用不同的準則來評估同一類別的產品；即使採用相同的準則，他們給予各個準則的比重亦可能不同。"
+      ],
+      tip: "說明評估方案步驟時，應舉出切合該項產品的具體評估準則（例如選擇空氣清新機時考慮過濾效能、靜音程度及價格）。"
+    },
+    {
+      num: "04", title: "購買決定", sub: "環境因素 vs 人際影響",
+      def: "消費者經過評估方案的階段後，便會作出購買決定，即決定購買哪一款產品或品牌（一般會購買在評估階段中得分最高的產品或品牌）。",
+      points: [
+        "<b>以下兩項因素或會影響消費者的購買決定，使他們實際購買的產品或品牌與原本想購買的不同</b>：",
+        "<b>(i) 環境因素</b>：受到一些意料之外的事件影響，例如薪金、價格和產品供應量的改變（如原本想買的款式賣光缺貨、或另一型號突然減價）。",
+        "<b>(ii) 人際影響</b>：其他人的意見和建議可能會令消費者購買另一產品或品牌（如同行朋友或店員建議另一款式更合襯）。"
+      ],
+      tip: "注意區分：產品缺貨、場次滿座或價格改變屬於「環境因素」；朋友或店員的意見令消費者改買另一款屬於「人際影響」。"
+    },
+    {
+      num: "05", title: "購買後行為", sub: "實際表現 vs 預期表現",
+      def: "購買後行為是消費者在購物後採取進一步行動的階段。消費者會把產品的「實際表現」與自己的「預期表現（期望）」作比較，從而評估產品表現。",
+      points: [
+        "<b>當實際表現與預期表現相符，或超越預期表現（滿意的消費者）</b>：<br>• 成為忠誠顧客<br>• 再次購買同類產品時會選擇同一品牌<br>• 向其他消費者推介該產品或品牌<br>• 購買該品牌其他系列的產品。",
+        "<b>當實際表現不及預期表現（不滿意的消費者）</b>：<br>• 轉而購買其他品牌的產品<br>• 在自己的社交圈子中批評該企業<br>• 向該企業或相關監管機構（例如消費者委員會）投訴<br>• 向該企業提出訴訟。"
+      ],
+      tip: "市務人員須定期透過市場研究量度顧客滿意度，找出引致顧客不滿的原因並採取相應行動解決問題。"
+    }
+  ];
+
+  let curStepIdx = 0;
+  function renderStep(idx) {
+    curStepIdx = idx;
+    document.getElementById('stepNavList').innerHTML = stepsData.map((s, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderStep(${i})">
+        <span>第 ${s.num} 步：${s.title}</span>
+        <span class="sub-txt">${s.sub.split(' ')[0]}</span>
+      </button>
+    `).join('');
+    const s = stepsData[idx];
+    document.getElementById('stepDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:22px">第 ${s.num} 步：${s.title}</h3>
+        <span class="badge b-blue">${s.sub}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17.5px">${s.def}</p>
+      <ul style="margin:0;padding-left:22px;font-size:16.5px;color:var(--ink-sec)">
+        ${s.points.map(p => `<li style="margin-bottom:8px">${p}</li>`).join('')}
+      </ul>
+      <div class="note-box">${s.tip}</div>
+    `;
+  }
+  renderStep(0);
+
+  const studentCases = [
+    {
+      name: "配製防藍光漸進式眼鏡",
+      note: "對漸進鏡片沒甚麼經驗、價格較高 → 搜集大量資料",
+      steps: [
+        "<b>第 1 步：確認需要</b>：長時間看電腦工作感到眼睛疲勞酸痛（內在刺激），或看到眼鏡店新型防藍光鏡片的宣傳海報（外在刺激），意識到配新眼鏡的需要。",
+        "<b>第 2 步：搜集資料</b>：透過個人途徑（向戴開漸進鏡片的同事查詢）、商業途徑（向視光師查詢及觀看鏡框展示）及公眾途徑（查閱消委會鏡片測試報告及網上討論區評價）搜集資料。",
+        "<b>第 3 步：評估方案</b>：根據所搜集到的資料，設下價格、鏡片薄度、防藍光功能及鏡框設計等評估準則，評估篩選出來的眼鏡品牌。",
+        "<b>第 4 步：購買決定</b>：決定購買在評估階段中得分最高的鏡片及鏡框（但可能受同行伴侶認為另一款鏡框更合襯［人際影響］而改變決定）。",
+        "<b>第 5 步：購買後行為</b>：佩戴後把眼鏡的實際表現與預期表現作比較；若清晰舒適（感到滿意）會成為忠誠顧客並向親友推介，若頭暈不適（感到不滿）則會向店舖投訴。"
+      ]
+    },
+    {
+      name: "報讀流行鼓音樂課程",
+      note: "興趣學習服務體驗決策過程",
+      steps: [
+        "<b>第 1 步：確認需要</b>：觀看樂隊表演影片後深受吸引（外在刺激），開始考慮報讀流行鼓課程。",
+        "<b>第 2 步：搜集資料</b>：從音樂中心網站與宣傳單張（商業途徑）及音樂討論區學員評價（公眾途徑）搜集有關學費、師資及上課地點的資料。",
+        "<b>第 3 步：評估方案</b>：設下每堂收費、導師資歷、琴室隔音設備及交通便利度等準則，評估不同音樂中心。",
+        "<b>第 4 步：購買決定</b>：決定報讀評分最高的音樂中心（若原本想報讀的星期六班別已滿額［環境因素］，便改報星期日班別）。",
+        "<b>第 5 步：購買後行為</b>：上課後若導師教學超越預期表現（感到滿意），便會續報進階班並向同學推介該音樂中心。"
+      ]
+    },
+    {
+      name: "旅途中急買流動充電池",
+      note: "購買產品的迫切性極高 → 不會大費周章搜集資料",
+      steps: [
+        "<b>第 1 步：確認需要</b>：外出公幹時發現手機電量只剩 2% 即將關機，察覺購買流動充電池的迫切需要。",
+        "<b>第 2 步：搜集資料</b>：由於急需充電（迫切性極高），不會大費周章搜集大量資料，只會在附近便利店查看包裝說明（商業途徑）。",
+        "<b>第 3 步：評估方案</b>：設下價格、電量容量、是否自帶充電線及輕便程度等準則，快速評估店內兩三款充電池。",
+        "<b>第 4 步：購買決定</b>：決定購買最切合當前需要的那一款充電池。",
+        "<b>第 5 步：購買後行為</b>：使用後若發現充電速度極慢或發熱故障（實際表現不及預期表現），便會感到不滿，向店舖投訴或不再購買該品牌。"
+      ]
+    }
+  ];
+
+  function renderStudentCase(idx) {
+    const c = studentCases[idx];
+    document.querySelectorAll('#studentCaseChips .chip').forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.getElementById('studentCaseOutput').innerHTML = `
+      <div style="margin-bottom:10px"><span class="badge b-blue">${c.note}</span></div>
+      <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16px">
+        ${c.steps.map(s => `<div style="margin-bottom:8px">${s}</div>`).join('')}
+      </div>
+    `;
+  }
+  document.getElementById('studentCaseChips').innerHTML = studentCases.map((c, i) => `
+    <button class="chip ${i===0?'active':''}" style="padding:6px 14px;font-size:14.5px" onclick="renderStudentCase(${i})">${c.name}</button>
+  `).join('');
+  renderStudentCase(0);
+
+  // 互動模擬：影響搜集資料數量的四項因素
+  function setSimPreset(exp, price, imp, urg, title) {
+    document.getElementById('simExp').value = exp;
+    document.getElementById('simPrice').value = price;
+    document.getElementById('simImp').value = imp;
+    document.getElementById('simUrg').value = urg;
+    updateSim(title);
+  }
+
+  function updateSim(presetTitle = '') {
+    const exp = +document.getElementById('simExp').value;
+    const price = +document.getElementById('simPrice').value;
+    const imp = +document.getElementById('simImp').value;
+    const urg = +document.getElementById('simUrg').value;
+
+    const expLabels = ['沒甚麼經驗', '經驗較少', '經驗一般', '經驗較多', '經驗非常豐富'];
+    const priceLabels = ['極便宜', '較便宜', '價格中等', '價格偏高', '價格極昂貴'];
+    const impLabels = ['毫不重要', '不太重要', '重要程度一般', '相當重要', '十分重要'];
+    const urgLabels = ['毫不迫切', '不急於購買', '迫切性一般', '頗為迫切', '極度急需'];
+
+    document.getElementById('lblExp').textContent = expLabels[exp - 1];
+    document.getElementById('lblPrice').textContent = priceLabels[price - 1];
+    document.getElementById('lblImp').textContent = impLabels[imp - 1];
+    document.getElementById('lblUrg').textContent = urgLabels[urg - 1];
+
+    const raw = (6 - exp) + price + imp + (6 - urg);
+    const pct = Math.round(((raw - 4) / 16) * 90 + 5);
+    document.getElementById('simMeter').style.width = pct + '%';
+
+    let levelText = pct >= 70 ? `搜集大量資料 (${pct}%)` : pct >= 40 ? `搜集適度資料 (${pct}%)` : `甚少或無須搜集資料 (${pct}%)`;
+    document.getElementById('simScoreText').textContent = (presetTitle ? `【${presetTitle}】` : '') + levelText;
+
+    let reasons = [];
+    if (exp <= 2) reasons.push("消費者購買和使用該產品的經驗極少");
+    else if (exp >= 4) reasons.push("消費者購買和使用該產品的經驗豐富，對產品非常熟悉");
+    if (price >= 4) reasons.push("產品價格昂貴");
+    else if (price <= 2) reasons.push("產品價格便宜，不值得花時間搜集大量資料");
+    if (imp >= 4) reasons.push("消費者覺得要購買的產品十分重要");
+    if (urg >= 4) reasons.push("消費者對該產品有迫切需要，未必可以搜集大量資料");
+    else if (urg <= 2) reasons.push("消費者不急於購買，有充裕時間比較");
+
+    document.getElementById('simConclusion').innerHTML = `<b>因素分析：</b>由於${reasons.join('；加上')}，因此消費者在購買前會<b>${pct >= 70 ? '花費較多的時間和精力來搜集大量相關資料' : pct >= 40 ? '花適度時間搜集資料' : '不會大費周章搜集資料，甚至無須在購買前搜集資料'}</b>。`;
+  }
+  updateSim();
+
+  const stepSubQuizzes = [
+    {
+      q: "情境 1：狗主陳小姐打算為愛犬購買自動餵食器，她在「消費者委員會報告」及「網上寵物論壇」查閱其他用家的評價和意見。這屬於哪種資料搜集途徑？",
+      opts: ["A. 個人途徑", "B. 商業途徑", "C. 公眾途徑"],
+      ans: 2,
+      exp: "正確。傳媒報道、消費者委員會報告、不同機構的消費者調查，以及消費者在網上論壇或網站的評價或意見，均屬於「公眾途徑」。"
+    },
+    {
+      q: "情境 2：張先生準備選購一部家用咖啡機，他一方面向「有沖調咖啡習慣的同事」請教，另一方面到電器店向「售貨員查詢及觀看產品展示」。這兩者分別屬於甚麼途徑？",
+      opts: ["A. 同事屬個人途徑；售貨員及產品展示屬商業途徑", "B. 兩者均屬商業途徑", "C. 同事屬公眾途徑；售貨員屬個人途徑"],
+      ans: 0,
+      exp: "正確。家庭成員、親屬、朋友、同事和同學屬於「個人途徑」；廣告、銷售人員、包裝和產品展示屬於「商業途徑」。"
+    },
+    {
+      q: "情境 3：林太經評估後原本已決定購買甲品牌的空氣清新機，但去到電器店時發現「甲品牌已經賣光缺貨（產品供應量改變）」，最終改買乙品牌。這受到第 4 步「購買決定」中的甚麼因素影響？",
+      opts: ["A. 人際影響", "B. 環境因素", "C. 購買後行為"],
+      ans: 1,
+      exp: "正確。薪金、價格和產品供應量的改變（如賣光缺貨或突然減價）等意料之外的事件屬於「環境因素」；若是因朋友或店員的意見和建議而改買另一款，則屬於「人際影響」。"
+    },
+    {
+      q: "情境 4：阿俊購買了一張新型人體工學電競椅，但使用後發現座椅的「實際表現不及預期表現」（感到不滿）。下列哪項不是他可能出現的購買後行為？",
+      opts: ["A. 在自己的社交圈子中批評該企業", "B. 向消費者委員會投訴、向企業提出訴訟或轉買其他品牌", "C. 成為忠誠顧客並購買該品牌其他系列的產品"],
+      ans: 2,
+      exp: "正確。當產品實際表現不及預期表現時，不滿意的消費者會轉買其他品牌、在社交圈子批評該企業、向企業或消委會投訴，甚至提出訴訟；唯有滿意的消費者才會成為忠誠顧客並購買該品牌其他系列的產品。"
+    }
+  ];
+  let curSSQ = 0;
+  function renderStepSubQuiz() {
+    const item = stepSubQuizzes[curSSQ];
+    document.getElementById('stepSubQuizProg').textContent = `題目 ${curSSQ + 1} / ${stepSubQuizzes.length}`;
+    document.getElementById('stepSubQuizQ').textContent = item.q;
+    document.getElementById('stepSubQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkStepSubQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('stepSubQuizFb').innerHTML = '';
+  }
+  function checkStepSubQuiz(idx) {
+    const item = stepSubQuizzes[curSSQ];
+    const fb = document.getElementById('stepSubQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="padding:6px 14px;font-size:14.5px;margin-left:8px" onclick="curSSQ=(curSSQ+1)%stepSubQuizzes.length;renderStepSubQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderStepSubQuiz();
+
+  // ====== 2. 影響購買決定的因素 ======
+  const factorsCatalog = [
+    {
+      cat: "社會文化因素",
+      name: "01 文化 (社會文化因素)",
+      def: "文化是某社會或國家中大多數人奉行的基本信念、價值觀和習俗。每個社會或國家都擁有獨特的文化，因此消費者行為亦有分別（市務人員進行市場營銷時須多加留意文化差異和禁忌）。",
+      points: [
+        "某個社會或國家的文化可再按以下四項準則分類：<b>(i) 種族、(ii) 宗教、(iii) 地理位置、(iv) 年齡</b>。",
+        "<b>應用例子</b>：居港的穆斯林消費者（宗教與種族）只選購獲得清真認證 (Halal) 的肉類食品；華人家庭在中秋節有購買月餅與家人賞月的傳統習俗。"
+      ]
+    },
+    {
+      cat: "社會文化因素",
+      name: "02 社會階層 (社會文化因素)",
+      def: "社會階層是指一群擁有相似社會地位的人。一個人所屬的社會階層通常根據其「職業、學歷和收入」而定。",
+      points: [
+        "一般而言，相同社會階層內的成員會擁有相似的價值觀、興趣和消費喜好（例如上層偏好文學、旅遊和時事雜誌；中層偏好時裝和名人雜誌）。",
+        "<b>應用例子</b>：高學歷、高收入的資深大律師（上層社會階層）外出用膳時偏好高級法國餐廳，並選擇參加私人遊艇會會籍。"
+      ]
+    },
+    {
+      cat: "社會文化因素",
+      name: "03 參考團體 (社會文化因素)",
+      def: "參考團體是指對個人觀點和行為產生重大影響的一個人或一群人（當該參考團體對產品有很深認識，或消費者想獲得該團體成員接納和尊重時，影響尤其重大）。",
+      points: [
+        "<b>(i) 直接參考團體</b>：個人<b>直接面對面接觸</b>的人或團體，例如家庭成員、朋友和同事（對大部分人來說，家庭是最重要的參考團體）。",
+        "<b>(ii) 間接參考團體</b>：個人認識但<b>沒有直接面對面接觸</b>的人或團體，例如專家和名人（電影明星、體育明星、流行歌手和關鍵意見領袖 KOL）。"
+      ]
+    },
+    {
+      cat: "心理因素",
+      name: "04 動機 (心理因素)",
+      def: "當消費者發現自己尚有未能滿足的需要時，便有動機去購買產品來滿足這個需要。",
+      points: [
+        "常採用<b>馬斯洛的需要階梯理論</b>把人類的需要分為五個層次（由最基本的生理需要開始，滿足後逐步嘗試滿足安全需要、社交需要、自我需要及自我實現需要）。",
+        "<b>應用例子</b>：感到口渴買飲品滿足「生理需要」；購買家庭醫療保險滿足「安全需要」；與朋友聚餐滿足「社交需要」；升職後買名貴腕錶滿足「自我需要」；報讀碩士課程或深造藝術發揮潛能滿足「自我實現需要」。"
+      ]
+    },
+    {
+      cat: "心理因素",
+      name: "05 性格和自我概念 (心理因素)",
+      def: "消費者的購買行為很多時取決於本身的性格；而「自我概念（又稱自我形象）」則指某人對於自己的看法和感覺，消費者傾向購買能反映自我概念的產品或品牌。",
+      points: [
+        "<b>性格影響</b>：保守的消費者可能會長期使用同一慣用品牌的產品（使用新產品會令他感到不安）；思想開通／前衛的消費者則願意嘗試不同的品牌和新產品。",
+        "<b>自我概念影響</b>：若消費者覺得自己是一個追求健康與環保的人（自我概念），便會傾向選購特別標明低糖、低卡路里的有機飲品。"
+      ]
+    },
+    {
+      cat: "心理因素",
+      name: "06 感知 (心理因素)",
+      def: "感知指人們如何透過五感（視覺、聽覺、嗅覺、味覺和觸覺）處理外來的刺激，並把各種刺激轉化為有意思的畫面（除了刺激的性質外，感知亦受個人特徵影響）。",
+      points: [
+        "<b>應用例子</b>：當顧客經過烘焙店聞到濃郁牛油香氣（嗅覺刺激），並看到禮盒印有「比利時皇室認證」字句與金色包裝（視覺刺激）時，便會把這些刺激轉化為「高貴美味商品」的畫面而購買。"
+      ]
+    },
+    {
+      cat: "心理因素",
+      name: "07 學習 (心理因素)",
+      def: "對於消費者來說，學習是因「得到新知識」或「累積經驗」而改變消費行為的過程。",
+      points: [
+        "<b>累積經驗</b>：若消費者購買或使用產品時持續獲得良好的經驗，便會再次購買該產品；相反，如有不快的經驗，下次便可能改買另一品牌或光顧另一家商店。",
+        "<b>得到新知識</b>：例如消費者從健康電視節目得知反式脂肪危害健康的新知識，因而改變消費行為，不再購買傳統酥皮包而改買全麥麵包。"
+      ]
+    },
+    {
+      cat: "心理因素",
+      name: "08 信念和態度 (心理因素)",
+      def: "信念是指個人對某件事物的描述性想法（可以是未經證實或不合理的）；態度是個人對某件物品或某個概念較為一致的評價和感覺。",
+      points: [
+        "<b>信念例子</b>：某消費者認為「瑞士製造的機械手錶走時必定最準確」，因而購買瑞士手錶，這種描述性想法便是他的信念。",
+        "<b>態度例子</b>：消費者可對產品或品牌抱持正面或負面的態度；如對電動環保車抱持正面的態度（喜歡該產品），便會傾向購買。"
+      ]
+    }
+  ];
+
+  let curFacIdx = 0;
+  function renderFacCatalog(idx) {
+    curFacIdx = idx;
+    document.getElementById('facNavList').innerHTML = factorsCatalog.map((f, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderFacCatalog(${i})">
+        <span>${f.name.split(' ')[0]} ${f.name.split(' ')[1]}</span>
+        <span class="sub-txt">${f.cat}</span>
+      </button>
+    `).join('');
+    const f = factorsCatalog[idx];
+    document.getElementById('facDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:22px">${f.name}</h3>
+        <span class="badge ${f.cat==='社會文化因素'?'b-teal':'b-blue'}">${f.cat}</span>
+      </div>
+      <p style="margin:0 0 14px;font-weight:600;font-size:17.5px">${f.def}</p>
+      <ul style="margin:0;padding-left:22px;font-size:16.5px;color:var(--ink-sec)">
+        ${f.points.map(p => `<li style="margin-bottom:8px">${p}</li>`).join('')}
+      </ul>
+    `;
+  }
+  renderFacCatalog(0);
+
+  const maslowProducts = [
+    {
+      prod: "購買智能運動手錶",
+      levels: [
+        { lv: "自我實現需要（發揮全部潛能）", color: "#4f46e5", w: "52%", desc: "與人類渴望發揮全部潛能和展現獨特才華有關：長跑運動員利用專業運動手錶分析步頻與最大攝氧量，挑戰突破個人馬拉松最佳紀錄。" },
+        { lv: "自我需要（名譽、地位、自尊）", color: "#0284c7", w: "64%", desc: "與成就感及對名譽、聲譽、地位、認同和尊重的渴求有關：購買限量版鈦金屬尊貴智能名錶，以反映社會地位並獲得他人認同和尊重。" },
+        { lv: "社交需要（感情、友情、歸屬感）", color: "#0d9488", w: "76%", desc: "與他人互動及獲得歸屬感的需要：購買與跑會朋友相同品牌的運動手錶，透過手錶社群與朋友分享每日跑步里數及互相打氣。" },
+        { lv: "安全需要（保護、秩序、穩定）", color: "#059669", w: "88%", desc: "保障自身安全與穩定的需要：選購具備「心率異常警報及跌倒自動緊急求救功能」的智能手錶，保障獨自做運動時的生命安全。" },
+        { lv: "生理需要（食物、水、空氣等基本生存需要）", color: "#d97706", w: "100%", desc: "人類第一類和最基本的生存需要：利用手錶的定時飲水提醒及睡眠呼吸監測功能，維持日常基本水份補充與充足睡眠。" }
+      ]
+    },
+    {
+      prod: "參加豪華露營 (Glamping)",
+      levels: [
+        { lv: "自我實現需要（發揮全部潛能）", color: "#4f46e5", w: "52%", desc: "在露營區參加荒野木工雕刻及星空天文攝影創作營，發揮個人藝術潛能與獨特才華。" },
+        { lv: "自我需要（名譽、地位、自尊）", color: "#0284c7", w: "64%", desc: "包下全場最頂級的私人海景星空球形帳篷並獲專屬管家服務，彰顯尊貴身份地位。" },
+        { lv: "社交需要（感情、友情、歸屬感）", color: "#0d9488", w: "76%", desc: "週末與家人及知己好友在營火晚會中聚會燒烤，增進感情、友情與團隊歸屬感。" },
+        { lv: "安全需要（保護、秩序、穩定）", color: "#059669", w: "88%", desc: "選擇設有 24 小時圍欄保安、防風結構堅固及配備急救站的合規營地，保障人身與財物安全。" },
+        { lv: "生理需要（食物、水、空氣等基本生存需要）", color: "#d97706", w: "100%", desc: "在配備冷暖氣與舒適床褥的帳篷內睡眠休息，並享用營地提供的餐飲美食與潔淨飲用水。" }
+      ]
+    },
+    {
+      prod: "選購廚具及烹飪課程",
+      levels: [
+        { lv: "自我實現需要（發揮全部潛能）", color: "#4f46e5", w: "52%", desc: "報讀法式藍帶甜品大師班並鑽研獨創分子料理食譜，展現個人烹飪才華與發揮全部潛能。" },
+        { lv: "自我需要（名譽、地位、自尊）", color: "#0284c7", w: "64%", desc: "購買殿堂級法國手工琺瑯鑄鐵鍋具並在宴客時展示，獲得親友對其廚藝與品味的讚賞和尊重。" },
+        { lv: "社交需要（感情、友情、歸屬感）", color: "#0d9488", w: "76%", desc: "購買大型鴛鴦火鍋爐及燒烤盤，以便週末邀請親朋好友到家中聚餐聯誼，維繫感情。" },
+        { lv: "安全需要（保護、秩序、穩定）", color: "#059669", w: "88%", desc: "選購具備防乾燒自動斷電保護及無毒塗層認證的電磁爐與煎鍋，防止家居火警及保障飲食安全。" },
+        { lv: "生理需要（食物、水、空氣等基本生存需要）", color: "#d97706", w: "100%", desc: "購買基本電飯煲及煮食鍋以烹調每日三餐食物，解決最基本的溫飽生存需要。" }
+      ]
+    }
+  ];
+  let curMaslowProd = 0;
+  let curMaslowLv = 4;
+
+  function renderMaslow(pIdx, lIdx) {
+    curMaslowProd = pIdx;
+    curMaslowLv = lIdx;
+    document.querySelectorAll('#maslowProdChips .chip').forEach((c, i) => c.classList.toggle('active', i === pIdx));
+    const p = maslowProducts[pIdx];
+    document.getElementById('maslowPyramid').innerHTML = p.levels.map((l, i) => `
+      <div class="pyr-level ${i===lIdx?'active':''}" style="width:${l.w};background:${l.color}" onclick="renderMaslow(${pIdx},${i})">
+        ${l.lv}
+      </div>
+    `).join('');
+    const sel = p.levels[lIdx];
+    document.getElementById('maslowDetail').innerHTML = `<b>【${p.prod} — ${sel.lv}】</b><br>${sel.desc}`;
+  }
+  document.getElementById('maslowProdChips').innerHTML = maslowProducts.map((p, i) => `
+    <button class="chip ${i===0?'active':''}" style="padding:6px 14px;font-size:14.5px" onclick="renderMaslow(${i}, ${curMaslowLv})">${p.prod}</button>
+  `).join('');
+  renderMaslow(0, 4);
+
+  const factorQuizItems = [
+    {
+      q: "1. 子軒從電視健康資訊節目得知「反式脂肪會增加心血管疾病風險」的新知識，決定不再購買傳統起酥牛角包，改為購買全麥酸種麵包。",
+      opts: ["心理因素：學習（得到新知識）", "心理因素：感知", "社會文化因素：參考團體", "社會文化因素：文化"],
+      ans: 0,
+      exp: "正確。學習是因得到新知識（如從電視節目得知健康新資訊）或累積經驗而改變消費行為的過程，屬於「心理因素 — 學習」。"
+    },
+    {
+      q: "2. 雅婷過去兩年每次光顧某間連鎖寵物美容院時，愛犬都得到極妥善的照顧（持續獲得良好經驗），因此她今個月亦繼續預約同一間寵物美容院。",
+      opts: ["社會文化因素：文化", "心理因素：學習（累積良好經驗）", "社會文化因素：社會階層", "心理因素：感知"],
+      ans: 1,
+      exp: "正確。若消費者購買或使用產品時持續獲得良好的經驗，便會再次購買該產品或光顧該商店，屬於「心理因素 — 學習」。"
+    },
+    {
+      q: "3. 浩然聽從同班好友的建議購買某品牌的藍牙耳機；而妹妹則購買了她最崇拜的奧運金牌劍擊運動員在廣告中代言的洗頭水。",
+      opts: ["心理因素：性格和自我概念", "社會文化因素：參考團體（直接及間接參考團體）", "心理因素：信念和態度", "社會文化因素：社會階層"],
+      ans: 1,
+      exp: "正確。同班好友屬於有直接面對面接觸的「直接參考團體」；奧運運動員屬於沒有直接面對面接觸的「間接參考團體」，兩者均屬社會文化因素。"
+    },
+    {
+      q: "4. 陳大律師擁有高學歷及豐厚收入（職業、學歷和收入高），他平日喜愛閱讀古典音樂及遊艇雜誌，並選擇參加私人高爾夫球會會籍。",
+      opts: ["心理因素：學習", "心理因素：感知", "社會文化因素：社會階層", "社會文化因素：文化"],
+      ans: 2,
+      exp: "正確。一個人所屬的社會階層通常根據其職業、學歷和收入而定，相同社會階層成員擁有相似的消費喜好，屬於「社會文化因素 — 社會階層」。"
+    },
+    {
+      q: "5. 嘉俊覺得自己是一個「熱愛極限運動與富冒險精神的潮流青年」，因此特別選購塗鴉設計的防水運動相機；而性格保守的張伯則抗拒新科技，堅持只用慣用的傳統按鍵式電飯煲。",
+      opts: ["社會文化因素：文化", "社會文化因素：參考團體", "心理因素：性格和自我概念", "心理因素：學習"],
+      ans: 2,
+      exp: "正確。消費者的購買行為取決於本身的性格（思想開通前衛 vs 保守），且傾向購買能反映其自我概念（對自己的看法和感覺）的產品，屬於「心理因素 — 性格和自我概念」。"
+    },
+    {
+      q: "6. 顧客經過手工烘焙店時聞到濃郁的牛油焦糖香氣（嗅覺刺激），並看到木盒包裝上印有「比利時皇室認證」字樣（視覺刺激），覺得產品高貴美味而購買。",
+      opts: ["心理因素：感知", "社會文化因素：社會階層", "社會文化因素：參考團體", "心理因素：學習"],
+      ans: 0,
+      exp: "正確。感知指人們如何透過五感處理外來的刺激，並把各種刺激轉化為有意思的畫面，屬於「心理因素 — 感知」。"
+    },
+    {
+      q: "7. 居港的穆斯林消費者（宗教與種族）只選購獲得「清真認證 (Halal)」的肉類食品；而香港市民在中秋節則有購買月餅和燈籠與家人賞月的傳統習俗。",
+      opts: ["心理因素：感知", "心理因素：學習", "社會文化因素：文化", "心理因素：動機"],
+      ans: 2,
+      exp: "正確。文化是某社會或國家大多數人奉行的基本信念、價值觀和習俗（並可按種族、宗教、地理位置和年齡分類），屬於「社會文化因素 — 文化」。"
+    },
+    {
+      q: "8. 王先生認為「瑞士製造的機械手錶走時必定最準確」（描述性想法），而李小姐則對「電動環保車」抱持非常喜愛和支持的正面感覺，因此兩人都購買了相關產品。",
+      opts: ["心理因素：信念和態度", "社會文化因素：社會階層", "社會文化因素：參考團體", "心理因素：感知"],
+      ans: 0,
+      exp: "正確。認為瑞士錶最準確屬於個人的「信念（描述性想法）」；喜愛和支持電動環保車則屬於對該物品抱持正面的「態度（較為一致的評價和感覺）」。"
+    }
+  ];
+  let curFQ = 0;
+  function renderFactorQuiz() {
+    const item = factorQuizItems[curFQ];
+    document.getElementById('factorQuizProg').textContent = `題目 ${curFQ + 1} / ${factorQuizItems.length}`;
+    document.getElementById('factorQuizQ').textContent = item.q;
+    document.getElementById('factorQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:11px 16px" onclick="checkFactorQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('factorQuizFb').innerHTML = '';
+  }
+  function checkFactorQuiz(idx) {
+    const item = factorQuizItems[curFQ];
+    const fb = document.getElementById('factorQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curFQ=(curFQ+1)%factorQuizItems.length;renderFactorQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.opts[item.ans]}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderFactorQuiz();
+
+  // ====== 3. 商業消費市場與商業買家決策五步驟詳解 ======
+  const b2bStepsDetailData = [
+    {
+      num: "01",
+      title: "確認問題與需求規格描述",
+      sub: "內在／外在刺激・訂明技術規格",
+      def: "商業買家察覺只要購買某項產品（如機器設備或原材料），便可滿足其機構營運需要或解決某個問題，並隨即概略描述需要及以書面訂明產品規格。",
+      points: [
+        "<b>觸發確認問題的兩類刺激</b>：<br>• <b>內在刺激</b>：商業買家面對的內部問題或情況，例如公司決定開發新產品、現有機器出現故障損壞、或現有供應商提供的原料質素欠佳等。<br>• <b>外在刺激</b>：外部環境帶來的影響，例如在行業展銷會獲得的新產品資訊、商業廣告，以及供應商銷售代表的推銷電話和上門推銷等。",
+        "<b>概略描述需要和訂明產品規格</b>：確認需要後，商業買家會預備一份概略描述這個需要的文件，列明想購買產品的一般特徵和所需數量；同時要訂明產品的「技術規格」，即以書面方式詳列產品須符合的技術和功能特徵（有助決定產品的最佳規格，並作為後續招標的標準）。"
+      ],
+      caseTxt: "<b>商業應用實例（鮮達冷鏈物流公司採購純電動冷凍貨車）：</b><br>物流公司發現現役柴油冷凍貨車日趨老化、維修頻繁且車廂冷氣不穩（內在刺激），同時管理層在國際物流展銷會上看到新型純電動冷凍車的介紹（外在刺激），遂確認更換車隊的需要。工程部隨即擬備規格文件，列明需要採購 20 輛冷凍貨車，並訂明每輛車須具備 5.5 噸載重、350 公里電池續航力及零下 22 度精準恆溫車廂的技術規格。"
+    },
+    {
+      num: "02",
+      title: "尋找潛在供應商並邀請提交建議書",
+      sub: "編製準供應商名單・邀請提交標書／報價",
+      def: "商業買家根據已訂明的產品技術規格，物色合適的潛在產品供應商，將自己的購買意向告知準供應商，並邀請它們提交正式的建議書（或標書與詳細報價單）。",
+      points: [
+        "<b>編製「準供應商名單」的主要途徑</b>：<br>• (i) 翻查行業供應商名冊；<br>• (ii) 在互聯網搜尋相關供應商資料；<br>• (iii) 向其他企業或相關的行業組織打聽。",
+        "<b>邀請提交建議書／標書</b>：商業買家向名單上的合資格準供應商發出招標文件或查詢，邀請它們根據產品規格要求提交列明技術方案、收費及交貨安排的建議書或標書。"
+      ],
+      caseTxt: "<b>商業應用實例（鮮達冷鏈物流公司採購純電動冷凍貨車）：</b><br>物流公司採購部透過翻查商用電動車製造商名錄、在互聯網搜尋車廠資歷及向香港物流業商會打聽口碑，編製出一份包含五家合資格商用電動車製造商的名單，並正式發信邀請這五家車廠提交詳細的技術建議書與報價標書。"
+    },
+    {
+      num: "03",
+      title: "評估與選擇供應商",
+      sub: "跨部門採購委員會・六大評估準則",
+      def: "商業買家收到各準供應商提交的建議書或標書後，會由來自不同部門成員組成的團隊（採購委員會），根據多項客觀準則綜合評審各建議書，從而選出最合適的中標供應商。",
+      points: [
+        "<b>跨部門團隊參與</b>：負責評估各供應商並作出最終決定的團隊成員，多來自不同部門（如財務部、會計部、市場營銷部、採購部、資訊科技部、工程部和高級管理層）。",
+        "<b>商業買家常用的六大評估準則</b>：<br>• (i) <b>產品質素</b>（是否符合技術與安全規格）<br>• (ii) <b>價格</b>（報價水平與付款條件）<br>• (iii) <b>準時送貨</b>（按時交付能力）<br>• (iv) <b>售後服務</b>（維修保養與技術支援）<br>• (v) <b>過往的表現</b><br>• (vi) <b>企業聲譽</b>。<br><small>（註：一般來說，商業買家會向多個供應商購買不同產品以分散風險，不會只向單一供應商購買。）</small>"
+      ],
+      caseTxt: "<b>商業應用實例（鮮達冷鏈物流公司採購純電動冷凍貨車）：</b><br>物流公司的車隊工程部、營運部、採購部及財務部主管組成採購委員會，依據車價、環保節能電池與溫控技術（產品質素）、車廠過往表現與企業聲譽、五年免費電池保用與緊急維修支援（售後服務）以及交付期（準時送貨）綜合評審五份標書，最終選定表現最優越的甲車廠為中標供應商。"
+    },
+    {
+      num: "04",
+      title: "決定購買與發出訂購合約（簽約）",
+      sub: "確認最終交易條款・簽訂買賣合約",
+      def: "商業買家選出最合適的供應商後，便會確認購買決定並向該供應商發出正式的「訂購合約」，正式簽訂買賣協議並排期生產或交貨。",
+      points: [
+        "<b>訂購合約列明的最終交易條款和重要訂購細節</b>：<br>• (i) <b>產品的技術規格</b><br>• (ii) <b>訂購數量</b>与最終議定價格<br>• (iii) <b>預計送貨（交付）時間</b><br>• (iv) <b>退貨安排</b>（如貨不對辦或規格不符的處理）<br>• (v) <b>保養條款</b>（售後維修保用責任）等。"
+      ],
+      caseTxt: "<b>商業應用實例（鮮達冷鏈物流公司採購純電動冷凍貨車）：</b><br>物流公司確認採購型號後，向中標的甲車廠發出並簽訂正式的訂購合約，在合約中清楚列明訂購 20 輛指定型號電動冷凍車的技術規格、訂購數量、分期交付的預計送貨時間、溫控不達標的退貨與賠償安排，以及五年全包保養條款，車廠隨即排期生產。"
+    },
+    {
+      num: "05",
+      title: "購後表現評估",
+      sub: "評估供應商表現・決定續約／修改／終止合約",
+      def: "商業買家在使用所購買的產品後，須持續評估產品與供應商的實際表現，作為日後採購決策的參考。",
+      points: [
+        "<b>評估方法與準則</b>：<br>• (i) 商業買家可根據<b>產品質素（如機器可靠性與節能成效）、送貨安排和售後服務</b>等準則進行內部評估；<br>• (ii) 也可<b>聯絡購買了製成品或使用該服務的顧客</b>，了解他們對製成品是否感到滿意。",
+        "<b>後續合約決策</b>：這項評估有助商業買家決定日後應與該供應商<b>續約、修改合約安排，還是終止合約</b>。"
+      ],
+      caseTxt: "<b>商業應用實例（鮮達冷鏈物流公司採購純電動冷凍貨車）：</b><br>新電動冷凍車隊投入載貨營運後，物流公司持續監控其機械可靠性、電池節能成效與甲車廠的維修支援速度，並聯絡連鎖超市客戶了解冷凍食材送達時的保鮮滿意度；確認車隊表現理想後，決定在下一階段擴充車隊時繼續與甲車廠續約。"
+    }
+  ];
+
+  let curB2BStepIdx = 0;
+  function renderB2BStepDetail(idx) {
+    curB2BStepIdx = idx;
+    document.getElementById('b2bStepNavList').innerHTML = b2bStepsDetailData.map((s, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderB2BStepDetail(${i})">
+        <span>第 ${s.num} 步：${s.title}</span>
+      </button>
+    `).join('');
+    const s = b2bStepsDetailData[idx];
+    document.getElementById('b2bStepDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:22px">第 ${s.num} 步：${s.title}</h3>
+        <span class="badge b-blue">${s.sub}</span>
+      </div>
+      <p style="margin:0 0 14px;font-weight:600;font-size:17.5px">${s.def}</p>
+      <ul style="margin:0;padding-left:22px;font-size:16.5px;color:var(--ink-sec)">
+        ${s.points.map(p => `<li style="margin-bottom:10px">${p}</li>`).join('')}
+      </ul>
+      <div class="case-box">${s.caseTxt}</div>
+    `;
+  }
+  renderB2BStepDetail(0);
+
+  const supplyChainActors = [
+    {
+      name: "01 生產者市場",
+      role: "商業消費市場 — 生產者市場 (Producer Market)",
+      desc: "在<b>生產者市場</b>中，生產商或製造商會購買產品（如原料、零件，以及維修、市場研究和廣告等各類服務）以支援貨品和服務的生產。主要目的是<b>促進生產活動，從而產生收益和利潤</b>（例如烘焙廠購買麵粉及商用焗爐、智能手錶廠購買晶片）。"
+    },
+    {
+      name: "02 分銷商市場（批發商及零售商）",
+      role: "商業消費市場 — 分銷商市場 (Reseller Market)",
+      desc: "<b>分銷商市場（又稱轉售者市場或中間商市場）</b>是指企業購買產品，然後把產品轉售以獲利的市場。分銷商包括<b>批發商</b>（向生產商買貨再轉售給零售商）和<b>零售商</b>（向批發商買貨再轉售給個人最終消費者）。大部分轉售產品是製成品，但有些分銷商會在轉售前進行加工或重新包裝。"
+    },
+    {
+      name: "03 政府市場",
+      role: "商業消費市場 — 政府市場 (Government Market)",
+      desc: "<b>政府市場</b>是指政府購買產品（如郵政局買電腦文具、消防處買滅火救援器材）以維持部門運作的市場。政府買家通常要求準供應商提交<b>標書 (Tender)</b>，且<b>不一定會把合約交給標價最低的供應商</b>，除了價格外還會考慮<b>供應商的產品質素和聲譽</b>。"
+    },
+    {
+      name: "04 機構市場",
+      role: "商業消費市場 — 機構市場 (Institutional Market)",
+      desc: "<b>機構市場</b>是指公營及私營社會機構（包括醫院、慈善機構、宗教團體、學校和其他非牟利機構）購買產品以支援其營運的市場。由於它們不以牟利為目標且多依賴政府津貼或民間捐贈，大多財政緊絀，故通常須<b>尋找產品定價較低而質素達到一定水平的供應商</b>。"
+    }
+  ];
+
+  function renderSupplyChain(idx) {
+    const a = supplyChainActors[idx];
+    document.querySelectorAll('#supplyChainChips .chip').forEach((c, i) => c.classList.toggle('active', i === idx));
+    document.getElementById('supplyChainDetail').innerHTML = `
+      <span class="badge b-blue">${a.role}</span>
+      <h4 style="margin:8px 0;color:var(--ink);font-size:20px">${a.name}</h4>
+      <p style="margin:0;font-size:17px;color:var(--ink-sec)">${a.desc}</p>
+    `;
+  }
+  document.getElementById('supplyChainChips').innerHTML = supplyChainActors.map((a, i) => `
+    <button class="chip ${i===0?'active':''}" onclick="renderSupplyChain(${i})">${a.name}</button>
+  `).join('');
+  renderSupplyChain(0);
+
+  const b2bRows = [
+    { cat: "需求性質／購買目的", title: "1. 買家的數目 & 2. 購貨金額", b2c: "• <b>買家的數目較多</b>（大部分人都是個人消費者，並遍布各地）。<br>• 每次購買數量較少、產品較便宜，因此<b>購貨金額較低</b>。", b2b: "• <b>買家的數目較少</b>（企業和機構數量有限，且多集中在特定區域）。<br>• 每次購買貨品的數量較多且貨品較昂貴，因此<b>購貨金額遠高於個人消費者</b>。" },
+    { cat: "需求性質／購買目的", title: "3. 需求性質（購買目的）", b2c: "• 消費者對消費品的需求通常<b>直接與其個人需要有關</b>（購買產品自用、在家中使用或送禮）。", b2b: "• 大部分需求都是<b>引申需求（又稱衍生需求）</b>，即對某一產品的需求源自消費者對另一產品（如消費品）的需求（購買產品用於機構營運、生產或轉售）。" },
+    { cat: "買家對價格的敏感度", title: "4. 買家對價格的敏感度", b2c: "• 對價格的敏感度<b>較高（較敏感）</b>，可能會因減價而購買更多。", b2b: "• 由於需求主要是引申需求，對價格的敏感度<b>普遍低於個人消費者（較不敏感／需求彈性較低）</b>，短期內需求通常不會因價格轉變而大受影響（政府部門和非牟利機構除外）。" },
+    { cat: "購買決策的複雜程度", title: "5. 參與購買決策的人數 & 6. 購買決策的複雜程度", b2c: "• 個人消費者通常<b>直接自行作出購買決定</b>，對產品所知有限，購買決策<b>較簡單</b>（甚至可能因包裝精美而一時衝動購買）。", b2b: "• 購買決策<b>較複雜</b>，原因包括：(i) 決策過程通常有<b>多人參與</b>（常組成<b>採購委員會</b>共同決定）；(ii) 作出決定時通常須遵從各種<b>正式的決策或審批程序</b>（如邀請提交建議書和發出訂購合約），故需花費較多時間。" },
+    { cat: "買家和賣家的關係", title: "7. 買家和賣家的關係", b2c: "• 購貨金額低且市場上有很多互相競爭的品牌，個人消費者<b>不大須要與某品牌或企業維持密切和長遠的關係</b>。", b2b: "• 由於交易較複雜、涉及龐大金額，且經常要重複購買相同產品，商業買家通常<b>須要與賣家建立互信和長遠的關係</b>（如簽訂長期合約確保原料價格和供貨穩定）。" }
+  ];
+  function renderB2BTable(filterCat) {
+    document.querySelectorAll('#b2bFilterChips .chip').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
+    document.getElementById('b2bTableBody').innerHTML = b2bRows.map(r => `
+      <tr class="${filterCat !== '全部' && r.cat === filterCat ? 'highlight-row' : ''}">
+        <td><b style="color:var(--primary)">${r.title}</b><br><span class="badge b-blue" style="margin-top:6px">${r.cat}</span></td>
+        <td>${r.b2c}</td>
+        <td>${r.b2b}</td>
+      </tr>
+    `).join('');
+  }
+  document.getElementById('b2bFilterChips').innerHTML = ['全部', '需求性質／購買目的', '買家對價格的敏感度', '購買決策的複雜程度', '買家和賣家的關係'].map((c, i) => `
+    <button class="chip ${i===0?'active':''}" style="padding:6px 14px;font-size:14.5px" data-cat="${c}" onclick="renderB2BTable('${c}')">${c}</button>
+  `).join('');
+  renderB2BTable('全部');
+
+  const correctB2BSteps = [
+    { step: 1, text: "確認問題與需求規格描述（現役柴油冷凍貨車日趨老化，確定新型電動冷凍貨車的載貨量、電池續航力及精準溫控規格）" },
+    { step: 2, text: "尋找潛在供應商並邀請提交建議書（搜尋合資格商用電動車製造商名錄，將購買意向告知車廠並邀請提交標書與詳細報價單）" },
+    { step: 3, text: "評估與選擇供應商（跨部門採購委員會依據車價、產品質素、準時送貨、企業聲譽及售後維修支援綜合評審建議書，選定中標車廠）" },
+    { step: 4, text: "決定購買與發出訂購合約（確認採購型號與數量，正式簽訂列明技術規格、交貨期、退貨安排及保養條款的訂購合約並排期生產）" },
+    { step: 5, text: "購後表現評估（新電動冷凍貨車投入配送營運後，根據產品質素、送貨安排、售後服務及客戶滿意度評估車廠表現，決定日後續約或修改合約）" }
+  ];
+  let b2bCurrentExpect = 1;
+  let shuffledB2B = [];
+
+  function initB2BOrderGame() {
+    b2bCurrentExpect = 1;
+    shuffledB2B = [...correctB2BSteps].sort(() => Math.random() - 0.5);
+    document.getElementById('b2bOrderStatus').innerHTML = `請依正確次序點擊：<b>第 1 步</b>`;
+    renderB2BPool();
+  }
+
+  function renderB2BPool() {
+    document.getElementById('b2bOrderPool').innerHTML = shuffledB2B.map((item, idx) => {
+      const done = item.step < b2bCurrentExpect;
+      return `
+        <button class="opt-card ${done ? 'correct' : ''}" style="margin:0" onclick="clickB2BStep(${idx})" ${done ? 'disabled' : ''}>
+          ${done ? `<span class="badge b-green">第 ${item.step} 步</span>` : `<span class="badge b-blue">點擊選擇</span>`}
+          <span style="flex:1">${item.text}</span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  function clickB2BStep(idx) {
+    const picked = shuffledB2B[idx];
+    const status = document.getElementById('b2bOrderStatus');
+    if (picked.step === b2bCurrentExpect) {
+      b2bCurrentExpect++;
+      renderB2BPool();
+      if (b2bCurrentExpect > 5) {
+        status.innerHTML = `<span style="color:var(--green)">全部順序正確，你已掌握商業買家採購決策的五個步驟。</span>`;
+      } else {
+        status.innerHTML = `<span style="color:var(--green)">順序正確，接下來請點擊：<b>第 ${b2bCurrentExpect} 步</b></span>`;
+      }
+    } else {
+      status.innerHTML = `<span style="color:var(--red)">次序不正確，這並非第 ${b2bCurrentExpect} 步，請重新檢視商業採購流程。</span>`;
+    }
+  }
+  initB2BOrderGame();
+
+  // ====== 4. 論點建構問答工作坊 (12題 100% 原創商業情境) ======
+  const workshopQuestions = [
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：毛孩鮮廚（確認需要）", topic: "個人消費者決策過程：第 1 步「確認需要」", maxMarks: 2,
+      scenario: "「毛孩鮮廚」專門生產鮮煮寵物糧，正考慮推出老年貓護腎鮮食系列。市場營銷經理報告：「我留意到，大部分貓主人都是在獸醫診斷出愛寵患上腎病後，才意識到需要改變愛寵的飲食。」",
+      question: "就個人消費者的決策過程，參考市場營銷經理的觀察，為「毛孩鮮廚」在「確認需要」步驟中建議一個吸引貓主人選購其貓隻鮮食的方法。（2 分）",
+      steps: [
+        { label: "第 1 步：指出針對「確認需要」步驟的核心方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "提供無條件退款保證，以減輕貓主人在購買後的疑慮。", score: 0, status: "wrong", comment: "退款保證是針對第 5 步「購買後行為」的措施，並非第 1 步「確認需要」。" },
+          { text: "主動向貓主人提供「外在刺激」，促使他們在愛寵確診前已及早發現並確認改變飲食的需要。", score: 1, status: "best", comment: "清楚點出透過提供「外在刺激」觸發消費者確認尚未滿足的需要。" },
+          { text: "同時在確認需要、搜集資料、評估方案及購買決定四個步驟推出減價優惠。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，題目指定針對「確認需要」步驟提出方法。" }
+        ]},
+        { label: "第 2 步：針對該單一方向扣連情境並作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如向貓主人提供外在刺激，讓他們產生需要。", score: 0, status: "partial", comment: "只重複了第 1 步的抽象字眼，沒有結合「老年貓腎病」及「獸醫診所」提出具體做法。" },
+          { text: "例如在結帳時提供信用卡分期付款服務。", score: 0, status: "wrong", comment: "分期付款屬於「購買決定」階段的付款安排，未能令主人察覺改變愛寵飲食的需要。" },
+          { text: "例如透過廣告宣傳老年貓腎病早期徵狀，或與獸醫診所合辦「老年貓免費腎功能檢查」，作為外在刺激讓主人在愛寵患病前已意識到需要購買護腎鮮食。", score: 1, status: "best", comment: "緊扣個案中「獸醫診斷才意識到需要」的線索，提出合辦免費檢查或廣告宣傳的外在刺激具體做法。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：西貢星海潛水中心（影響搜集資料數量的因素）", topic: "影響資料搜集數量的四項因素", maxMarks: 2,
+      scenario: "志豪在西貢開設了一家潛水訓練中心，大部分報讀「深海潛水領袖課程」的學員都是首次考取高階潛水牌照的人士。市場營銷經理說：「雖然我們沒有進行大量宣傳，但這些準學員在報名前，都會花很多時間在網上搜集有關不同潛水中心師資與裝備的大量資料。」",
+      question: "試以其中一項「影響資料搜集的因素」為例，解釋為何準學員會就深海潛水課程搜集大量資料。（2 分）",
+      steps: [
+        { label: "第 1 步：指出單一核心論點（影響資料搜集的因素 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "因為報讀潛水課程的迫切性極高。", score: 0, status: "wrong", comment: "若購買產品的迫切性高（急需產品），消費者反而沒有時間搜集大量資料。" },
+          { text: "因為同時受到「消費者對產品的經驗、產品價格、產品對消費者的重要性及購買產品的迫切性」四項因素影響。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，應每段只集中闡述一項因素。" },
+          { text: "這受「消費者對產品的經驗」這項因素影響（或選：課程收費價格昂貴／深海潛水安全對學員十分重要／報讀時間不迫切）。", score: 1, status: "best", comment: "清晰鎖定「消費者對產品的經驗」單一因素作為本段重點。" }
+        ]},
+        { label: "第 2 步：針對該單一因素扣連情境並作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "由於這些準學員是首次報讀高階深海潛水課程，以往沒有挑選相關高階潛水訓練中心的經驗（對各中心的教練資歷與裝備安全性認識有限），因此須花費較多時間和精力搜集大量資料。", score: 1, status: "best", comment: "緊扣「首次考取高階潛水牌照、對相關課程沒甚麼經驗」，清楚說明為何他們需要搜集大量資料。" },
+          { text: "因為學員對產品沒有經驗，所以會搜集很多資料。", score: 0, status: "partial", comment: "只重複了第 1 步的字眼，未有結合「首次報讀高階深海潛水課程、對各中心認識有限」的情境。" },
+          { text: "因為學員經常報讀志豪的課程，對中心非常熟悉。", score: 0, status: "wrong", comment: "若對中心非常熟悉（經驗豐富），便無須在報名前搜集大量資料。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：極速輪滑及滑板專門店（心理因素：學習）", topic: "影響消費者決定的心理因素：學習", maxMarks: 2,
+      scenario: "「極速輪滑」是一家售賣專業滾軸溜冰鞋及滑板的零售專門店。店舖經理將制訂新一季市場營銷策略，他指出除了分析顧客的購買「動機」外，還應考慮其他影響顧客購買決定的心理因素。",
+      question: "除了「動機」外，試以其中一項「心理因素」為例，解釋其如何影響滑板及輪滑專門店顧客的購買決定。（2 分）",
+      steps: [
+        { label: "第 1 步：指出單一核心論點（選擇心理因素 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "受「參考團體」影響，例如顧客跟隨滑板比賽冠軍選手代言而購買。", score: 0, status: "wrong", comment: "「參考團體」屬於社會文化因素，並非心理因素。" },
+          { text: "受「學習」這項心理因素影響，即顧客因得到新知識或累積經驗而改變消費行為。", score: 1, status: "best", comment: "準確選出除動機以外的「學習」心理因素並點出其定義。" },
+          { text: "受「動機」影響，顧客購買護膝頭盔以滿足安全需要。", score: 0, status: "wrong", comment: "題目已列明「除了動機外」，回答動機不予給分。" }
+        ]},
+        { label: "第 2 步：針對「學習」扣連滑板及輪滑專門店情境並作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如顧客選擇能反映自身前衛性格和自我形象的街頭塗鴉滑板。", score: 0, status: "wrong", comment: "選擇反映性格和自我形象的滑板屬於「性格和自我概念」，並非第 1 步所選的「學習」。" },
+          { text: "例如顧客會因為過往的經驗而改變購買行為。", score: 0, status: "partial", comment: "只重複了學習的定義，沒有配合「滑板及輪滑專門店」舉例說明。" },
+          { text: "例如顧客若曾在「極速輪滑」購買滾軸溜冰鞋並持續獲得順滑耐用的良好經驗，便會在日後升級裝備時再次光顧該店（反之若曾有軸承易壞的不快經驗，下次便會改買另一品牌）。", score: 1, status: "best", comment: "緊扣「持續獲得良好經驗便會再次購買該產品或光顧該店」完成解釋。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：山野行露營店（社會文化因素：參考團體）", topic: "影響消費者決定的社會文化因素：參考團體", maxMarks: 2,
+      scenario: "「山野行」是一家售賣露營服飾、帳篷和戶外煮食工具的公司，計劃於大型商場開設旗艦店。市場營銷經理說：「為吸引更多顧客，我們可分析影響顧客購買決定的社會文化因素，使旗艦店可制定適切的市場營銷組合策略。」",
+      question: "試以其中一項「社會文化因素」為例，解釋其如何影響「山野行」露營用品店顧客的購買決定。（2 分）",
+      steps: [
+        { label: "第 1 步：指出單一核心論點（選擇社會文化因素 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "受「感知」這項社會文化因素影響。", score: 0, status: "wrong", comment: "「感知」屬於心理因素，並非社會文化因素。" },
+          { text: "同時受「文化、社會階層及參考團體」三項因素影響。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，應每段只集中闡釋一項社會文化因素。" },
+          { text: "受「參考團體（直接參考團體或間接參考團體）」這項社會文化因素影響。", score: 1, status: "best", comment: "清晰鎖定「參考團體」單一社會文化因素。" }
+        ]},
+        { label: "第 2 步：針對「參考團體」扣連露營用品店情境並作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如顧客受到身邊熟悉露營的朋友（直接參考團體）或戶外運動關鍵意見領袖 KOL（間接參考團體）的推介影響，為獲得朋輩接納或信賴專家對產品的認識，而跟隨到「山野行」選購同款帳篷及煮食工具。", score: 1, status: "best", comment: "緊扣直接參考團體（朋友）與間接參考團體（KOL），清楚說明如何影響顧客購買露營裝備。" },
+          { text: "例如高收入、高學歷的中產人士傾向購買昂貴的名牌露營用品。", score: 0, status: "wrong", comment: "按職業、學歷和收入劃分屬於「社會階層」，並非第 1 步所選的「參考團體」。" },
+          { text: "例如顧客會受到直接參考團體和間接參考團體的意見影響。", score: 0, status: "partial", comment: "沒有結合「露營用品、帳篷或戶外 KOL／露營朋友推薦」作具體解釋。" }
+        ]}
+      ]
+    },
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：極光家用智能健身魔鏡（搜集資料）", topic: "個人消費者決策過程：第 2 步「搜集資料」", maxMarks: 3,
+      scenario: "「極光科技」研發了一款掛牆式「AI 體感居家健身魔鏡」（售價 $12,800），能透過鏡頭實時糾正用家的瑜伽及重訓姿勢。公司計劃分析個人消費者的決策過程以助推出新產品。試以消費者決策過程，闡釋顧客購買該款智能健身魔鏡所經過的「搜集資料」步驟。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以第 2 步「搜集資料」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一步驟名稱與概念含義（1分）", colorClass: "hl-s1", opts: [
+          { text: "顧客會同時進行「確認需要、搜集資料、評估方案、購買決定及購買後行為」五個步驟。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每個步驟應獨立成段以作深入闡釋。" },
+          { text: "在第 2 步「搜集資料」中，當顧客確認在家健身的需要後，便會透過個人途徑、商業途徑及公眾途徑搜集與該款智能健身魔鏡相關的資料。", score: 1, status: "best", comment: "準確指出「搜集資料」步驟並點出三種資料搜集途徑。" },
+          { text: "在「搜集資料」步驟中，顧客會決定購買哪一個品牌的健身器材。", score: 0, status: "wrong", comment: "決定購買哪一款產品屬於第 4 步「購買決定」，並非第 2 步「搜集資料」。" }
+        ]},
+        { label: "第 2 步：針對「搜集資料」設定智能健身魔鏡具體例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如顧客會上網找很多關於健身魔鏡的資料。", score: 0, status: "partial", comment: "未有具體說明顧客如何運用個人、商業及公眾途徑搜集健身魔鏡的哪些資訊。" },
+          { text: "例如極光科技公司會向鏡面供應商發出訂購合約。", score: 0, status: "wrong", comment: "題目問的是「個人消費者購買健身魔鏡」的過程，而非商業買家採購零件。" },
+          { text: "由於智能健身魔鏡售價高達 $12,800 且屬嶄新產品（顧客沒甚麼經驗），顧客會向有健身習慣的朋友查詢意見（個人途徑）、瀏覽極光科技的廣告及到陳列室觀看產品展示（商業途徑），並查閱網上健身論壇的用家評價及傳媒實測報道（公眾途徑）。", score: 1, status: "best", comment: "緊扣智能健身魔鏡情境，具體展示個人、商業及公眾三種途徑的應用。" }
+        ]},
+        { label: "第 3 步：深化論述至決策推進與營銷啟示（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過從這三種途徑搜集詳盡的產品資料，顧客能充分掌握各款居家健身器材的體感準確度、內置課程與收費，藉此找出可供選擇的品牌並剔除不可接受者，順利進入下一步的「評估方案」階段。", score: 1, status: "best", comment: "清楚推演出搜集資料如何「協助找出可供選擇的品牌並剔除不可接受者，以銜接下一步評估方案」。" },
+          { text: "這樣顧客便完成了搜集資料這一步。", score: 0, status: "partial", comment: "未有說明搜集所得的資料如何幫助顧客推進至下一決策步驟。" },
+          { text: "這會令所有顧客都感到非常不滿並向消委會提出訴訟。", score: 0, status: "wrong", comment: "投訴與訴訟屬於購買後感到不滿的行為，與購買前搜集資料無關。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：舒眠脊椎物理治療中心（購買後行為）", topic: "個人消費者決策過程：第 5 步「購買後行為」", maxMarks: 3,
+      scenario: "近年不少上班族受肩頸及腰背痛困擾，紛紛選購私家物理治療及脊椎復位套票；然而坊間中心質素良莠不齊。試以購買「脊椎物理治療療程」為例，闡釋消費者決策過程中的「購買後行為」步驟。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以第 5 步「購買後行為」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一步驟名稱與概念含義（1分）", colorClass: "hl-s1", opts: [
+          { text: "在第 5 步「購買後行為」中，消費者在購買並接受脊椎物理治療服務後，會把治療服務的「實際表現」與自己的「預期表現（期望）」作比較，從而產生感到滿意或感到不滿的結果，並採取進一步行動。", score: 1, status: "best", comment: "清楚界定「購買後行為」的核心機制（把產品實際表現與預期表現作比較）。" },
+          { text: "在「購買後行為」中，消費者會在購買療程前設下評估準則比較不同物理治療中心的收費。", score: 0, status: "wrong", comment: "購買前設下準則比較收費屬於第 3 步「評估方案」，並非第 5 步「購買後行為」。" },
+          { text: "消費者買完物理治療療程後會有購買後行為。", score: 0, status: "partial", comment: "未有點出「把產品的實際表現與自己的預期表現（期望）作比較」的核心概念。" }
+        ]},
+        { label: "第 2 步：針對「購買後行為」設定具體物理治療中心例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如病人如果覺得好就會開心，覺得不好就會不開心。", score: 0, status: "partial", comment: "未有結合脊椎物理治療效果，亦未列明滿意與不滿的具體行動。" },
+          { text: "例如若顧客完成物理治療療程後，發現腰背痛楚大為舒緩（實際表現與預期表現相符或超越預期表現），便會感到滿意，成為忠誠顧客、再次購買護脊療程並向同事推介；相反，若療程後痛症加劇或治療師敷衍了事（實際表現不及預期表現），便會感到不滿。", score: 1, status: "best", comment: "緊扣脊椎物理治療效果，清晰對比實際表現符合預期（滿意）與不及預期（不滿）的情境。" },
+          { text: "例如物理治療中心向醫療器材供應商發出訂購合約。", score: 0, status: "wrong", comment: "題目討論的是「個人消費者購買物理治療服務」，而非商業買家採購器材。" }
+        ]},
+        { label: "第 3 步：深化論述至不滿消費者的具體行動與對治療中心的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "這會令物理治療中心無須再繳交診所租金。", score: 0, status: "wrong", comment: "不合理的推論。" },
+          { text: "因此顧客會有不同的行動。", score: 0, status: "partial", comment: "未有說明不滿意的消費者會採取甚麼具體行動（轉買其他品牌、社交圈子批評、向消委會投訴、提出訴訟）。" },
+          { text: "感到不滿的消費者可能會轉而光顧其他物理治療中心、在自己的社交圈子中批評該中心、向該中心或消費者委員會投訴，甚至提出訴訟；因此物理治療中心必須定期量度病人滿意度並及時解決引致不滿的原因。", score: 1, status: "best", comment: "完整涵蓋不滿意消費者的四種購買後行為及定期量度顧客滿意度的營銷啟示。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：尚味手工朱古力專門店（心理因素：感知）", topic: "影響消費者決定的心理因素：感知", maxMarks: 3,
+      scenario: "「尚味朱古力」是一家高檔手工朱古力專門店，市場營銷經理正制訂節日市場計劃，並希望透過店舖裝潢與產品包裝改善顧客的購買體驗。試舉例闡釋「感知」這項心理因素如何影響顧客購買手工朱古力的決定。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「感知」這項心理因素為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一心理因素與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "朱古力店顧客的購買決定受「動機、性格和自我概念、感知、學習及信念和態度」五項心理因素影響。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段應只集中深入闡釋一項因素。" },
+          { text: "顧客的購買決定受「感知」這項心理因素影響；感知是指人們如何透過五感（視覺、聽覺、嗅覺、味覺和觸覺）處理外來的刺激，並把各種刺激轉化為有意思的畫面。", score: 1, status: "best", comment: "準確鎖定「感知」單一心理因素並完整寫出定義。" },
+          { text: "顧客受「感知」影響，即因為跟隨偶像明星的推介而購買朱古力。", score: 0, status: "wrong", comment: "跟隨偶像推介屬於社會文化因素中的「間接參考團體」，並非心理因素中的「感知」。" }
+        ]},
+        { label: "第 2 步：針對「感知」設定具體手工朱古力店例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如當顧客走進「尚味朱古力」專門店時，看到禮盒上燙金的「比利時原材料精製」字句與絲絨包裝（視覺與觸覺刺激）、聞到店內濃郁的可可香氣（嗅覺刺激），以及品嚐店員提供的松露朱古力試食粒（味覺刺激）。", score: 1, status: "best", comment: "緊扣手工朱古力專門店情境，結合視覺、觸覺、嗅覺與味覺外在刺激。" },
+          { text: "例如顧客以前在這間店買過一盒融化了的朱古力，所以以後不再光顧。", score: 0, status: "wrong", comment: "因累積過往不快經驗而改變消費行為，屬於「學習」，並非「感知」。" },
+          { text: "例如顧客在朱古力店會接收到很多不同的刺激。", score: 0, status: "partial", comment: "只重複了「刺激」二字，沒有說明朱古力店內有哪些具體的包裝標籤、香氣或試味刺激。" }
+        ]},
+        { label: "第 3 步：深化論述至把刺激轉化為畫面及促成購買決定（1分）", colorClass: "hl-s3", opts: [
+          { text: "這會令可可豆的進口價格自動減半。", score: 0, status: "wrong", comment: "因果無關。" },
+          { text: "這樣顧客就會處理這些刺激。", score: 0, status: "partial", comment: "未有說明顧客如何把這些刺激轉化為對產品的正面印象及購買行動。" },
+          { text: "顧客會把這些「比利時精製」標籤、絲絨禮盒與香濃可可味的刺激，在腦海中轉化為「這是頂級尊貴的高尚禮品」的有意思畫面，從而吸引追求高品質的顧客購買。", score: 1, status: "best", comment: "清楚推演出「把外來感官刺激轉化為高尚禮品的有意思畫面，從而吸引顧客購買」的核心邏輯。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：綠活純素有機護膚品牌（性格和自我概念）", topic: "影響消費者決定的心理因素：性格和自我概念", maxMarks: 3,
+      scenario: "「綠活草本 (GreenGlow)」是一個主打零動物測試、100% 純素草本配方的本地新創護膚品牌。面對傳統大型化學合成護膚品牌的競爭，店主希望分析影響顧客購買決定的心理因素。試闡釋「性格和自我概念」這項心理因素如何影響顧客選購該純素護膚品牌的決定。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「性格和自我概念」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一心理因素與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "顧客受「性格和自我概念」這項心理因素影響：消費者的購買行為取決於本身的性格（如思想開通 vs 保守），而「自我概念（又稱自我形象）」則指某人對於自己的看法和感覺，消費者傾向購買能反映自我概念的產品或品牌。", score: 1, status: "best", comment: "完整界定「性格」與「自我概念（自我形象）」的定義。" },
+          { text: "顧客購買護膚品是為了在肚餓時充飢。", score: 0, status: "wrong", comment: "概念錯配。" },
+          { text: "顧客有自己的性格和自我概念。", score: 0, status: "partial", comment: "未有說明「自我概念指某人對自己的看法和感覺，且傾向購買能反映自我概念的產品」。" }
+        ]},
+        { label: "第 2 步：針對「性格和自我概念」設定具體純素護膚品牌例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如顧客上次用過另一品牌的洗面奶覺得太乾，所以今次不再買。", score: 0, status: "wrong", comment: "因過往不快經驗而改變消費行為屬於「學習」，並非性格和自我概念。" },
+          { text: "例如性格思想開通的消費者願意嘗試「綠活草本」這個新創立的純素護膚品牌；同時，不少顧客覺得自己是一個「愛護動物、崇尚天然環保與綠色生活的人」（自我概念），因此選擇購買標明零動物測試及純素配方的護膚品。", score: 1, status: "best", comment: "緊扣「思想開通性格嘗試新品牌」及「反映愛護動物與綠色生活的自我概念」。" },
+          { text: "例如不同性格的人會買不同的護膚品。", score: 0, status: "partial", comment: "沒有結合純素有機護膚品的特色與顧客對自身形象的看法作具體說明。" }
+        ]},
+        { label: "第 3 步：深化論述至品牌認同與營銷啟示（1分）", colorClass: "hl-s3", opts: [
+          { text: "當「綠活草本」零殘忍、純素天然的品牌理念與顧客對自己的看法和感覺（自我概念）高度一致時，購買該產品便能強化顧客的自我形象認同，從而吸引這群目標顧客持續支持，無懼傳統大型品牌的競爭。", score: 1, status: "best", comment: "深入推演出「品牌理念反映自我概念 → 強化自我形象認同 → 吸引目標客群持續支持」。" },
+          { text: "這樣顧客就會買那支護膚品。", score: 0, status: "partial", comment: "闡述流於表面。" },
+          { text: "這會令護膚品店的租金自動免除。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：尊尚私人遊艇及水上運動會所（社會階層）", topic: "影響消費者決定的社會文化因素：社會階層", maxMarks: 3,
+      scenario: "「蔚藍會 (Azure Club)」在西貢提供私人遊艇租賃、帆船訓練及大眾化獨木舟日租服務。市場營銷經理正分析影響顧客購買決定的社會文化因素。試舉例闡釋「社會階層」這項社會文化因素如何影響顧客選購不同海上休閒服務的決定。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「社會階層」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一社會文化因素與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "顧客受「社會階層」影響，這是一項個人心理因素。", score: 0, status: "wrong", comment: "社會階層屬於「社會文化因素」，並非心理因素。" },
+          { text: "顧客的購買決定受「社會階層」這項社會文化因素影響；社會階層是指一群擁有相似社會地位的人，一個人所屬的社會階層通常根據其「職業、學歷和收入」而定，相同社會階層內的成員會擁有相似的價值觀、興趣和消費喜好。", score: 1, status: "best", comment: "準確指出「社會階層」及其決定基礎（職業、學歷和收入）與同質消費喜好。" },
+          { text: "顧客受社會階層影響，因為社會上有不同的人。", score: 0, status: "partial", comment: "必須指出社會階層是根據「職業、學歷和收入」而定，且同階層成員有相似消費喜好。" }
+        ]},
+        { label: "第 2 步：針對「社會階層」設定具體水上運動會所例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如顧客在端午節觀看龍舟比賽。", score: 0, status: "wrong", comment: "端午節習俗屬於「文化」，並非「社會階層」。" },
+          { text: "例如不同社會階層的人會玩不同的水上活動。", score: 0, status: "partial", comment: "未有具體說明上層高收入階層與一般大眾階層在選購遊艇與獨木舟服務及接觸媒體時的喜好差異。" },
+          { text: "例如屬於上層社會階層（高收入企業高管、專業人士）的消費者，重視尊貴私密體驗與身份象徵，常閱讀旅遊及財經名流雜誌，並傾向花費數萬元包租豪華私人遊艇出海；相反，一般基層或學生消費者則重視價格相宜，傾向選擇百多元的大眾化獨木舟日租服務。", score: 1, status: "best", comment: "清晰對比不同社會階層在私人遊艇包船與平價獨木舟日租、以及喜愛媒體種類上的差異。" }
+        ]},
+        { label: "第 3 步：深化論述至會所市場營銷策略啟示（1分）", colorClass: "hl-s3", opts: [
+          { text: "因此，蔚藍會的市務人員可根據目標顧客所屬的社會階層，設計不同價位與服務規格的海上活動套餐，並選擇在各社會階層喜愛的媒體種類（如在旅遊名流雜誌推廣私人遊艇、在社交平台推廣平價獨木舟）進行針對性宣傳。", score: 1, status: "best", comment: "結合社會階層與喜愛媒體種類的關係及產品定價策略。" },
+          { text: "所以社會階層會影響顧客出海。", score: 0, status: "partial", comment: "循環論證。" },
+          { text: "這會令西貢的海水自動退潮。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：鮮味急凍點心製造廠（需求性質與價格敏感度）", topic: "商業消費市場 vs 個人消費市場：需求性質與價格敏感度", maxMarks: 3,
+      scenario: "「鮮味點心製造廠」同時向兩類顧客出售急凍蝦餃燒賣：(1) 採購點心烹調出售予食客的連鎖酒樓及火鍋店（商業消費市場）；(2) 購買小包裝急凍點心回家自己食用的家庭主婦（個人消費市場）。試闡釋這兩個市場在「需求性質」及由此衍生的「買家對價格的敏感度」上的分別。",
+      question: "請遵循「一段一個獨立重點」原則，結合「需求性質（引申需求）」與「價格敏感度」進行雙向對比，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「需求性質」的比較維度與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "兩個市場在「需求性質、決策複雜程度、購貨金額、買家數目及買賣關係」五方面都有分別。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，切勿在同一段落一次過列出所有比較項目。" },
+          { text: "首先，兩個市場在「需求性質」上不同：商業消費市場中的大部分需求都是「引申需求（又稱衍生需求）」，即對某一產品的需求源自消費者對另一產品的需求；相反，個人消費市場中消費者對產品的需求通常直接與其個人需要有關。", score: 1, status: "best", comment: "清晰點出商業市場屬「引申需求（衍生需求）」而個人市場直接與個人需要有關。" },
+          { text: "商業消費市場屬於個人直接需要，個人消費市場屬於引申需求。", score: 0, status: "wrong", comment: "概念顛倒，商業消費市場才是引申需求（衍生需求）。" }
+        ]},
+        { label: "第 2 步：針對「急凍點心製造廠的兩個市場」進行雙向情境對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "在商業消費市場中，連鎖酒樓及火鍋店向點心廠訂購急凍蝦餃燒賣的需求，源自最終茶客及食客對酒樓點心餐飲的消費需求（買入是為了烹調出售獲利）；相反，在個人消費市場中，家庭主婦買急凍點心是直接為了自己和家人作早餐或宵夜充飢。", score: 1, status: "best", comment: "清楚對比連鎖酒樓（需求源自食客餐飲需求）與家庭主婦（買入自用充飢）。" },
+          { text: "酒樓買點心是為了賣給茶客。", score: 0, status: "partial", comment: "作答兩大市場比較題時，必須同時描述「商業消費市場」與「個人消費市場」作雙向對比。" },
+          { text: "家庭主婦對點心的需求衍生自酒樓的點心供應。", score: 0, status: "wrong", comment: "因果倒轉，是酒樓對點心食材的需求衍生自食客的消費需求。" }
+        ]},
+        { label: "第 3 步：深化論述至「買家對價格的敏感度」差異（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於商業買家的需求主要是引申需求，所以商業買家對價格的敏感度普遍低於個人消費者（需求彈性較低）：若市道淡靜、外出飲茶的食客沒有增加，即使點心廠減價，酒樓也不會盲目增加訂購蝦餃；相反，家庭主婦對價格較敏感，往往會因超市急凍點心減價促銷而多買幾包回家。", score: 1, status: "best", comment: "解釋引申需求如何導致商業買家對價格較不敏感，並與個人消費者因減價多買作對比。" },
+          { text: "所以這兩個市場的需求性質是不同的。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "因此商業買家對價格極度敏感，減價一元就會買多十倍。", score: 0, status: "wrong", comment: "商業買家對價格的敏感度普遍低於個人消費者。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：智安防盜系統公司（決策複雜程度與參與人數）", topic: "商業消費市場 vs 個人消費市場：決策複雜程度", maxMarks: 3,
+      scenario: "「智安科技」以往專門向商業大廈及銀行銷售大型閉路電視及門禁防盜系統（商業消費市場），今年計劃推出家用智能防盜門眼及迷你網絡鏡頭，將業務擴展至一般家庭住戶（個人消費市場）。試闡釋商業消費市場和個人消費市場在「參與購買決策的人數和購買決策的複雜程度」上的分別。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「參與購買決策的人數與購買決策的複雜程度」為核心，建構一個 3 分雙向對比論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一比較維度與核心特徵（1分）", colorClass: "hl-s1", opts: [
+          { text: "在「參與購買決策的人數與購買決策的複雜程度」方面，商業買家的購買決策一般比個人消費者複雜，且通常有多人參與；相反，個人消費者的購買決策較簡單，通常由個人消費者直接自行作出決定。", score: 1, status: "best", comment: "準確點出商業買家（決策較複雜、多人參與）與個人消費者（決策較簡單、自行決定）的核心對比。" },
+          { text: "與個人消費市場相比，商業消費市場的購買決策通常有較多人參與，因此決策所需時間較短。", score: 0, status: "wrong", comment: "由於商業買家的決策過程複雜且多人參與，所以須花費較多時間（所需時間較長）作出決定。" },
+          { text: "兩個市場的購買決定有分別。", score: 0, status: "partial", comment: "未有指出「複雜程度、多人組成採購委員會及正式審批程序」等關鍵概念。" }
+        ]},
+        { label: "第 2 步：解釋為何商業買家決策較複雜並與個人消費者作雙向對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "商業買家（如銀行採購全棟大廈防盜系統）的決策較複雜，原因有二：(i) 決策過程通常有多人（如保安部主管、資訊科技工程師、財務部和高級管理層）組成「採購委員會」共同作出決定；(ii) 作出購買決定時須遵從各種正式的決策或「審批程序」（如邀請供應商提交建議書和發出訂購合約）；相反，個人消費者買一個幾百元的家用防盜鏡頭自用，對產品所知有限，直接自行決定，甚至可能因包裝精美或減價而一時衝動買下。", score: 1, status: "best", comment: "完整點出兩個原因（多人組成採購委員會 ＋ 遵從正式決策或審批程序）並與個人衝動購買作對比。" },
+          { text: "銀行買防盜系統要很多人開會決定。", score: 0, status: "partial", comment: "既未提及「採購委員會與正式審批程序」，亦漏了與「個人消費者」作雙向對比。" },
+          { text: "銀行買防盜系統和個人買防盜門眼的程序完全一樣。", score: 0, status: "wrong", comment: "不正確的陳述。" }
+        ]},
+        { label: "第 3 步：深化論述至決策所需時間與專業買家特質（1分）", colorClass: "hl-s3", opts: [
+          { text: "基於上述原因，商業買家通常是資深的專業買家，且由於決策過程複雜，須花費較多時間才能作出購買決定；因此智安科技向商業客戶銷售時須提供詳盡的保安工程建議書，而向個人家庭銷售時則可強調簡易安裝與吸引的零售包裝。", score: 1, status: "best", comment: "結合「資深專業買家、花費較多時間作出決定」及相應營銷配合。" },
+          { text: "因此商業市場和個人市場的複雜程度不同。", score: 0, status: "partial", comment: "循環論證。" },
+          { text: "這會令個人消費者全部變成保安工程師。", score: 0, status: "wrong", comment: "不合邏輯的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：採購新型電動冷凍貨車（商業決策第 3 步：評估與選擇供應商）", topic: "商業買家決策過程五步驟：第 3 步「評估與選擇供應商」", maxMarks: 3,
+      scenario: "「鮮達冷鏈物流公司」發現現役柴油冷凍貨車日趨老化，正考慮採購新型號的純電動智能溫控冷凍貨車以取代現有車隊。試根據商業買家的決策過程五步驟（1. 確認問題與需求規格描述 ➔ 2. 尋找潛在供應商 ➔ 3. 評估與選擇供應商 ➔ 4. 決定購買與簽約 ➔ 5. 購後表現評估），描述該物流公司在第 3 步「評估與選擇供應商」中應採取的行動。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以商業買家決策過程的第 3 步「評估與選擇供應商」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一商業採購步驟名稱與核心行動（1分）", colorClass: "hl-s1", opts: [
+          { text: "在第 3 步「評估與選擇供應商」中，當物流公司完成第 2 步尋找潛在供應商並邀請各合資格商用車製造商提交標書與詳細報價單（建議書）後，公司的跨部門採購委員會便會根據既定準則綜合評審各廠商，並選出最合適的中標車廠。", score: 1, status: "best", comment: "清楚界定第 3 步「評估與選擇供應商」在承接提交標書後的綜合評審角色。" },
+          { text: "物流公司管理層在街上見到貨車廣告覺得顏色漂亮，便即場用現金買下三十輛冷凍貨車。", score: 0, status: "wrong", comment: "商用車隊屬龐大資本採購，必須經過嚴謹的供應商評估與審批。" },
+          { text: "物流公司會同時進行確認問題與需求規格描述、尋找潛在供應商、評估與選擇供應商、決定購買與簽約及購後表現評估五個步驟。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每個採購步驟應獨立成段並結合電動冷凍貨車例子作具體說明。" }
+        ]},
+        { label: "第 2 步：針對「評估與選擇供應商」設定純電動冷凍貨車的具體評審準則（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如物流公司會看看哪一間供應商比較好。", score: 0, status: "partial", comment: "未有列明物流公司在評估車廠標書時會考慮哪些具體技術與商業條件。" },
+          { text: "例如物流公司的車隊工程部、營運部及財務部人員會依據「車價、環保節能電池續航技術、車廂冷鏈溫控穩定度、車廠過往表現與聲譽、售後維修保養支援以及按時交付期」等準則，對各車廠提交的標書進行綜合評審。", score: 1, status: "best", comment: "緊扣純電動冷凍貨車採購情境，完整涵蓋價格、環保節能與溫控技術、過往表現聲譽、售後維修支援及交付期等評審準則。" },
+          { text: "例如物流公司向超市客戶提供運費九折優惠。", score: 0, status: "wrong", comment: "向客戶提供運費優惠屬於市場推廣，並非採購新冷凍車時評估車廠的步驟。" }
+        ]},
+        { label: "第 3 步：深化論述至選定中標車廠、銜接簽約步驟與對物流營運的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過嚴謹的多維度綜合評審，物流公司能選出性價比最高且技術最可靠的車廠作為中標供應商，繼而進入第 4 步「決定購買與簽約」（確認採購型號與合約條款並正式簽訂買賣協議排期生產），確保新購入的電動冷凍車隊日後能安全穩定地維持生鮮配送服務。", score: 1, status: "best", comment: "清楚推演出「綜合評審選定中標車廠 → 銜接第 4 步決定購買與簽約 → 保障日後冷鏈配送穩定可靠」。" },
+          { text: "這樣物流公司便選出了供應商。", score: 0, status: "partial", comment: "未有說明選定中標車廠後如何銜接下一步簽約及對車隊營運的重要性。" },
+          { text: "這會令物流公司無須再聘請任何貨車司機。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>

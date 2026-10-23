@@ -1,0 +1,1717 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 產品及服務的市場營銷策略（一）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 9px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 680px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sidebar-layout { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13px; color: var(--mute); font-weight: 500; flex-shrink: 0; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .case-box {
+      border-left: 4px solid var(--teal);
+      background: var(--teal-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+
+    /* Comparison Table */
+    table.comp-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 16.5px; }
+    table.comp-table th, table.comp-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.comp-table th { background: var(--surface); font-weight: 800; color: var(--ink); }
+    table.comp-table tr.highlight-row { background: var(--primary-light); }
+
+    /* Flow Chain */
+    .flow-chain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0;
+      padding: 16px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+    }
+    .flow-node {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15.5px;
+      text-align: center;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1.5px solid var(--primary-border);
+    }
+    .flow-arrow { font-size: 18px; font-weight: 800; color: var(--mute); }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.correct, .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.wrong, .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .grid3, .sidebar-layout { grid-template-columns: 1fr; }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 5 課：產品及服務的市場營銷策略（一）</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-product">1. 產品策略 (Product)</button>
+    <button data-tab="sec-price">2. 定價策略 (Price)</button>
+    <button data-tab="sec-place">3. 分銷策略 (Place)</button>
+    <button data-tab="sec-promo">4. 推廣策略 (Promotion)</button>
+    <button data-tab="sec-builder">5. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 產品策略 (Product) ==================== -->
+<section class="view on" id="sec-product">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">市場營銷組合元素一：產品 (Product)</span>
+      <h1>產品策略：產品項目層面（5項）與產品線層面（延伸與填補）</h1>
+      <p>市場營銷組合是指企業可以控制的一系列市場營銷工具或變數（統稱為 4P：產品、價格、分銷和推廣），企業可藉此滿足目標市場的需要。產品策略是指企業有關產品管理的決策和行動，須從「產品項目層面」和「產品線層面」制定和執行。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('prod', 0, this)">產品項目層面（5個重要事項）</button>
+      <button onclick="switchSub('prod', 1, this)">產品線層面與情境練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：產品項目層面的五個重要事項 -->
+  <div class="sub-view active" id="prod-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="prodItemNavList"></div>
+      <div class="card" id="prodItemDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：產品線層面（延伸 vs 填補）與情境練習 -->
+  <div class="sub-view" id="prod-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">產品線層面</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">產品線的特點與擴充產品線的兩種方法</h3>
+        <div style="font-size:16px;color:var(--ink-sec);margin-bottom:12px">
+          <b>產品線定義：</b>一系列互有關連且功能相近的產品（產品項目）。同一產品線內的產品有兩大特點：<b>(i) 生產條件相似</b>；以及 <b>(ii) 出售予有相似需要或屬於同一目標市場的消費者</b>。<br>
+          <b>產品線的長度：</b>某條產品線內的產品項目總數。企業可透過以下兩種方法擴充產品線：
+        </div>
+        <div class="chips" id="plineChips">
+          <button class="chip active" onclick="renderPline(0)">1. 產品線延伸（下向延伸 vs 上向延伸）</button>
+          <button class="chip" onclick="renderPline(1)">2. 產品線填補</button>
+        </div>
+        <div id="plineVisual" style="margin-top:10px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">產品策略判斷練習</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨識產品項目層面與產品線擴充方法（共 6 題）</h3>
+        <p id="prodQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="prodQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div id="prodQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="prodQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 定價策略 (Price) ==================== -->
+<section class="view" id="sec-price">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">市場營銷組合元素二：價格 (Price)</span>
+      <h1>定價策略：影響定價決定的內外在因素與新產品定價</h1>
+      <p>價格是目標顧客購買產品時須支付的金額；定價策略是指企業為其產品釐定價格的相關決策和行動。企業為產品定價時須同時考慮三大內在因素與四大外在因素，而在推出新產品時可採用撇油性定價策略或滲透性定價策略。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('price', 0, this)">影響定價決定的因素（內在與外在）</button>
+      <button onclick="switchSub('price', 1, this)">新產品定價策略與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：影響定價決定的內在因素（3項）與外在因素（4項） -->
+  <div class="sub-view active" id="price-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="priceFacNavList"></div>
+      <div class="card" id="priceFacDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：新產品的定價策略（撇油性 vs 滲透性）+ 綜合定價挑戰 -->
+  <div class="sub-view" id="price-sub-1">
+    <div class="card">
+      <span class="badge b-blue">新產品的定價策略</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">比較「撇油性定價策略」與「滲透性定價策略」</h3>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:20%">比較項目</th>
+            <th style="width:40%">1. 撇油性定價策略 (Skimming Pricing Strategy)</th>
+            <th style="width:40%">2. 滲透性定價策略 (Penetration Pricing Strategy)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>核心定義</b></td>
+            <td>企業<b>最初以高價銷售產品</b>，目的是從願意付出較高價格嘗試新產品的消費者手中賺取收益；隨着時間過去，會逐漸把價格下調，以吸引其他對價格較敏感的消費者。</td>
+            <td>企業<b>最初以低價銷售產品</b>，藉此吸引大量消費者嘗試新產品。</td>
+          </tr>
+          <tr>
+            <td><b>目標消費者</b></td>
+            <td><b>對價格敏感度低的消費者</b>（例如售賣高科技消費品的企業）</td>
+            <td><b>對價格非常敏感的消費者</b>（例如飲品生產商）</td>
+          </tr>
+          <tr>
+            <td><b>初期價格</b></td>
+            <td><b>可訂定的最高價格</b></td>
+            <td><b>相對較低的價格</b></td>
+          </tr>
+          <tr>
+            <td><b>初期目的</b></td>
+            <td><b>透過較高的利潤率賺取最多的短期利潤</b>（並收回高昂研發成本）</td>
+            <td><b>在最短的時間內奪取／擴大市場佔有率</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span class="badge b-teal">定價因素與策略挑戰</span>
+        <span id="priceQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+      </div>
+      <div id="priceQuizQ" style="font-size:17.5px;font-weight:700;margin-bottom:14px"></div>
+      <div id="priceQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+      <div id="priceQuizFb" style="margin-top:14px;font-size:16px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 分銷策略 (Place) ==================== -->
+<section class="view" id="sec-place">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">市場營銷組合元素三：分銷 (Place)</span>
+      <h1>分銷策略：途徑成員、直接與間接分銷及分銷密集度</h1>
+      <p>分銷策略是指企業讓目標顧客更容易獲得其產品的決策和行動（通常包括運輸模式、存貨控制、訂單處理、倉庫儲存，以及挑選合適的市場營銷途徑成員）。市場營銷途徑是一系列互相依賴的機構，共同把產品送達消費者手中。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('place', 0, this)">途徑成員種類與直接／間接分銷</button>
+      <button onclick="switchSub('place', 1, this)">三種分銷密集度與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：途徑成員種類與功能 + 直接分銷 vs 間接分銷 -->
+  <div class="sub-view active" id="place-sub-0">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+        <div>
+          <span class="badge b-blue">市場營銷途徑與分銷方式</span>
+          <h3 style="font-size:21px;margin-top:4px">途徑成員種類、直接分銷與間接分銷及五大決定因素</h3>
+        </div>
+        <div class="chips" id="placeTabChips" style="margin:0">
+          <button class="chip active" onclick="renderPlaceTab(0)">1. 途徑成員的五項功能與四種類別</button>
+          <button class="chip" onclick="renderPlaceTab(1)">2. 直接分銷 vs 間接分銷（好處與壞處）</button>
+          <button class="chip" onclick="renderPlaceTab(2)">3. 決定採用直接或間接分銷的五項因素</button>
+        </div>
+      </div>
+      <div id="placeTabBox"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：密集性、獨家性與選擇性分銷 + 練習 -->
+  <div class="sub-view" id="place-sub-1">
+    <div class="card">
+      <span class="badge b-blue">決定每一層級途徑成員的數目</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">比較密集性分銷、獨家性分銷與選擇性分銷</h3>
+      <p style="font-size:16px;color:var(--ink-sec);margin:0 0 10px">如企業採用間接分銷，便要決定每一層級途徑成員的數目（例如零售商的數目）。在這方面有三個選擇：</p>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:19%">比較項目</th>
+            <th style="width:27%">1. 密集性分銷<br><small style="font-weight:500;color:var(--mute)">(Intensive Distribution)</small></th>
+            <th style="width:27%">2. 獨家性分銷（獨家經銷）<br><small style="font-weight:500;color:var(--mute)">(Exclusive Distribution)</small></th>
+            <th style="width:27%">3. 選擇性分銷<br><small style="font-weight:500;color:var(--mute)">(Selective Distribution)</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>核心定義</b></td>
+            <td>企業<b>盡量以最多途徑成員</b>分銷產品，把市場覆蓋率擴至最大。</td>
+            <td>企業<b>只容許少數途徑成員在各自經營的地區獨家分銷</b>產品（通常要求不能售賣競爭對手產品）。</td>
+            <td>企業在每個地區<b>只選擇部分（多於一個但少於全部）途徑成員</b>來分銷產品。</td>
+          </tr>
+          <tr>
+            <td><b>途徑成員的數目</b></td>
+            <td><b>越多越好</b></td>
+            <td><b>每個地區只有一個</b></td>
+            <td><b>每個地區多於一個但少於全部</b></td>
+          </tr>
+          <tr>
+            <td><b>對途徑成員的控制程度</b></td>
+            <td><b>低</b></td>
+            <td><b>高</b></td>
+            <td><b>中等</b></td>
+          </tr>
+          <tr>
+            <td><b>接觸的消費者數目</b></td>
+            <td><b>多</b></td>
+            <td><b>少</b></td>
+            <td><b>中等</b></td>
+          </tr>
+          <tr>
+            <td><b>主要策略性考慮</b></td>
+            <td><b>讓消費者容易買到產品</b></td>
+            <td><b>產品的形象</b>（緊密監控途徑成員並提升產品形象）</td>
+            <td><b>與途徑成員的關係和對它們的控制</b>（集中資源建立緊密合作，對定價、推廣、存貨和服務取得較大控制權）</td>
+          </tr>
+          <tr>
+            <td><b>適用產品例子</b></td>
+            <td>快速流動性消費品（如汽水、糖果、薯片、洗髮水和牙膏）</td>
+            <td>名貴汽車、名貴手錶、設計師精品</td>
+            <td>高級化妝品、沙發傢俬、高檔家庭電器</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note-box">
+        <b>服務業企業可採用的分銷策略例子：</b>由於服務是無形的，提供服務的企業（如餐廳或銀行）可透過<b>開設更多分店／分行、提供外送服務、延長營業時間、開發手機應用程式供顧客在網上點餐或辦理業務</b>等方式，讓目標顧客更容易獲得服務。
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span class="badge b-teal">分銷策略判斷練習</span>
+        <span id="placeQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+      </div>
+      <div id="placeQuizQ" style="font-size:17.5px;font-weight:700;margin-bottom:14px"></div>
+      <div id="placeQuizBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+      <div id="placeQuizFb" style="margin-top:14px;font-size:16px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 推廣策略 (Promotion) ==================== -->
+<section class="view" id="sec-promo">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">市場營銷組合元素四：推廣 (Promotion)</span>
+      <h1>推廣策略：推廣六步驟、五種推廣組合工具與選擇因素</h1>
+      <p>推廣策略是指企業怎樣把產品的特點和優點告知目標顧客，並遊說他們購買產品的行動和決策。企業要更有效地推廣產品，須經過六個步驟，並從「推廣組合（市場營銷溝通組合）」中挑選合適的工具。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('promo', 0, this)">五種推廣組合工具與優缺點</button>
+      <button onclick="switchSub('promo', 1, this)">推廣六步驟、選擇因素與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 4A：五種推廣組合工具（廣告、促銷、公共關係、個人銷售、直接行銷） -->
+  <div class="sub-view active" id="promo-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="promoToolNavList"></div>
+      <div class="card" id="promoToolDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 4B：推廣六步驟、影響選擇推廣工具的三項因素 & 情境練習 -->
+  <div class="sub-view" id="promo-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">推廣流程與選擇因素</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">有效推廣的六個步驟 ＆ 挑選推廣工具的三項因素</h3>
+        <div style="background:var(--surface);padding:14px 16px;border-radius:12px;border:1px solid var(--line);margin-bottom:14px;font-size:15.5px">
+          <b style="color:var(--primary)">有效推廣產品的六項工作步驟：</b><br>
+          <b>第 1 步：確認目標受眾</b>（確認希望把信息傳達給哪些人） ➔ <b>第 2 步：訂立溝通目標</b>（決定希望從目標受眾得到甚麼反應） ➔ <b>第 3 步：設計溝通信息</b> ➔ <b>第 4 步：制定財務預算</b>（決定在推廣上應花費的金額） ➔ <b>第 5 步：挑選推廣組合工具</b> ➔ <b>第 6 步：量度溝通成果</b>（評估推廣活動的效用）。
+        </div>
+        <div style="font-size:15.5px;line-height:1.75">
+          <b style="color:var(--teal)">影響企業選擇推廣組合工具的三項因素：</b>
+          <ul style="margin:6px 0 0;padding-left:20px">
+            <li><b>1. 目標受眾：</b>向<b>途徑成員（中間商）</b>推廣常用「個人銷售和促銷」；向<b>最終消費者</b>推廣常用「促銷和廣告」。</li>
+            <li><b>2. 市場種類：</b><b>個人消費市場</b>較依賴「廣告和促銷」（可接觸大量潛在買家）；<b>商業消費市場</b>較依賴「個人銷售」（因產品性質較複雜且市場上買家數目較少）。</li>
+            <li><b>3. 溝通目標：</b>若為「建立產品認知、增加消費者對產品的興趣」，常用「廣告和公共關係」；若為「提高購買意慾、促成實際購買行動」，常用「促銷和個人銷售」。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">推廣組合工具辨識練習</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨識企業採用的推廣組合元素（共 6 題）</h3>
+        <p id="promoQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="promoQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" onclick="checkPromoQuiz('廣告')">廣告</button>
+          <button class="btn btn-teal" onclick="checkPromoQuiz('促銷')">促銷</button>
+          <button class="btn" style="background:#334155" onclick="checkPromoQuiz('公共關係')">公共關係</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkPromoQuiz('個人銷售')">個人銷售</button>
+          <button class="btn btn-green" onclick="checkPromoQuiz('直接行銷')">直接行銷</button>
+        </div>
+        <div id="promoQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一產品策略、定價策略、分銷方式或推廣組合工具名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 針對該單一論點結合個案背景與具體行動加以解釋
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一核心概念／考慮因素／推廣元素名稱並界定其含義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 設定具體商業例子，解釋企業採取的行動與運作方式<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至銷售額、市場佔有率、成本控制、品牌形象或顧客滿意度的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 產品策略 (Product) ======
+  const prodItemCatalog = [
+    {
+      num: "01",
+      title: "1. 產品特質",
+      badge: "產品質素・產品特點・風格與設計",
+      def: "產品特質是指企業想透過產品帶給目標消費者的主要好處，包含三個範疇：",
+      points: [
+        "<b>• 產品質素</b>：例如產品是否耐用、員工能否提供專業的服務（如採用比競爭對手更先進的過濾技術）。",
+        "<b>• 產品特點</b>：例如產品是否有新的功能、是否有競爭對手產品欠缺的特點（如吸塵機能同時自動洗地及熱風烘乾）。",
+        "<b>• 風格與設計</b>：例如產品是否有獨特的風格、是否採用創新或方便使用的設計（如採用可摺疊收納的輕巧機身設計）。"
+      ],
+      caseEx: "<b>商業應用例子（智能空氣清新機生產商）：</b>生產商在新型號空氣清新機中加入競爭對手欠缺的「寵物浮毛吸附及自動集塵功能」，並採用圓柱形木紋極簡風格設計以融入現代家居。"
+    },
+    {
+      num: "02",
+      title: "2. 品牌建立 (Branding)",
+      badge: "辨認企業產品・有別於競爭對手",
+      def: "「品牌」是一個名字、詞語、圖像、符號或設計，目的是幫助消費者辨認企業的產品，並使產品有別於其他競爭對手。建立和管理品牌形象的過程稱為「品牌建立」。",
+      points: [
+        "<b>• 決定合適的品牌名稱</b>：企業要成功建立一個品牌，須先決定合適的品牌名稱，以準確反映產品的定位與形象。",
+        "<b>• 品牌建立的構成部分</b>：除了<b>品牌名稱和標誌</b>外，<b>員工制服</b>甚至店舖的<b>內部裝潢</b>也是企業品牌建立過程的一部分。"
+      ],
+      caseEx: "<b>商業應用例子（天然茶飲品牌）：</b>公司以「翠茗軒」作為品牌名稱並設計青竹標誌，店內採用日式木質茶室裝潢及統一亞麻布員工制服，向目標消費者灌輸天然、健康與雅致的品牌形象。"
+    },
+    {
+      num: "03",
+      title: "3. 包裝 (Packaging)",
+      badge: "盛載和保護產品・即時辨認品牌",
+      def: "包裝包括設計及生產用以盛載產品的容器或包裝紙（與售賣有形產品的企業較為相關）。",
+      points: [
+        "<b>• 功能 (i) 盛載和保護產品</b>：採用合適堅固的包裝物料，防止產品在運送和儲存過程中受損或變質。",
+        "<b>• 功能 (ii) 讓顧客即時辨認品牌</b>：獨特的容器形狀、顏色或包裝盒設計，能讓顧客在貨架上即時辨認出一家公司或一個品牌。"
+      ],
+      caseEx: "<b>商業應用例子（手工朱古力生產商）：</b>採用獨特的八角形燙金鐵盒盛載松露朱古力，既能妥善保護朱古力免受擠壓融化，又能讓顧客在商場貨架上一眼辨認出該品牌。"
+    },
+    {
+      num: "04",
+      title: "4. 標籤 (Labelling)",
+      badge: "辨認產品・描述特性・推廣產品",
+      def: "標籤一般是指附在產品本身或包裝上的一張紙或其他物料（與售賣有形產品的企業較為相關），並須確保符合相關法律要求（如預先包裝食物的營養資料標籤制度、電器的強制性能源效益標籤計劃）。",
+      points: [
+        "<b>標籤的三項主要功能</b>：<br>• <b>(i) 幫助消費者辨認產品</b>（如在新鮮水果或產品外殼貼上品牌貼紙）<br>• <b>(ii) 描述產品的特性</b>（如列明成分、產地、營養資料、使用方法或採用了最新硬件規格）<br>• <b>(iii) 推廣產品</b>（透過醒目圖案與宣傳字句吸引顧客購買）"
+      ],
+      caseEx: "<b>商業應用例子（有機燕麥奶生產商）：</b>在紙盒包裝貼上顯眼的標籤，當中清楚列明「零膽固醇、高鈣及澳洲有機認證燕麥製造」等產品特性，幫助消費者辨認並吸引購買。"
+    },
+    {
+      num: "05",
+      title: "5. 產品支援服務",
+      badge: "附加服務與售後服務・取得競爭優勢",
+      def: "企業可考慮提供產品支援服務，讓目標消費者得到更多好處，並對產品更感滿意。企業可選擇免費提供、在保養期內免費提供或收取合理費用；部分企業透過提供高質素或獨有的產品支援服務來取得競爭優勢。",
+      points: [
+        "<b>常見的產品支援服務例子</b>：<br>• <b>送貨服務</b><br>• <b>組裝及安裝服務</b><br>• <b>維修及保養服務</b><br>• <b>技術支援服務</b>（如 24 小時查詢及技術支援熱線）<br>• <b>修改服務</b>（如服裝店提供免費改衣服務）<br>• <b>退貨及退款服務</b>"
+      ],
+      caseEx: "<b>商業應用例子（訂造書枱及人體工學椅專門店）：</b>為顧客提供免費送貨、專人上門組裝及安裝服務，以及五年結構免費上門維修及保養服務，大幅提升顧客滿意度。"
+    }
+  ];
+
+  function renderProdItem(idx) {
+    document.getElementById('prodItemNavList').innerHTML = prodItemCatalog.map((p, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderProdItem(${i})">
+        <span>${p.title}</span>
+      </button>
+    `).join('');
+    const p = prodItemCatalog[idx];
+    document.getElementById('prodItemDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${p.title}</h3>
+        <span class="badge b-blue">${p.badge}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17.5px">${p.def}</p>
+      <ul style="margin:0;padding-left:22px;font-size:16.5px;color:var(--ink-sec)">
+        ${p.points.map(pt => `<li style="margin-bottom:8px">${pt}</li>`).join('')}
+      </ul>
+      <div class="case-box">${p.caseEx}</div>
+    `;
+  }
+  renderProdItem(0);
+
+  const plineData = [
+    {
+      title: "方法一：產品線延伸 (Line Stretching) — 吸納現有顧客以外的消費者",
+      desc: "產品線延伸指增加產品線內的產品項目來<b>吸納現有顧客以外的消費者</b>（滿足不同市場組別的需要，從而滿足更多顧客並提高銷售額）。上向延伸和下向延伸的差別在於企業打算吸納的新消費者群組：",
+      boxes: [
+        { name: "1. 下向延伸 (Downward Stretching)", detail: "加入新產品項目以滿足<b>低檔次的消費者（負擔能力有限或尋求入門級產品的消費者）</b>。<br><i>例子：某專業單反相機生產商在推出高端專業相機後，再推出功能較簡化、價格更實惠的入門級輕便相機系列。</i>", bg: "var(--primary-light)", border: "var(--primary-border)" },
+        { name: "2. 上向延伸 (Upward Stretching)", detail: "加入新產品項目以滿足<b>高檔次的消費者（較富裕或高端市場的消費者）</b>。<br><i>例子：某大眾化連鎖快餐店為吸納高端市場的消費者，推出採用日本和牛及黑松露醬製作的尊尚漢堡系列。</i>", bg: "var(--teal-light)", border: "#99f6e4" }
+      ]
+    },
+    {
+      title: "方法二：產品線填補 (Line Filling) — 滿足及留住現有顧客",
+      desc: "產品線填補指增加產品線內的產品項目來<b>滿足現有顧客</b>。例如，企業可就某項產品提供<b>不同尺寸、口味、容量和顏色</b>供顧客選擇。",
+      boxes: [
+        { name: "產品線填補的作用与例子", detail: "<b>作用：</b>企業為顧客提供更多選擇，便能更有效地滿足現有顧客；這有助<b>留住現有顧客，避免他們轉為光顧競爭對手</b>。<br><i>例子：某主要生產原味希臘乳酪的食品商，推出藍莓味、蜜桃味及家庭大杯裝希臘乳酪，為現有顧客提供更多口味與容量選擇。</i>", bg: "var(--green-light)", border: "#a7f3d0" }
+      ]
+    }
+  ];
+
+  function renderPline(idx) {
+    document.getElementById('plineChips').querySelectorAll('.chip').forEach((c, i) => c.classList.toggle('active', i === idx));
+    const d = plineData[idx];
+    document.getElementById('plineVisual').innerHTML = `
+      <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16px">
+        <b style="color:var(--primary);font-size:17.5px">${d.title}</b>
+        <p style="margin:6px 0 12px">${d.desc}</p>
+        ${d.boxes.map(b => `
+          <div style="background:${b.bg};border:1.5px solid ${b.border};border-radius:10px;padding:12px 16px;margin-bottom:8px">
+            <b style="color:var(--ink)">${b.name}</b><br>${b.detail}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+  renderPline(0);
+
+  const prodQuizItems = [
+    {
+      q: "1. 某天然椰子水生產商在產品瓶身貼上顯眼的貼紙，當中清楚列明椰子水蘊含的電解質與維他命種類，並印有吸引的宣傳字句。這屬於產品項目層面的哪個事項？",
+      opts: ["A. 標籤 (Labelling)", "B. 產品支援服務", "C. 產品線延伸"],
+      ans: 0,
+      exp: "正確。附在產品或包裝上用幫助消費者辨認產品、描述產品特性及推廣產品的紙張或物料，屬於「標籤」。"
+    },
+    {
+      q: "2. 某家用咖啡機品牌為顧客提供免費送貨、24 小時故障查詢熱線及兩年免費上門維修保養服務。這屬於產品項目層面的哪個事項？",
+      opts: ["A. 產品特質", "B. 產品支援服務", "C. 包裝"],
+      ans: 1,
+      exp: "正確。送貨、組裝安裝、維修保養、技術支援、修改及退貨退款等附加與售後服務，屬於「產品支援服務」。"
+    },
+    {
+      q: "3. 某手錶生產商向來售賣中價石英錶，今年決定推出一款鑲鑽陀飛輪奢華手錶型號，以吸引較富裕的高檔次消費者。這屬於哪種擴充產品線方法？",
+      opts: ["A. 產品線延伸（當中的上向延伸）", "B. 產品線延伸（當中的下向延伸）", "C. 產品線填補"],
+      ans: 0,
+      exp: "正確。加入新產品項目以吸納現有顧客以外的高檔次（較富裕）消費者，屬於「產品線延伸（上向延伸）」。"
+    },
+    {
+      q: "4. 某主要生產蘋果汁的飲品商推出香橙汁和提子汁飲品，並為現有的智能水樽型號推出三種新顏色，為現有顧客提供更多選擇。這屬於哪種擴充產品線方法？",
+      opts: ["A. 產品線延伸", "B. 產品線填補 (Line Filling)", "C. 標籤設計"],
+      ans: 1,
+      exp: "正確。就產品提供不同尺寸、口味和顏色以滿足及留住現有顧客，屬於「產品線填補」（注意：為現有型號推出新顏色並非產品線延伸）。"
+    },
+    {
+      q: "5. 某手提電腦生產商推出功能較少但價格更實惠的簡化版電腦型號，以吸納負擔能力有限的學生消費者。這屬於哪種擴充產品線方法？",
+      opts: ["A. 產品線延伸（當中的下向延伸）", "B. 產品線延伸（當中的上向延伸）", "C. 產品線填補"],
+      ans: 0,
+      exp: "正確。加入新產品項目以滿足低檔次（負擔能力有限）的新消費者群組，屬於「產品線延伸（下向延伸）」。"
+    },
+    {
+      q: "6. 概念判斷：「同一產品線內的產品項目通常具有非常不同的生產條件，而且會出售予需要完全無關的消費者。」",
+      opts: ["A. 正確", "B. 不正確 — 同一產品線內的產品項目有兩大特點：(i) 生產條件相似；以及 (ii) 出售予有相似需要或屬於同一目標市場的消費者"],
+      ans: 1,
+      exp: "正確。同一產品線內的產品生產條件相似，且出售予有相似需要或同一目標市場的消費者。"
+    }
+  ];
+  let curProdQ = 0;
+  function renderProdQuiz() {
+    const item = prodQuizItems[curProdQ];
+    document.getElementById('prodQuizProg').textContent = `題目 ${curProdQ + 1} / ${prodQuizItems.length}`;
+    document.getElementById('prodQuizQ').textContent = item.q;
+    document.getElementById('prodQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkProdQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('prodQuizFb').innerHTML = '';
+  }
+  function checkProdQuiz(idx) {
+    const item = prodQuizItems[curProdQ];
+    const fb = document.getElementById('prodQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curProdQ=(curProdQ+1)%prodQuizItems.length;renderProdQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderProdQuiz();
+
+  // ====== 2. 定價策略 (Price) ======
+  const priceFacCatalog = [
+    {
+      title: "內在因素 1：市場營銷目標",
+      badge: "內在因素（四個主要目標）",
+      def: "影響企業定價決定的四個主要市場營銷目標包括：",
+      content: `
+        <ul style="margin:0;padding-left:20px;font-size:16.5px;line-height:1.8">
+          <li><b>(i) 求存</b>：很多小型或資源較少的企業的主要市場營銷目標。旨在留住現有顧客和維持現金流量，產品定價通常<b>較低</b>。</li>
+          <li><b>(ii) 利潤最大化</b>：推出新藥的藥廠和售賣高科技消費品的企業經常採用。旨在將現時利潤最大化，會把產品價格定於<b>高水平</b>。</li>
+          <li><b>(iii) 奪取市場佔有率</b>：剛進入新市場的企業經常採用。旨在以<b>較低定價</b>奪取市場佔有率，務求在長期賺取利潤。</li>
+          <li><b>(iv) 領導產品品質</b>：出售奢侈品或豪華服務的企業經常採用。旨在向目標消費者傳遞優質品牌的形象，會把產品價格定於<b>高水平</b>。</li>
+        </ul>
+      `
+    },
+    {
+      title: "內在因素 2：市場營銷組合策略",
+      badge: "內在因素（與其餘 3P 協調配合）",
+      def: "企業在考慮如何定價時，必須考慮其整體的市場營銷組合。要建立理想的產品定位，企業的定價決定須與產品、分銷及推廣策略互相協調和配合（對於想以非價格方法建立產品定位的企業尤為重要）。",
+      content: `
+        <div class="case-box" style="margin-top:8px">
+          <b>協調配合例子（精品手工烘焙店）：</b><br>
+          • <b>產品策略</b>：提供以法國頂級發酵牛油調製的牛角包<br>
+          • <b>分銷策略</b>：在中環甲級商廈及高檔商場開設分店<br>
+          • <b>推廣策略</b>：在品味雜誌推廣其高檔法式烘焙店的形象<br>
+          ➔ <b>定價策略</b>：必須<b>訂定較高價格</b>，以配合其高檔產品、分銷和推廣策略（相反，若企業希望透過提供折扣優惠作推廣，便應降低價格）。
+        </div>
+      `
+    },
+    {
+      title: "內在因素 3：成本",
+      badge: "內在因素（收回總成本並創造利潤）",
+      def: "成本是影響定價決定的一項重要因素。一般而言，企業釐定的價格應讓企業在收回產品的總成本之餘，又能創造利潤。",
+      content: `
+        <div class="case-box" style="margin-top:8px">
+          <b>商業應用例子：</b>當一家餐廳面對舖位租金及食材成本大幅上漲時，便須考慮上調餐牌食物的價格，以確保收入足以支付總營運成本並維持利潤。
+        </div>
+      `
+    },
+    {
+      title: "外在因素 1：市場性質",
+      badge: "外在因素（競爭對手數目與四類市場）",
+      def: "企業所屬市場的性質會影響定價決定。企業在釐定價格時，應留意市場內的競爭對手數目（若競爭對手較少，或可把價格定於較高水平；若售賣相似產品的競爭對手眾多，定價便不能大幅高於競爭對手）。",
+      content: `
+        <div style="font-size:16px;line-height:1.75">
+          <b>一般而言，市場可根據性質分為四類：</b>
+          <ul style="margin:6px 0 0;padding-left:20px">
+            <li><b>(i) 完全競爭市場</b>：市場內有很多企業和消費者，售賣和購買毫無差異的產品（例：批發市場中未經加工的蔬菜、水果和花卉）➔ <b>所有企業都會跟隨同業的定價</b>。</li>
+            <li><b>(ii) 壟斷性競爭市場</b>：市場內有很多企業和消費者，售賣和購買同一類型但存在很大差異的產品（例：護膚品、時尚產品和酒店）➔ <b>定價有較大自由度，可營造與競爭對手的差異從而訂定較高價格</b>。</li>
+            <li><b>(iii) 完全壟斷</b>：市場內只有一家企業（例：香港的煤氣供應和大眾鐵路運輸服務）➔ <b>沒有競爭對手，定價通常有很大自由度（但公共服務供應商受政府監管，限制了提高價格的自由度）</b>。</li>
+            <li><b>(iv) 寡頭壟斷</b>：市場內只有數家企業（例：大型超級市場和電訊服務）➔ <b>非常關注競爭對手的行動，產品定價策略深受其他企業影響</b>。</li>
+          </ul>
+        </div>
+      `
+    },
+    {
+      title: "外在因素 2：顧客觀感（顧客感知價值）",
+      badge: "外在因素（價格敏感度與價值評估）",
+      def: "價格反映顧客願意付出多少代價來換取產品帶來的好處。因此，企業應了解產品的「顧客感知價值」，從而作出相應的定價。",
+      content: `
+        <ul style="margin:0;padding-left:20px;font-size:16.5px;line-height:1.8">
+          <li><b>當顧客認為產品價值高（獨一無二或存在很大差異）</b>：例如名牌產品或具獨特專利的產品，顧客會<b>對價格較不敏感</b>，較願意付出較高的價錢來獲取產品。</li>
+          <li><b>當顧客認為產品價值低（平平無奇、與其他產品無異）</b>：例如一般快速流動性日用消費品，顧客會<b>對價格較敏感</b>，不大願意付出高昂的價錢。</li>
+        </ul>
+      `
+    },
+    {
+      title: "外在因素 3：市場的可負擔能力",
+      badge: "外在因素（目標消費者的購買力）",
+      def: "企業在定價時應考慮目標消費者的可負擔能力（購買力）。",
+      content: `
+        <ul style="margin:0;padding-left:20px;font-size:16.5px;line-height:1.8">
+          <li>假如目標消費者的<b>購買力較高</b>，他們便可負擔較昂貴的產品，企業也可<b>訂定較高的價格</b>。</li>
+          <li>相反，如果目標消費者的<b>購買力較低</b>（例如學生群組，或目標消費者的購買力因經濟衰退而大幅下降），企業的<b>定價便不應太高</b>，以免他們無力負擔（例如餐廳向穿着校服或持學生證的學生提供午市減價優惠）。</li>
+        </ul>
+      `
+    },
+    {
+      title: "外在因素 4：競爭對手的策略",
+      badge: "外在因素（跟隨定價或低價吸客）",
+      def: "企業面對越趨激烈的競爭，在定價時便要考慮競爭對手的定價策略，同時應分析競爭對手可能對企業定價決定所作出的反應。",
+      content: `
+        <ul style="margin:0;padding-left:20px;font-size:16.5px;line-height:1.8">
+          <li>企業可以<b>(i) 跟隨競爭對手的定價策略，作出相似的定價</b>（註：只根據競爭對手的定價策略來作出定價決定的方法稱為<b>「競爭導向定價法」</b>）；或</li>
+          <li><b>(ii) 提供較吸引（較低）的價格，從而吸納競爭對手的顧客</b>。</li>
+        </ul>
+      `
+    }
+  ];
+
+  function renderPriceFac(idx) {
+    document.getElementById('priceFacNavList').innerHTML = priceFacCatalog.map((f, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderPriceFac(${i})">
+        <span>${f.title}</span>
+      </button>
+    `).join('');
+    const f = priceFacCatalog[idx];
+    document.getElementById('priceFacDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${f.title}</h3>
+        <span class="badge ${idx<3?'b-blue':'b-teal'}">${f.badge}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17.5px">${f.def}</p>
+      <div>${f.content}</div>
+    `;
+  }
+  renderPriceFac(0);
+
+  const priceQuizItems = [
+    {
+      q: "1. 某新興運動中心收取較低的月費，務求在最短時間內搶奪同區競爭對手的市場佔有率；而另一家老牌餐廳則上調食物價格以應付越趨昂貴的舖位租金。這兩家企業分別考慮了哪項定價因素？",
+      opts: ["A. 運動中心考慮了「市場營銷目標（奪取市場佔有率）」或「競爭對手的策略」；餐廳考慮了「成本」（內在因素）", "B. 兩者均只考慮了標籤規定"],
+      ans: 0,
+      exp: "正確。收取低價搶奪市佔率關乎「市場營銷目標（奪取市場佔有率）」及「競爭對手的策略」；上調價格應付貴租則關乎內在因素中的「成本」。"
+    },
+    {
+      q: "2. 某街市水果攤檔與附近多個攤檔售賣相似的水果，因此它的定價與其他攤檔也相當接近。這反映了哪項外在定價因素？",
+      opts: ["A. 市場性質（市場內售賣相似產品的競爭對手眾多，企業定價不能大幅高於競爭對手）", "B. 內部員工制服設計"],
+      ans: 0,
+      exp: "正確。當市場內售賣相似產品的競爭對手眾多（接近完全競爭市場性質）時，企業定價便須貼近同業。"
+    },
+    {
+      q: "3. 某科技公司推出具備獨家專利功能的全新智能眼鏡，預期目標消費者對價格敏感度低且願意付出較高價格嘗試新產品，公司希望透過較高的利潤率賺取最多的短期利潤。公司應採用哪種新產品定價策略？",
+      opts: ["A. 撇油性定價策略 (Skimming Pricing Strategy)", "B. 滲透性定價策略 (Penetration Pricing Strategy)"],
+      ans: 0,
+      exp: "正確。針對對價格敏感度低的目標消費者，最初以可訂定的最高價格銷售新產品以賺取最多短期利潤，屬於「撇油性定價策略」。"
+    },
+    {
+      q: "4. 某茶飲生產商推出新口味樽裝烏龍茶，由於目標消費者對飲品價格非常敏感，公司決定最初以相對較低的價格銷售新產品，務求在最短時間內吸引大量消費者嘗試並奪取市場佔有率。公司採用了哪種新產品定價策略？",
+      opts: ["A. 撇油性定價策略", "B. 滲透性定價策略 (Penetration Pricing Strategy)"],
+      ans: 1,
+      exp: "正確。最初以低價銷售新產品以吸引對價格非常敏感的消費者嘗試，並在最短時間內奪取市場佔有率，屬於「滲透性定價策略」。"
+    }
+  ];
+  let curPrQ = 0;
+  function renderPriceQuiz() {
+    const item = priceQuizItems[curPrQ];
+    document.getElementById('priceQuizProg').textContent = `題目 ${curPrQ + 1} / ${priceQuizItems.length}`;
+    document.getElementById('priceQuizQ').textContent = item.q;
+    document.getElementById('priceQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkPriceQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('priceQuizFb').innerHTML = '';
+  }
+  function checkPriceQuiz(idx) {
+    const item = priceQuizItems[curPrQ];
+    const fb = document.getElementById('priceQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curPrQ=(curPrQ+1)%priceQuizItems.length;renderPriceQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderPriceQuiz();
+
+  // ====== 3. 分銷策略 (Place) ======
+  const placeTabData = [
+    `<div style="background:var(--surface);padding:18px 22px;border-radius:14px;border:1px solid var(--line);font-size:16.5px;line-height:1.8">
+      <b style="color:var(--primary);font-size:18.5px">一、途徑成員（中間商／中介人）的五項常見分銷功能：</b><br>
+      <div style="margin:8px 0 16px">
+        <span class="badge b-blue">(i) 運送產品</span>
+        <span class="badge b-teal">(ii) 儲存貨品</span>
+        <span class="badge b-green">(iii) 向企業提供市場資訊</span>
+        <span class="badge b-amber">(iv) 推廣產品</span>
+        <span class="badge b-red">(v) 展銷產品</span>
+      </div>
+      <b style="color:var(--primary);font-size:18.5px">二、途徑成員的四種類別：</b>
+      <ul style="margin:6px 0 0;padding-left:22px">
+        <li><b>(i) 零售商</b>：通常從批發商購買產品；經營零售店鋪，並向消費者銷售產品（例如連鎖美妝店、超級市場）。</li>
+        <li><b>(ii) 批發商</b>：向不同生產商購入大批產品，再轉售予零售商。</li>
+        <li><b>(iii) 分銷商／買手 (Dealer)</b>：向一家或數家生產商購買產品，再轉售予零售商（部分分銷商或買手只向一家生產商購入產品，要承擔產品銷量不佳的風險）。</li>
+        <li><b>(iv) 代理 (Agent)</b>：<b>不會向生產商購買產品</b>，而是代表生產商銷售產品，從中賺取佣金，把生產商和買家連繫起來（例如物業代理）。</li>
+      </ul>
+    </div>`,
+    `<div style="background:var(--surface);padding:18px 22px;border-radius:14px;border:1px solid var(--line);font-size:16px;line-height:1.75">
+      <div class="flow-chain" style="margin-top:0">
+        <div class="flow-node">直接分銷：生產商 ➔ 消費者（零層）</div>
+        <div class="flow-node" style="background:var(--teal-light);color:var(--teal);border-color:#99f6e4">間接分銷：生產商 ➔ 代理／批發商／分銷商 ➔ 零售商 ➔ 消費者（一至三層）</div>
+      </div>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:16%">比較維度</th>
+            <th style="width:42%">1. 直接分銷（通過企業自身銷售團隊／門市／網站直接向消費者分銷，不涉及途徑成員）</th>
+            <th style="width:42%">2. 間接分銷（通過企業自身銷售團隊以外的途徑成員向消費者分銷）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>好處</b></td>
+            <td>• <b>(i) 節省分銷成本</b>：不涉及中間商，可節省給予中間商的佣金、上架費等。<br>
+            • <b>(ii) 對產品的市場營銷有較大的控制權</b>：可決定如何展示和推廣產品，對質素和售價有更大控制和決定權。<br>
+            • <b>(iii) 建立顧客關係</b>：直接與顧客接觸並收集回饋，有助提供更佳顧客支援服務和進行<b>交叉銷售</b>（向現有顧客銷售其他相似或相關產品）。<br>
+            • <b>(iv) 避免使用競爭對手的中間商</b>：可將產品與競爭對手的產品區別開來。</td>
+            <td>• <b>(i) 可使用途徑成員的專業知識和資源</b>：途徑成員對所屬市場有較深認識，使用它們或更具成本效益。<br>
+            • <b>(ii) 接觸較多消費者</b>：利用途徑成員的分銷網絡和<b>顧客基礎</b>，有機會接觸更多遍布不同地區的消費者。<br>
+            • <b>(iii) 專注於核心業務</b>：途徑成員負責執行所有分銷功能，減輕企業工作量，讓企業可專注進行生產工作。</td>
+          </tr>
+          <tr>
+            <td><b>壞處</b></td>
+            <td>• <b>(i) 需要專業知識和資源</b>：小型企業可能缺乏設立銷售團隊和進行分銷工作所需的專業知識和資源。<br>
+            • <b>(ii) 接觸的消費者可能較少</b>：企業銷售團隊未必可以接觸如途徑成員般龐大數量的消費者。<br>
+            • <b>(iii) 增加內部工作量</b>：須自行執行儲存貨品、展示產品和推廣等所有分銷功能，非常費時。</td>
+            <td>• <b>(i) 分銷成本較高</b>：須就途徑成員的分銷服務支付費用（如佣金、上架費），部分途徑成員更會攤分企業利潤。<br>
+            • <b>(ii) 失去對產品市場營銷的控制權</b>：不能全權控制產品的展示方式、推廣、質素和定價（且避免使用太多層級，否則難控制運送過程和確保產品質素）。<br>
+            • <b>(iii) 未能直接接觸顧客</b>：不能直接收集顧客回饋和作即時回應，難以建立密切關係。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>`,
+    `<div style="background:var(--surface);padding:18px 22px;border-radius:14px;border:1px solid var(--line);font-size:16.5px;line-height:1.8">
+      <b style="color:var(--primary);font-size:18.5px">決定採用「直接分銷」或「間接分銷」的五項考慮因素：</b>
+      <ul style="margin:8px 0 0;padding-left:22px">
+        <li><b>1. 成本</b>：比較透過企業自身銷售團隊售賣產品的成本，以及使用途徑成員所涉及的分銷成本（例如佣金）。若自營分店成本低於支付予途徑成員的費用，便應採用直接分銷。</li>
+        <li><b>2. 對產品市場營銷的控制權</b>：企業是否希望對產品的市場營銷（如展示方式、推廣、定價和質素）有較大的控制權。若是，便應採用直接分銷。</li>
+        <li><b>3. 與顧客的關係</b>：企業是否希望直接接觸顧客、直接取得顧客的回饋或與他們建立密切關係。若是，便應採用直接分銷。</li>
+        <li><b>4. 顧客基礎</b>：企業是否與潛在顧客有聯繫，以及目標消費者是否遍布不同地區或習慣在傳統大型零售店（如超級市場和百貨公司）購物。若是，便應採用間接分銷。</li>
+        <li><b>5. 企業的專業知識和資源</b>：企業是否具備有效地分銷產品所需的專業知識和資源（如經驗豐富的銷售團隊）。若缺乏，便應採用間接分銷。</li>
+      </ul>
+    </div>`
+  ];
+
+  function renderPlaceTab(idx) {
+    document.getElementById('placeTabChips').querySelectorAll('.chip').forEach((c, i) => c.classList.toggle('active', i === idx));
+    document.getElementById('placeTabBox').innerHTML = placeTabData[idx];
+  }
+  renderPlaceTab(0);
+
+  const placeQuizItems = [
+    {
+      q: "1. 某本地初創手工皂工坊缺乏設立銷售團隊和進行分銷工作所需的專業知識和資源，而且希望讓遍布全港各區的消費者都能接觸到其產品。該工坊應採用直接分銷還是間接分銷？",
+      opts: ["A. 間接分銷（利用途徑成員的專業知識、資源及分銷網絡接觸更多消費者）", "B. 直接分銷"],
+      ans: 0,
+      exp: "正確。當企業缺乏分銷所需的專業知識和資源，且希望利用途徑成員的顧客基礎接觸更多消費者時，應採用「間接分銷」。"
+    },
+    {
+      q: "2. 某高級音響品牌希望直接取得顧客的回饋，對產品的定價、展示和質素擁有較大的控制權，並且不想其產品和競爭對手的產品在同一家店鋪出售。該品牌應採用哪種分銷方式？",
+      opts: ["A. 直接分銷（自設專門店或官方網站直接向消費者分銷）", "B. 間接分銷"],
+      ans: 0,
+      exp: "正確。直接分銷能讓企業對市場營銷有較大控制權、直接收集顧客回饋，並避免使用同時處理競爭對手產品的中間商。"
+    },
+    {
+      q: "3. 某意大利名貴跑車生產商希望只透過一家指定代理商在香港銷售跑車，藉此緊密監控服務並提升產品的尊貴形象。這屬於哪種分銷策略？",
+      opts: ["A. 密集性分銷", "B. 獨家性分銷（獨家經銷）", "C. 選擇性分銷"],
+      ans: 1,
+      exp: "正確。在每個地區只容許單一（或極少數）途徑成員獨家分銷產品以提升產品形象及緊密監控，屬於「獨家性分銷」。"
+    },
+    {
+      q: "4. 某連鎖人體工學沙發生產商希望產品能接觸更多消費者，但同時想與合作傢俬店建立緊密關係並對其定價和服務政策維持合理的控制權，因此在每區挑選數家商譽良好的大型傢俬店售賣產品。這屬於哪種分銷策略？",
+      opts: ["A. 密集性分銷", "B. 獨家性分銷", "C. 選擇性分銷"],
+      ans: 2,
+      exp: "正確。在每個地區只選擇部分（多於一個但少於全部）途徑成員分銷產品，介乎密集性與獨家性分銷之間，屬於「選擇性分銷」。"
+    }
+  ];
+  let curPlQ = 0;
+  function renderPlaceQuiz() {
+    const item = placeQuizItems[curPlQ];
+    document.getElementById('placeQuizProg').textContent = `題目 ${curPlQ + 1} / ${placeQuizItems.length}`;
+    document.getElementById('placeQuizQ').textContent = item.q;
+    document.getElementById('placeQuizBtns').innerHTML = item.opts.map((o, i) => `
+      <button class="opt-card" style="margin:0;padding:12px 16px" onclick="checkPlaceQuiz(${i})">${o}</button>
+    `).join('');
+    document.getElementById('placeQuizFb').innerHTML = '';
+  }
+  function checkPlaceQuiz(idx) {
+    const item = placeQuizItems[curPlQ];
+    const fb = document.getElementById('placeQuizFb');
+    if (idx === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curPlQ=(curPlQ+1)%placeQuizItems.length;renderPlaceQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderPlaceQuiz();
+
+  // ====== 4. 推廣策略 (Promotion) ======
+  const promoToolsCatalog = [
+    {
+      name: "01 廣告 (Advertising)",
+      badge: "非個人溝通・接觸大量消費者",
+      def: "企業以非個人溝通的形式（信息並非傳遞給特定的一個人，例如聲音、影像）推廣產品。企業可以透過大眾傳播媒介（電視、報章、雜誌、廣告牌）或互聯網（社交媒體、影片分享網站或平台）刊登或發布廣告，通常須支付費用。",
+      pros: "• <b>(i) 可接觸大量分布各地的消費者</b><br>• <b>(ii) 可多次重複發放推廣信息</b>",
+      cons: "• <b>(i) 企業只能以單向的方式與消費者溝通</b><br>• <b>(ii) 較昂貴</b>（特別是電視廣告），小型企業未必負擔得來。"
+    },
+    {
+      name: "02 促銷 (Sales Promotion)",
+      badge: "短期誘因・激發強烈購買意慾",
+      def: "企業利用短期的誘因來吸引消費者購買或嘗試產品。常用的促銷工具包括：贈券或優惠券、現金回贈、贈品、樣本試用、折扣優惠和幸運抽獎。",
+      pros: "• <b>(i) 有效吸引消費者的注意</b><br>• <b>(ii) 使消費者產生強烈的購買意慾</b>",
+      cons: "• <b>功效可能較為短暫</b>，未必適用於建立顧客對品牌的長期偏好以及與顧客的長遠關係。"
+    },
+    {
+      name: "03 公共關係 (Public Relations)",
+      badge: "推廣或保護企業形象・建立長期聲譽",
+      def: "以推廣或保護企業形象或處理對企業不利的事件（如謠言或突發危機等）為目標的企業活動。常見活動包括：向慈善機構捐款或參與慈善活動、贊助體育或社區活動、發布新聞稿，以及舉行記者招待會。",
+      pros: "• <b>提升企業的長期聲譽和形象</b>",
+      cons: "• <b>對企業的短期收益未必有即時和直接的正面效果</b>"
+    },
+    {
+      name: "04 個人銷售 (Personal Selling)",
+      badge: "面對面個人互動・適合複雜產品",
+      def: "又稱「人員銷售」，指銷售人員親自或以面對面的方式（一對一或一對多）向目標消費者推介產品以促成銷售，當中涉及銷售人員與消費者之間的個人互動。常用於售賣複雜產品的企業（如保險公司和電腦生產商），餐廳侍應向顧客推介菜式亦屬個人銷售。",
+      pros: "• <b>(i) 可直接向目標消費者解釋產品特點和取得回饋</b>，從而為消費者度身訂造貨品和服務，更有效滿足其需要。<br>• <b>(ii) 可透過人際互動與顧客建立關係</b>，促使顧客對產品產生好感，從而決定購買產品。",
+      cons: "• <b>十分昂貴</b>，企業和銷售人員須要投入大量資源（如金錢和時間）來發展和維持顧客關係。"
+    },
+    {
+      name: "05 直接行銷 (Direct Marketing)",
+      badge: "電話／郵件／電子聯繫・易量度回應率",
+      def: "企業以電話、郵件或電子方式（例如電郵和即時通訊應用程式），通常利用顧客資料庫直接聯繫目標消費者，目的是得到消費者的即時回應（例如點擊網站連結來購買產品）。",
+      pros: "• <b>(i) 讓企業與消費者可即時互動</b>，適合與消費者建立一對一的關係。<br>• <b>(ii) 企業可輕易量度直接行銷的成果（即回應率）</b>。",
+      cons: "• <b>(i) 銷售人員不能觀察消費者一些不能以言語表達的信息</b>（如面部表情）。<br>• <b>(ii) 部分消費者可能認為直接行銷非常滋擾</b>，會忽略企業的來電和信息，導致回應率偏低。"
+    }
+  ];
+
+  function renderPromoTool(idx) {
+    document.getElementById('promoToolNavList').innerHTML = promoToolsCatalog.map((t, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderPromoTool(${i})">
+        <span>${t.name}</span>
+      </button>
+    `).join('');
+    const t = promoToolsCatalog[idx];
+    document.getElementById('promoToolDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${t.name}</h3>
+        <span class="badge b-blue">${t.badge}</span>
+      </div>
+      <p style="margin:0 0 14px;font-weight:600;font-size:17px">${t.def}</p>
+      <div class="grid2" style="gap:14px">
+        <div style="background:var(--green-light);padding:14px 16px;border-radius:12px;border:1px solid #a7f3d0;font-size:16px">
+          <b style="color:var(--green)">優點：</b><br>${t.pros}
+        </div>
+        <div style="background:var(--red-light);padding:14px 16px;border-radius:12px;border:1px solid #fecdd3;font-size:16px">
+          <b style="color:var(--red)">缺點：</b><br>${t.cons}
+        </div>
+      </div>
+    `;
+  }
+  renderPromoTool(0);
+
+  const promoQuizItems = [
+    { q: "1. 某有機超市向消費滿 $400 的顧客派發 $50 現金優惠券，並在週末於店外免費派發新引入的奇亞籽飲品樣本供途人試飲。", ans: "促銷", exp: "正確。利用優惠券、現金回贈、贈品、樣本試用、折扣優惠和幸運抽獎等短期誘因吸引購買或嘗試，屬於「促銷」。" },
+    { q: "2. 一家教育軟件開發商派遣銷售人員到全港中學，親自向校長及老師示範新系列電子教學平台的特點並解答疑問。", ans: "個人銷售", exp: "正確。銷售人員親自面對面向目標顧客推介及解釋複雜產品特點，屬於「個人銷售（人員銷售）」。" },
+    { q: "3. 某寬頻網絡公司利用客戶資料庫，致電及發送 WhatsApp 信息給所有合約即將屆滿的現有客戶，向他們推廣新推出的光纖寬頻升級計劃並附上登記連結。", ans: "直接行銷", exp: "正確。利用顧客資料庫以電話、郵件或電子方式直接聯繫特定目標消費者以獲取即時回應，屬於「直接行銷」。" },
+    { q: "4. 一家大型銀行贊助本地青年交響樂團的慈善音樂會，並舉行記者招待會公布其社區環保植樹計劃。", ans: "公共關係", exp: "正確。贊助社區／體育活動、參與慈善活動、發布新聞稿及舉行記者招待會以提升企業長期聲譽和形象，屬於「公共關係」。" },
+    { q: "5. 某連鎖茶餐廳在飲食網站、地鐵燈箱廣告牌及影片分享網站發布宣傳短片，推廣新推出的芝士焗豬扒飯套餐。", ans: "廣告", exp: "正確。透過大眾傳播媒介或互聯網以非個人溝通形式付費推廣產品，屬於「廣告」。" },
+    { q: "6. 這種推廣組合工具可輕易量度回應率並作即時互動，但銷售人員無法觀察消費者的非語言信息，且部分消費者可能認為非常滋擾而忽略信息。", ans: "直接行銷", exp: "正確。這是「直接行銷」的優點與缺點。" }
+  ];
+  let curPQ = 0;
+  function renderPromoQuiz() {
+    document.getElementById('promoQuizProg').textContent = `題目 ${curPQ + 1} / ${promoQuizItems.length}`;
+    document.getElementById('promoQuizQ').textContent = promoQuizItems[curPQ].q;
+    document.getElementById('promoQuizFb').innerHTML = '';
+  }
+  function checkPromoQuiz(choice) {
+    const item = promoQuizItems[curPQ];
+    const fb = document.getElementById('promoQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curPQ=(curPQ+1)%promoQuizItems.length;renderPromoQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderPromoQuiz();
+
+  // ====== 5. 論點建構問答工作坊 (12題 100% 原創香港商業情境) ======
+  const workshopQuestions = [
+    // ================= 第一類：短答題／個案題（每個獨立論點滿分 2 分 — 2 步建構） =================
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：智音藍牙耳機品牌（自設門市直接分銷的好處）", topic: "分銷策略：採用「直接分銷」的好處", maxMarks: 2,
+      scenario: "「智音科技」是一家高檔降噪藍牙耳機生產商，決定透過自設品牌專門店（直接分銷）而非透過電子產品零售商（市场營銷途徑成員）向消費者分銷產品。",
+      question: "試以其中一項好處為例，解釋該耳機生產商透過自設門市而非市場營銷途徑成員分銷產品的好處。（2 分）",
+      steps: [
+        { label: "第 1 步：指出採用「直接分銷」的單一核心好處（1分）", colorClass: "hl-s1", opts: [
+          { text: "好處是可以利用中間商遍布全港的分銷網絡，減輕公司的內部工作量。", score: 0, status: "wrong", comment: "這是採用「間接分銷（使用途徑成員）」的好處，而非自設門市直接分銷的好處。" },
+          { text: "對產品的市場營銷有較大的控制權（或選：「節省分銷成本」／「與顧客建立密切關係並直接收集回饋」／「避免使用競爭對手的中間商」）。", score: 1, status: "best", comment: "準確指出直接分銷四項好處中的其中一項。" },
+          { text: "同時具有節省成本、控制權大、建立關係及避免對手中間商四項好處。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段只應集中闡釋一項好處。" }
+        ]},
+        { label: "第 2 步：扣連「智音藍牙耳機自設門市」作具體解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "智音科技可自行決定如何在專門店內設立靜音試聽區展示和推廣其耳機，亦可對耳機的品質和最終售價有更大的控制和決定權（無須受制於零售商的陳列安排）。", score: 1, status: "best", comment: "緊扣藍牙耳機專門店，清楚說明如何自主決定產品展示、推廣、質素與售價。" },
+          { text: "因為公司可以自己控制很多事情。", score: 0, status: "partial", comment: "未有具體說明對市場營銷的哪些方面（如產品展示、推廣、質素和售價）有較大控制權。" },
+          { text: "這會令自設專門店完全不需要繳交任何店舖租金。", score: 0, status: "wrong", comment: "自設門市仍須承擔店舖租金。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：輕羽專業羽毛球拍生產商（產品線延伸 vs 產品線填補）", topic: "產品線層面策略：產品線延伸與產品線填補", maxMarks: 2,
+      scenario: "「輕羽公司」是一家專業羽毛球拍生產商，過往只生產售價 $1,200 的中高級碳纖維球拍。今年公司計劃透過「產品線延伸」和「產品線填補」兩種方法來擴充產品線。",
+      question: "以「輕羽公司」為例，分別解釋它可如何透過 (i) 產品線延伸（1分）和 (ii) 產品線填補（1分）來擴充產品線。（2 分）",
+      steps: [
+        { label: "第 1 步：結合羽毛球拍生產商解釋如何進行「產品線延伸」（1分）", colorClass: "hl-s1", opts: [
+          { text: "產品線延伸指為現有 $1,200 的球拍推出紅色和藍色手柄以滿足現有顧客。", score: 0, status: "wrong", comment: "為現有型號推出新顏色以滿足現有顧客屬於「產品線填補」，而非產品線延伸。" },
+          { text: "「產品線延伸」指增加產品線內的產品項目來吸納現有顧客以外的消費者：例如推出售價 $280 的入門級鋁合金球拍以滿足低檔次初學者（下向延伸），或推出售價 $2,800 的奧運選手限量版球拍以滿足高檔次消費者（上向延伸）。", score: 1, status: "best", comment: "準確界定「吸納現有顧客以外的消費者」並舉出下向或上向延伸的羽毛球拍例子。" },
+          { text: "產品線延伸就是把球拍的長度造得更長。", score: 0, status: "wrong", comment: "誤解了市場營銷術語。" }
+        ]},
+        { label: "第 2 步：結合羽毛球拍生產商解釋如何進行「產品線填補」（1分）", colorClass: "hl-s2", opts: [
+          { text: "「產品線填補」指增加產品線內的產品項目來滿足現有顧客：例如就現有 $1,200 的中高級碳纖維球拍提供不同手柄粗幼尺寸、不同球拍重量規格及多種新顏色供現有球友選擇，以留住現有顧客。", score: 1, status: "best", comment: "準確界定「滿足現有顧客」並舉出提供不同尺寸、重量與顏色選擇的例子。" },
+          { text: "產品線填補是指放棄生產羽毛球拍，改為經營火鍋店。", score: 0, status: "wrong", comment: "偏離現有產品線範疇。" },
+          { text: "產品線填補就是生產多一點球拍。", score: 0, status: "partial", comment: "必須說明「就產品提供不同尺寸、口味或顏色等更多選擇以滿足及留住現有顧客」。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：焙香連鎖手工麵包店（透過「促銷」推廣新產品的方法與壞處）", topic: "推廣組合工具：促銷 (Sales Promotion) 的方法與缺點", maxMarks: 2,
+      scenario: "「焙香工坊」是一家連鎖手工麵包店，計劃在下月推出全新的「黑松露芝士酸種包」，並決定採用「促銷」這項推廣組合工具來推廣新產品。",
+      question: "描述該麵包店透過「促銷」來推廣新口味麵包的一個方法（1分），並解釋採用這種推廣組合工具的一個壞處（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：描述麵包店透過「促銷」推廣新麵包的具體方法（1分）", colorClass: "hl-s1", opts: [
+          { text: "在電視台及報章刊登全版宣傳廣告介紹新麵包。", score: 0, status: "wrong", comment: "刊登電視及報章廣告屬於「廣告」，並非「促銷」。" },
+          { text: "麵包店可在分店外向途人免費派發新口味麵包的試食樣本（或派發新產品 $5 現金優惠券／推出首週買一送一折扣優惠），利用短期誘因吸引消費者嘗試或購買。", score: 1, status: "best", comment: "準確舉出免費樣本試食、優惠券或折扣優惠等標準促銷工具。" },
+          { text: "向慈善機構捐款一百萬元以提升企業形象。", score: 0, status: "wrong", comment: "慈善捐款屬於「公共關係」，並非「促銷」。" }
+        ]},
+        { label: "第 2 步：解釋採用「促銷」這種推廣組合工具的一個壞處（1分）", colorClass: "hl-s2", opts: [
+          { text: "壞處是對短期銷量完全沒有任何正面效果。", score: 0, status: "wrong", comment: "促銷能使消費者產生強烈購買意慾，短期效果顯著；對短期收益未必有即時效果的是公共關係。" },
+          { text: "壞處是「功效可能較為短暫」，一旦停止派發優惠券或恢復原價後銷量便可能回落，未必適用於建立顧客對麵包品牌的長期偏好以及與顧客的長遠關係。", score: 1, status: "best", comment: "精準指出促銷「功效可能較為短暫，未必適用於建立顧客對品牌的長期偏好及長遠關係」的核心缺點。" },
+          { text: "壞處是會令麵包店損失很多顧客。", score: 0, status: "partial", comment: "未能準確點出「功效較為短暫、無助建立對品牌的長期偏好與長遠關係」。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：新產品定價策略比較（撇油性定價 vs 滲透性定價）", topic: "新產品定價策略：撇油性定價與滲透性定價的不同之處", maxMarks: 2,
+      scenario: "企業在推出新產品時，可考慮採用「撇油性定價策略」或「滲透性定價策略」。",
+      question: "試從「初期價格及初期目的」（或「目標消費者」）角度，解釋這兩種新產品定價策略的不同之處。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「撇油性定價策略」的初期價格、目的與目標消費者（1分）", colorClass: "hl-s1", opts: [
+          { text: "撇油性定價策略最初以極低價銷售產品，目標是對價格非常敏感的消費者。", score: 0, status: "wrong", comment: "這是滲透性定價策略的特點，顛倒了兩種策略。" },
+          { text: "「撇油性定價策略」以對價格敏感度低的消費者為目標，企業最初會訂立可訂定的最高價格（高價），初期目的是透過較高的利潤率賺取最多的短期利潤。", score: 1, status: "best", comment: "清楚點出撇油性定價的目標消費者（價格敏感度低）、初期價格（最高價格）及初期目的（賺取最多短期利潤）。" },
+          { text: "撇油性定價策略就是隨便定一個價格。", score: 0, status: "partial", comment: "未能指出高初期價格、低價格敏感度目標客群及賺取最多短期利潤的特點。" }
+        ]},
+        { label: "第 2 步：指出「滲透性定價策略」的初期價格、目的與目標消費者作雙向對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "相反，「滲透性定價策略」以對價格非常敏感的消費者為目標，企業最初會訂立相對較低的價格（低價）吸引大量消費者嘗試新產品，初期目的是在最短的時間內奪取市場佔有率。", score: 1, status: "best", comment: "完整與第 1 步進行雙向對比，清楚點出滲透性定價的目標客群（對價格非常敏感）、初期價格（較低）及初期目的（奪取市場佔有率）。" },
+          { text: "而滲透性定價策略則有所不同。", score: 0, status: "partial", comment: "漏了說明滲透性定價策略的具體內容以作比較。" },
+          { text: "滲透性定價策略亦是最初以最高價格銷售產品。", score: 0, status: "wrong", comment: "滲透性定價策略最初是以低價銷售產品。" }
+        ]}
+      ]
+    },
+
+    // ================= 第二類：進階論述題（每個獨立論點滿分 3 分 — 3 步深度建構，100% 原創商業情境） =================
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：草本護髮洗髮水生產商（定價內在因素：市場營銷目標）", topic: "影響定價決定的內在因素：市場營銷目標", maxMarks: 3,
+      scenario: "一家洗髮水生產商剛研發出一款「草本防脫髮新配方洗髮水」，新任市場營銷經理的首項工作是為這款新洗髮水定價。除了競爭對手的策略外，試解釋該市場營銷經理為新配方洗髮水定價時應考慮的其他因素。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以內在因素中的「市場營銷目標」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一內在定價因素與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "經理應同時考慮市場營銷目標、市場營銷組合策略、成本、市場性質、顧客觀感及市場可負擔能力六項因素。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每項定價考慮因素應獨立成段闡釋。" },
+          { text: "經理為新洗髮水定價時，須考慮企業的「市場營銷目標」這項內在因素（常見目標包括求存、利潤最大化、奪取市場佔有率或領導產品品質），因為不同的營銷目標會直接決定產品應訂於高價還是低價水平。", score: 1, status: "best", comment: "準確鎖定「市場營銷目標」單一內在因素並點出四大目標範疇。" },
+          { text: "經理只須考慮競爭對手的價格，無須理會自己公司的目標。", score: 0, status: "wrong", comment: "題目已列明「除了競爭對手的策略外」。" }
+        ]},
+        { label: "第 2 步：針對「新配方草本洗髮水」設定具體的目標與定價例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如洗髮水生產商有自己的市場營銷目標。", score: 0, status: "partial", comment: "未有結合洗髮水例子說明不同市場營銷目標如何導致不同的定價決定。" },
+          { text: "例如若公司為這款新洗髮水訂立的市場營銷目標是「奪取市場佔有率」，經理便應把新洗髮水的價格定於較低水平以吸引大量市民試用；相反，若目標是「領導產品品質」（塑造頂級專業防脫髮品牌形象）或「利潤最大化」，便應把價格定於高水平。", score: 1, status: "best", comment: "緊扣新配方洗髮水，清晰對比「奪取市場佔有率（定低價）」與「領導產品品質／利潤最大化（定高價）」的具體做法。" },
+          { text: "例如公司決定採用內部晉升填補經理空缺。", score: 0, status: "wrong", comment: "屬於人力資源招聘方法，並非定價考慮因素。" }
+        ]},
+        { label: "第 3 步：深化論述至引導定價方向與達成企業預期成果的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "先釐清市場營銷目標再決定售價，能確保新洗髮水的定價方向與公司的整體發展目標一致，協助公司順利達成擴大市場份額或建立高端品質領導地位的預期成果。", score: 1, status: "best", comment: "清楚推演出「定價配合營銷目標 → 確保方向一致 → 協助達成擴大市佔率或建立品質地位的成果」。" },
+          { text: "這樣經理便考慮了市場營銷目標。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令洗髮水的生產成本自動變成零。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：草本護髮洗髮水生產商（定價外在因素：顧客觀感）", topic: "影響定價決定的外在因素：顧客觀感（顧客感知價值）", maxMarks: 3,
+      scenario: "承上題，該洗髮水生產商的市場營銷經理正為「草本防脫髮新配方洗髮水」定價。除了內在因素外，試以「顧客觀感（顧客感知價值）」為例，解釋這項外在因素如何影響定價決定。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「顧客觀感（顧客感知價值）」這項外在因素為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一外在定價因素與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "經理須考慮「顧客觀感（顧客感知價值）」這項外在因素：價格反映顧客願意付出多少代價來換取產品帶來的好處，顧客對產品價值的觀感會影響其對價格的敏感度。", score: 1, status: "best", comment: "清楚指出「顧客觀感（顧客感知價值）」及其影響價格敏感度的核心概念。" },
+          { text: "顧客觀感是指工廠生產洗髮水的水電費開支。", score: 0, status: "wrong", comment: "水電費開支屬於內在的「成本」因素，並非外在的顧客觀感。" },
+          { text: "經理要考慮顧客的觀感。", score: 0, status: "partial", comment: "未有界定「價格反映顧客願意付出多少代價換取產品好處（顧客感知價值）」的概念。" }
+        ]},
+        { label: "第 2 步：針對「草本防脫髮洗髮水」設定具體的顧客感知價值例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如顧客對洗髮水會有不同的睇法。", score: 0, status: "partial", comment: "沒有結合防脫髮洗髮水的獨特性與普通洗髮水作具體比較。" },
+          { text: "例如若目標顧客認為這款含有名貴中草藥專利配方的防脫髮洗髮水功效顯著、獨一無二（與市面上一般普通洗髮水存在很大差異），其顧客感知價值便很高，對價格較不敏感；相反，若顧客認為它與普通清潔洗髮水無異（平平無奇），便會對價格較敏感。", score: 1, status: "best", comment: "緊扣防脫髮洗髮水，清晰對比顧客認為產品獨一無二（感知價值高、對價格較不敏感）與平平無奇（對價格較敏感）的情況。" },
+          { text: "例如將洗髮水交給批發商儲存。", score: 0, status: "wrong", comment: "屬於分銷策略，與顧客觀感定價因素無關。" }
+        ]},
+        { label: "第 3 步：深化論述至釐定合適價格水平與保障銷量的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "因此，了解顧客感知價值有助經理作出相應定價：當成功塑造高感知價值時，公司便可為新洗髮水訂定較高價格以賺取更高利潤；反之若顧客感知價值不高卻盲目訂立高價，顧客便會因不願支付高昂價錢而拒絕購買。", score: 1, status: "best", comment: "清楚推演出「根據感知價值高低訂定相應價格 → 避免因定價超出顧客觀感而滯銷，或把握高感知價值賺取利潤」。" },
+          { text: "所以顧客觀感會影響洗髮水的定價。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令所有顧客每天洗頭十次。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：歐洲草本香薰品牌（分銷決策因素：對產品市場營銷的控制權）", topic: "決定採用直接分銷或間接分銷的考慮因素：對產品市場營銷的控制權", maxMarks: 3,
+      scenario: "「芳澤 (AromaLux)」是一家歐洲著名草本香薰品牌，計劃進入香港及亞洲市場，正考慮應透過「開設自己的零售店（直接分銷）」還是「透過本地中間商（間接分銷）」來分銷產品。試解釋該品牌在作出這項分銷決定時應考慮的因素。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「對產品市場營銷的控制權」這項考慮因素為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一渠道考慮因素與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "品牌應同時考慮成本、控制權、顧客關係、顧客基礎及專業知識和資源五項因素。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，五項考慮因素應分為五個獨立段落作答。" },
+          { text: "該香薰品牌應考慮「對產品市場營銷的控制權」這項因素，即評估企業是否希望對產品的展示方式、推廣、質素和最終定價擁有較大的控制和決定權。", score: 1, status: "best", comment: "準確鎖定「對產品市場營銷的控制權」單一考慮因素並界定其含義。" },
+          { text: "品牌只須考慮如何設計香薰瓶的標籤。", score: 0, status: "wrong", comment: "標籤設計屬於產品策略，並非決定直接或間接分銷的考慮因素。" }
+        ]},
+        { label: "第 2 步：針對「歐洲草本香薰品牌」對比自設零售店與使用中間商的情況（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如品牌要考慮自己想不想控制市場營銷。", score: 0, status: "partial", comment: "未有結合草本香薰的店舖裝潢、氣味體驗展示、儲存條件及定價作具體說明。" },
+          { text: "例如若透過本地中間商（如大型美妝連鎖店）作間接分銷，中間商可能會將芳澤的高檔香薰與平價產品混雜擺放、自行減價促銷，或儲存環境溫度不當影響精油質素；相反，若開設自己的專門店（直接分銷），公司便可全權控制店內的優雅香薰體驗裝潢、產品陳列及統一售價。", score: 1, status: "best", comment: "緊扣高檔草本香薰品牌，具體對比間接分銷（失去展示、儲存與定價控制權）與直接分銷（全權控制體驗裝潢与售價）。" },
+          { text: "例如公司向銀行申請長期按揭貸款。", score: 0, status: "wrong", comment: "屬於財務融資決策。" }
+        ]},
+        { label: "第 3 步：深化論述至維護高檔品牌形象與作出合適渠道選擇的結論（1分）", colorClass: "hl-s3", opts: [
+          { text: "因此，假如芳澤非常重視維護其歐洲高檔香薰的品牌形象，希望對產品展示、儲存質素及推廣擁有較大的控制權，便應選擇採用「直接分銷（開設自己的零售店）」。", score: 1, status: "best", comment: "清楚得出「若希望擁有較大控制權以維護高檔形象，便應採用直接分銷」的明確結論。" },
+          { text: "所以控制權是一個重要的考慮因素。", score: 0, status: "partial", comment: "未有明確指出在重視控制權下應選擇直接分銷還是間接分銷。" },
+          { text: "這會令歐洲的香薰原材料免費供應。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：歐洲草本香薰品牌（分銷決策因素：顧客基礎與專業知識資源）", topic: "決定採用直接分銷或間接分銷的考慮因素：顧客基礎／企業的專業知識和資源", maxMarks: 3,
+      scenario: "承上題，歐洲香薰品牌「芳澤」初進軍亞洲市場，在亞洲尚未有知名度及現成客源，亦缺乏熟悉亞洲零售市場的銷售團隊。試從「顧客基礎」（或「企業的專業知識和資源」）角度，解釋為何該品牌適宜透過本地途徑成員（中間商）進行間接分銷。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「顧客基礎（接觸較多消費者）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一渠道考慮因素與間接分銷的好處（1分）", colorClass: "hl-s1", opts: [
+          { text: "公司應考慮「顧客基礎（接觸消費者的範圍）」這項因素：企業採用間接分銷，可利用本地途徑成員（中間商）現有的完善分銷網絡和龐大顧客基礎，有機會接觸更多遍布不同地區的消費者。", score: 1, status: "best", comment: "準確指出「顧客基礎」考慮因素及間接分銷「利用途徑成員分銷網絡和顧客基礎接觸較多消費者」的好處。" },
+          { text: "採用間接分銷可以讓公司省卻所有給予中間商的佣金和上架費。", score: 0, status: "wrong", comment: "間接分銷須向途徑成員支付分銷費用（佣金、上架費），節省分銷佣金是直接分銷的好處。" },
+          { text: "公司要考慮顧客基礎。", score: 0, status: "partial", comment: "未有說明間接分銷如何借助途徑成員的分銷網絡和顧客基礎接觸更多消費者。" }
+        ]},
+        { label: "第 2 步：針對「芳澤初進軍亞洲市場」設定具體商業例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如亞洲有很多消費者。", score: 0, status: "partial", comment: "未有結合芳澤作為新進入亞洲的品牌與本地大型零售商現有客源網絡的關係。" },
+          { text: "例如芳澤雖然在歐洲知名，但在亞洲屬於全新品牌，本身與亞洲潛在顧客並無聯繫，自設幾間門市接觸到的消費者極為有限；相反，亞洲本地的大型連鎖百貨公司及美妝零售連鎖店分店遍布各主要城市，擁有龐大且穩定的熟客基礎。", score: 1, status: "best", comment: "緊扣「歐洲品牌初入亞洲缺乏本地客源聯繫 vs 本地大型百貨及美妝連鎖店分店遍布各區且具龐大顧客基礎」。" },
+          { text: "例如芳澤在歐洲工廠聘請更多製香工人。", score: 0, status: "wrong", comment: "與亞洲市場分銷渠道選擇無關。" }
+        ]},
+        { label: "第 3 步：深化論述至迅速打開新市場與提高銷售額的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "因此，透過這些本地大型零售商進行間接分銷，能讓芳澤的香薰產品迅速在各城市上架並接觸大批習慣在百貨公司購物的目標消費者，加快打開亞洲新市場並帶動銷售額增長。", score: 1, status: "best", comment: "清楚推演出「借助本地零售商網絡與顧客基礎 → 迅速接觸各區目標消費者 → 加快打開亞洲新市場並提升銷量」。" },
+          { text: "這樣芳澤便可以在亞洲賣香薰了。", score: 0, status: "partial", comment: "闡述流於表面。" },
+          { text: "這會令芳澤對產品定價擁有 100% 絕對控制權。", score: 0, status: "wrong", comment: "採用間接分銷會失去對產品市場營銷的部分控制權。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：家用立體打印機生產商（透過電子零售商進行「間接分銷」的壞處）", topic: "分銷策略：採用「間接分銷」的壞處（失去對產品市場營銷的控制權）", maxMarks: 3,
+      scenario: "「創維科技」是一家家用立體 (3D) 打印機生產商，透過本地大型電子產品零售商（間接分銷）將產品銷售給個人顧客。雖然這有助接觸較多消費者，但市場營銷經理指出透過零售商分銷亦存在壞處。試描述該打印機生產商透過電子產品零售商銷售產品的一項壞處。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以間接分銷的壞處「失去對產品市場營銷的控制權」（或「分銷成本較高」／「未能直接接觸顧客」）為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出採用「間接分銷」的單一核心壞處（1分）", colorClass: "hl-s1", opts: [
+          { text: "採用間接分銷會同時導致分銷成本較高、失去對產品市場營銷的控制權及未能直接接觸顧客三項壞處。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每項壞處應獨立成段作深入闡釋。" },
+          { text: "透過電子產品零售商進行間接分銷的一大壞處是「失去對產品市場營銷的控制權」：生產商不能全權控制產品在零售店的展示方式、推廣、儲存質素和最終定價。", score: 1, status: "best", comment: "準確鎖定「失去對產品市場營銷的控制權」並點出無法全權控制展示、推廣、質素和定價。" },
+          { text: "採用間接分銷的壞處是接觸到的消費者人數會變成零。", score: 0, status: "wrong", comment: "間接分銷的好處正是能接觸較多消費者。" }
+        ]},
+        { label: "第 2 步：針對「家用立體打印機在電子零售商銷售」設定具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如生產商不能控制電子零售商怎樣賣打印機。", score: 0, status: "partial", comment: "只重複了第 1 步的字眼，未有結合立體打印機在零售店的陳列、示範或推廣情況作具體說明。" },
+          { text: "例如電子產品零售商同時售賣多個不同品牌的產品，若競爭對手給予更高佣金，零售商可能會將創維科技的立體打印機擺放在不起眼的角落、不安排店員主動向顧客示範打印功能，甚至未經同意擅自大幅減價促銷。", score: 1, status: "best", comment: "緊扣電子產品零售商情境，具體說明零售商可能將打印機放在不起眼角落、不主動推廣示範或擅自改變售價。" },
+          { text: "例如創維科技自己設計打印機的外觀顏色。", score: 0, status: "wrong", comment: "與零售商分銷控制權無關。" }
+        ]},
+        { label: "第 3 步：深化論述至損害品牌形象與影響銷售表現的後果（1分）", colorClass: "hl-s3", opts: [
+          { text: "當零售商陳列不當、缺乏主動推廣或胡亂減價時，不但會令目標顧客難以了解立體打印機的優點而導致銷量不如理想，更可能會損害創維科技原有的專業品牌形象與利潤水平。", score: 1, status: "best", comment: "清楚推演出「陳列與推廣不當 → 顧客難了解優點導致銷量欠佳，甚至損害品牌形象」。" },
+          { text: "這樣生產商便失去了控制權。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令立體打印機的研發時間自動縮短。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：商用智能會議系統生產商（推廣組合：個人銷售的好處）", topic: "推廣組合工具：個人銷售（人員銷售）的應用與優點", maxMarks: 3,
+      scenario: "「匯智科技」生產功能精密的商用智能視像會議系統，並設立專業銷售團隊向商業機構客戶推廣產品。試舉例說明該公司可如何運用「個人銷售」推廣產品，並解釋採用這項推廣組合工具的好處。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「個人銷售 (Personal Selling)」的操作與好處為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「個人銷售」推廣組合工具名稱與核心定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "公司可同時採用廣告、促銷、公共關係、個人銷售和直接行銷五種工具。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每項推廣組合元素應獨立成段闡釋。" },
+          { text: "匯智科技可採用「個人銷售（人員銷售）」：即由銷售人員親自或以面對面的方式向目標顧客推介產品，當中涉及銷售人員與顧客之間的個人互動（常用於售賣複雜產品的企業及商業消費市場）。", score: 1, status: "best", comment: "準確寫出「個人銷售」標準名稱並界定其「面對面推介及個人互動」的核心定義。" },
+          { text: "個人銷售是指在報紙刊登分類廣告。", score: 0, status: "wrong", comment: "刊登報紙廣告屬於「廣告」（非個人溝通形式），並非面對面的個人銷售。" }
+        ]},
+        { label: "第 2 步：針對「商用智能會議系統」設定具體個人銷售行動例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如派銷售人員去見客賣產品。", score: 0, status: "partial", comment: "未有結合商用智能會議系統的複雜特點，說明銷售人員如何向商業客戶示範、解釋及收集回饋。" },
+          { text: "例如匯智科技可派遣訓練有素的銷售人員親自到訪商業客戶的辦公室，面對面為客戶示範智能會議系統的多方高清連線與即時語音翻譯功能，即時解答客戶的技術疑問，並了解客戶會議室的大小以提供度身訂造的安裝方案。", score: 1, status: "best", comment: "緊扣商用智能會議系統，具體描述銷售人員如何上門面對面示範功能、解答疑問及度身訂造方案。" },
+          { text: "例如向每位街頭途人派發 $5 現金優惠券。", score: 0, status: "wrong", comment: "派發優惠券屬於「促銷」，並非個人銷售。" }
+        ]},
+        { label: "第 3 步：深化論述至建立關係、產生好感與促成銷售的好處（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過面對面直接向客戶解釋複雜產品特點、取得即時回饋並度身訂造方案，能更有效地滿足商業客戶的需要；同時銷售人員可透過人際互動與客戶建立良好關係，促使客戶對產品產生好感，從而決定購買產品。", score: 1, status: "best", comment: "完整涵蓋個人銷售的兩大標準優點——「直接解釋產品特點和取得回饋以度身訂造服務滿足需要」及「透過人際互動建立關係、產生好感從而決定購買」。" },
+          { text: "這樣銷售人員便完成了個人銷售。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令推廣成本變成五種工具之中最低廉的一種。", score: 0, status: "wrong", comment: "個人銷售十分昂貴，須投入大量金錢和時間資源。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：北歐戶外運動服品牌（推廣組合：公共關係提升品牌形象）", topic: "推廣組合工具：公共關係 (Public Relations) 的應用與優點", maxMarks: 3,
+      scenario: "「極地行者」是北歐著名的戶外運動服裝生產商，計劃在下年進入大中華區市場。行政總裁指出：「公司的首要任務是提升在新市場的品牌形象與知名度，須利用合適的推廣組合工具來推廣品牌形象。」試為該公司建議如何運用「公共關係」來提升品牌形象。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「公共關係 (Public Relations)」的定義、具體活動與提升長期形象作用為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「公共關係」推廣組合工具名稱與核心定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "公司可採用「公共關係」：這是指以推廣或保護企業形象，或處理對企業不利的事件為目標的企業活動（常見活動包括贊助體育或社區活動、參與慈善活動、發布新聞稿及舉行記者招待會）。", score: 1, status: "best", comment: "準確寫出「公共關係」標準名稱並界定其「推廣或保護企業形象」的目標與常見活動形式。" },
+          { text: "公司可採用「直接行銷」，即不斷打電話向市民推銷運動服。", score: 0, status: "wrong", comment: "電話推銷屬於「直接行銷」，容易令部分消費者感到滋擾，並非建立廣泛品牌聲譽與形象的最佳工具。" },
+          { text: "公司可以做一些公關活動。", score: 0, status: "partial", comment: "必須準確寫出「公共關係」標準名稱及「以推廣或保護企業形象為目標」。" }
+        ]},
+        { label: "第 2 步：針對「戶外運動服品牌進入新市場」設定具體公共關係活動例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如極地行者可以在新市場舉辦一些活動。", score: 0, status: "partial", comment: "未有結合戶外運動服品牌舉出具體的公共關係活動（如贊助體育賽事、環保公益或舉行新品發布記者招待會）。" },
+          { text: "例如極地行者可贊助大型國際馬拉松越野跑賽事及山野清潔環保慈善活動，並在新系列防水登山服上市時舉行盛大的「記者招待會」及向各大傳媒發布新聞稿。", score: 1, status: "best", comment: "緊扣戶外運動服品牌，具體列舉贊助越野跑體育活動、參與山野環保慈善活動及舉行記者招待會。" },
+          { text: "例如在門市推出本週買二送一清貨大減價。", score: 0, status: "wrong", comment: "買二送一減價屬於「促銷」，並非「公共關係」。" }
+        ]},
+        { label: "第 3 步：深化論述至爭取傳媒正面報道及提升長期企業聲譽和形象的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過贊助體育與環保公益活動及舉行記者招待會，能吸引大眾傳媒廣泛報道，在目標消費者心目中建立健康、專業且富社會責任感的正面印象，從而有效提升極地行者在新市場的長期聲譽和品牌形象。", score: 1, status: "best", comment: "清楚推演出「吸引傳媒正面報道 → 建立專業負責任印象 → 提升企業的長期聲譽和形象」。" },
+          { text: "這樣便完成了公共關係工作。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這能確保公司在活動當天立即獲得全行最高的短期現金收益。", score: 0, status: "wrong", comment: "公共關係的缺點正是「對企業的短期收益未必有即時和直接的正面效果」，其優勢在於提升長期聲譽和形象。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：本地主題深度遊旅行社（綜合運用推廣以外的其餘 3P 策略增加收入）", topic: "市場營銷組合 (4P) 協調應用：結合產品、定價與分銷策略提升競爭力", maxMarks: 3,
+      scenario: "「綠野深度遊」是一家在香港設有兩家分行的本地旅行社。近年由於差不多所有香港旅行社都開辦前往相同傳統景點的旅行團，導致綠野深度遊的收入僅足以賺取微薄利潤。除「推廣」外，總經理希望利用另外三項市場營銷組合元素（產品、價格、分銷）來吸引本地消費者並增加收入。試就其中一項元素（以「產品策略」或「分銷策略」為例）向旅行社建議增加收入的方法。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「分銷策略 (Place)」（或「產品策略 Product」）為核心，結合旅行社情境建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一市場營銷組合元素名稱與核心方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "旅行社可在電視台及旅遊雜誌刊登大量廣告，並向團友派發抽獎券。", score: 0, status: "wrong", comment: "題目已明確規定「根據推廣以外的三項市場營銷組合元素」，回答廣告與抽獎（推廣）未能得分。" },
+          { text: "在「分銷 (Place)」元素方面，分銷策略是指企業讓目標顧客更容易獲得其產品或服務的決策和行動（或選「產品 Product」：透過改善產品特質或擴充產品線滿足目標顧客需要）。", score: 1, status: "best", comment: "準確鎖定推廣以外的「分銷（或產品）」單一市場營銷組合元素並界定其核心含義。" },
+          { text: "旅行社可以同時改變產品、價格和分銷。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，產品、價格、分銷三項元素應分別在三個獨立段落中闡述。" }
+        ]},
+        { label: "第 2 步：針對「本地深度遊旅行社」設定具體的分銷（或產品）措施例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如旅行社可以讓顧客更容易報團。", score: 0, status: "partial", comment: "未有提出具體可行的旅行社分銷渠道或服務措施（如開發網上／手機應用程式報名平台、延長分行營業時間或與其他平台合作）。" },
+          { text: "例如綠野深度遊目前僅靠兩家實體分行接受報名，接觸到的顧客有限；旅行社可開發官方網站及「手機應用程式 (App)」供顧客 24 小時在網上查閱行程、即時報名及電子付款，並與熱門網上旅遊預訂平台（途徑成員）合作上架（若選產品策略，則舉例：設計與對手不同的獨特主題生態地質團及提供專業導賞員服務）。", score: 1, status: "best", comment: "緊扣服務業分銷策略（開發手機應用程式供網上訂購、延長服務時間或透過網上平台間接分銷），例子具體貼切。" },
+          { text: "例如旅行社為辦公室購買火險及公眾責任保險。", score: 0, status: "wrong", comment: "購買保險屬於風險管理，並非市場營銷組合策略。" }
+        ]},
+        { label: "第 3 步：深化論述至提升顧客購買便利度、擴大接觸客群與增加收入的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過增設手機應用程式網上報名渠道及與旅遊平台合作，能突破兩家實體分行的地域與營業時間限制，讓習慣網購的年輕及在職顧客隨時隨地輕鬆報團，大幅擴大接觸的消費者數目並增加旅行社的團費收入。", score: 1, status: "best", comment: "清楚推演出「突破實體分行限制、方便隨時報名 → 擴大接觸消費者數目 → 增加旅行社收入」。" },
+          { text: "這樣旅行社便調整了分銷策略。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令旅遊巴的燃油開支變成零。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>

@@ -1,0 +1,1823 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 單元綜合模擬試卷 (DSE Paper 2B 標準格式)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* 市場營銷管理專屬配色：勃艮第酒紅 (Burgundy) × 深邃岩灰 (Slate) × 琥珀金 (Amber) */
+      --bg: #f6f4f5;
+      --card: #ffffff;
+      --surface: #fbf9fa;
+      --ink: #1e1318;
+      --ink-sec: #3f2e36;
+      --mute: #6e5a63;
+      --line: #e5dce0;
+      --primary: #9f1239;
+      --primary-dark: #881337;
+      --primary-light: #fff1f2;
+      --primary-border: #fecdd3;
+      --teal: #0369a1;
+      --teal-light: #f0f9ff;
+      --teal-border: #bae6fd;
+      --purple: #4338ca;
+      --purple-light: #eef2ff;
+      --purple-border: #c7d2fe;
+      --amber: #b45309;
+      --amber-light: #fffbeb;
+      --green: #065f46;
+      --green-light: #ecfdf5;
+      --red: #be123c;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(136, 19, 55, 0.06), 0 2px 6px -1px rgba(136, 19, 55, 0.04);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Header & Exam Controls */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 14.5px;
+      padding: 7px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 18.5px; font-weight: 800; color: var(--primary-dark); }
+    .brand-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .exam-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      flex-wrap: wrap;
+    }
+    .timer-input {
+      width: 56px;
+      padding: 4px 6px;
+      border-radius: 8px;
+      border: 1.5px solid var(--primary);
+      font: 800 14px 'Inter', sans-serif;
+      color: var(--primary);
+      text-align: center;
+      background: var(--card);
+    }
+    .timer-txt { font-family: 'Inter', monospace; font-size: 16px; font-weight: 800; color: var(--primary); min-width: 54px; text-align: center; }
+    .timer-btn {
+      border: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .timer-btn:hover { opacity: 0.9; }
+
+    .mode-switch-btn {
+      border: 1.5px solid var(--teal);
+      background: var(--teal-light);
+      color: var(--teal);
+      font: 700 14px 'Noto Sans TC', sans-serif;
+      padding: 7px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-switch-btn.paper-on { background: var(--teal); color: #fff; }
+
+    .tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 5px;
+      background: #ece4e7;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .tabs button {
+      border: 0;
+      background: none;
+      padding: 8px 14px;
+      border-radius: 9px;
+      font: 700 14.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tabs button:hover { color: var(--ink); }
+    .tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    /* Views & Banners */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 26px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 24px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16px; max-width: 700px; }
+    .hero-kpis { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-kpi {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 110px;
+    }
+    .hero-kpi b { display: block; font-size: 20px; color: var(--primary); }
+    .hero-kpi span { font-size: 13px; color: var(--mute); font-weight: 600; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+    /* Badges & Chips */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-rose { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-border); }
+    .b-purple { background: var(--purple-light); color: var(--purple); border: 1px solid var(--purple-border); }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #fff;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #064e3b; }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #075985; }
+    .btn-purple { background: var(--purple); }
+    .btn-purple:hover { background: #312e81; }
+    .btn-amber { background: var(--amber); }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    /* Builder Options & Stages */
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 14px 18px;
+      margin: 9px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #ece4e7;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #fff; }
+
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+      background: var(--card);
+    }
+    .point-group-box {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+    }
+    .assembled-box {
+      background: var(--card);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-top: 18px;
+      box-shadow: var(--shadow);
+    }
+    .paper-box {
+      background: var(--surface);
+      border: 2px dashed var(--teal);
+      border-radius: 16px;
+      padding: 22px 26px;
+      margin-top: 16px;
+    }
+    .ms-box {
+      background: var(--green-light);
+      border: 1.5px solid var(--green);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-top: 16px;
+    }
+    .score-pill {
+      border: 1.5px solid var(--teal);
+      background: var(--card);
+      color: var(--teal);
+      font: 700 14.5px 'Noto Sans TC', sans-serif;
+      padding: 7px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .score-pill:hover { background: var(--teal-light); }
+    .score-pill.picked { background: var(--teal); color: #fff; }
+
+    .hl-s1 { background: #ffe4e6; color: #9f1239; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #e0f2fe; color: #075985; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    /* Report Progress Meters & Tables */
+    .meter-wrap { margin-bottom: 14px; }
+    .meter-label { display: flex; justify-content: space-between; font-size: 15.5px; font-weight: 700; margin-bottom: 6px; }
+    .meter-bg { height: 14px; background: #e5dce0; border-radius: 999px; overflow: hidden; }
+    .meter-fill { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
+
+    table.cutoff-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 15px; }
+    table.cutoff-table th, table.cutoff-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); text-align: center; }
+    table.cutoff-table th { background: var(--surface); font-weight: 800; }
+    table.cutoff-table tr.active-grade-row { background: var(--green-light); font-weight: 800; border: 2px solid var(--green); }
+
+    @media (max-width: 860px) {
+      .grid2, .grid3, .grid4 { grid-template-columns: 1fr; }
+      header { padding: 12px 16px; }
+      .tabs { width: 100%; margin-top: 8px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <div class="brand">
+    <span>市場營銷管理模擬試卷</span>
+    <span class="brand-badge">DSE Paper 2B 標準格式 (72分)</span>
+  </div>
+  <select onchange="if(this.value) location.href=this.value" style="padding:6px 10px;border-radius:8px;border:1.5px solid var(--primary-border);background:var(--primary-light);color:var(--primary-dark);font:700 13.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速跳轉至各課室...</option>
+    <option value="市場營銷管理_目錄.html">返回單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+  </select>
+
+  <!-- 自由設定時限計時器 -->
+  <div class="exam-bar">
+    <span>時限(分)：</span>
+    <input type="number" id="customMinInput" class="timer-input" value="60" min="1" max="180" onchange="applyCustomTime()">
+    <button class="timer-btn" style="background:var(--teal)" onclick="applyCustomTime()">套用</button>
+    <span class="timer-txt" id="timerDisplay">60:00</span>
+    <button class="timer-btn" id="timerBtn" onclick="toggleTimer()">開始</button>
+    <button class="timer-btn" style="background:var(--mute)" onclick="resetTimer()">重置</button>
+    <span style="margin-left:4px;padding-left:10px;border-left:1.5px solid var(--line);color:var(--green)" id="liveTotalBadge">總分：0 / 72</span>
+  </div>
+
+  <button class="mode-switch-btn" id="globalModeBtn" onclick="togglePaperMode()">
+    切換為：隱藏選項（紙筆寫作練習模式）
+  </button>
+
+  <nav class="tabs" id="mainTabs">
+    <button class="on" data-tab="sec-sa">甲部：短答題 (24分)</button>
+    <button data-tab="sec-case">乙部：商業個案分析題 (24分)</button>
+    <button data-tab="sec-essay">丙部：進階論述題 (24分)</button>
+    <button data-tab="sec-report" onclick="renderReport()">丁部：成績單與診斷</button>
+  </nav>
+</header>
+
+<!-- ==================== 甲部：短答題 (Section A · 6題 · 24分) ==================== -->
+<section class="view on" id="sec-sa">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-rose">甲部 · 短答題（Section A：共 6 題，每題 4 分，合共 24 分）</span>
+      <h1>DSE「2 分一論點」標準結構：1 分指出單一重點 ＋ 1 分連結情境解說</h1>
+      <p>本部共設 6 道必答短答題（嚴格按照教科書第 1 至 7 課用詞，涵蓋服務的四項特性、原始數據與次級數據、商業消費市場與個人消費市場比較、集中營銷、撇油性定價與滲透性定價策略，以及推廣組合工具），每題滿分 4 分（包含 2 個獨立的 2 分論點）。</p>
+    </div>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><b id="saScoreHero">0 / 24</b><span>甲部目前得分</span></div>
+      <div class="hero-kpi"><b>2 分一論點</b><span>1分重點 ＋ 1分解說</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding:18px 22px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px">點選甲部短答題（共 6 題，每題 4 分）：</div>
+    <div class="chips" id="saNavChips" style="margin:0"></div>
+  </div>
+
+  <div id="saWorkspace"></div>
+</section>
+
+<!-- ==================== 乙部：商業個案分析題 (Section B · 單一整合個案 · 24分) ==================== -->
+<section class="view" id="sec-case">
+  <div class="sec-banner" style="border-left-color:var(--teal)">
+    <div>
+      <span class="badge b-teal">乙部 · 商業個案分析題（Section B：單一整合個案，共 4 道分題，合共 24 分）</span>
+      <h1>商業個案分析：「極光智能助眠科技公司 (AuroraSleep)」</h1>
+      <p>請細閱下方單一整合商業個案資料，然後回答 (a) 至 (d) 四道分題（每題 6 分，合共 24 分）。每個論點嚴格遵循「1 分指出單一概念／重點 ＋ 1 分扣連個案事實解說 ＝ 2 分」的評分模式。</p>
+    </div>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><b id="caseScoreHero" style="color:var(--teal)">0 / 24</b><span>乙部目前得分</span></div>
+      <div class="hero-kpi"><b style="color:var(--teal)">單一整合個案</b><span>4 道分題 × 6 分</span></div>
+    </div>
+  </div>
+
+  <!-- 單一整合商業個案閱讀卡 -->
+  <div class="card" style="border:1.5px solid var(--teal);background:var(--surface)">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+      <span class="badge b-teal">乙部單一商業個案資料</span>
+      <span style="font-size:14px;color:var(--mute);font-weight:600">請細閱以下個案，並回答分題 (a) 至 (d)</span>
+    </div>
+    <h3 style="color:var(--teal);font-size:20.5px;margin-bottom:10px">個案：「極光智能助眠科技公司 (AuroraSleep)」的營銷改革</h3>
+    <div style="font-size:16.5px;line-height:1.85;color:var(--ink)">
+      <p style="margin:0">
+        聲學工程師家豪三年前創立了「極光智能助眠科技公司 (AuroraSleep)」。創業初期，家豪並沒有應用<b>「市場營銷概念（顧客導向）」</b>，從不分析顧客的需要，亦不理會競爭對手的行動，只顧閉門造車加厚有線隔音耳筒的金屬外殼，結果因耳筒過重壓耳且不支援無線連接而嚴重滯銷。其後，家豪聘請了市場營銷總監陳小姐進行改革。陳小姐首先採用<b>「質性研究（聚焦小組面談）」</b>蒐集原始數據，邀請了 8 位受失眠困擾的人士進行小組討論，深入了解他們的睡眠痛點；接着將耳機市場按「消費者的年齡與收入（如 25 至 50 歲高收入中產專業人士）」及「消費者期望使用產品後可獲取的得益（如追求阻隔伴侶鼻鼾聲與側睡不壓耳的<b>期望得益</b>）」進行<b>市場區隔</b>，成功推出了每對定價 <b>$1,880</b> 的「AuroraPod 超薄無線 AI 助眠耳機」。為確保顧客在購買並使用耳機後（個人消費者決策過程第 5 步<b>「購買後行為」</b>）感到滿意，公司提供了完善的<b>產品支援服務</b>；實體分銷方面，陳小姐則決定採用<b>「選擇性分銷」</b>，在每區挑選少數商譽良好的大型電器店及高檔百貨專櫃發售。經過三年熱賣後，第一代 AuroraPod 耳機目前已步入產品生命週期的<b>「成熟期 (Maturity Stage)」</b>，銷售額增長開始放緩，市場上出現越來越多競爭產品，價格競爭變得普遍。為尋求突破，陳小姐今年採用<b>「電子市場營銷策略」</b>建立了官方網上商店向全球顧客直銷，並推出了連接耳機的「極光睡眠監測手機應用程式 (App)」，透過<b>「顧客關係管理 (CRM)」</b>制定個人化策略及促進<b>交叉銷售和向上銷售</b>，以提升顧客忠誠度及增加銷售額。
+      </p>
+    </div>
+  </div>
+
+  <div class="card" style="padding:18px 22px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px">點選乙部個案分析分題（共 4 題，每題 6 分）：</div>
+    <div class="chips" id="caseNavChips" style="margin:0"></div>
+  </div>
+
+  <div id="caseWorkspace"></div>
+</section>
+
+<!-- ==================== 丙部：進階論述題 (Section C · 2大題 · 24分) ==================== -->
+<section class="view" id="sec-essay">
+  <div class="sec-banner" style="border-left-color:var(--purple)">
+    <div>
+      <span class="badge b-purple">丙部 · 進階論述題（Section C：共 2 道大題，每題 12 分，合共 24 分）</span>
+      <h1>12 分長問答實戰：4 個獨立重點段落 × 3 步深度建構</h1>
+      <p>每道 12 分論述題均要求建構 4 個獨立重點段落（每段滿分 3 分：第 1 步指出單一概念／策略［1分］➔ 第 2 步設定具體商業例子解說［1分］➔ 第 3 步深化至企業形象或長遠業績影響［1分］）。</p>
+    </div>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><b id="essayScoreHero" style="color:var(--purple)">0 / 24</b><span>丙部目前得分</span></div>
+      <div class="hero-kpi"><b style="color:var(--purple)">3 分一段落</b><span>1分概念＋1分例子＋1分影響</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding:18px 22px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:6px">1. 先選擇丙部論述大題（共 2 道大題，每題 12 分）：</div>
+    <div class="chips" id="essayTopicChips" style="margin:0 0 14px"></div>
+    <div style="border-top:1px solid var(--line);padding-top:12px">
+      <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:6px">2. 點選該題的 4 個獨立重點段落（每段 3 分，4 段合共 12 分）：</div>
+      <div class="chips" id="essayParaChips" style="margin:0"></div>
+    </div>
+  </div>
+
+  <div id="essayWorkspace"></div>
+</section>
+
+<!-- ==================== 丁部：成績單與弱項診斷 ==================== -->
+<section class="view" id="sec-report">
+  <div class="sec-banner" style="border-left-color:var(--green)">
+    <div>
+      <span class="badge b-green">丁部 · DSE Paper 2B 雙軌等級換算與七課強弱項診斷</span>
+      <h1>《市場營銷管理》選修單元模擬試卷成績單</h1>
+      <p>系統已自動匯總你在甲部（短答題 24 分）、乙部（商業個案分析題 24 分）及丙部（進階論述題 24 分）的得分，並根據你的作答模式套用 DSE 商管組雙軌等級換算標準（細分 Level 1 至 Level 5**）。</p>
+    </div>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><b id="repTotalScore" style="color:var(--green)">0 / 72</b><span>試卷總得分</span></div>
+      <div class="hero-kpi"><b id="repPct" style="color:var(--green)">0%</b><span>總得分率</span></div>
+      <div class="hero-kpi"><b id="repGrade" style="color:var(--green)">待完成</b><span>預計 DSE 等級</span></div>
+    </div>
+  </div>
+
+  <div id="reportContent"></div>
+</section>
+
+<script>
+  // ====== 頂部 Tab 切換 ======
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // ====== 1. 學生自由設定時限計時器 ======
+  let customMinutes = 60;
+  let timeLeft = customMinutes * 60;
+  let timerId = null;
+
+  function updateTimerUI() {
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+    const s = String(timeLeft % 60).padStart(2, '0');
+    document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+  }
+
+  function applyCustomTime() {
+    const val = parseInt(document.getElementById('customMinInput').value, 10);
+    customMinutes = (isNaN(val) || val < 1) ? 60 : Math.min(180, val);
+    document.getElementById('customMinInput').value = customMinutes;
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    timeLeft = customMinutes * 60;
+    document.getElementById('timerBtn').textContent = '開始';
+    updateTimerUI();
+  }
+
+  function toggleTimer() {
+    const btn = document.getElementById('timerBtn');
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+      btn.textContent = '繼續';
+    } else {
+      btn.textContent = '暫停';
+      timerId = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimerUI();
+        } else {
+          clearInterval(timerId);
+          timerId = null;
+          btn.textContent = '開始';
+          alert('自訂練習時間到！請核對評卷參考並前往「丁部：成績單與診斷」查看你的表現。');
+        }
+      }, 1000);
+    }
+  }
+
+  function resetTimer() { applyCustomTime(); }
+
+  // ====== 2. 全局與單題「紙筆練習模式（隱藏組合選項）」及雙軌換算控制 ======
+  let paperMode = false;
+  let gradingTrack = 'auto';
+  let revealedMS = {};
+  let selfScores = {};
+
+  function togglePaperMode() {
+    paperMode = !paperMode;
+    const btn = document.getElementById('globalModeBtn');
+    if (paperMode) {
+      btn.classList.add('paper-on');
+      btn.textContent = '切換為：互動建構模式（顯示組合選項）';
+    } else {
+      btn.classList.remove('paper-on');
+      btn.textContent = '切換為：隱藏選項（紙筆寫作練習模式）';
+    }
+    renderSaWorkspace();
+    renderCaseWorkspace();
+    renderEssayWorkspace();
+  }
+
+  function setGradingTrack(track) {
+    gradingTrack = track;
+    renderReport();
+  }
+
+  function toggleRevealMS(itemId, rerenderFn) {
+    revealedMS[itemId] = !revealedMS[itemId];
+    rerenderFn();
+  }
+
+  function setSelfScore(itemId, score, rerenderNavFn, rerenderWsFn) {
+    selfScores[itemId] = score;
+    rerenderNavFn();
+    rerenderWsFn();
+    updateLiveTotal();
+  }
+
+  // ====== 甲部：短答題數據（100% 嚴格對齊教科書第 1 至 7 課用詞） ======
+  const saQuestions = [
+    {
+      id: "sa1", ch: 6, chName: "第 6 課：產品及服務的市場營銷策略（二）（服務市場學）", maxMarks: 4,
+      title: "甲部 Q1：服務的「無形性」與「易逝性」及相應應付方法 (4分)",
+      scenario: "「舒脊物理治療及痛症中心」提供專業手法復位及衝擊波治療服務。中心院長發現兩大營銷難題：(a) 潛在病人在首次購買前，因看不到、感受不到治療服務而對中心缺乏信心；(b) 中心在星期一至五上午有大量治療房空置無人使用，但週末繁忙時段卻供不應求、等候時間過長。",
+      question: "試分別指出上述 (a)（2分）及 (b)（2分）反映了「服務」的哪一項特性，並各建議一項應付該特性的方法。（4 分）",
+      steps: [
+        { ptTitle: "論點一：(a) 購買前看不到感受不到（滿分 2 分：1 分服務特性名稱 ＋ 1 分應付方法）", label: "論點一 · 第 1 步：準確指出情況 (a) 所反映的「服務特性」名稱與意思（1分）", colorClass: "hl-s1", opts: [
+          { text: "反映了服務的「異質性（多變性）」，因為不同物理治療師提供的服務質素各有不同。", score: 0, status: "wrong", comment: "購買前「看不到、感受不到服務」反映的是服務的「無形性 (Intangibility)」，而非異質性。" },
+          { text: "情況 (a) 反映了服務的「無形性 (Intangibility)」：即服務在購買之前是看不到、嚐不到、聽不到、嗅不到和感受不到的（消費者在享用服務前不會確實知道可從服務中得到甚麼）。", score: 1, status: "best", comment: "準確指出服務的「無形性 (Intangibility)」及其教科書定義。" },
+          { text: "反映了物理治療屬於有形產品。", score: 0, status: "wrong", comment: "物理治療屬於無形服務。" }
+        ]},
+        { label: "論點一 · 第 2 步：連結「舒脊物理治療中心」建議一項應付「無形性」的方法（1分）", colorClass: "hl-s2", opts: [
+          { text: "中心可向消費者提供「有形或實體的證據」證明自身能夠提供優質服務——例如提供清潔和舒適的治療室環境、維持物理治療師的專業外形（如穿着整齊專業制服），以及展示服務成效的照片。", score: 1, status: "best", comment: "完全緊扣課文應付無形性的三種實體證據方法（提供清潔和舒適的環境、維持員工的專業外形、展示服務成效的照片）。" },
+          { text: "中心應該做好市場營銷策略。", score: 0, status: "partial", comment: "必須提出應付無形性的具體方法（向消費者提供有形或實體的證據，如清潔舒適環境、員工專業外形或展示服務成效照片）。" },
+          { text: "中心應該在週末關門休息。", score: 0, status: "wrong", comment: "與應付服務無形性無關。" }
+        ]},
+        { ptTitle: "論點二：(b) 平日房間空置無法儲存至週末（滿分 2 分：1 分服務特性名稱 ＋ 1 分應付方法）", label: "論點二 · 第 1 步：準確指出情況 (b) 所反映的「服務特性」名稱與意思（1分）", colorClass: "hl-s1", opts: [
+          { text: "情況 (b) 反映了服務的「易逝性 (Perishability)」：即服務不可以儲存起來留待日後銷售或使用（導致服務業企業難以在繁忙時段與非繁忙時段的服務供應和消費者需求之間作出協調）。", score: 1, status: "best", comment: "準確指出教科書標準術語「易逝性 (Perishability)」及其不可儲存留待日後銷售或使用的定義。" },
+          { text: "情況 (b) 反映了服務的「不可分割性」。", score: 0, status: "wrong", comment: "服務不可以儲存留待日後使用屬於「易逝性」，而非不可分割性。" },
+          { text: "反映了中心的房間太多。", score: 0, status: "partial", comment: "未能寫出標準服務特性術語「易逝性 (Perishability)」。" }
+        ]},
+        { label: "論點二 · 第 2 步：連結「在服務的供求上作出協調」建議一項應付「易逝性」的方法（1分）", colorClass: "hl-s2", opts: [
+          { text: "中心可在服務的供求上作出更佳協調——在需求方面，於星期一至五上午「非繁忙時段提供折扣優惠（並上調週末繁忙時段收費）」，把需求由繁忙時段轉移到非繁忙時段，並「設立預約系統」讓病人透過電話或互聯網提前預約（或在供應方面聘請兼職治療師應付週末需求）。", score: 1, status: "best", comment: "緊扣課文應付易逝性的標準方法（非繁忙時段提供折扣優惠、設立預約系統、聘請兼職員工）。" },
+          { text: "把平日空置的服務時間放進貨倉儲存到星期六使用。", score: 0, status: "wrong", comment: "服務具有易逝性，無法儲存起來留待日後使用。" },
+          { text: "叫病人平日來接受治療。", score: 0, status: "partial", comment: "必須說明具體供求協調措施（如於非繁忙時段提供折扣優惠、設立預約系統或聘請兼職員工）。" }
+        ]}
+      ]
+    },
+    {
+      id: "sa2", ch: 2, chName: "第 2 課：市場研究", maxMarks: 4,
+      title: "甲部 Q2：運用「次級數據」的壞處 (2分) 與採用「觀察研究」的缺點 (2分)",
+      scenario: "「鮮寵工坊」準備在香港推出一款全新的「防敏感昆蟲蛋白狗糧」。市場部助理進行了兩項研究工作：(a) 從網上免費下載了一份五年前由外國機構發表的《全球寵物乾糧市場報告》（次級數據）；(b) 在寵物展攤位直接觀察和記錄有多少狗主拿起新狗糧樣本觀看（觀察研究）。",
+      question: "試結合上述情境，分別指出並解釋：(a) 運用該份外國報告（次級數據）的一項壞處（2分）；(b) 採用「觀察研究」蒐集原始數據的一項缺點（2分）。（4 分）",
+      steps: [
+        { ptTitle: "論點一：(a) 運用次級數據的壞處（滿分 2 分：1 分壞處標題 ＋ 1 分情境解說）", label: "論點一 · 第 1 步：指出運用「次級數據 (Secondary Data)」的單一核心壞處標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "壞處是蒐集次級數據須耗費極多時間和資源，且成本比蒐集原始數據高昂。", score: 0, status: "wrong", comment: "次級數據可節省時間和資源且成本較低；耗費較多時間資源與成本較高是「原始數據」的壞處。" },
+          { text: "壞處是「數據可能過時」及「數據相關性較低」（或選：「數據質素沒有保證」）。", score: 1, status: "best", comment: "準確指出課文第 2 課次級數據的壞處（數據可能過時、數據相關性較低、數據質素沒有保證）。" },
+          { text: "次級數據有很多壞處。", score: 0, status: "partial", comment: "未能寫出具體壞處標題。" }
+        ]},
+        { label: "論點一 · 第 2 步：連結「五年前外國報告與香港新昆蟲蛋白狗糧」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "因為該份報告是在五年前（一段時間前）蒐集的，數據可能已經過時；而且次級數據是為現時研究課題以外的其他目的而蒐集的，並非專為研究「香港狗主對全新昆蟲蛋白狗糧的意見」而蒐集，與現時研究課題的相關性較低，未必能滿足鮮寵工坊的需要。", score: 1, status: "best", comment: "緊扣課文「在一段時間前蒐集可能會過時」及「並非專為現時的研究課題而蒐集，相關性較低，未必能滿足企業需要」作解說。" },
+          { text: "因為外國報告是用英文寫的。", score: 0, status: "wrong", comment: "語言並非次級數據在市場研究上的壞處。" },
+          { text: "因為這份報告不太好用。", score: 0, status: "partial", comment: "必須說明為何五年前的外國報告「數據可能過時」或「數據相關性較低（並非專為現時的研究課題而蒐集）」。" }
+        ]},
+        { ptTitle: "論點二：(b) 採用觀察研究的缺點（滿分 2 分：1 分缺點標題 ＋ 1 分情境解說）", label: "論點二 · 第 1 步：指出採用「觀察研究 (Observational Research)」的單一核心缺點標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "缺點是「部分資料不能透過觀察獲得（企業未必能觀察到人們的思想和感受）」（或選：「難以分析數據［多是質性數據，難用統計方法分析］」／「可能存在偏見［不同研究人員對觀察所得有不同詮釋，結果可能流於主觀］」）。", score: 1, status: "best", comment: "準確指出課文第 2 課「觀察研究」的缺點標題。" },
+          { text: "缺點是受訪者時常被逼在問卷預設的封閉式選項中選出答案。", score: 0, status: "wrong", comment: "這是「調查研究（問卷）」的缺點，觀察研究不涉及填寫問卷。" },
+          { text: "缺點是研究結果欠缺真確性。", score: 0, status: "wrong", comment: "透過觀察實際市場情況或人們真實行為獲得更具真確性的結果，是觀察研究的「優點」而非缺點。" }
+        ]},
+        { label: "論點二 · 第 2 步：連結「寵物展狗主拿起昆蟲蛋白狗糧觀看」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "研究人員雖然可觀察到狗主拿起昆蟲蛋白狗糧觀看後放回架上的行為，但卻未必能觀察到狗主內心的思想和感受——無法了解狗主為何作出不購買的選擇（究竟是對昆蟲成分反感、還是認為包裝或定價不吸引）。", score: 1, status: "best", comment: "緊扣課文「可觀察到顧客選擇或放下產品，但未必能觀察到人們的思想和感受、了解顧客為何作出這個選擇」作解說。" },
+          { text: "因為研究人員看不清楚。", score: 0, status: "partial", comment: "必須說明「未必能觀察到狗主的思想和感受（無法了解狗主為何作出該選擇）」。" },
+          { text: "這會令寵物展立即取消。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "sa3", ch: 3, chName: "第 3 課：消費者行為", maxMarks: 4,
+      title: "甲部 Q3：比較「商業消費市場」與「個人消費市場」的兩項分別 (4分)",
+      scenario: "「香醇精品咖啡烘焙廠」同時經營兩類業務：(1) 向全港五星級酒店及連鎖餐廳批發供應商用咖啡豆（商業消費市場）；(2) 在門市向一般市民售賣小盒裝濾掛咖啡包（個人消費市場）。",
+      question: "試結合上述咖啡烘焙廠情境，從 (a)「需求性質与買家對價格的敏感度」（2分）及 (b)「參與購買決策的人數與購買決策的複雜程度」（2分）兩方面，比較這兩個市場的分別。（4 分）",
+      steps: [
+        { ptTitle: "論點一：(a) 需求性質與買家對價格的敏感度（滿分 2 分：1 分個人消費市場特點 ＋ 1 分商業消費市場對比）", label: "論點一 · 第 1 步：指出「個人消費市場」在需求性質與價格敏感度上的特點（1分）", colorClass: "hl-s1", opts: [
+          { text: "在個人消費市場中，個人消費者購買小盒裝濾掛咖啡包的需求直接與其個人需要有關（買入自用、在家中使用或送禮），且對價格的敏感度較高（較敏感），可能會因減價而購買更多。", score: 1, status: "best", comment: "準確指出個人消費市場需求直接與個人需要有關，且對價格較敏感。" },
+          { text: "個人消費者買一盒濾掛咖啡屬於引申需求，且對價格完全不敏感。", score: 0, status: "wrong", comment: "引申需求及對價格較不敏感屬於商業消費市場的特點。" },
+          { text: "兩個市場的人都想買咖啡。", score: 0, status: "partial", comment: "未能指出「直接個人需要 vs 引申需求（衍生需求）」及價格敏感度的差異。" }
+        ]},
+        { label: "論點一 · 第 2 步：指出「商業消費市場」在「引申需求」與價格敏感度上的特點作對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "相反，在商業消費市場中，酒店及餐廳購買咖啡豆用於機構營運，其需求屬於「引申需求（又稱衍生需求）」（源自最終食客對酒店餐飲的需求）；由於需求主要是引申需求，商業買家對價格的敏感度普遍低於個人消費者（較不敏感），短期內需求不會因價格轉變而大受影響。", score: 1, status: "best", comment: "清楚對比商業消費市場屬「引申需求（衍生需求）」及對價格的敏感度普遍低於個人消費者。" },
+          { text: "酒店買咖啡豆也是為了總經理自己一個人飲。", score: 0, status: "wrong", comment: "商業買家購買產品是用於機構營運、生產或轉售。" },
+          { text: "酒店買的咖啡豆比較多。", score: 0, status: "partial", comment: "這是購貨金額／數量的分別，題目 (a) 要求比較「需求性質（引申需求）與買家對價格的敏感度」。" }
+        ]},
+        { ptTitle: "論點二：(b) 參與購買決策的人數與購買決策的複雜程度（滿分 2 分：1 分個人消費市場特點 ＋ 1 分商業消費市場對比）", label: "論點二 · 第 1 步：指出「個人消費市場」在參與決策人數與複雜程度上的特點（1分）", colorClass: "hl-s1", opts: [
+          { text: "在個人消費市場中，個人消費者買濾掛咖啡通常直接自行作出購買決定，對產品所知有限，購買決策較簡單（甚至可能因包裝精美而一時衝動購買）。", score: 1, status: "best", comment: "準確指出個人消費者直接自行決定且購買決策較簡單。" },
+          { text: "市民買一盒 $50 濾掛咖啡需要組成採購委員會並遵從正式審批程序。", score: 0, status: "wrong", comment: "這是商業買家的決策特點。" },
+          { text: "兩個市場的決策過程不同。", score: 0, status: "partial", comment: "未能具體說明兩者在參與決策人數與複雜程度上的分別。" }
+        ]},
+        { label: "論點二 · 第 2 步：指出「商業消費市場」在多人參與（採購委員會）與正式審批程序上的特點作對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "相反，在商業消費市場中，酒店採購全年咖啡豆的購買決策較複雜：(i) 決策過程通常有多人參與（常由採購部、餐飲部及財務部等組成「採購委員會」共同作出決定）；(ii) 作出購買決定時通常須遵從各種「正式的決策或審批程序」（如邀請提交建議書和發出訂購合約），故需花費較多時間。", score: 1, status: "best", comment: "完整點出課文第 3 課商業買家決策較複雜的兩大原因（多人參與組成採購委員會 ＋ 遵從正式決策或審批程序）。" },
+          { text: "酒店採購部全憑一時衝動買幾十噸咖啡豆。", score: 0, status: "wrong", comment: "商業買家通常是資深的專業買家，決策過程嚴謹複雜。" },
+          { text: "酒店要考慮久一點。", score: 0, status: "partial", comment: "必須點出「有多人參與（組成採購委員會）」及「須遵從正式的決策或審批程序（如邀請提交建議書和發出訂購合約）」。" }
+        ]}
+      ]
+    },
+    {
+      id: "sa4", ch: 4, chName: "第 4 課：市場區隔、鎖定目標市場及定位", maxMarks: 4,
+      title: "甲部 Q4：小型企業採用「集中營銷（縫隙市場營銷）」的一項好處與一項壞處 (4分)",
+      scenario: "「樂齡科技」是一家只有 10 名員工的本地小型企業。公司決定放棄一般大眾行山杖市場，採用「集中營銷（又稱縫隙市場營銷 Concentrated Marketing）」策略，把資源集中在單一細小的市場組別（縫隙市場）上——專門為「患有柏金遜症的長者」度身設計及銷售防震激光引導智能拐杖。",
+      question: "試結合上述情境，分別指出並解釋「樂齡科技」採用「集中營銷」的 (a) 一項好處（2分）及 (b) 一項壞處（2分）。（4 分）",
+      steps: [
+        { ptTitle: "論點一：(a) 集中營銷的一項好處（滿分 2 分：1 分好處標題 ＋ 1 分情境解說）", label: "論點一 · 第 1 步：指出採用「集中營銷（縫隙市場營銷）」的單一核心好處標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "好處是「向整個市場提供單一產品以節省生產成本」。", score: 0, status: "wrong", comment: "向整個市場提供單一產品是「無差異營銷（大眾營銷）」的做法與好處。" },
+          { text: "好處是「更有效地滿足目標消費者的需要」（或選：「更有效地運用資源」）。", score: 1, status: "best", comment: "準確指出課文第 4 課「集中營銷」的兩項標準好處之一。" },
+          { text: "好處是選取多個市場組別以提高整體銷售額。", score: 0, status: "wrong", comment: "選取多個市場組別是「差異營銷」的做法與好處。" }
+        ]},
+        { label: "論點一 · 第 2 步：連結「樂齡科技專門服務柏金遜症長者縫隙市場」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "樂齡科技作為資源有限的小型企業，把資源集中在「柏金遜症長者」這單一縫隙市場上，能更深入了解這群目標消費者的特殊防震要求，並為他們度身設計智能拐杖；這有助公司在該縫隙市場建立知名度和賺取更高的銷售額。", score: 1, status: "best", comment: "緊扣課文「能更深入了解目標消費者的要求，並為他們度身設計產品，有助建立知名度和賺取更高銷售額」作解說。" },
+          { text: "因為樂齡科技只有 10 名員工。", score: 0, status: "partial", comment: "必須說明集中資源如何「更深入了解目標消費者要求並度身設計產品，從而更有效地滿足其需要及建立知名度」。" },
+          { text: "這會令柏金遜症自動消失。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]},
+        { ptTitle: "論點二：(b) 集中營銷的一項壞處（滿分 2 分：1 分壞處標題 ＋ 1 分情境解說）", label: "論點二 · 第 1 步：指出採用「集中營銷（縫隙市場營銷）」的單一核心壞處標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "壞處是「風險較高」（或選：「縫隙市場的增長或引來大型企業加入競爭」）。", score: 1, status: "best", comment: "準確指出課文第 4 課「集中營銷」的兩項標準壞處之一。" },
+          { text: "壞處是須把用作生產和市場營銷的資源分配至不同的市場組別，導致成本上升。", score: 0, status: "wrong", comment: "把資源分配至不同市場組別導致成本較高，是「差異營銷」的壞處而非集中營銷。" },
+          { text: "壞處是有一些限制。", score: 0, status: "partial", comment: "必須明確寫出「風險較高」或「縫隙市場的增長或引來大型企業」。" }
+        ]},
+        { label: "論點二 · 第 2 步：連結「單一柏金遜症拐杖縫隙市場的潛在危機」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "由於樂齡科技完全依賴「柏金遜症智能拐杖」這單一縫隙市場，如這個縫隙市場的經營環境轉差（例如出現全新替代療法令需求下跌），公司的銷售額和利潤便可能會大幅下跌（或：如這個縫隙市場增長迅速，可能會引來大型醫療器材企業加入競爭，影響樂齡科技的營運和銷售額）。", score: 1, status: "best", comment: "完整緊扣課文「依賴單一縫隙市場，如該市場經營環境轉差，銷售額和利潤便可能會大幅下跌（或增長迅速引來大型企業加入競爭）」作解說。" },
+          { text: "因為這個市場比較細。", score: 0, status: "partial", comment: "應清楚說明「如所選縫隙市場的經營環境轉差，銷售額和利潤便可能會大幅下跌」或「縫隙市場增長迅速引來大型企業加入競爭」。" },
+          { text: "這會令拐杖的電池自動損壞。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "sa5", ch: 5, chName: "第 5 課：產品及服務的市場營銷策略（一）（定價策略）", maxMarks: 4,
+      title: "甲部 Q5：比較新產品「撇油性定價策略」與「滲透性定價策略」的兩項分別 (4分)",
+      scenario: "「智聽科技」推出全球首創的「AI 納米隱形助聽器」，採用「撇油性定價策略 (Skimming Pricing Strategy)」，最初每對定價高達 $38,000；而「清泉飲品」推出新口味「無糖白桃烏龍茶」，則採用「滲透性定價策略 (Penetration Pricing Strategy)」，最初每支只售 $6.5。",
+      question: "試結合上述情境，從 (a)「目標消費者與初期價格」（2分）及 (b)「初期目的」（2分）兩方面，解釋這兩種新產品定價策略的不同之處。（4 分）",
+      steps: [
+        { ptTitle: "論點一：(a) 目標消費者與初期價格的分別（滿分 2 分：1 分撇油性定價 ＋ 1 分滲透性定價對比）", label: "論點一 · 第 1 步：指出「撇油性定價策略」的目標消費者與初期價格（1分）", colorClass: "hl-s1", opts: [
+          { text: "撇油性定價策略以對價格非常敏感的消費者為目標，最初以相對較低的價格銷售產品。", score: 0, status: "wrong", comment: "這是「滲透性定價策略」的特點，顛倒了兩種策略。" },
+          { text: "智聽科技採用的「撇油性定價策略」，是以「對價格敏感度低的消費者」為目標，在推出新助聽器時最初訂立「可訂定的最高價格（高價 $38,000）」（隨着時間過去才逐漸把價格下調）。", score: 1, status: "best", comment: "準確點出課文第 5 課撇油性定價策略的目標消費者（對價格敏感度低）與初期價格（可訂定的最高價格）。" },
+          { text: "因為助聽器比較貴。", score: 0, status: "partial", comment: "必須指出其目標消費者為「對價格敏感度低的消費者」及初期價格為「可訂定的最高價格」。" }
+        ]},
+        { label: "論點一 · 第 2 步：指出「滲透性定價策略」的目標消費者與初期價格作對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "相反，清泉飲品採用的「滲透性定價策略」，則是以「對價格非常敏感的消費者」為目標，在推出新口味茶飲時最初訂立「相對較低的價格（低價 $6.5）」來銷售產品。", score: 1, status: "best", comment: "清楚對比滲透性定價策略的目標消費者（對價格非常敏感）與初期價格（相對較低的價格）。" },
+          { text: "清泉飲品也是訂立可訂定的最高價格。", score: 0, status: "wrong", comment: "滲透性定價策略最初是以低價銷售新產品。" },
+          { text: "烏龍茶賣得比較便宜。", score: 0, status: "partial", comment: "必須同時點出其目標消費者為「對價格非常敏感的消費者」及最初訂立「相對較低的價格」。" }
+        ]},
+        { ptTitle: "論點二：(b) 初期目的的分別（滿分 2 分：1 分撇油性定價初期目的 ＋ 1 分滲透性定價初期目的對比）", label: "論點二 · 第 1 步：指出「撇油性定價策略」的初期目的（1分）", colorClass: "hl-s1", opts: [
+          { text: "智聽科技採用「撇油性定價策略」的初期目的，是從願意付出較高價格嘗試新助聽器的消費者手中，透過較高的利潤率「賺取最多的短期利潤」（並盡快收回高昂的初期研發成本）。", score: 1, status: "best", comment: "準確指出課文第 5 課撇油性定價策略的初期目的（透過較高的利潤率賺取最多的短期利潤）。" },
+          { text: "撇油性定價策略的初期目的是為了以最低價薄利多銷。", score: 0, status: "wrong", comment: "撇油性定價並非薄利多銷，而是透過高利潤率賺取最多的短期利潤。" },
+          { text: "目的是為了賺錢。", score: 0, status: "partial", comment: "必須明確寫出「透過較高的利潤率賺取最多的短期利潤」。" }
+        ]},
+        { label: "論點二 · 第 2 步：指出「滲透性定價策略」的初期目的作對比（1分）", colorClass: "hl-s2", opts: [
+          { text: "相反，清泉飲品採用「滲透性定價策略」的初期目的，是藉低價吸引大量消費者嘗試新茶飲，務求「在最短的時間內奪取／擴大市場佔有率」。", score: 1, status: "best", comment: "清楚對比課文第 5 課滲透性定價策略的初期目的（吸引大量消費者嘗試新產品，在最短的時間內奪取市場佔有率）。" },
+          { text: "滲透性定價策略的初期目的也是透過高利潤率賺取短期暴利。", score: 0, status: "wrong", comment: "滲透性定價初期價格較低，目的是在最短時間內奪取市場佔有率。" },
+          { text: "目的是想多些人飲茶。", score: 0, status: "partial", comment: "必須明確寫出「在最短的時間內奪取／擴大市場佔有率」的標準術語。" }
+        ]}
+      ]
+    },
+    {
+      id: "sa6", ch: 5, chName: "第 5 課：產品及服務的市場營銷策略（一）（推廣策略）", maxMarks: 4,
+      title: "甲部 Q6：向「途徑成員」推廣常用的工具 (2分) 與採用「促銷」的壞處 (2分)",
+      scenario: "「綠源草本藥業」剛推出一款新品牌「極速舒緩鎮痛膏」。(a) 市場部首先以「途徑成員（各區藥房及個人護理連鎖店等中間商）」為目標受眾進行推廣，游說它們入貨；(b) 同時，在向最終消費者推廣時，市場部在分店外派發優惠券及免費試用裝（促銷 Sales Promotion）。",
+      question: "(a) 根據影響選擇推廣組合工具的「目標受眾」因素，指出並解釋綠源藥業向「途徑成員」推廣時常用的其中一種推廣組合工具（2分）；(b) 解釋採用「促銷」這種推廣組合工具的一項壞處（2分）。（4 分）",
+      steps: [
+        { ptTitle: "論點一：(a) 向途徑成員推廣常用的推廣組合工具（滿分 2 分：1 分工具名稱 ＋ 1 分情境解說）", label: "論點一 · 第 1 步：指出企業向「途徑成員（中間商）」推廣時常用的推廣組合工具名稱（1分）", colorClass: "hl-s1", opts: [
+          { text: "向途徑成員推廣時最常用的是「個人銷售（人員銷售）」（或「促銷」）。", score: 1, status: "best", comment: "準確命中課文第 5 課「企業向途徑成員推廣產品時，通常會採用個人銷售和促銷」。" },
+          { text: "向途徑成員推廣時只能使用電視廣告。", score: 0, status: "wrong", comment: "電視廣告主要用於向最終消費者推廣，向途徑成員推廣通常採用個人銷售和促銷。" },
+          { text: "可以用不同的推廣方法。", score: 0, status: "partial", comment: "未能寫出課本五種推廣組合工具中的「個人銷售」或「促銷」。" }
+        ]},
+        { label: "論點一 · 第 2 步：連結「綠源藥業向藥房及連鎖店推廣鎮痛膏」作具體解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "綠源藥業可派遣銷售人員親自面對面向藥房及個人護理連鎖店的採購負責人推介鎮痛膏，直接向他們解釋產品特點、解答疑問及透過人際互動建立關係（或透過「促銷」向藥房提供批量入貨折扣優惠及贈品等短期誘因），促使途徑成員決定入貨。", score: 1, status: "best", comment: "清楚結合個人銷售（面對面解釋產品特點與建立關係）或促銷（提供批量入貨折扣等短期誘因）作解說。" },
+          { text: "叫藥房幫忙賣多一點。", score: 0, status: "partial", comment: "必須說明銷售人員如何面對面解釋特點（個人銷售）或提供甚麼短期誘因（促銷）。" },
+          { text: "將鎮痛膏的品牌名稱刪除。", score: 0, status: "wrong", comment: "與向途徑成員推廣無關。" }
+        ]},
+        { ptTitle: "論點二：(b) 採用「促銷 (Sales Promotion)」的壞處（滿分 2 分：1 分壞處標題 ＋ 1 分情境解說）", label: "論點二 · 第 1 步：指出採用「促銷」這種推廣組合工具的單一核心壞處標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "壞處是「促銷的功效可能較為短暫，未必適用於建立顧客對品牌的長期偏好以及與顧客的長遠關係」。", score: 1, status: "best", comment: "100% 準確寫出課文第 5 課「促銷」的標準缺點。" },
+          { text: "壞處是完全無法吸引消費者的注意或使消費者產生購買意慾。", score: 0, status: "wrong", comment: "有效吸引消費者注意及使消費者產生強烈購買意慾，是促銷的「優點」而非缺點。" },
+          { text: "壞處是有一些負面影響。", score: 0, status: "partial", comment: "必須明確寫出「功效可能較為短暫，未必適用於建立顧客對品牌的長期偏好以及與顧客的長遠關係」。" }
+        ]},
+        { label: "論點二 · 第 2 步：連結「派發鎮痛膏優惠券及免費試用裝」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "派發優惠券和折扣等短期誘因雖然能在短期內刺激消費者購買鎮痛膏，但一旦促銷優惠期結束、恢復原價後，只受短期誘因吸引的顧客便可能停止購買並轉投其他提供折扣的競爭對手，難以單靠促銷建立對綠源鎮痛膏品牌的長期偏好與長遠關係。", score: 1, status: "best", comment: "緊扣短期誘因結束後銷量回落、難以建立長期品牌偏好與長遠關係作解說。" },
+          { text: "因為派試用裝要花錢。", score: 0, status: "partial", comment: "應緊扣課文重點說明「功效較為短暫，未必適用於建立顧客對品牌的長期偏好以及與顧客的長遠關係」。" },
+          { text: "這會令所有藥房立即倒閉。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    }
+  ];
+
+  // ====== 乙部：商業個案分析題數據（100% 嚴格對齊教科書第 1 至 7 課用詞） ======
+  const caseSubQuestions = [
+    {
+      id: "c1", ch: 1, chName: "第 1 課 & 第 2 課：市場營銷的角色與市場研究", maxMarks: 6,
+      title: "分題 (a)：市場營銷概念（顧客導向）(2分) 及「質性研究（聚焦小組面談）」的兩項優點 (4分)",
+      question: "(i) 根據「市場營銷概念（顧客導向）」，結合個案解釋為何家豪在創業初期推出的舊款有線耳筒會嚴重滯銷（2分）；(ii) 結合個案，指出並解釋陳小姐採用「質性研究（聚焦小組面談）」蒐集失眠人士原始數據的兩項優點（4分）。（6 分）",
+      steps: [
+        { ptTitle: "(a)(i) 市場營銷概念與滯銷原因（滿分 2 分：1 分市場營銷概念定義 ＋ 1 分個案解說）", label: "第 1 步：準確指出「市場營銷概念（顧客導向）」的核心定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "市場營銷概念是指企業只須減低生產成本，要求顧客購買他們根本不需要的產品。", score: 0, status: "wrong", comment: "概念相反：市場營銷概念強調向顧客提供他們真正需要的貨品和服務，而非要他們購買根本不需要的產品。" },
+          { text: "「市場營銷概念」指出，企業應：(1) 分析顧客的需要，並採取合適的措施來滿足這些需要，藉此賺取利潤；以及 (2) 比競爭對手更有效和更具效率地滿足顧客。", score: 1, status: "best", comment: "完整寫出課文第 1 課「市場營銷概念」的兩大核心要點。" },
+          { text: "市場營銷概念是指將部門按區域組織劃分。", score: 0, status: "wrong", comment: "這是組織市場營銷活動的方式，並非市場營銷概念的定義。" }
+        ]},
+        { label: "第 2 步：結合個案中「家豪不做市場研究、只顧加厚金屬外殼而忽略睡眠痛點」解釋滯銷原因（1分）", colorClass: "hl-s2", opts: [
+          { text: "家豪在創業初期並沒有實踐市場營銷概念：他從不進行市場研究去分析失眠顧客的真正需要（顧客需要的是輕薄側睡不壓耳及無線連接），只顧閉門鑽研加厚有線耳筒的金屬外殼，未能比競爭對手更有效滿足顧客需要，導致產品與顧客需要脫節而嚴重滯銷。", score: 1, status: "best", comment: "緊扣「沒有分析顧客對側睡不壓耳及無線連接的真正需要，未能有效滿足顧客」作解說。" },
+          { text: "因為耳筒太重沒有人買。", score: 0, status: "partial", comment: "必須連結市場營銷概念——「沒有先分析顧客的需要並採取合適措施滿足這些需要」。" },
+          { text: "因為家豪沒有錢賣電視廣告。", score: 0, status: "wrong", comment: "個案指出滯銷是因為家豪沒有分析顧客需要，只顧加厚金屬外殼導致過重壓耳且有線。" }
+        ]},
+        { ptTitle: "(a)(ii) 質性研究（聚焦小組面談）優點一（滿分 2 分：1 分優點標題 ＋ 1 分個案解說）", label: "第 3 步：指出採用「質性研究（聚焦小組面談）」的第一項單一優點標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "第一項優點是「收集的資料較深入」（受訪者可自由發表意見，企業可從中獲得更多啟發，加深對研究課題的了解）。", score: 1, status: "best", comment: "準確指出課文第 2 課「質性研究」的第一項優點（收集的資料較深入）。" },
+          { text: "第一項優點是「蒐集所得的數據全部可量化，最容易運用統計方法分析且結果可類推至目標總體」。", score: 0, status: "wrong", comment: "容易分析量化數據及研究結果可類推是「調查研究（問卷）」的優點；質性研究的缺點正是難以分析數據及研究結果不可類推。" },
+          { text: "質性研究有很多好處。", score: 0, status: "partial", comment: "未能寫出課文具體優點標題。" }
+        ]},
+        { label: "第 4 步：結合個案中「8 位失眠人士自由發表意見討論睡眠痛點」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "在聚焦小組面談中，問題通常是開放式的，8 位受失眠困擾的參與者可自由發表意見，深入分享他們在睡眠時面對伴侶鼻鼾聲及側睡壓耳的痛點；極光公司可從中獲得更多具啟發性的資料（如研發超薄無線 AI 消噪耳機的靈感），加深對失眠市場課題的了解。", score: 1, status: "best", comment: "緊扣課文「開放式問題讓受訪者自由發表意見，企業可從中獲得更多啟發，加深對研究課題的了解」及個案失眠痛點作解說。" },
+          { text: "因為 8 個人一起聊天很熱鬧。", score: 0, status: "partial", comment: "必須說明受訪者自由發表意見如何讓公司「獲得較深入及具啟發性的資料，加深對失眠痛點課題的了解」。" },
+          { text: "這會令 8 位受訪者的失眠立即痊癒。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]},
+        { ptTitle: "(a)(ii) 質性研究（聚焦小組面談）優點二（滿分 2 分：1 分優點標題 ＋ 1 分個案解說）", label: "第 5 步：指出採用「質性研究（聚焦小組面談）」的第二項單一優點標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "第二項優點是「可與受訪者進行互動」（訪問員或主持人可要求受訪者解釋答案或向受訪者提出跟進問題，從而進一步了解受訪者的態度、理由或動機）。", score: 1, status: "best", comment: "準確指出課文第 2 課「質性研究」的第二項優點（可與受訪者進行互動）。" },
+          { text: "第二項優點是「完全不需要任何具技巧的主持人」。", score: 0, status: "wrong", comment: "需要技巧較高的訪問員或主持人是質性研究的缺點。" },
+          { text: "第二項優點是完全免費。", score: 0, status: "wrong", comment: "聚焦小組面談的參與者大多可獲得酬勞，且需聘請主持人，並非免費。" }
+        ]},
+        { label: "第 6 步：結合個案中「主持人向 8 位失眠人士提問並了解不買舊耳筒的背後原因」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "在小組面談期間，主持人可與 8 位失眠人士即時互動，當參與者表示不喜歡舊款有線耳筒時，主持人可即時要求他們解釋答案或提出跟進問題，從而進一步了解他們抗拒舊耳筒及選購助眠產品背後的真實態度、理由或動機。", score: 1, status: "best", comment: "緊扣課文「主持人可要求受訪者解釋答案或提出跟進問題，進一步了解受訪者的態度、理由或動機」作解說。" },
+          { text: "因為陳小姐想快點知道答案。", score: 0, status: "partial", comment: "應說明「主持人可與受訪者互動，要求解釋答案或提出跟進問題，進一步了解背後的態度、理由或動機」。" },
+          { text: "這會令耳機的電池壽命延長。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "c2", ch: 4, chName: "第 4 課 & 第 3 課：市場區隔基礎與個人消費者決策過程（購買後行為）", maxMarks: 6,
+      title: "分題 (b)：識別兩種市場區隔基礎 (4分) 與「購買後行為」及產品支援服務 (2分)",
+      question: "(i) 根據個案，指出並解釋陳小姐在劃分耳機市場時所採用的兩種「市場區隔基礎」及其相關變數（4分）；(ii) 根據個人消費者決策過程的第 5 步「購買後行為」，指出若顧客對 $1,880 的耳機感到不滿意可能會採取的一項行動，並建議極光公司可提供的一項「產品支援服務」以提升顧客滿意度（2分）。（6 分）",
+      steps: [
+        { ptTitle: "(b)(i) 市場區隔基礎一（滿分 2 分：1 分區隔基礎名稱 ＋ 1 分個案變數解說）", label: "第 1 步：準確指出陳小姐採用的第一種「市場區隔基礎」名稱（1分）", colorClass: "hl-s1", opts: [
+          { text: "第一種是「地理區隔 (Geographic Segmentation)」。", score: 0, status: "wrong", comment: "個案並無按地理位置（世界地區、國家、城市）劃分市場。" },
+          { text: "第一種是「人口區隔 (Demographic Segmentation)」。", score: 1, status: "best", comment: "準確指出課文第 4 課標準術語「人口區隔」名稱。" },
+          { text: "陳小姐用了四種區隔基礎。", score: 0, status: "partial", comment: "未能寫出具體區隔基礎名稱。" }
+        ]},
+        { label: "第 2 步：結合個案中「25 至 50 歲高收入中產專業人士」的人口統計變數作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "人口區隔是指根據主要的人口統計變數來劃分市場；個案中陳小姐按消費者的「年齡（25 至 50 歲）」及「收入／職業（高收入中產專業人士）」來劃分耳機市場，鎖定具備高購買力的在職失眠客群。", score: 1, status: "best", comment: "緊扣個案「年齡（25-50歲）及收入／職業（高收入中產專業人士）」的人口區隔變數作解說。" },
+          { text: "因為有錢人才買得起 $1,880 的耳機。", score: 0, status: "partial", comment: "必須明確點出個案使用了「年齡（25至50歲）」及「收入／職業（高收入中產專業人士）」這人口區隔變數。" },
+          { text: "因為中產人士住在香港島。", score: 0, status: "wrong", comment: "居住地區屬地理區隔，個案並無提及。" }
+        ]},
+        { ptTitle: "(b)(i) 市場區隔基礎二（滿分 2 分：1 分區隔基礎名稱 ＋ 1 分個案變數解說）", label: "第 3 步：準確指出陳小姐採用的第二種「市場區隔基礎」名稱（1分）", colorClass: "hl-s1", opts: [
+          { text: "第二種是「行為區隔 (Behavioural Segmentation)」。", score: 1, status: "best", comment: "準確指出課文第 4 課標準術語「行為區隔」名稱。" },
+          { text: "第二種是「無差異區隔」。", score: 0, status: "wrong", comment: "並無此區隔基礎名稱。" },
+          { text: "第二種是按鼻鼾聲大小區隔。", score: 0, status: "partial", comment: "必須寫出標準市場營銷術語「行為區隔 (Behavioural Segmentation)」。" }
+        ]},
+        { label: "第 4 步：結合個案中「消費者追求阻隔伴侶鼻鼾聲與側睡不壓耳的期望得益」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "行為區隔是指根據消費者對產品的行為反應（場合、期望得益、使用頻率）來劃分市場；個案中陳小姐按消費者的「期望得益」（即消費者期望使用產品後可獲取的得益——專門追求阻隔伴侶鼻鼾聲及側睡不壓耳的助眠得益）來劃分市場。", score: 1, status: "best", comment: "緊扣課文第 4 課行為區隔變數「期望得益（追求阻隔伴侶鼻鼾聲及側睡不壓耳的得益）」作解說。" },
+          { text: "因為用家想睡個好覺。", score: 0, status: "partial", comment: "必須指出這是按行為區隔中的「期望得益（阻隔鼻鼾聲與側睡不壓耳）」變數劃分市場。" },
+          { text: "這會令伴侶不再打鼻鼾。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]},
+        { ptTitle: "(b)(ii) 購買後行為與產品支援服務（滿分 2 分：1 分不滿意消費者的行動 ＋ 1 分產品支援服務建議）", label: "第 5 步：指出在第 5 步「購買後行為」中，當實際表現不及預期表現時，不滿意的消費者可能會採取的一項行動（1分）", colorClass: "hl-s1", opts: [
+          { text: "在「購買後行為」階段，消費者會把耳機的實際表現與預期表現（期望）作比較；若實際表現不及預期表現（感到不滿意），消費者可能會「在自己的社交圈子中批評極光公司」、「向公司或相關監管機構（如消費者委員會）投訴」、「轉而購買其他品牌的產品」或「向公司提出訴訟」。", score: 1, status: "best", comment: "準確寫出課文第 3 課「購買後行為」中不滿意消費者的四項標準行動。" },
+          { text: "不滿意的消費者會成為忠誠顧客並向親友大力推介該品牌。", score: 0, status: "wrong", comment: "這是「滿意的消費者」採取的行動，而非不滿意的消費者。" },
+          { text: "顧客買完之後會有一些行為。", score: 0, status: "partial", comment: "必須明確指出不滿意消費者採取的具体行動（如轉買其他品牌、在社交圈子批評、向消委會投訴或提出訴訟）。" }
+        ]},
+        { label: "第 6 步：根據第 5 課「產品支援服務」，建議一項可提升買家滿意度的具體服務（1分）", colorClass: "hl-s2", opts: [
+          { text: "極光公司可向買家提供完善的「產品支援服務」——例如提供「退貨及退款服務（如 30 天試用不滿意退貨退款保證）」、「免費維修及保養服務」以及「技術支援服務（如 24 小時查詢熱線指導配對藍牙及更換合適尺碼耳塞）」，讓目標消費者得到更多好處並對產品更感滿意。", score: 1, status: "best", comment: "完美結合課文第 5 課「產品支援服務（退貨及退款服務、維修及保養服務、技術支援服務）」作解說。" },
+          { text: "因為有服務顧客就會開心。", score: 0, status: "partial", comment: "應具體指出提供哪項產品支援服務（如退貨及退款服務、維修及保養服務或技術支援服務）。" },
+          { text: "這會令耳機的生產成本變成零。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "c3", ch: 6, chName: "第 6 課 & 第 5 課：產品生命週期與分銷策略", maxMarks: 6,
+      title: "分題 (c)：成熟期的特徵 (2分)、成熟期的產品策略 (2分) 與採用「選擇性分銷」的原因 (2分)",
+      question: "(i) 結合個案，指出並解釋第一代 AuroraPod 助眠耳機在步入「成熟期 (Maturity Stage)」時的一項市場特徵（2分），並建議一項適用於成熟期的「產品策略」（2分）；(ii) 解釋為何陳小姐為定價 $1,880 的助眠耳機採用「選擇性分銷」而非「密集性分銷」（2分）。（6 分）",
+      steps: [
+        { ptTitle: "(c)(i) 成熟期的一項市場特徵（滿分 2 分：1 分特徵標題 ＋ 1 分個案解說）", label: "第 1 步：指出產品在「成熟期 (Maturity Stage)」的單一市場特徵標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "在成熟期，市場上競爭對手極少，只有創新者購買產品，且利潤為負數。", score: 0, status: "wrong", comment: "這是「介紹期」的特徵，而非成熟期。" },
+          { text: "在成熟期，「大部分有潛力的消費者已經購買產品，銷售額到達頂點且進一步增長的空間十分有限（增長開始放緩）；市場上出現越來越多競爭產品，競爭越趨激烈，價格競爭變得普遍，企業的利潤開始下降（令一些較弱的競爭對手被市場淘汰）」。", score: 1, status: "best", comment: "準確指出課文第 6 課「成熟期」的核心特徵。" },
+          { text: "在成熟期，只有晚用者才會購買產品。", score: 0, status: "wrong", comment: "只有晚用者購買產品是「衰退期」的特徵；成熟期的顧客為大部分消費者。" }
+        ]},
+        { label: "第 2 步：結合個案中「第一代助眠耳機經過三年熱賣後面對多款仿製對手」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "個案中第一代 AuroraPod 經過三年熱賣後，大部分有潛力的目標失眠消費者均已購買助眠耳機，導致銷售額增長見頂放緩；同時市場上出現多款競爭對手的仿製助眠耳機爭奪客源，令競爭越趨激烈、價格競爭變得普遍。", score: 1, status: "best", comment: "緊扣個案「三年熱賣後銷量增長見頂放緩、多款仿製助眠耳機對手湧現爭客」作解說。" },
+          { text: "因為賣了三年已經很久。", score: 0, status: "partial", comment: "必須說明「大部分有潛力的消費者已購買導致銷量增長放緩，且多款仿製競爭對手加入令競爭越趨激烈」。" },
+          { text: "這會令全香港人都沒有失眠問題。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]},
+        { ptTitle: "(c)(i) 適用於成熟期的產品策略（滿分 2 分：1 分策略方向 ＋ 1 分個案具體做法）", label: "第 3 步：根據第 6 課，指出適用於成熟期的「產品策略」方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "在成熟期，為進一步突顯產品與競爭對手的不同之處，企業可以「(i) 繼續加入新的產品特點；以及 (ii) 推出更多元化的品牌和型號，以針對其他市場組別（例如進行產品線延伸）」。", score: 1, status: "best", comment: "100% 準確指出課文第 6 課成熟期的兩項標準產品策略。" },
+          { text: "策略方向是只提供最基本的單一產品型號，或立即逐步淘汰較不受歡迎的型號。", score: 0, status: "wrong", comment: "提供最基本型號是「介紹期」策略；逐步淘汰不受歡迎型號是「衰退期」策略。" },
+          { text: "想辦法令耳機賣久一點。", score: 0, status: "partial", comment: "必須寫出課文成熟期產品策略：「繼續加入新的產品特點」或「推出更多元化的品牌和型號以針對其他市場組別（產品線延伸）」。" }
+        ]},
+        { label: "第 4 步：結合「AuroraPod 助眠耳機」說明具體執行做法（1分）", colorClass: "hl-s2", opts: [
+          { text: "極光公司可為助眠耳機「繼續加入新的產品特點」（如加入 AI 自動調節白噪音及智能溫柔喚醒鬧鐘功能）；同時進行「產品線延伸」，推出價格較實惠的入門版助眠耳機以吸納年輕學生組別（下向延伸），或推出尊貴鈦金屬商務版以吸納長途機頭等艙旅客組別（上向延伸），藉此捍衛現有的市場佔有率。", score: 1, status: "best", comment: "具體結合「繼續加入新產品特點（AI 白噪音鬧鐘）」與「推出多元化型號針對其他市場組別（產品線延伸）」。" },
+          { text: "把耳機改個名字繼續賣。", score: 0, status: "partial", comment: "應具體說明加入了甚麼新產品特點，或如何推出更多元化的型號針對其他市場組別。" },
+          { text: "將耳機售價提高十倍。", score: 0, status: "wrong", comment: "在價格競爭普遍的成熟期盲目加價十倍會流失顧客（成熟期定價須貼近競爭對手甚至更吸引）。" }
+        ]},
+        { ptTitle: "(c)(ii) 採用「選擇性分銷」的原因（滿分 2 分：1 分選擇性分銷策略考慮 ＋ 1 分個案解說）", label: "第 5 步：根據第 5 課，指出「選擇性分銷」相對於密集性分銷的主要策略性考慮與優勢（1分）", colorClass: "hl-s1", opts: [
+          { text: "選擇性分銷在每個地區只選擇部分途徑成員分銷產品，主要策略性考慮是「與途徑成員的關係和對它們的控制」：企業可集中資源與經挑選的途徑成員建立緊密合作關係，對定價、推廣、存貨和服務政策取得較大的控制權，並維持良好的產品形象。", score: 1, status: "best", comment: "準確指出課文第 5 課選擇性分銷的主要策略性考慮（與途徑成員的關係和對它們的控制，以及維持良好產品形象）。" },
+          { text: "選擇性分銷對途徑成員的控制程度最低，且途徑成員數目越多越好。", score: 0, status: "wrong", comment: "途徑成員數目越多越好且控制程度低的是「密集性分銷」。" },
+          { text: "因為選擇性分銷比密集性分銷少一點店舖。", score: 0, status: "partial", comment: "必須說明選擇部分途徑成員如何讓企業「集中資源與途徑成員建立緊密關係、對定價推廣與服務政策取得較大控制權及維持產品形象」。" }
+        ]},
+        { label: "第 6 步：結合個案中「定價 $1,880 的 AI 助眠耳機在大型電器店及高檔百貨發售」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "定價 $1,880 的 AI 助眠耳機屬高檔科技產品；若採用密集性分銷放進街市士多或一般便利店，極光公司將難以控制產品的展示與售價，更會損害其專業品牌形象；反之只挑選大型連鎖電器店及高檔百貨專櫃進行選擇性分銷，既能接觸中產目標顧客，又能與這些零售商建立緊密關係，確保專櫃提供優質試戴服務並維持高檔形象。", score: 1, status: "best", comment: "緊扣 $1,880 高檔助眠耳機需維持專業形象及控制專櫃試戴服務與定價作解說。" },
+          { text: "因為大型電器店比較出名。", score: 0, status: "partial", comment: "應扣連「與經挑選的途徑成員建立緊密關係、對定價與服務政策維持合理控制權及維護高檔產品形象」。" },
+          { text: "這會令百貨公司免收專櫃佣金。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "c4", ch: 6, chName: "第 6 課 & 第 7 課：電子市場營銷與顧客關係管理", maxMarks: 6,
+      title: "分題 (d)：採用電子市場營銷策略的兩項好處 (4分) 與運用 CRM 系統制定個人化策略 (2分)",
+      question: "針對陳小姐今年採用「電子市場營銷策略（建立官方網上商店）」及推出「極光睡眠監測手機 App」：(i) 結合個案，指出並解釋極光公司採用「電子市場營銷策略」的兩項好處（4分）；(ii) 建議並結合個案解釋陳小姐可如何利用該「睡眠監測手機 App」運用顧客關係管理（CRM）系統制定個人化策略並促進「交叉銷售」或「向上銷售」（2分）。（6 分）",
+      steps: [
+        { ptTitle: "(d)(i) 採用電子市場營銷策略的好處一（滿分 2 分：1 分好處標題 ＋ 1 分個案解說）", label: "第 1 步：根據第 6 課，指出採用「電子市場營銷策略」的第一項單一好處標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "第一項好處是「消費者更容易取得產品或服務」（網上商店可 24 小時營業，讓消費者隨時購物；企業也可以將產品出售給世界各地的消費者）。", score: 1, status: "best", comment: "準確指出課文第 6 課第 6.4E 節採用電子市場營銷策略的好處（消費者更容易取得產品或服務）。" },
+          { text: "第一項好處是「價格透明度較低，消費者比較價格的難度極高」。", score: 0, status: "wrong", comment: "電子市場營銷的價格透明度較高；價格透明度較低是傳統市場營銷的特點。" },
+          { text: "在網上賣東西很方便。", score: 0, status: "partial", comment: "必須寫出課本標準好處標題：「(i) 節省成本」、「(ii) 消費者更容易取得產品或服務」、「(iii) 加強推廣」或「(iv) 增進與顧客的關係」。" }
+        ]},
+        { label: "第 2 步：結合個案中「極光公司建立官方網上商店向全球顧客直銷助眠耳機」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "當香港本地市場步入成熟期後，極光公司的官方網上商店可 24 小時全天候營業，不受實體店固定營業時間限制，讓失眠人士在深夜失眠時亦可隨時在網上購買耳機；同時交易在網上進行不受地域限制，讓公司可將助眠耳機出售給世界各地的消費者，開拓全球市場。", score: 1, status: "best", comment: "緊扣課文「24 小時隨時購物」及「將產品出售給世界各地的消費者，開拓全球市場」作解說。" },
+          { text: "因為全世界都有人上網。", score: 0, status: "partial", comment: "應扣連「網上商店 24 小時營業讓消費者隨時購物，並突破地域限制將助眠耳機出售給世界各地的消費者」。" },
+          { text: "這會令跨國空運郵費自動變成零。", score: 0, status: "wrong", comment: "實體耳機跨國寄送仍需支付運費。" }
+        ]},
+        { ptTitle: "(d)(i) 採用電子市場營銷策略的好處二（滿分 2 分：1 分好處標題 ＋ 1 分個案解說）", label: "第 3 步：根據第 6 課，指出採用「電子市場營銷策略」的第二項單一好處標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "第二項好處是「節省成本」（企業無須開設實體店鋪，可以節省租金和人力成本；如果不使用途徑成員，更可以節省分銷成本）（或選：「加強推廣」／「增進與顧客的關係」）。", score: 1, status: "best", comment: "準確指出課文第 6 課第 6.4E 節採用電子市場營銷策略的好處（節省成本）。" },
+          { text: "第二項好處是「必須在海外每個城市租用大型實體店鋪」。", score: 0, status: "wrong", comment: "電子市場營銷無須開設實體店鋪。" },
+          { text: "第二項好處是可以賺多一點錢。", score: 0, status: "partial", comment: "必須寫出課本標準好處標題：「節省成本（節省實體店租金、人力成本及分銷成本）」、「加強推廣」或「增進與顧客的關係」。" }
+        ]},
+        { label: "第 4 步：結合個案中「極光公司透過官方網店向全球顧客直銷」作解說（1分）", colorClass: "hl-s2", opts: [
+          { text: "極光公司透過官方網上商店向全球顧客直銷，無須在歐美及亞洲各大城市開設實體店鋪，大大節省了高昂的商場舖位租金和前線售貨員人力成本；而且網店直接把耳機分銷給消費者，無須依賴海外中間商（途徑成員），更可節省給予中間商的佣金和上架費等分銷成本。", score: 1, status: "best", comment: "緊扣課文「無須開設實體店鋪可節省租金和人力成本，且不使用途徑成員可節省分銷成本」作解說。" },
+          { text: "因為開網店比較便宜。", score: 0, status: "partial", comment: "應具體說明節省了甚麼成本（無須開設實體店鋪的租金和人力成本，以及不使用途徑成員的分銷成本）。" },
+          { text: "這會令所有電器店拒絕賣耳機。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]},
+        { ptTitle: "(d)(ii) 運用 CRM 系統制定個人化策略與促進交叉／向上銷售（滿分 2 分：1 分策略概念 ＋ 1 分個案 App 應用解說）", label: "第 5 步：根據第 7 課，指出「運用顧客關係管理系統制定個人化策略」及「交叉銷售／向上銷售」的概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "陳小姐可運用顧客關係管理（CRM）系統收集、儲存和分析個別顧客的需要和喜好，為每名顧客度身設計個人化的產品和推廣信息（如根據記錄提供專屬優惠券），並促進「交叉銷售（向現有顧客銷售其他相似或相關的產品）」或「向上銷售（向現有顧客銷售價格較高的產品）」。", score: 1, status: "best", comment: "準確指出課文第 7 課運用 CRM 系統制定個人化策略及促進交叉銷售与向上銷售的核心概念。" },
+          { text: "陳小姐可運用 App 每天半夜三點發出刺耳警報聲吵醒用家。", score: 0, status: "wrong", comment: "這會令用家極度不滿並流失。" },
+          { text: "陳小姐可以用個 App 與客人搞好關係。", score: 0, status: "partial", comment: "必須寫出課本標準概念：「運用 CRM 系統收集分析個別顧客需要以度身設計個人化推廣信息，並促進交叉銷售或向上銷售」。" }
+        ]},
+        { label: "第 6 步：結合「極光睡眠監測手機 App」說明如何提升忠誠度及增加重複購買率（1分）", colorClass: "hl-s2", opts: [
+          { text: "極光公司可透過睡眠監測 App 的顧客資料庫，分析個別用家的睡眠數據與耳機使用記錄，為用家度身發送個人化睡眠報告與專屬優惠券（提升滿意度與忠誠度）；同時向現有用家推介購買相關的替換抗菌矽膠耳塞、真絲遮光眼罩及助眠香薰機（交叉銷售相關產品），或推介升級購買價格較高的最新一代旗艦級助眠耳機（向上銷售），從而增加銷售額。", score: 1, status: "best", comment: "完美結合個人化推廣信息（專屬優惠券）、交叉銷售（替換耳塞、眼罩、香薰機）與向上銷售（高價新一代耳機）。" },
+          { text: "用家可以在 App 看到自己睡了多久。", score: 0, status: "partial", comment: "必須說明如何利用 App 數據「度身設計個人化推廣信息，並向現有用家進行交叉銷售（相關配件）或向上銷售（高價升級型號）」。" },
+          { text: "這會令手機電池永遠不用充電。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    }
+  ];
+
+  // ====== 丙部：進階論述題數據（100% 嚴格對齊教科書第 5 課及第 7 課用詞） ======
+  const essayTopics = [
+    {
+      topicId: "es1", ch: 5, chName: "第 5 課：產品及服務的市場營銷策略（一）（4P 市場營銷組合策略配合 · 12分論述題）",
+      topicTitle: "丙部論述題 Q1：皇爵瑞士尊貴腕錶（闡釋如何制定與「高檔專業形象定位」相配合的 4P 市場營銷組合策略 · 12分）",
+      scenario: "「皇爵鐘錶 (RoyalChrono)」準備在香港推出全新系列「皇家藍寶石深海潛水機械腕錶」，目標市場為熱愛海上運動的高收入專業人士及富豪，定位為「結合瑞士頂級製錶工藝與專業深海潛水性能的尊貴名錶」。試根據市場營銷組合的四項元素（產品、價格、分銷和推廣），闡釋該公司應如何制定一套互相協調配合的市場營銷組合策略。（12 分 — 請分別建構 4 個獨立重點段落，每段 3 分）",
+      paragraphs: [
+        {
+          id: "es1_p1", ch: 5, maxMarks: 3, title: "第 1 段：產品策略 (Product Strategy — 產品項目層面五事項 · 3分)",
+          steps: [
+            { label: "第 1 步：指出「產品策略（產品特質、品牌建立、包裝及產品支援服務）」須配合尊貴專業定位的原則（1分）", colorClass: "hl-s1", opts: [
+              { text: "首先，在「產品策略 (Product)」方面：企業在產品項目層面制定策略時，必須在「產品特質（產品質素、產品特點、風格與設計）」、「品牌建立」、「包裝」及「產品支援服務」上展現最高工藝標準，以配合其頂級尊貴名錶的定位。", score: 1, status: "best", comment: "準確使用課文第 5 課產品項目層面的標準術語（產品特質、品牌建立、包裝、產品支援服務）。" },
+              { text: "產品策略是指將手錶放在街市士多售賣。", score: 0, status: "wrong", comment: "選擇銷售地點屬於「分銷策略 (Place)」，而非產品策略。" },
+              { text: "公司要同時做好產品、價格、分銷和推廣四個策略。", score: 0, status: "partial", comment: "違反「一段一個重點」原則。" }
+            ]},
+            { label: "第 2 步：針對「皇家藍寶石潛水機械腕錶」設定具體的產品特質、包裝與產品支援服務例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如在「產品特質」上，採用瑞士天文台認證機械機芯、防刮藍寶石水晶鏡面與 500 米防水性能（高產品質素與獨特產品特點）；在「包裝」上，採用名貴胡桃木收藏錶盒以妥善盛載保護手錶並讓顧客即時辨認品牌；在「產品支援服務」上，則提供五年全球免費上門取送維修及保養服務。", score: 1, status: "best", comment: "完美涵蓋課文第 5 課的產品特質（質素、特點、設計）、包裝（保護產品與辨認品牌）及產品支援服務（維修及保養服務）。" },
+              { text: "例如用最廉價的塑膠外殼，並且不提供任何產品支援服務。", score: 0, status: "wrong", comment: "廉價塑膠與缺乏產品支援服務與「頂級尊貴名錶」定位完全矛盾。" },
+              { text: "例如造一隻很漂亮的手錶。", score: 0, status: "partial", comment: "欠缺具體的產品特質、包裝及產品支援服務例子。" }
+            ]},
+            { label: "第 3 步：深化論述至讓目標消費者得到更多好處、提升滿意度與鞏固競爭優勢的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "透過卓越的產品特質、尊貴包裝與完善的產品支援服務，能讓高收入目標消費者得到更多好處並對腕錶更感滿意，在消費者心目中鞏固其頂級專業潛水名錶的形象並取得競爭優勢。", score: 1, status: "best", comment: "清楚推演出「讓目標消費者得到更多好處並更感滿意 → 鞏固頂級形象並取得競爭優勢」。" },
+              { text: "這樣便做好了產品策略。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令太平洋的海水自動變清澈。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        },
+        {
+          id: "es1_p2", ch: 5, maxMarks: 3, title: "第 2 段：定價策略 (Pricing Strategy — 內外在定價因素與撇油性定價 · 3分)",
+          steps: [
+            { label: "第 1 步：指出「定價策略（領導產品品質目標、高顧客感知價值與撇油性定價策略）」的原則（1分）", colorClass: "hl-s1", opts: [
+              { text: "其次，在「定價策略 (Price)」方面：企業定價時須與其餘市場營銷組合策略互相協調配合，並考慮內在的「市場營銷目標（領導產品品質）」與外在的「顧客觀感（高顧客感知價值）」及「市場的可負擔能力」，採用高價策略——如新產品「撇油性定價策略 (Skimming Pricing Strategy)」。", score: 1, status: "best", comment: "準確運用課文第 5 課定價內外在因素（市場營銷目標、市場營銷組合策略配合、顧客感知價值、可負擔能力）及「撇油性定價策略」。" },
+              { text: "定價策略上應採用滲透性定價策略，每隻錶標價 $99 大賤賣。", score: 0, status: "wrong", comment: "$99 低價賤賣會徹底破壞瑞士頂級名錶的優質品牌形象。" },
+              { text: "第二是定一個價錢。", score: 0, status: "partial", comment: "必須明確寫出「領導產品品質目標」、「顧客感知價值」或「撇油性定價策略」等課本標準術語。" }
+            ]},
+            { label: "第 2 步：針對「皇家藍寶石潛水機械腕錶」設定具體的高價定價例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如由於目標富豪及高收入專業人士的購買力高（市場可負擔能力高），且認為瑞士手工潛水機械錶獨一無二（顧客感知價值高，對價格較不敏感），皇爵鐘錶可把每隻腕錶定於高水平（如每隻定價 $158,000，訂立可訂定的最高價格），以配合其高檔產品、分銷和推廣策略。", score: 1, status: "best", comment: "緊扣課文「目標消費者購買力高、顧客感知價值高故對價格較不敏感，可訂定較高價格以配合高檔營銷組合策略」。" },
+              { text: "例如把價錢定高一點。", score: 0, status: "partial", comment: "應說明為何可訂定高價（顧客感知價值高、對價格敏感度低、購買力高，且須配合高檔營銷組合）。" },
+              { text: "例如向銀行借入長期按揭貸款。", score: 0, status: "wrong", comment: "屬財務融資方式，並非 4P 定價策略。" }
+            ]},
+            { label: "第 3 步：深化論述至向目標消費者傳遞優質品牌形象、並透過較高利潤率賺取豐厚利潤的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "把腕錶價格定於高水平，既能向目標富豪消費者傳遞頂級優質品牌的形象（實現領導產品品質的目標），又能透過較高的利潤率讓公司收回製錶研發成本並賺取豐厚利潤。", score: 1, status: "best", comment: "清楚推演出「傳遞優質品牌形象（領導產品品質）＋ 透過較高利潤率賺取豐厚利潤」。" },
+              { text: "這樣便配合了市場定位。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令瑞士法郎匯率自動下跌。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        },
+        {
+          id: "es1_p3", ch: 5, maxMarks: 3, title: "第 3 段：分銷策略 (Place Strategy — 直接分銷或獨家性分銷 · 3分)",
+          steps: [
+            { label: "第 1 步：指出「分銷策略（自設專門店直接分銷或獨家性分銷）」須重視控制權與產品形象的原則（1分）", colorClass: "hl-s1", opts: [
+              { text: "第三，在「分銷策略 (Place)」方面：為維持名貴手錶的尊貴形象及對市場營銷擁有高度控制權，公司應採用「直接分銷（自設品牌專門店）」或間接分銷中的「獨家性分銷（獨家經銷 Exclusive Distribution —— 只容許少數途徑成員在各自經營的地區獨家分銷產品）」。", score: 1, status: "best", comment: "準確指出課文第 5 課「直接分銷」或「獨家性分銷（主要策略性考慮為產品的形象，對途徑成員控制程度高）」的原則。" },
+              { text: "分銷策略上應採用密集性分銷，把十五萬元的名錶放在全港所有便利店及超級市場發售。", score: 0, status: "wrong", comment: "密集性分銷適用於汽水、薯片等快速流動性消費品，會嚴重破壞名貴手錶的產品形象。" },
+              { text: "第三是找地方賣錶。", score: 0, status: "partial", comment: "必須明確寫出「直接分銷」或「獨家性分銷（獨家經銷）」的標準術語。" }
+            ]},
+            { label: "第 2 步：針對「在香港中環甲級商場自設專門店或授權唯一頂級鐘錶行獨家分銷」設定例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如皇爵鐘錶在香港只於中環高檔商場開設裝修奢華的品牌直營專門店（直接分銷），或只授權全港唯一一家信譽卓著的頂級鐘錶行獨家代理（獨家性分銷，並要求該鐘錶行不能售賣直接競爭對手的潛水錶），在店內設立私人貴賓鑑賞室接待顧客。", score: 1, status: "best", comment: "具體結合中環高檔商場自設專門店（直接分銷）或指定單一頂級鐘錶行（獨家性分銷）的例子。" },
+              { text: "例如在旺角女人街租個地攤擺賣。", score: 0, status: "wrong", comment: "地攤擺賣與頂級瑞士名錶定位嚴重衝突。" },
+              { text: "例如在高級的地方賣。", score: 0, status: "partial", comment: "應具體說明如何透過「自設專門店（直接分銷）」或「每個地區只容許單一途徑成員（獨家性分銷）」來分銷。" }
+            ]},
+            { label: "第 3 步：深化論述至緊密監控展示與定價、提升產品尊貴形象並與顧客建立密切關係的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "採用直接分銷或獨家性分銷，能讓皇爵鐘錶緊密監控腕錶的展示方式、推廣、質素和最終售價（擁有較大控制權），大幅提升產品的尊貴形象，並能直接接觸富豪顧客以建立密切的長遠關係。", score: 1, status: "best", comment: "緊扣課文第 5 課「對產品展示、推廣、質素和定價有較大控制權、緊密監控途徑成員並提升產品形象」作總結。" },
+              { text: "這樣顧客便可以買到錶了。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令中環的商場租金變成零。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        },
+        {
+          id: "es1_p4", ch: 5, maxMarks: 3, title: "第 4 段：推廣策略 (Promotion Strategy — 廣告、公共關係與個人銷售 · 3分)",
+          steps: [
+            { label: "第 1 步：指出「推廣策略（結合高檔雜誌廣告、公共關係與個人銷售）」的原則（1分）", colorClass: "hl-s1", opts: [
+              { text: "最後，在「推廣策略 (Promotion)」方面：公司應根據目標受眾（高收入富豪）與溝通目標，從推廣組合中挑選「廣告 (Advertising)」、「公共關係 (Public Relations)」及「個人銷售（人員銷售 Personal Selling）」互相配合。", score: 1, status: "best", comment: "準確指出課文第 5 課推廣組合工具中的「廣告、公共關係及個人銷售」。" },
+              { text: "推廣策略上應每天派人在街頭用擴音器叫賣買一送一，並派發五元贈券。", score: 0, status: "wrong", comment: "低檔街頭叫賣與五元贈券會嚴重損害頂級名錶的品牌形象。" },
+              { text: "最後是做推廣宣傳。", score: 0, status: "partial", comment: "必須明確指出使用哪些推廣組合工具（廣告、公共關係、個人銷售）。" }
+            ]},
+            { label: "第 2 步：針對「高檔雜誌廣告、贊助國際帆船賽（公共關係）與貴賓鑑賞會（個人銷售）」設定例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如：(1) 透過「廣告」在私人遊艇雜誌、頭等艙雜誌及財經名流月刊刊登精美廣告；(2) 透過「公共關係」贊助國際帆船盃體育賽事並舉行新品發布記者招待會以提升長期聲譽和形象；(3) 透過「個人銷售」由專業銷售人員在貴賓室親自面對面向收藏家解釋陀飛輪及深海防水構造，並進行個人互動。", score: 1, status: "best", comment: "完整結合課文第 5 課「廣告（雜誌）」、「公共關係（贊助體育活動及舉行記者招待會）」與「個人銷售（面對面解釋複雜產品特點及人際互動）」。" },
+              { text: "例如在電視賣廣告。", score: 0, status: "partial", comment: "應具體說明如何結合針對富豪的雜誌廣告、贊助體育賽事（公共關係）及一對一面對面推介（個人銷售）。" },
+              { text: "例如計算公司的存貨周轉率。", score: 0, status: "wrong", comment: "屬財務分析，與推廣策略無關。" }
+            ]},
+            { label: "第 3 步：深化論述至提升企業長期聲譽形象、促使顧客產生好感並促成銷售的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "透過公共關係與高檔廣告提升品牌的長期聲譽和尊貴形象，再配合銷售人員面對面解釋複雜製錶工藝並與富豪建立良好關係，能促使目標顧客對腕錶產生強烈好感並決定購買；四個 P 互相協調配合，成功落實其頂級定位。", score: 1, status: "best", comment: "緊扣課文第 5 課公共關係（提升長期聲譽和形象）與個人銷售（透過人際互動建立關係、產生好感從而決定購買）的優點作總結。" },
+              { text: "這樣四個 P 便全部完成了。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令所有收藏家免費獲得名錶。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      topicId: "es2", ch: 7, chName: "第 7 課：顧客關係管理（有助提升顧客忠誠度的市場營銷策略 · 12分論述題）",
+      topicTitle: "丙部論述題 Q2：尚雅有機護膚及芳療連鎖店（闡釋如何透過「提升顧客忠誠度的市場營銷策略」留住現有熟客 · 12分）",
+      scenario: "「尚雅芳療 (Elegance Spa & Skincare)」在全港經營十間有機護膚品專門店及芳療美容中心。面對市場上眾多新護膚品牌的競爭，行政總裁決定全面強化「顧客關係管理 (Customer Relationship Management, CRM)」，推行多項市場營銷策略以提升顧客忠誠度和留住現有顧客。試舉例闡釋尚雅芳療可如何透過四種具體策略來提升顧客忠誠度。（12 分 — 請分別建構 4 個獨立重點段落，每段 3 分）",
+      paragraphs: [
+        {
+          id: "es2_p1", ch: 7, maxMarks: 3, title: "第 1 段：運用顧客關係管理系統來制定個人化的市場營銷策略 (3分)",
+          steps: [
+            { label: "第 1 步：指出第一項策略 ——「運用顧客關係管理系統來制定個人化的市場營銷策略」（1分）", colorClass: "hl-s1", opts: [
+              { text: "首先，第一項提升顧客忠誠度的策略是「運用顧客關係管理（CRM）系統來制定個人化的市場營銷策略」：企業透過 CRM 系統收集、儲存和分析個別顧客的需要和喜好，從而為每名顧客度身設計市場營銷策略（如個人化的產品和推廣信息）。", score: 1, status: "best", comment: "100% 準確指出課文第 7 課第 7.3B 節第一項提升顧客忠誠度的策略名稱與定義。" },
+              { text: "第一項策略是將所有顧客的個人資料公開張貼在店門外。", score: 0, status: "wrong", comment: "違反私隱並摧毀顧客信任。" },
+              { text: "可以用不同的策略做 CRM。", score: 0, status: "partial", comment: "違反「一段一個重點」原則。" }
+            ]},
+            { label: "第 2 步：針對「尚雅芳療記錄顧客膚質、敏感史與消費記錄」設定具體例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如尚雅芳療可利用 CRM 資料庫詳細記錄和分析每位會員的皮膚性質（如乾性敏感肌）、對哪些植物精油敏感以及過往購買面霜的消費記錄；當會員再次光顧時，美容師便為其度身調配個人化的防敏芳療精油（個人化產品），並根據會員的消費記錄在面霜將近用完時向她們發送專屬回購優惠券（個人化推廣信息）。", score: 1, status: "best", comment: "緊扣課文「為每名顧客度身設計個人化的產品和推廣信息（如根據會員的消費記錄為他們提供專屬優惠券）」。" },
+              { text: "例如用電腦記住客人的名字。", score: 0, status: "partial", comment: "必須說明如何利用記錄的喜好與消費記錄「度身設計個人化的產品和推廣信息（如提供專屬優惠券）」。" },
+              { text: "例如向銀行申請短期貸款。", score: 0, status: "wrong", comment: "與顧客關係管理無關。" }
+            ]},
+            { label: "第 3 步：深化論述至提升現有顧客的滿意度、繼而提升忠誠度並促進交叉與向上銷售的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "為每名會員度身設計個人化的護膚產品與專屬推廣信息，能令會員感到備受了解與重視，有效提升現有顧客的滿意度，繼而提升他們的顧客忠誠度並留住顧客（同時讓公司獲得更多交叉銷售和向上銷售的機會）。", score: 1, status: "best", comment: "清楚推演出「度身設計個人化產品與推廣信息 → 提升現有顧客滿意度 → 繼而提升顧客忠誠度並留住顧客」。" },
+              { text: "這樣顧客便會很滿意了。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令有機植物的生長速度加快十倍。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        },
+        {
+          id: "es2_p2", ch: 7, maxMarks: 3, title: "第 2 段：推出會員計劃與顧客建立緊密聯繫（財務聯繫與社交聯繫 · 3分)",
+          steps: [
+            { label: "第 1 步：指出第二項策略 ——「推出會員計劃與顧客建立緊密聯繫（建立財務聯繫和社交聯繫）」（1分）", colorClass: "hl-s1", opts: [
+              { text: "其次，第二項提升顧客忠誠度的策略是「推出會員計劃來加強與顧客的聯繫」：企業可透過會員計劃，與顧客建立「財務聯繫」（為會員提供財務上的利益）和「社交聯繫」（與會員建立人際及互動關係）。", score: 1, status: "best", comment: "100% 準確指出課文第 7 課第 7.3B 節第二項策略（推出會員計劃建立財務聯繫和社交聯繫）。" },
+              { text: "第二項策略是向所有第二次來買東西的熟客收取雙倍價錢。", score: 0, status: "wrong", comment: "這會趕走熟客。" },
+              { text: "第二是給客人一張卡。", score: 0, status: "partial", comment: "必須明確寫出「推出會員計劃，與顧客建立財務聯繫和社交聯繫」。" }
+            ]},
+            { label: "第 2 步：針對「尚雅芳療」分別設定建立「財務聯繫」與「社交聯繫」的具體例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如：(1) 在「財務聯繫」方面，向會員提供購物九折及免費升級獨立芳療貴賓房等優惠待遇，並設立「積分獎賞計劃」，讓會員在消費滿一定金額或次數後免費換領有機玫瑰精華油或按摩療程；(2) 在「社交聯繫」方面，定期為會員舉辦「週末居家面部護理及調配香薰工作坊」，並定期向會員發送電子通訊告知新產品和推廣活動詳情。", score: 1, status: "best", comment: "完整涵蓋課文表 7.2 財務聯繫（購物折扣、服務升級、積分獎賞計劃換領禮品）與社交聯繫（為會員舉辦工作坊、定期向會員發送電子通訊或信息）的全部標準例子。" },
+              { text: "例如規定儲滿一億分才可以換一張紙巾。", score: 0, status: "wrong", comment: "毫無吸引力的獎賞無法發揮鼓勵再次光顧的作用。" },
+              { text: "例如做會員有優惠。", score: 0, status: "partial", comment: "應具體區分並舉出「財務聯繫（折扣、服務升級、積分獎賞計劃）」與「社交聯繫（舉辦工作坊、定期發送電子通訊）」的例子。" }
+            ]},
+            { label: "第 3 步：深化論述至提升顧客滿意度、加強人際聯繫並鼓勵會員持續再次光顧的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "透過財務聯繫為會員提供實質的財務利益，配合社交聯繫與會員建立深厚的人際互動關係，能大幅提升顧客滿意度並鼓勵她們持續再次光顧尚雅芳療，減少顧客流失予競爭對手。", score: 1, status: "best", comment: "清楚推演出「提供財務利益＋建立人際關係 → 提升顧客滿意度和鼓勵再次光顧 → 提升顧客忠誠度」。" },
+              { text: "這樣顧客便會經常來買東西了。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令商場免收所有分店的管理費。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        },
+        {
+          id: "es2_p3", ch: 7, maxMarks: 3, title: "第 3 段：提供附加服務（增值服務）與實行「夥伴關係管理」 (3分)",
+          steps: [
+            { label: "第 1 步：指出第三項策略 ——「提供附加服務（增值服務）」及「夥伴關係管理」（1分）", colorClass: "hl-s1", opts: [
+              { text: "第三，企業可透過「提供附加服務（又稱增值服務）」（免費或以合理的價格向顧客提供額外便利服務），以及實行「夥伴關係管理」（市務人員與內外各方人士緊密合作，共同為顧客提供更高的價值），來提升顧客滿意度和忠誠度。", score: 1, status: "best", comment: "準確指出課文第 7 課第 7.3B 節的「提供附加服務（增值服務）」與「夥伴關係管理」。" },
+              { text: "第三項策略是取消店內所有的鏡子和座位。", score: 0, status: "wrong", comment: "不正確的陳述。" },
+              { text: "第三是對客人服務好一點。", score: 0, status: "partial", comment: "必須明確寫出課本標準術語「提供附加服務（增值服務）」或「夥伴關係管理」。" }
+            ]},
+            { label: "第 2 步：針對「免費皮膚檢測／送貨附加服務」及「與外部商業夥伴合作」設定例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如在「提供附加服務」上，尚雅芳療可免費為顧客提供每月定期電腦深層皮膚水油分析、療程後免費奉上有機養生花茶，以及為購物滿一定金額的顧客提供免費送貨上門服務；在「夥伴關係管理」上，則可與外部商業夥伴（如信用卡公司或健康素食餐廳）合作，為指定信用卡持有人提供特別折扣優惠或推出聯合推廣活動。", score: 1, status: "best", comment: "具體結合免費皮膚檢測、免費送貨等附加服務，以及與信用卡公司／餐廳合作（夥伴關係管理）的課本例子。" },
+              { text: "例如顧客買護膚品時把護膚品交給顧客。", score: 0, status: "wrong", comment: "交付貨品只是最基本的交易，並非附加服務或夥伴關係管理。" },
+              { text: "例如送多一點服務給客人。", score: 0, status: "partial", comment: "欠缺貼合有機護膚及芳療中心的具體附加服務或夥伴關係管理例子。" }
+            ]},
+            { label: "第 3 步：深化論述至為顧客帶來更高價值、使實際表現超越預期表現並提升忠誠度的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "這些貼心的附加服務與跨界夥伴優惠能共同為顧客提供更高的優越價值，令服務的實際表現超越顧客的預期表現，使顧客深感滿意並願意長久支持尚雅芳療，顯著提升顧客忠誠度。", score: 1, status: "best", comment: "清楚推演出「共同為顧客提供更高價值 → 實際表現超越預期表現使顧客感到滿意 → 提升顧客忠誠度」。" },
+              { text: "這樣顧客便會很喜歡尚雅芳療。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令香港的天氣變得永遠濕潤。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        },
+        {
+          id: "es2_p4", ch: 7, maxMarks: 3, title: "第 4 段：有效地處理顧客投訴（迅速回應、員工授權與公平處理 · 3分)",
+          steps: [
+            { label: "第 1 步：指出第四項策略 ——「有效地處理顧客投訴（包含迅速回應、員工授權與公平對待）」（1分）", colorClass: "hl-s1", opts: [
+              { text: "最後，第四項提升顧客忠誠度的策略是「有效地處理顧客投訴」：企業應積極處理顧客的投訴並迅速作出回應；為此，企業須實行「員工授權 (Employee Empowerment)」，授予員工必要的權力讓他們能夠即時處理顧客的投訴，並對所有顧客一視同仁，公平地處理投訴。", score: 1, status: "best", comment: "100% 準確指出課文第 7 課第 7.3B 節「有效地處理顧客投訴（迅速回應、員工授權、一視同仁公平處理）」的核心要點。" },
+              { text: "第四項策略是當顧客投訴皮膚過敏時，立即將顧客趕出店外並封鎖其電話。", score: 0, status: "wrong", comment: "惡劣對待投訴顧客會令顧客失去信心並轉投競爭對手。" },
+              { text: "最後是不要讓客人投訴。", score: 0, status: "partial", comment: "現實中每家企業都難免曾遭顧客投訴，關鍵在於「如何有效地處理顧客的投訴（迅速回應與員工授權）」。" }
+            ]},
+            { label: "第 2 步：針對「顧客反映使用新面霜後泛紅不適或預約出錯」設定員工授權即時處理與補償例子（1分）", colorClass: "hl-s2", opts: [
+              { text: "例如尚雅芳療可設立 24 小時顧客服務熱線迅速回應投訴，並實行「員工授權」——授權各分店店長及前線美容師在遇到顧客投訴（如塗抹新面霜後出現泛紅微敏或預約房間安排出錯）時，無須層層請示總公司，可即時自行決定為顧客免費退換溫和蘆薈修護產品，或免費贈送一次洋甘菊鎮靜舒緩護理療程作補償。", score: 1, status: "best", comment: "具體結合設立 24 小時熱線迅速回應，以及實行「員工授權」讓前線人員即時免費退換產品或贈送療程補償。" },
+              { text: "例如與投訴的顧客理論三個小時，證明是顧客自己的皮膚有問題。", score: 0, status: "wrong", comment: "與顧客爭辯推卸責任只會加劇顧客不滿。" },
+              { text: "例如幫投訴的客人解決問題。", score: 0, status: "partial", comment: "欠缺「員工授權（授予員工必要權力即時處理投訴及給予補償）」與「設立 24 小時熱線迅速回應」的具體例子。" }
+            ]},
+            { label: "第 3 步：深化論述至及時化解不滿、挽回顧客信心並使投訴顧客傾向成為忠誠顧客的影響（1分）", colorClass: "hl-s3", opts: [
+              { text: "透過員工授權即時、公平且合理地解決顧客的投訴並給予補償，能迅速平息顧客的不滿，有效挽回顧客對尚雅芳療的信心；當顧客的投訴得以有效解決，她們便會傾向成為忠誠顧客並繼續光顧（同時協助公司及時發現營運問題並採取糾正行動）。", score: 1, status: "best", comment: "緊扣課文「如能夠有效地處理投訴，便可挽回顧客的信心和提升顧客忠誠度；如果顧客的投訴得以有效解決，他們會傾向成為忠誠顧客」。" },
+              { text: "這樣便做好了顧客關係管理。", score: 0, status: "partial", comment: "同義反覆。" },
+              { text: "這會令全香港所有護膚品自動免費。", score: 0, status: "wrong", comment: "不合理的推論。" }
+            ]}
+          ]
+        }
+      ]
+    }
+  ];
+
+  // ====== 共用渲染輔助：產生「紙筆練習模式（隱藏選項）」的 DSE 評卷參考與自評區塊 ======
+  function renderPaperPracticeBlock(item, navFnName, wsFnName) {
+    const isRev = !!revealedMS[item.id];
+    const curSelf = selfScores[item.id];
+    let scoreBtns = '';
+    for (let s = 0; s <= item.maxMarks; s++) {
+      scoreBtns += `<button class="score-pill ${curSelf === s ? 'picked' : ''}" onclick="setSelfScore('${item.id}', ${s}, ${navFnName}, ${wsFnName})">${s} 分</button>`;
+    }
+
+    const modelStepsHtml = item.steps.map(st => {
+      const bestOpt = st.opts.find(o => o.status === 'best');
+      return `
+        ${st.ptTitle ? `<div style="font-weight:800;color:var(--teal);margin:12px 0 6px;padding-top:8px;border-top:1px dashed var(--line)">${st.ptTitle}</div>` : ''}
+        <div style="margin-bottom:8px"><span class="${st.colorClass}">${st.label}</span><br><span style="font-weight:700">${bestOpt.text}</span> <span class="badge b-green" style="margin-left:6px">[1分]</span></div>`;
+    }).join('');
+
+    return `
+      <div class="paper-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div>
+            <span class="badge b-teal">紙筆寫作練習模式（已隱藏組合答案選項）</span>
+            <h4 style="margin-top:8px;color:var(--teal);font-size:17.5px">請在實體答題紙上作答（本題滿分：${item.maxMarks} 分；請遵循「一段一重點、1分概念＋1分情境解說＝2分一論點」原則）。</h4>
+          </div>
+          <button class="btn btn-teal" onclick="toggleRevealMS('${item.id}', ${wsFnName})">
+            ${isRev ? '隱藏評卷參考 (Marking Scheme)' : '完成紙筆作答後：顯示 DSE 評卷參考並自評得分'}
+          </button>
+        </div>
+
+        ${isRev ? `
+          <div class="ms-box">
+            <h4 style="color:var(--green);margin-bottom:10px;font-size:17.5px">DSE 評卷參考 (Marking Scheme) 逐分採分點拆解：</h4>
+            <div style="font-size:16px;line-height:1.8;background:var(--card);padding:16px 20px;border-radius:10px;border:1px solid var(--line)">
+              ${modelStepsHtml}
+            </div>
+            <div style="margin-top:16px;padding-top:14px;border-top:1.5px dashed var(--green);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+              <b style="color:var(--ink);font-size:15.5px">請對照上述 [1分] 採分點，為你在答題紙上的作答自評得分：</b>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">${scoreBtns}</div>
+            </div>
+          </div>
+        ` : ''}
+      </div>`;
+  }
+
+  function getItemScore(item, userAnsMap, submittedMap) {
+    if (selfScores[item.id] !== undefined) return selfScores[item.id];
+    if (submittedMap[item.id] && userAnsMap[item.id]) {
+      let sc = 0;
+      item.steps.forEach((st, sIdx) => {
+        const oIdx = userAnsMap[item.id][sIdx];
+        if (oIdx !== undefined) sc += st.opts[oIdx].score;
+      });
+      return sc;
+    }
+    return 0;
+  }
+
+  function isItemCompleted(item, submittedMap) {
+    return selfScores[item.id] !== undefined || !!submittedMap[item.id];
+  }
+
+  // ====== 甲部狀態與渲染 ======
+  let curSaIdx = 0;
+  let saUserAns = {};
+  let saSubmitted = {};
+
+  function selectSa(idx) { curSaIdx = idx; renderSaNav(); renderSaWorkspace(); }
+  function pickSaOpt(sIdx, oIdx) {
+    const q = saQuestions[curSaIdx];
+    if (!saUserAns[q.id]) saUserAns[q.id] = {};
+    saUserAns[q.id][sIdx] = oIdx;
+    saSubmitted[q.id] = false;
+    delete selfScores[q.id];
+    renderSaWorkspace();
+  }
+  function submitSa() {
+    const q = saQuestions[curSaIdx];
+    const ans = saUserAns[q.id] || {};
+    if (Object.keys(ans).length < q.steps.length) { alert(`請先完成本題全部 ${q.steps.length} 個步驟（共 2 個論點）的選擇，再點擊批改。`); return; }
+    saSubmitted[q.id] = true;
+    delete selfScores[q.id];
+    renderSaNav(); renderSaWorkspace(); updateLiveTotal();
+  }
+  function fillBestSa() {
+    const q = saQuestions[curSaIdx];
+    saUserAns[q.id] = {};
+    q.steps.forEach((st, sIdx) => { saUserAns[q.id][sIdx] = st.opts.findIndex(o => o.status === 'best'); });
+    saSubmitted[q.id] = true;
+    delete selfScores[q.id];
+    renderSaNav(); renderSaWorkspace(); updateLiveTotal();
+  }
+  function calcSaScore() {
+    return saQuestions.reduce((sum, q) => sum + getItemScore(q, saUserAns, saSubmitted), 0);
+  }
+  function renderSaNav() {
+    document.getElementById('saScoreHero').textContent = `${calcSaScore()} / 24`;
+    document.getElementById('saNavChips').innerHTML = saQuestions.map((q, i) => {
+      const done = isItemCompleted(q, saSubmitted);
+      return `<button class="chip ${i===curSaIdx?'active':''}" onclick="selectSa(${i})">${done?'[已完成] ':''}${q.title}</button>`;
+    }).join('');
+  }
+  function renderSaWorkspace() {
+    const q = saQuestions[curSaIdx];
+    const ans = saUserAns[q.id] || {};
+    const isSub = !!saSubmitted[q.id];
+    const letters = ['A', 'B', 'C'];
+    const qScore = getItemScore(q, saUserAns, saSubmitted);
+
+    const headerCard = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div><span class="badge b-rose">${q.chName}</span><b style="color:var(--primary);font-size:16px">本題滿分：4 分（2 個獨立論點 × 每個論點 2 分［1分重點＋1分解說］）</b></div>
+          <button class="btn btn-outline" style="padding:6px 14px;font-size:14px" onclick="togglePaperMode()">
+            ${paperMode ? '顯示組合選項' : '隱藏選項（紙筆練習）'}
+          </button>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800">${q.question}</div>
+      </div>`;
+
+    if (paperMode) {
+      document.getElementById('saWorkspace').innerHTML = headerCard + renderPaperPracticeBlock(q, 'renderSaNav', 'renderSaWorkspace');
+      return;
+    }
+
+    let pointsHtml = '';
+    for (let p = 0; p < q.steps.length; p += 2) {
+      const st1 = q.steps[p], st2 = q.steps[p+1];
+      pointsHtml += `
+        <div class="point-group-box">
+          <div style="font-weight:800;color:var(--primary);font-size:17px;margin-bottom:12px">${st1.ptTitle || ('論點 ' + (p/2 + 1) + '（2分）')}</div>
+          ${[st1, st2].map((st, offset) => {
+            const sIdx = p + offset;
+            const sel = ans[sIdx];
+            return `
+              <div class="builder-stage" style="margin-bottom:${offset===0?'12px':'0'}">
+                <h4 style="margin-bottom:8px;font-size:16px"><span class="${st.colorClass}">${st.label}</span></h4>
+                ${st.opts.map((o, oIdx) => {
+                  const isSel = sel === oIdx;
+                  const gCls = (isSub && isSel) ? (o.status==='best'?'graded-best':o.status==='partial'?'graded-partial':'graded-wrong') : '';
+                  return `<button class="opt-card ${isSel?'selected':''} ${gCls}" onclick="pickSaOpt(${sIdx}, ${oIdx})"><span class="opt-letter">${letters[oIdx]}</span><span style="flex:1">${o.text}</span></button>`;
+                }).join('')}
+              </div>`;
+          }).join('')}
+        </div>`;
+    }
+
+    const preview = [0, 2].map(p => {
+      const t1 = ans[p] === undefined ? `［未選第 ${p+1} 步］` : `<span class="hl-s1">${q.steps[p].opts[ans[p]].text}</span>`;
+      const t2 = ans[p+1] === undefined ? `［未選第 ${p+2} 步］` : `<span class="hl-s2">${q.steps[p+1].opts[ans[p+1]].text}</span>`;
+      return `<b>【論點 ${p/2 + 1} (2分)】</b>${t1} ${t2}`;
+    }).join('<br><br>');
+
+    document.getElementById('saWorkspace').innerHTML = headerCard + pointsHtml + `
+      <div class="assembled-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <h3 style="color:var(--primary);font-size:19px">甲部短答題答案預覽（兩段獨立論點）</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitSa()">批改本題 (4分)</button>
+            <button class="btn btn-outline" onclick="fillBestSa()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16.5px;line-height:1.85">${preview}</div>
+        ${isSub ? `
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${qScore===4?'b-green':qScore>=2?'b-amber':'b-red'}" style="font-size:15px;padding:6px 14px">本題得分：${qScore} / 4 分</span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const ch = st.opts[ans[sIdx]];
+              return `<div class="critique-item ${ch.status==='best'?'c-best':ch.status==='partial'?'c-partial':'c-wrong'}"><b>${st.label.split('：')[0]}（得分：${ch.score} / 1 分）：</b>${ch.comment}</div>`;
+            }).join('')}
+          </div>` : ''}
+      </div>`;
+  }
+
+  // ====== 乙部狀態與渲染 ======
+  let curCaseIdx = 0;
+  let caseUserAns = {};
+  let caseSubmitted = {};
+
+  function selectCase(idx) { curCaseIdx = idx; renderCaseNav(); renderCaseWorkspace(); }
+  function pickCaseOpt(sIdx, oIdx) {
+    const q = caseSubQuestions[curCaseIdx];
+    if (!caseUserAns[q.id]) caseUserAns[q.id] = {};
+    caseUserAns[q.id][sIdx] = oIdx;
+    caseSubmitted[q.id] = false;
+    delete selfScores[q.id];
+    renderCaseWorkspace();
+  }
+  function submitCase() {
+    const q = caseSubQuestions[curCaseIdx];
+    const ans = caseUserAns[q.id] || {};
+    if (Object.keys(ans).length < q.steps.length) { alert(`請先完成本分題全部 ${q.steps.length} 個步驟（共 3 個 2 分論點）的選擇，再點擊批改。`); return; }
+    caseSubmitted[q.id] = true;
+    delete selfScores[q.id];
+    renderCaseNav(); renderCaseWorkspace(); updateLiveTotal();
+  }
+  function fillBestCase() {
+    const q = caseSubQuestions[curCaseIdx];
+    caseUserAns[q.id] = {};
+    q.steps.forEach((st, sIdx) => { caseUserAns[q.id][sIdx] = st.opts.findIndex(o => o.status === 'best'); });
+    caseSubmitted[q.id] = true;
+    delete selfScores[q.id];
+    renderCaseNav(); renderCaseWorkspace(); updateLiveTotal();
+  }
+  function calcCaseScore() {
+    return caseSubQuestions.reduce((sum, q) => sum + getItemScore(q, caseUserAns, caseSubmitted), 0);
+  }
+  function renderCaseNav() {
+    document.getElementById('caseScoreHero').textContent = `${calcCaseScore()} / 24`;
+    document.getElementById('caseNavChips').innerHTML = caseSubQuestions.map((q, i) => {
+      const done = isItemCompleted(q, caseSubmitted);
+      return `<button class="chip ${i===curCaseIdx?'active':''}" onclick="selectCase(${i})">${done?'[已完成] ':''}${q.title}</button>`;
+    }).join('');
+  }
+  function renderCaseWorkspace() {
+    const q = caseSubQuestions[curCaseIdx];
+    const ans = caseUserAns[q.id] || {};
+    const isSub = !!caseSubmitted[q.id];
+    const letters = ['A', 'B', 'C'];
+    const qScore = getItemScore(q, caseUserAns, caseSubmitted);
+
+    const headerCard = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div><span class="badge b-teal">${q.chName}</span><b style="color:var(--teal);font-size:16px">本分題滿分：6 分（3 個獨立論點 × 每個論點 2 分［1分概念＋1分個案解說］）</b></div>
+          <button class="btn btn-outline" style="padding:6px 14px;font-size:14px" onclick="togglePaperMode()">
+            ${paperMode ? '顯示組合選項' : '隱藏選項（紙筆練習）'}
+          </button>
+        </div>
+        <div style="font-size:18px;font-weight:800">${q.question}</div>
+      </div>`;
+
+    if (paperMode) {
+      document.getElementById('caseWorkspace').innerHTML = headerCard + renderPaperPracticeBlock(q, 'renderCaseNav', 'renderCaseWorkspace');
+      return;
+    }
+
+    let pointsHtml = '';
+    for (let p = 0; p < q.steps.length; p += 2) {
+      const st1 = q.steps[p], st2 = q.steps[p+1];
+      pointsHtml += `
+        <div class="point-group-box">
+          <div style="font-weight:800;color:var(--teal);font-size:17px;margin-bottom:12px">${st1.ptTitle}</div>
+          ${[st1, st2].map((st, offset) => {
+            const sIdx = p + offset;
+            const sel = ans[sIdx];
+            return `
+              <div class="builder-stage" style="margin-bottom:${offset===0?'12px':'0'}">
+                <h4 style="margin-bottom:8px;font-size:16px"><span class="${st.colorClass}">${st.label}</span></h4>
+                ${st.opts.map((o, oIdx) => {
+                  const isSel = sel === oIdx;
+                  const gCls = (isSub && isSel) ? (o.status==='best'?'graded-best':o.status==='partial'?'graded-partial':'graded-wrong') : '';
+                  return `<button class="opt-card ${isSel?'selected':''} ${gCls}" onclick="pickCaseOpt(${sIdx}, ${oIdx})"><span class="opt-letter">${letters[oIdx]}</span><span style="flex:1">${o.text}</span></button>`;
+                }).join('')}
+              </div>`;
+          }).join('')}
+        </div>`;
+    }
+
+    const preview = [0, 2, 4].map(p => {
+      const t1 = ans[p] === undefined ? `［未選第 ${p+1} 步］` : `<span class="hl-s1">${q.steps[p].opts[ans[p]].text}</span>`;
+      const t2 = ans[p+1] === undefined ? `［未選第 ${p+2} 步］` : `<span class="hl-s2">${q.steps[p+1].opts[ans[p+1]].text}</span>`;
+      return `<b>【${q.steps[p].ptTitle.split('（')[0]} (2分)】</b>${t1} ${t2}`;
+    }).join('<br><br>');
+
+    document.getElementById('caseWorkspace').innerHTML = headerCard + pointsHtml + `
+      <div class="assembled-box" style="border-color:var(--teal)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <h3 style="color:var(--teal);font-size:19px">乙部個案分析分題答案預覽（三段 2 分論點）</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitCase()">批改本分題 (6分)</button>
+            <button class="btn btn-outline" onclick="fillBestCase()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16.5px;line-height:1.85">${preview}</div>
+        ${isSub ? `
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${qScore===6?'b-green':qScore>=3?'b-amber':'b-red'}" style="font-size:15px;padding:6px 14px">本分題得分：${qScore} / 6 分</span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const ch = st.opts[ans[sIdx]];
+              return `<div class="critique-item ${ch.status==='best'?'c-best':ch.status==='partial'?'c-partial':'c-wrong'}"><b>${st.label.split('：')[0]}（得分：${ch.score} / 1 分）：</b>${ch.comment}</div>`;
+            }).join('')}
+          </div>` : ''}
+      </div>`;
+  }
+
+  // ====== 丙部狀態與渲染 ======
+  let curEssayTopicIdx = 0;
+  let curEssayParaIdx = 0;
+  let essayUserAns = {};
+  let essaySubmitted = {};
+
+  function selectEssayTopic(tIdx) { curEssayTopicIdx = tIdx; curEssayParaIdx = 0; renderEssayNav(); renderEssayWorkspace(); }
+  function selectEssayPara(pIdx) { curEssayParaIdx = pIdx; renderEssayNav(); renderEssayWorkspace(); }
+  function pickEssayOpt(sIdx, oIdx) {
+    const p = essayTopics[curEssayTopicIdx].paragraphs[curEssayParaIdx];
+    if (!essayUserAns[p.id]) essayUserAns[p.id] = {};
+    essayUserAns[p.id][sIdx] = oIdx;
+    essaySubmitted[p.id] = false;
+    delete selfScores[p.id];
+    renderEssayWorkspace();
+  }
+  function submitEssayPara() {
+    const p = essayTopics[curEssayTopicIdx].paragraphs[curEssayParaIdx];
+    const ans = essayUserAns[p.id] || {};
+    if (Object.keys(ans).length < p.steps.length) { alert('請先完成本段落全部 3 個步驟的選擇，再點擊批改。'); return; }
+    essaySubmitted[p.id] = true;
+    delete selfScores[p.id];
+    renderEssayNav(); renderEssayWorkspace(); updateLiveTotal();
+  }
+  function fillBestEssayPara() {
+    const p = essayTopics[curEssayTopicIdx].paragraphs[curEssayParaIdx];
+    essayUserAns[p.id] = {};
+    p.steps.forEach((st, sIdx) => { essayUserAns[p.id][sIdx] = st.opts.findIndex(o => o.status === 'best'); });
+    essaySubmitted[p.id] = true;
+    delete selfScores[p.id];
+    renderEssayNav(); renderEssayWorkspace(); updateLiveTotal();
+  }
+  function calcEssayScore() {
+    let tot = 0;
+    essayTopics.forEach(t => {
+      t.paragraphs.forEach(p => { tot += getItemScore(p, essayUserAns, essaySubmitted); });
+    });
+    return tot;
+  }
+  function renderEssayNav() {
+    document.getElementById('essayScoreHero').textContent = `${calcEssayScore()} / 24`;
+    document.getElementById('essayTopicChips').innerHTML = essayTopics.map((t, i) => {
+      const tSc = t.paragraphs.reduce((s, p) => s + getItemScore(p, essayUserAns, essaySubmitted), 0);
+      return `<button class="chip ${i===curEssayTopicIdx?'active':''}" onclick="selectEssayTopic(${i})">${t.topicTitle} ［得分：${tSc}/12］</button>`;
+    }).join('');
+
+    const curTopic = essayTopics[curEssayTopicIdx];
+    document.getElementById('essayParaChips').innerHTML = curTopic.paragraphs.map((p, i) => {
+      const done = isItemCompleted(p, essaySubmitted);
+      return `<button class="chip ${i===curEssayParaIdx?'active':''}" onclick="selectEssayPara(${i})">${done?'[已完成] ':''}${p.title}</button>`;
+    }).join('');
+  }
+  function renderEssayWorkspace() {
+    const t = essayTopics[curEssayTopicIdx];
+    const p = t.paragraphs[curEssayParaIdx];
+    const ans = essayUserAns[p.id] || {};
+    const isSub = !!essaySubmitted[p.id];
+    const letters = ['A', 'B', 'C'];
+    const pScore = getItemScore(p, essayUserAns, essaySubmitted);
+
+    const headerCard = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div><span class="badge b-purple">${t.chName}</span><b style="color:var(--purple);font-size:16px">當前段落：${p.title}（本段滿分 3 分 · 全題 4 段共 12 分）</b></div>
+          <button class="btn btn-outline" style="padding:6px 14px;font-size:14px" onclick="togglePaperMode()">
+            ${paperMode ? '顯示組合選項' : '隱藏選項（紙筆練習）'}
+          </button>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--purple);font-size:16.5px">${t.scenario}</div>
+      </div>`;
+
+    if (paperMode) {
+      document.getElementById('essayWorkspace').innerHTML = headerCard + renderPaperPracticeBlock(p, 'renderEssayNav', 'renderEssayWorkspace');
+      return;
+    }
+
+    const preview = p.steps.map((st, sIdx) => ans[sIdx] === undefined
+      ? `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［請選擇第 ${sIdx+1} 步內容］</span>`
+      : `<span class="${st.colorClass}">${st.opts[ans[sIdx]].text}</span>`).join(' ');
+
+    const fullEssayHtml = t.paragraphs.map(para => {
+      const pAns = essayUserAns[para.id] || {};
+      if (Object.keys(pAns).length < 3) return `<div style="color:var(--mute);margin-bottom:8px"><b>【${para.title}】</b>（尚未完成建構）</div>`;
+      const txt = para.steps.map((st, sIdx) => st.opts[pAns[sIdx]].text).join(' ');
+      return `<div style="margin-bottom:10px"><b>【${para.title}】</b>${txt}</div>`;
+    }).join('');
+
+    document.getElementById('essayWorkspace').innerHTML = headerCard + `
+      ${p.steps.map((st, sIdx) => {
+        const sel = ans[sIdx];
+        return `
+          <div class="builder-stage">
+            <h4 style="margin-bottom:8px;font-size:16px"><span class="${st.colorClass}">${st.label}</span></h4>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = sel === oIdx;
+              const gCls = (isSub && isSel) ? (o.status==='best'?'graded-best':o.status==='partial'?'graded-partial':'graded-wrong') : '';
+              return `<button class="opt-card ${isSel?'selected':''} ${gCls}" onclick="pickEssayOpt(${sIdx}, ${oIdx})"><span class="opt-letter">${letters[oIdx]}</span><span style="flex:1">${o.text}</span></button>`;
+            }).join('')}
+          </div>`;
+      }).join('')}
+      <div class="assembled-box" style="border-color:var(--purple)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <h3 style="color:var(--purple);font-size:19px">當前段落預覽（${p.title}）</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitEssayPara()">批改本段重點 (3分)</button>
+            <button class="btn btn-outline" onclick="fillBestEssayPara()">示範本段完整建構</button>
+          </div>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16.5px;line-height:1.85">${preview}</div>
+        ${isSub ? `
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">段落批改結果</h4>
+              <span class="badge ${pScore===3?'b-green':pScore>=1?'b-amber':'b-red'}" style="font-size:15px;padding:6px 14px">本段得分：${pScore} / 3 分</span>
+            </div>
+            ${p.steps.map((st, sIdx) => {
+              const ch = st.opts[ans[sIdx]];
+              return `<div class="critique-item ${ch.status==='best'?'c-best':ch.status==='partial'?'c-partial':'c-wrong'}"><b>第 ${sIdx+1} 步（得分：${ch.score} / 1 分）：</b>${ch.comment}</div>`;
+            }).join('')}
+          </div>` : ''}
+        <div style="margin-top:20px;padding-top:16px;border-top:1.5px solid var(--line)">
+          <h4 style="color:var(--ink);margin-bottom:10px;font-size:17px">全題 4 個獨立重點段落總覽（12分完整論述文）：</h4>
+          <div style="background:var(--surface);padding:16px 20px;border-radius:12px;font-size:15.5px;line-height:1.8">${fullEssayHtml}</div>
+        </div>
+      </div>`;
+  }
+
+  // ====== 總分更新與丁部「DSE 商管組雙軌等級換算」成績單診斷報告 ======
+  function updateLiveTotal() {
+    const tot = calcSaScore() + calcCaseScore() + calcEssayScore();
+    document.getElementById('liveTotalBadge').textContent = `總分：${tot} / 72`;
+  }
+
+  function renderReport() {
+    const saSc = calcSaScore();
+    const csSc = calcCaseScore();
+    const esSc = calcEssayScore();
+    const total = saSc + csSc + esSc;
+    const pct = Math.round((total / 72) * 100);
+
+    const selfCount = Object.keys(selfScores).length;
+    const usePaperTrack = gradingTrack === 'dse_paper' || (gradingTrack === 'auto' && (paperMode || selfCount >= 4));
+
+    const paperTrackLevels = [
+      { lv: "Level 5**", minPct: 85, minMarks: 61, desc: "表現卓越（頂尖奪星水平）" },
+      { lv: "Level 5*",  minPct: 78, minMarks: 56, desc: "表現優異（穩奪星級水平）" },
+      { lv: "Level 5",   minPct: 70, minMarks: 50, desc: "根基穩固（高階應用純熟）" },
+      { lv: "Level 4",   minPct: 56, minMarks: 40, desc: "表現良好（高於平均水平）" },
+      { lv: "Level 3",   minPct: 42, minMarks: 30, desc: "基本合格（大學入學門檻）" },
+      { lv: "Level 2",   minPct: 30, minMarks: 22, desc: "基礎掌握（中學文憑及格）" },
+      { lv: "Level 1",   minPct: 18, minMarks: 13, desc: "初步掌握（需加強基礎概念）" },
+      { lv: "Unclassified (U)", minPct: 0, minMarks: 0, desc: "未達水平或尚未完成作答" }
+    ];
+
+    const bufferTrackLevels = [
+      { lv: "Level 5**", minPct: 88, minMarks: 63, desc: "表現卓越（頂尖奪星水平）" },
+      { lv: "Level 5*",  minPct: 80, minMarks: 58, desc: "表現優異（穩奪星級水平）" },
+      { lv: "Level 5",   minPct: 72, minMarks: 52, desc: "根基穩固（高階應用純熟）" },
+      { lv: "Level 4",   minPct: 60, minMarks: 43, desc: "表現良好（高於平均水平）" },
+      { lv: "Level 3",   minPct: 48, minMarks: 35, desc: "基本合格（大學入學門檻）" },
+      { lv: "Level 2",   minPct: 35, minMarks: 25, desc: "基礎掌握（中學文憑及格）" },
+      { lv: "Level 1",   minPct: 22, minMarks: 16, desc: "初步掌握（需加強基礎概念）" },
+      { lv: "Unclassified (U)", minPct: 0, minMarks: 0, desc: "未達水平或尚未完成作答" }
+    ];
+
+    const activeLevels = usePaperTrack ? paperTrackLevels : bufferTrackLevels;
+    let curLevelIdx = activeLevels.findIndex(g => total >= g.minMarks);
+    if (curLevelIdx === -1) curLevelIdx = activeLevels.length - 1;
+    const curGradeObj = activeLevels[curLevelIdx];
+
+    let nextLevelHint = '';
+    if (curLevelIdx > 0) {
+      const nextG = activeLevels[curLevelIdx - 1];
+      const diff = nextG.minMarks - total;
+      nextLevelHint = `距離升級至 <b>${nextG.lv}（需 ${nextG.minMarks} 分 / ${nextG.minPct}%）</b>尚欠 <b>${diff} 分</b>。`;
+    } else {
+      nextLevelHint = `你已達到最高級別 <b>Level 5**</b> 標準。`;
+    }
+
+    document.getElementById('repTotalScore').textContent = `${total} / 72`;
+    document.getElementById('repPct').textContent = `${pct}%`;
+    document.getElementById('repGrade').textContent = `${curGradeObj.lv}`;
+
+    // 按教科書第 1 至 7 課精準拆解得分 (Ch1: 2M, Ch2: 8M, Ch3: 6M, Ch4: 8M, Ch5: 22M, Ch6: 12M, Ch7: 14M => Total 72M)
+    const chEarned = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 };
+    const chMax = { 1: 2, 2: 8, 3: 6, 4: 8, 5: 22, 6: 12, 7: 14 };
+
+    // 1. 甲部短答題得分歸類 (SA1->Ch6, SA2->Ch2, SA3->Ch3, SA4->Ch4, SA5->Ch5, SA6->Ch5)
+    saQuestions.forEach(q => { chEarned[q.ch] += getItemScore(q, saUserAns, saSubmitted); });
+
+    // 2. 乙部個案題得分精準歸類
+    // c1 (6M): pt1 (2M)->Ch1 (市場營銷概念), pt2 & pt3 (4M)->Ch2 (質性研究：聚焦小組面談)
+    const c1Sc = getItemScore(caseSubQuestions[0], caseUserAns, caseSubmitted);
+    if (selfScores['c1'] !== undefined) {
+      chEarned[1] += Math.min(2, c1Sc);
+      chEarned[2] += Math.max(0, c1Sc - 2);
+    } else if (caseSubmitted['c1'] && caseUserAns['c1']) {
+      chEarned[1] += caseSubQuestions[0].steps[0].opts[caseUserAns['c1'][0]].score + caseSubQuestions[0].steps[1].opts[caseUserAns['c1'][1]].score;
+      chEarned[2] += caseSubQuestions[0].steps[2].opts[caseUserAns['c1'][2]].score + caseSubQuestions[0].steps[3].opts[caseUserAns['c1'][3]].score + caseSubQuestions[0].steps[4].opts[caseUserAns['c1'][4]].score + caseSubQuestions[0].steps[5].opts[caseUserAns['c1'][5]].score;
+    }
+
+    // c2 (6M): pt1 & pt2 (4M)->Ch4 (市場區隔), pt3 (2M)->Ch3 (購買後行為與產品支援服務)
+    const c2Sc = getItemScore(caseSubQuestions[1], caseUserAns, caseSubmitted);
+    if (selfScores['c2'] !== undefined) {
+      chEarned[4] += Math.min(4, c2Sc);
+      chEarned[3] += Math.max(0, c2Sc - 4);
+    } else if (caseSubmitted['c2'] && caseUserAns['c2']) {
+      chEarned[4] += caseSubQuestions[1].steps[0].opts[caseUserAns['c2'][0]].score + caseSubQuestions[1].steps[1].opts[caseUserAns['c2'][1]].score + caseSubQuestions[1].steps[2].opts[caseUserAns['c2'][2]].score + caseSubQuestions[1].steps[3].opts[caseUserAns['c2'][3]].score;
+      chEarned[3] += caseSubQuestions[1].steps[4].opts[caseUserAns['c2'][4]].score + caseSubQuestions[1].steps[5].opts[caseUserAns['c2'][5]].score;
+    }
+
+    // c3 (6M): pt1 & pt2 (4M)->Ch6 (產品生命週期成熟期特徵與策略), pt3 (2M)->Ch5 (選擇性分銷)
+    const c3Sc = getItemScore(caseSubQuestions[2], caseUserAns, caseSubmitted);
+    if (selfScores['c3'] !== undefined) {
+      chEarned[6] += Math.min(4, c3Sc);
+      chEarned[5] += Math.max(0, c3Sc - 4);
+    } else if (caseSubmitted['c3'] && caseUserAns['c3']) {
+      chEarned[6] += caseSubQuestions[2].steps[0].opts[caseUserAns['c3'][0]].score + caseSubQuestions[2].steps[1].opts[caseUserAns['c3'][1]].score + caseSubQuestions[2].steps[2].opts[caseUserAns['c3'][2]].score + caseSubQuestions[2].steps[3].opts[caseUserAns['c3'][3]].score;
+      chEarned[5] += caseSubQuestions[2].steps[4].opts[caseUserAns['c3'][4]].score + caseSubQuestions[2].steps[5].opts[caseUserAns['c3'][5]].score;
+    }
+
+    // c4 (6M): pt1 & pt2 (4M)->Ch6 (電子市場營銷策略的好處), pt3 (2M)->Ch7 (顧客關係管理 CRM)
+    const c4Sc = getItemScore(caseSubQuestions[3], caseUserAns, caseSubmitted);
+    if (selfScores['c4'] !== undefined) {
+      chEarned[6] += Math.min(4, c4Sc);
+      chEarned[7] += Math.max(0, c4Sc - 4);
+    } else if (caseSubmitted['c4'] && caseUserAns['c4']) {
+      chEarned[6] += caseSubQuestions[3].steps[0].opts[caseUserAns['c4'][0]].score + caseSubQuestions[3].steps[1].opts[caseUserAns['c4'][1]].score + caseSubQuestions[3].steps[2].opts[caseUserAns['c4'][2]].score + caseSubQuestions[3].steps[3].opts[caseUserAns['c4'][3]].score;
+      chEarned[7] += caseSubQuestions[3].steps[4].opts[caseUserAns['c4'][4]].score + caseSubQuestions[3].steps[5].opts[caseUserAns['c4'][5]].score;
+    }
+
+    // 3. 丙部論述題得分歸類 (es1: 12M -> Ch5, es2: 12M -> Ch7)
+    essayTopics.forEach(t => {
+      t.paragraphs.forEach(p => { chEarned[p.ch] += getItemScore(p, essayUserAns, essaySubmitted); });
+    });
+
+    const pcts = {};
+    for (let k = 1; k <= 7; k++) pcts[k] = Math.round((chEarned[k] / chMax[k]) * 100);
+
+    const saDone = saQuestions.filter(q => isItemCompleted(q, saSubmitted)).length;
+    const csDone = caseSubQuestions.filter(q => isItemCompleted(q, caseSubmitted)).length;
+    let esDone = 0;
+    essayTopics.forEach(t => t.paragraphs.forEach(p => { if (isItemCompleted(p, essaySubmitted)) esDone++; }));
+
+    const cutoffRowsHtml = paperTrackLevels.map((pLv, idx) => {
+      const bLv = bufferTrackLevels[idx];
+      const isCurrentRow = idx === curLevelIdx;
+      return `
+        <tr class="${isCurrentRow ? 'active-grade-row' : ''}">
+          <td><b>${pLv.lv}</b> ${isCurrentRow ? '<span class="badge b-green" style="margin-left:6px">目前位置</span>' : ''}</td>
+          <td style="color:var(--teal);font-weight:700">${pLv.minPct}% 或以上（≥ ${pLv.minMarks} / 72 分）</td>
+          <td style="color:var(--purple);font-weight:700">${bLv.minPct}% 或以上（≥ ${bLv.minMarks} / 72 分）</td>
+          <td style="text-align:left;color:var(--mute)">${pLv.desc}</td>
+        </tr>`;
+    }).join('');
+
+    document.getElementById('reportContent').innerHTML = `
+      <div class="grid3">
+        <div class="card" style="text-align:center">
+          <span class="badge b-rose">甲部：短答題 (Section A)</span>
+          <h2 style="font-size:28px;color:var(--primary);margin:10px 0">${saSc} / 24 分</h2>
+          <p style="font-size:14.5px;color:var(--mute);margin:0">已完成評分 ${saDone} / 6 題</p>
+        </div>
+        <div class="card" style="text-align:center">
+          <span class="badge b-teal">乙部：商業個案題 (Section B)</span>
+          <h2 style="font-size:28px;color:var(--teal);margin:10px 0">${csSc} / 24 分</h2>
+          <p style="font-size:14.5px;color:var(--mute);margin:0">已完成評分 ${csDone} / 4 分題</p>
+        </div>
+        <div class="card" style="text-align:center">
+          <span class="badge b-purple">丙部：進階論述題 (Section C)</span>
+          <h2 style="font-size:28px;color:var(--purple);margin:10px 0">${esSc} / 24 分</h2>
+          <p style="font-size:14.5px;color:var(--mute);margin:0">已完成評分 ${esDone} / 8 個段落</p>
+        </div>
+      </div>
+
+      <!-- 雙軌等級換算表與目前等級提示 -->
+      <div class="card" style="border:2px solid var(--green)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+          <div>
+            <span class="badge b-green">DSE 企會財（商業管理單元 Paper 2B）雙軌等級換算表</span>
+            <h3 style="margin-top:6px;font-size:20px">目前套用軌道：<span style="color:${usePaperTrack?'var(--teal)':'var(--purple)'}">${usePaperTrack ? '軌道 A：真實 DSE 商管組紙筆默寫標準' : '軌道 B：互動建構模式標準（含選項提示安全緩衝 Buffer）'}</span></h3>
+          </div>
+          <div class="chips" style="margin:0">
+            <button class="chip ${usePaperTrack?'active':''}" onclick="setGradingTrack('dse_paper')">套用真實 DSE 紙筆標準</button>
+            <button class="chip ${!usePaperTrack?'active':''}" onclick="setGradingTrack('interactive_buffer')">套用互動建構緩衝標準</button>
+          </div>
+        </div>
+
+        <div style="background:var(--green-light);padding:14px 18px;border-radius:10px;border-left:4px solid var(--green);font-size:16px;margin-bottom:12px">
+          <b>你的預計等級為【${curGradeObj.lv} — ${curGradeObj.desc}】</b>（總分：${total} / 72 分 · 得分率：${pct}%）。${nextLevelHint}
+        </div>
+
+        <table class="cutoff-table">
+          <thead>
+            <tr>
+              <th style="width:22%">預計 DSE 等級</th>
+              <th style="width:26%">軌道 A：真實 DSE 紙筆默寫標準<br><small>(無選項提示・貼合歷屆 Paper 2B Cut-off)</small></th>
+              <th style="width:26%">軌道 B：互動建構緩衝標準<br><small>(有組合選項提示・預留 3%–6% Buffer)</small></th>
+              <th style="width:26%;text-align:left">水平描述</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${cutoffRowsHtml}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <h3 style="margin-bottom:16px;font-size:20.5px">按教科書《市場營銷管理》第 1 至 7 課能力診斷與溫習導航</h3>
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>第 1 課：《市場營銷的角色》（市場營銷概念、四大重要性、強弱機危分析、四類競爭地位與管理過程）</span>
+            <span style="color:var(--primary)">${chEarned[1]} / ${chMax[1]} 分 (${pcts[1]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[1]}%;background:var(--primary)"></div></div>
+        </div>
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>第 2 課：《市場研究》（原始數據 vs 次級數據、調查／實驗／質性［聚焦小組面談］／觀察研究、三種抽樣技巧）</span>
+            <span style="color:var(--teal)">${chEarned[2]} / ${chMax[2]} 分 (${pcts[2]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[2]}%;background:var(--teal)"></div></div>
+        </div>
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>第 3 課：《消費者行為》（個人決策五步驟与購買後行為、社會文化與心理因素、商業消費市場 vs 個人消費市場）</span>
+            <span style="color:var(--purple)">${chEarned[3]} / ${chMax[3]} 分 (${pcts[3]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[3]}%;background:var(--purple)"></div></div>
+        </div>
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>第 4 課：《市場區隔、鎖定目標市場及定位》（地理／人口／心理／行為區隔、無差異／差異／集中營銷、五種差異方法）</span>
+            <span style="color:var(--green)">${chEarned[4]} / ${chMax[4]} 分 (${pcts[4]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[4]}%;background:var(--green)"></div></div>
+        </div>
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>第 5 課：《產品及服務的市場營銷策略（一）》（產品項目五事項與產品線、撇油性與滲透性定價、分銷密集度、五種推廣工具）</span>
+            <span style="color:var(--amber)">${chEarned[5]} / ${chMax[5]} 分 (${pcts[5]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[5]}%;background:var(--amber)"></div></div>
+        </div>
+        <div class="meter-wrap">
+          <div class="meter-label">
+            <span>第 6 課：《產品及服務的市場營銷策略（二）》（產品生命週期 PLC 四階段、服務四項特性與應付方法、電子市場營銷好處）</span>
+            <span style="color:var(--red)">${chEarned[6]} / ${chMax[6]} 分 (${pcts[6]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[6]}%;background:var(--red)"></div></div>
+        </div>
+        <div class="meter-wrap" style="margin-bottom:20px">
+          <div class="meter-label">
+            <span>第 7 課：《顧客關係管理》（顧客終身價值、交叉與向上銷售、影響顧客忠誠度的三大因素與五項提升策略）</span>
+            <span style="color:var(--teal)">${chEarned[7]} / ${chMax[7]} 分 (${pcts[7]}%)</span>
+          </div>
+          <div class="meter-bg"><div class="meter-fill" style="width:${pcts[7]}%;background:var(--teal)"></div></div>
+        </div>
+
+        <div class="grid4" style="padding-top:16px;border-top:1px dashed var(--line)">
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line)">
+            <b style="color:var(--primary);font-size:15px">第 1 課：《市場營銷的角色》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫市場營銷概念、SWOT、競爭地位與管理過程。</p>
+            <a href="市場營銷的角色.html" class="btn" style="font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 1 課</a>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line)">
+            <b style="color:var(--teal);font-size:15px">第 2 課：《市場研究》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫原始與次級數據、四種蒐集方法與抽樣技巧。</p>
+            <a href="市場研究.html" class="btn btn-teal" style="font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 2 課</a>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line)">
+            <b style="color:var(--purple);font-size:15px">第 3 課：《消費者行為》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫購買決策五步驟、影響因素與商業消費市場。</p>
+            <a href="消費者行為.html" class="btn btn-purple" style="font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 3 課</a>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line)">
+            <b style="color:var(--green);font-size:15px">第 4 課：《市場區隔、目標市場及定位》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫四大區隔基礎、目標市場策略與五種差異方法。</p>
+            <a href="市場區隔、鎖定目標市場及定位.html" class="btn btn-green" style="font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 4 課</a>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line)">
+            <b style="color:var(--amber);font-size:15px">第 5 課：《產品及服務的營銷策略（一）》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫 4P：產品、定價、分銷與推廣組合策略。</p>
+            <a href="產品及服務的市場營銷策略（一）.html" class="btn btn-amber" style="font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 5 課</a>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line)">
+            <b style="color:var(--red);font-size:15px">第 6 課：《產品及服務的營銷策略（二）》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫產品生命週期 PLC、服務四特性與電子營銷。</p>
+            <a href="產品及服務的市場營銷策略（二）.html" class="btn" style="background:var(--red);font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 6 課</a>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:12px;border:1px solid var(--line);grid-column:span 2">
+            <b style="color:var(--teal);font-size:15px">第 7 課：《顧客關係管理 (CRM)》</b>
+            <p style="font-size:13.5px;color:var(--mute);margin:6px 0 10px">重溫顧客終身價值、交叉與向上銷售、影響顧客忠誠度的因素及五項提升策略。</p>
+            <a href="顧客關係管理.html" class="btn btn-teal" style="font-size:13.5px;padding:7px 12px;width:100%;text-align:center">重溫第 7 課</a>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  // 初始化渲染
+  renderSaNav();
+  renderSaWorkspace();
+  renderCaseNav();
+  renderCaseWorkspace();
+  renderEssayNav();
+  renderEssayWorkspace();
+  renderReport();
+</script>
+</body>
+</html>

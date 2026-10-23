@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 市場區隔、鎖定目標市場及定位</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 18px;
+      border-radius: 9px;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 700px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .sidebar-layout { display: grid; grid-template-columns: 290px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13.5px; color: var(--mute); font-weight: 500; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .meter-bar { height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin: 10px 0; }
+    .meter-fill { height: 100%; background: var(--teal); transition: width 0.3s ease; }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .sidebar-layout { grid-template-columns: 1fr; }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 4 課：市場區隔、鎖定目標市場及定位</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-seg">1. 市場區隔</button>
+    <button data-tab="sec-target">2. 鎖定目標市場</button>
+    <button data-tab="sec-pos">3. 市場定位</button>
+    <button data-tab="sec-builder">4. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 市場區隔 (Segmentation) ==================== -->
+<section class="view on" id="sec-seg">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">步驟一：市場區隔 (Market Segmentation)</span>
+      <h1>按消費者特性劃分市場組別</h1>
+      <p>市場區隔是按消費者的獨特需要、特性和消費模式，把市場劃分為較細小的消費者群組（稱為「市場組別」或「細分市場」）的過程。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('seg', 0, this)">核心概念與實例</button>
+      <button onclick="switchSub('seg', 1, this)">變數配對練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：核心概念 -->
+  <div class="sub-view active" id="seg-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="segMethodList"></div>
+      <div class="card" id="segDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：互動練習 -->
+  <div class="sub-view" id="seg-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">情境挑戰</span>
+        <h3 style="font-size:21px;margin:8px 0 12px">辨識市場區隔基礎</h3>
+        <p id="segGameProg" style="font-size:14.5px;color:var(--mute);font-weight:600;margin:0 0 10px"></p>
+        <div id="segGameQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:16px"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn" onclick="checkSegGame('地理區隔')">地理區隔</button>
+          <button class="btn btn-teal" onclick="checkSegGame('人口區隔')">人口區隔</button>
+          <button class="btn" style="background:#334155" onclick="checkSegGame('心理區隔')">心理區隔</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkSegGame('行為區隔')">行為區隔</button>
+        </div>
+        <div id="segGameFb" style="margin-top:16px;font-size:16px;min-height:52px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">進階概念</span>
+        <h3 style="font-size:21px;margin:8px 0 12px">多項基礎結合與分析要點</h3>
+        <div style="font-size:16.5px;color:var(--ink-sec)">
+          <p style="margin:0 0 14px"><b style="color:var(--ink)">一、為何人口區隔最為常用？</b><br>
+          與其他變數相比，人口統計變數（如年齡、性別、收入）較為客觀且易於量度，資料亦較易取得。</p>
+          <p style="margin:0 0 14px"><b style="color:var(--ink)">二、按多項基礎或變數劃分市場</b><br>
+          企業為了更有效地區分有不同需要的消費者，經常同時結合多項基礎或變數（例如同時採用人口區隔的「收入」和心理區隔的「性格特徵」），以更準確地識別主要目標市場。</p>
+          <div class="note-box">
+            <b>分析結構要點：</b>闡述市場區隔應用時，應先指明所採用的「市場區隔基礎」（地理、人口、心理或行為區隔），再列出其相關「變數」（如年齡、生活模式、場合），最後說明不同消費者群組的喜好分別及企業如何提供相應產品。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 鎖定目標市場 (Targeting) ==================== -->
+<section class="view" id="sec-target">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">步驟二：鎖定目標市場 (Market Targeting)</span>
+      <h1>評估市場組別吸引力與選取目標市場策略</h1>
+      <p>鎖定目標市場是評估各個市場組別的吸引力後，挑選其中一個或數個吸引力最高的市場組別作為目標市場的過程。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('tgt', 0, this)">評估市場組別的五項因素</button>
+      <button onclick="switchSub('tgt', 1, this)">三種目標市場策略</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：評估市場組別的五項因素 -->
+  <div class="sub-view active" id="tgt-sub-0">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">評估準則</span>
+        <h3 style="font-size:21px;margin:8px 0 14px">選定目標市場時須考慮的五項因素</h3>
+        <div class="nav-list" id="evalFactorList"></div>
+        <div id="evalFactorDetail" class="note-box" style="margin-top:16px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">互動模擬</span>
+        <h3 style="font-size:21px;margin:8px 0 6px">「市場組別的結構吸引力」四項特點調節儀</h3>
+        <p style="font-size:15.5px;color:var(--mute);margin:0 0 12px">切換以下四項特點，觀察市場組別對企業的結構吸引力變化：</p>
+        <div id="structControls" style="font-size:16px"></div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);margin-top:16px" id="structResultBox"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：三種目標市場策略 -->
+  <div class="sub-view" id="tgt-sub-1">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+        <div>
+          <span class="badge b-blue">目標市場策略</span>
+          <h3 style="font-size:21px;margin-top:6px">比較無差異營銷、差異營銷與集中營銷</h3>
+        </div>
+        <div class="chips" id="targetStratChips" style="margin:0"></div>
+      </div>
+      <div id="targetStratDetail"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <span class="badge b-teal">情境判斷練習</span>
+        <span id="tQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+      </div>
+      <div id="tQuizQ" style="font-size:18px;font-weight:700;margin-bottom:16px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" onclick="checkTQuiz('無差異營銷')">無差異營銷</button>
+        <button class="btn btn-teal" onclick="checkTQuiz('差異營銷')">差異營銷</button>
+        <button class="btn" style="background:#334155" onclick="checkTQuiz('集中營銷')">集中營銷</button>
+      </div>
+      <div id="tQuizFb" style="margin-top:14px;font-size:16px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 市場定位 (Positioning) ==================== -->
+<section class="view" id="sec-pos">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">步驟三：定位 (Positioning)</span>
+      <h1>塑造產品形象與建立競爭優勢</h1>
+      <p>定位指企業為產品塑造形象，並向目標消費者灌輸這個形象的過程。某產品的定位反映相對於競爭對手，該產品在消費者心中的位置。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('pos', 0, this)">定位第 1 步：五種差異方法</button>
+      <button onclick="switchSub('pos', 1, this)">定位第 2 及第 3 步：選擇準則與定位陳述</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：認定可行的競爭優勢（五種差異方法） -->
+  <div class="sub-view active" id="pos-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="diffMethodList"></div>
+      <div>
+        <div class="card" id="diffDetailBox" style="margin-bottom:18px"></div>
+        <div class="card" style="margin-bottom:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <span class="badge b-teal">快速辨識練習</span>
+            <span id="diffQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+          </div>
+          <div id="diffQuizQ" style="font-size:17.5px;font-weight:700;margin-bottom:14px"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" onclick="checkDiffQuiz('產品差異')">產品差異</button>
+            <button class="btn btn-teal" onclick="checkDiffQuiz('服務差異')">服務差異</button>
+            <button class="btn" style="background:#334155" onclick="checkDiffQuiz('人員差異')">人員差異</button>
+            <button class="btn" style="background:var(--amber)" onclick="checkDiffQuiz('渠道差異')">渠道差異</button>
+            <button class="btn btn-green" onclick="checkDiffQuiz('形象差異')">形象差異</button>
+          </div>
+          <div id="diffQuizFb" style="margin-top:14px;font-size:16px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：選擇合適競爭優勢（七項準則）與撰寫定位陳述 -->
+  <div class="sub-view" id="pos-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">定位第 2 步：選擇合適的競爭優勢</span>
+        <h3 style="font-size:21px;margin:8px 0 12px">挑選競爭優勢的數量考慮與七項準則</h3>
+        <p style="font-size:16.5px;color:var(--ink-sec);margin:0 0 14px">
+          <b style="color:var(--ink)">數量考慮：</b>選取多少項優勢沒有絕對規定，但若聲稱產品有過多優點，反而會令消費者質疑其可信性，故企業多集中宣傳一項或幾項優點。<br>
+          <b style="color:var(--ink)">挑選準則（點擊查看解釋）：</b>
+        </p>
+        <div class="chips" id="critChips"></div>
+        <div id="critDetailBox" class="note-box" style="margin-top:14px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">定位第 3 步 &amp; 定位的重要性</span>
+        <h3 style="font-size:21px;margin:8px 0 12px">撰寫定位陳述與良好定位的三項重要性</h3>
+        <div style="font-size:16.5px;color:var(--ink-sec)">
+          <b style="color:var(--ink)">一、良好定位對企業的重要性：</b>
+          <ul style="margin:6px 0 16px;padding-left:22px">
+            <li>有助企業在市場上<b>突顯自身產品與競爭對手產品的差別</b>。</li>
+            <li>可作為指引，<b>幫助企業制定相應的市場營銷策略</b>。</li>
+            <li>有助<b>加深目標消費者對企業產品的印象</b>。</li>
+          </ul>
+          <b style="color:var(--ink)">二、撰寫「定位陳述 (Positioning Statement)」：</b>
+          <p style="margin:6px 0 10px">定位陳述總結企業的理想產品定位，應最少涵蓋以下三個部分：</p>
+          <div style="background:var(--surface);padding:16px 18px;border-radius:12px;border:1px solid var(--line)">
+            <span class="badge b-blue">1. 目標消費者</span>
+            <span class="badge b-teal">2. 品牌或產品</span>
+            <span class="badge b-green">3. 企業提供的獨特好處</span>
+            <div style="margin-top:12px;font-size:16px;line-height:1.75;color:var(--ink)">
+              <b>範例：</b>「對<u>追求快速減壓的都市上班族</u>【目標消費者】而言，<u>舒眠堂</u>【品牌】是一個智能寢具品牌，能提供<u>免戴耳機的腦波白噪音助眠枕頭</u>【企業提供的獨特好處】。」
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一核心概念、區隔基礎或策略名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 配對相關變數並結合個案背景作具體說明
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一核心概念名稱並列出相關變數或定義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 設定具體商業例子，解釋不同消費者群組的喜好或運作方式<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至滿足目標市場需要、資源運用效率或提升銷售額的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 市場區隔 (Segmentation) ======
+  const segIndustries = ["日式放題餐廳", "連鎖烘焙餅店", "本地度假酒店", "營養補充品公司"];
+  let curInd = 0;
+  let curMethod = 0;
+
+  const segMethodsData = [
+    {
+      name: "01 地理區隔",
+      en: "Geographic Segmentation",
+      def: "根據地理位置來劃分市場。在同一地區生活的人有相似的文化、社會和經濟背景，需要和消費喜好較為接近。",
+      vars: ["世界地區", "國家", "國家內的地區／城市"],
+      cases: [
+        "按國家內的地區劃分：在屯門及將軍澳等大型住宅區分店提供較多熟食與家庭卡座；在銅鑼灣及尖沙咀等商業區分店提供頂級刺身與夜宵時段。",
+        "按國家內的地區劃分：在中環商業區分店重點供應輕食三文治及即磨咖啡；在屋邨商場分店重點供應家庭裝排包及傳統糕點。",
+        "按世界地區或國家劃分：針對東南亞旅客、歐美長途旅客及大中華區旅客，在酒店餐廳分別提供清真美食、西式餐點及中式點心。",
+        "按世界地區或國家劃分：在日照時間短的北歐國家重點銷售維他命 D 補充劑；在亞太區市場重點銷售護肝及美白補充品。"
+      ]
+    },
+    {
+      name: "02 人口區隔",
+      en: "Demographic Segmentation",
+      def: "根據主要的人口統計變數來劃分市場。由於人口統計變數較易於量度，因此是最常用的區隔方法。",
+      vars: ["年齡", "性別", "收入", "教育程度", "職業", "宗教", "國籍", "家庭規模", "家庭生命週期"],
+      cases: [
+        "按收入劃分：收入不同的人士有不同的購買力與消費喜好；餐廳推出 $188 午市經濟熟食放題吸引低收入及學生食客，並推出 $688 晚市頂級和牛放題吸引高收入食客。",
+        "按年齡或家庭生命週期劃分：為育有年幼子女的家庭推出卡通造型生日蛋糕；為銀髮長者推出低糖鬆軟的合桃蛋糕。",
+        "按家庭生命週期劃分：為新婚夫婦推出浪漫雙人海景住宿套票；為育有 12 歲以下小童的家庭推出附設兒童遊樂設施的親子套票。",
+        "按年齡和性別劃分：針對女性消費者推出膠原蛋白鐵質飲；針對年長消費者推出強骨鈣片及關節補充品。"
+      ]
+    },
+    {
+      name: "03 心理區隔",
+      en: "Psychographic Segmentation",
+      def: "根據消費者的社會階層、生活模式或性格特徵來劃分市場。",
+      vars: ["社會階層", "生活模式", "性格特徵"],
+      cases: [
+        "按社會階層劃分：來自社會上層的消費者較喜歡使用昂貴食材烹調的精緻菜式，餐廳設立貴賓廳提供專人席前鐵板燒服務以反映其社會地位。",
+        "按生活模式劃分：針對擁有健康生活模式的消費者推出有機全麥酸種麵包；針對生活繁忙的上班族推出即食獨立包裝能量棒。",
+        "按性格特徵劃分：針對性格熱愛運動、外向好動的消費者，推出包含滑浪風帆、獨木舟及攀石體驗的動感度假套票。",
+        "按生活模式劃分：針對奉行素食生活模式的消費者，推出全植物提煉的維他命及蛋白質補充品。"
+      ]
+    },
+    {
+      name: "04 行為區隔",
+      en: "Behavioural Segmentation",
+      def: "根據消費者對產品的行為反應來劃分市場。高用量的消費者通常佔企業整體銷售收益的大部分，不少企業亦會透過獎賞積分鼓勵低用量消費者增加使用頻率。",
+      vars: ["場合", "期望得益", "使用頻率（低用量、中度用量、高用量）"],
+      cases: [
+        "按場合或使用頻率劃分：按慶祝生日或畢業聚餐場合提供免費甜品畫碟；或針對高用量熟客推出儲分會籍回贈。",
+        "按場合劃分：針對中秋節、農曆新年或結婚嫁娶等不同場合，分別推出流心月餅、賀年禮盒及嫁囍禮餅。",
+        "按場合劃分：根據顧客舉辦宴會的場合（如婚宴、壽宴或公司周年晚宴）劃分宴會服務市場；或按商務公幹與休閒度假場合劃分客群。",
+        "按期望得益及使用頻率劃分：向期望獲取不同保健得益的顧客分別提供護眼、助眠及免疫力配方，並向高用量家庭提供 300 粒家庭裝。"
+      ]
+    }
+  ];
+
+  function renderSegSection() {
+    document.getElementById('segMethodList').innerHTML = segMethodsData.map((m, i) => `
+      <button class="nav-item ${i===curMethod?'active':''}" onclick="curMethod=${i};renderSegSection()">
+        <span>${m.name}</span>
+        <span class="sub-txt">${m.en.split(' ')[0]}</span>
+      </button>
+    `).join('');
+
+    const m = segMethodsData[curMethod];
+    document.getElementById('segDetailCard').innerHTML = `
+      <h3 style="font-size:22px;color:var(--primary);margin-bottom:10px">${m.name} (${m.en})</h3>
+      <p style="margin:0 0 16px;font-size:17.5px;color:var(--ink)">${m.def}</p>
+      <div style="margin-bottom:18px">
+        <span style="font-size:15px;font-weight:700;color:var(--mute);display:block;margin-bottom:8px">包含的區隔變數：</span>
+        ${m.vars.map(v => `<span class="badge b-teal" style="font-size:15px;padding:6px 14px;margin-bottom:6px">${v}</span>`).join('')}
+      </div>
+      <div style="border-top:1px solid var(--line);padding-top:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <b style="font-size:15.5px;color:var(--mute)">切換行業查看應用例子：</b>
+          <div class="chips" style="margin:0">
+            ${segIndustries.map((ind, i) => `<button class="chip ${i===curInd?'active':''}" style="padding:6px 14px;font-size:14.5px" onclick="curInd=${i};renderSegSection()">${ind}</button>`).join('')}
+          </div>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:17px">
+          <b style="color:var(--primary)">【${segIndustries[curInd]}】</b>${m.cases[curInd]}
+        </div>
+      </div>
+    `;
+  }
+  renderSegSection();
+
+  const segGameItems = [
+    { q: "面膜生產商向期望獲取不同護膚效果的消費者，分別提供「深層補水」及「美白淡斑」配方（期望得益）", ans: "行為區隔", exp: "正確。場合、期望得益、使用頻率屬於「行為區隔」的三種主要變數。" },
+    { q: "有機沙律店鎖定擁有「健康減脂生活模式」的消費者；即食飯盒品牌則鎖定「生活繁忙」的消費者（生活模式）", ans: "心理區隔", exp: "正確。社會階層、生活模式、性格特徵屬於「心理區隔」的三大變數。" },
+    { q: "度假酒店推出專為「育有幼童的家庭」或「退休長者」而設的住宿套票（家庭生命週期與年齡）", ans: "人口區隔", exp: "正確。年齡、性別、收入、教育程度、職業、宗教、國籍、家庭規模和家庭生命週期均屬於「人口區隔」。" },
+    { q: "餐飲到會公司根據顧客預訂美食的場合（如結婚派對、長輩壽宴或公司開幕酒會）來劃分市場（場合）", ans: "行為區隔", exp: "正確。按購買或使用產品的「場合」劃分市場，屬於「行為區隔」。" },
+    { q: "名牌珠寶公司按社會階層劃分市場，並以「社會上層」的消費者作為目標市場以反映其社會地位（社會階層）", ans: "心理區隔", exp: "正確。「社會階層」屬於「心理區隔」的變數。" },
+    { q: "銀行按客戶「收入水平」提供不同理財服務；電子遊戲商按「性別」劃分男女性玩家市場", ans: "人口區隔", exp: "正確。年齡、性別、收入是企業最常用的三種「人口區隔」變數。" },
+    { q: "咖啡店將顧客分為低用量、中度用量和高用量三個組別，並透過儲分獎賞鼓勵低用量顧客增加光顧頻率（使用頻率）", ans: "行為區隔", exp: "正確。使用頻率（低用量、中度用量、高用量）屬於「行為區隔」。" },
+    { q: "運動器材生產商按性格特徵劃分市場，鎖定「熱愛運動、活躍好動」的消費者為目標市場（性格特徵）", ans: "心理區隔", exp: "正確。「性格特徵」屬於「心理區隔」。" },
+    { q: "跨國連鎖火鍋店按中國北方及南方城市劃分市場，提供不同辣度的湯底（國家內的地區／城市）", ans: "地理區隔", exp: "正確。按地理位置（世界地區、國家、國家內的地區／城市）劃分市場屬於「地理區隔」。" }
+  ];
+  let curSegG = 0;
+  function renderSegGame() {
+    document.getElementById('segGameProg').textContent = `題目 ${curSegG + 1} / ${segGameItems.length}`;
+    document.getElementById('segGameQ').textContent = segGameItems[curSegG].q;
+    document.getElementById('segGameFb').innerHTML = '';
+  }
+  function checkSegGame(choice) {
+    const item = segGameItems[curSegG];
+    const fb = document.getElementById('segGameFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<div style="color:var(--green);font-weight:700">${item.exp}</div>
+        <button class="btn btn-outline" style="margin-top:10px;padding:6px 16px;font-size:14.5px" onclick="curSegG=(curSegG+1)%segGameItems.length;renderSegGame()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<div style="color:var(--red);font-weight:700">答案不正確，正確歸類為「${item.ans}」。${item.exp.replace('正確。','')}</div>`;
+    }
+  }
+  renderSegGame();
+
+  // ====== 2. 鎖定目標市場 (Targeting) ======
+  const evalFactorsData = [
+    { title: "01 市場組別的規模和可支付能力", desc: "具吸引力的市場組別必須有一定的規模（消費者數量），足夠企業在內營運獲利；同時也應有較高的可支付能力，代表該組別內的消費者有足夠的購買力，而且願意購買企業的產品。" },
+    { title: "02 市場組別的增長率", desc: "如某市場組別增長迅速，便能為企業提供充足的現金流來維持營運。因此，增長率高的市場組別對企業來說較為吸引，可成為具發展前景的目標市場。" },
+    { title: "03 市場組別的結構吸引力", desc: "取決於四項特點：(i) 市場組別內是否有進取和具實力的競爭對手、(ii) 代替品的數目、(iii) 供應商的議價能力、(iv) 買家（消費者）的議價能力（售賣相似產品的對手越多，買家議價能力越大）。" },
+    { title: "04 企業的目標", desc: "企業決定進入某市場組別前，須考慮這樣做是否符合其長遠目標。如進入某個市場組別並不符合企業的長遠目標，該市場組別的吸引力便相對較低。" },
+    { title: "05 企業的能力", desc: "企業在進入某市場組別前，還要考慮本身是否擁有在該市場組別營運所需的技能和資源。若在某市場組別營運需要大量資源，對資源有限的小型企業便不太吸引。" }
+  ];
+  let curEvalF = 0;
+  function renderEvalFactors() {
+    document.getElementById('evalFactorList').innerHTML = evalFactorsData.map((f, i) => `
+      <button class="nav-item ${i===curEvalF?'active':''}" onclick="curEvalF=${i};renderEvalFactors()">
+        <span>${f.title}</span>
+      </button>
+    `).join('');
+    document.getElementById('evalFactorDetail').innerHTML = `<b>${evalFactorsData[curEvalF].title}：</b><br>${evalFactorsData[curEvalF].desc}`;
+  }
+  renderEvalFactors();
+
+  let structState = { comp: 'low', sub: 'low', sup: 'low', buy: 'low' };
+  const structItems = [
+    { key: 'comp', label: '(i) 進取和具實力的競爭對手', lowTxt: '只有少量 (吸引)', highTxt: '已經有很多 (不吸引)' },
+    { key: 'sub', label: '(ii) 代替品的數目', lowTxt: '代替品很少 (吸引)', highTxt: '代替品很多 (不吸引)' },
+    { key: 'sup', label: '(iii) 供應商的議價能力', lowTxt: '議價能力低 (吸引)', highTxt: '議價能力強大 (不吸引)' },
+    { key: 'buy', label: '(iv) 買家(消費者)的議價能力', lowTxt: '議價能力低 (吸引)', highTxt: '議價能力強大 (不吸引)' }
+  ];
+
+  function renderStructSim() {
+    document.getElementById('structControls').innerHTML = structItems.map(item => {
+      const isLow = structState[item.key] === 'low';
+      return `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:8px">
+          <b>${item.label}</b>
+          <div style="display:flex;gap:8px">
+            <button class="chip ${isLow?'active':''}" style="padding:6px 12px;font-size:14px;margin:0" onclick="structState['${item.key}']='low';renderStructSim()">${item.lowTxt}</button>
+            <button class="chip ${!isLow?'active':''}" style="padding:6px 12px;font-size:14px;margin:0;${!isLow?'background:var(--red);border-color:var(--red)':''}" onclick="structState['${item.key}']='high';renderStructSim()">${item.highTxt}</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const goodCount = Object.values(structState).filter(v => v === 'low').length;
+    const scorePct = goodCount * 25;
+    let verdict = goodCount === 4 ? "結構吸引力極高：市場內只有少量具實力的競爭對手、代替品很少，且供應商和買家的議價能力均低。" :
+                  goodCount >= 2 ? "結構吸引力中等：須留意若供應商議價能力強大（難以爭取優厚來貨條件）或買家議價能力強大（被迫減價），均會削弱盈利空間。" :
+                  "結構吸引力極低：市場競爭激烈且代替品多，加上供應商與買家議價能力強大，企業難以獲利。";
+    document.getElementById('structResultBox').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:16px">
+        <b>結構吸引力評估：</b>
+        <b style="color:${goodCount>=3?'var(--green)':goodCount>=2?'var(--amber)':'var(--red)'}">${scorePct}% (${goodCount}/4 項有利條件)</b>
+      </div>
+      <div class="meter-bar"><div class="meter-fill" style="width:${scorePct}%;background:${goodCount>=3?'var(--green)':goodCount>=2?'var(--amber)':'var(--red)'}"></div></div>
+      <div style="font-size:15.5px;color:var(--ink-sec)">${verdict}</div>
+    `;
+  }
+  renderStructSim();
+
+  const targetStrats = [
+    {
+      name: "無差異營銷 (大眾營銷)",
+      def: "企業不理會各個市場組別之間的差異，只推出一種產品（向整個市場提供單一的市場營銷組合）來滿足整個市場的需要。",
+      pros: "<b>有效率和節省成本</b>：向整個市場提供單一產品可大大提高企業在生產和市場營銷方面的效率，有助節省成本。",
+      cons: "<b>不能滿足所有消費者的需要</b>：消費者的需要大不相同，企業往往不能依靠單一產品滿足所有人的需要。",
+      suit: "標準化日常產品（例如某飲用水生產商只向全港消費者提供單一款式的蒸餾水）。"
+    },
+    {
+      name: "差異營銷",
+      def: "企業選取多個市場組別作為目標市場，並按這些市場組別各自的特點，度身設計產品（為每個市場組別度身設計市場營銷組合）。",
+      pros: "<b>提高整體銷售額</b>：企業向不同目標市場提供不同的產品，可更有效地滿足消費者的需要，整體銷售額或因而提高。",
+      cons: "<b>成本較高</b>：須把用作生產和市場營銷的資源分配至不同的市場組別，導致成本上升，令企業須投放更多資源。",
+      suit: "資源較充裕的企業（例如運動品牌同時設計足球鞋、籃球鞋及跑步鞋；餐飲集團為學生、上班族及長者設計不同餐單）。"
+    },
+    {
+      name: "集中營銷 (縫隙市場營銷)",
+      def: "企業把資源集中在一個或數個細小的市場組別（或縫隙市場）上，為該細小市場組別度身設計單一的市場營銷組合。",
+      pros: "<b>(i) 更有效地滿足目標消費者的需要</b>：能更深入了解目標消費者要求並度身設計產品，有助建立知名度和賺取更高銷售額。<br><b>(ii) 更有效地運用資源</b>：集中資源主攻一個或數個縫隙市場。",
+      cons: "<b>(i) 風險較高</b>：依賴一個或數個縫隙市場，如該市場的經營環境轉差，銷售額和利潤便可能會大幅下跌。<br><b>(ii) 縫隙市場的增長或引來大型企業</b>：如所選縫隙市場增長迅速，可能會引來大型企業加入競爭，影響企業的營運和銷售額。",
+      suit: "資源有限的小型企業（例如專門售賣孕婦防輻射行政服裝的小店、專門為吞嚥困難長者研發軟餐的初創企業）。"
+    }
+  ];
+
+  function renderTargetStrat(idx) {
+    const s = targetStrats[idx];
+    document.getElementById('targetStratChips').innerHTML = targetStrats.map((st, i) => `
+      <button class="chip ${i===idx?'active':''}" onclick="renderTargetStrat(${i})">${st.name.split(' ')[0]}</button>
+    `).join('');
+    document.getElementById('targetStratDetail').innerHTML = `
+      <div style="background:var(--surface);padding:20px 24px;border-radius:14px;border:1px solid var(--line)">
+        <h4 style="color:var(--primary);font-size:20px;margin-bottom:8px">${s.name}</h4>
+        <p style="margin:0 0 16px;font-size:17px">${s.def}</p>
+        <div class="grid2" style="margin-bottom:14px">
+          <div style="background:var(--green-light);padding:16px 18px;border-radius:12px;font-size:16.5px;border:1px solid #a7f3d0"><b style="color:var(--green)">好處：</b><br>${s.pros}</div>
+          <div style="background:var(--red-light);padding:16px 18px;border-radius:12px;font-size:16.5px;border:1px solid #fecdd3"><b style="color:var(--red)">壞處：</b><br>${s.cons}</div>
+        </div>
+        <div style="font-size:16px;color:var(--ink-sec)"><b>應用例子：</b>${s.suit}</div>
+      </div>
+    `;
+  }
+  renderTargetStrat(2);
+
+  const tQuizItems = [
+    { q: "某烘焙集團旗下同時經營三個麵包品牌：分別為學生提供平價夾心麵包、為健身人士提供高蛋白無麩質歐式麵包，以及為長者提供低糖軟餐包。", ans: "差異營銷", exp: "正確。集團選取多個市場組別作為目標市場，並按各組別特點度身設計不同產品，屬於「差異營銷」。" },
+    { q: "某小型結他工坊為避開大型樂器行的競爭，把所有資源集中在「左撇子木結他愛好者」這個細小的縫隙市場上，專門度身訂造左撇子結他。", ans: "集中營銷", exp: "正確。工坊把資源集中在單一細小的縫隙市場上，屬於「集中營銷」。" },
+    { q: "某本地梳打水生產商不理會各市場組別之間的差異，只推出單一原味罐裝梳打水向全港所有消費者銷售。", ans: "無差異營銷", exp: "正確。企業不理會各市場組別之間的差異，只推出一種產品滿足整個市場需要，屬於「無差異營銷」。" }
+  ];
+  let curTQ = 0;
+  function renderTQuiz() {
+    document.getElementById('tQuizProg').textContent = `題目 ${curTQ + 1} / ${tQuizItems.length}`;
+    document.getElementById('tQuizQ').textContent = tQuizItems[curTQ].q;
+    document.getElementById('tQuizFb').innerHTML = '';
+  }
+  function checkTQuiz(choice) {
+    const item = tQuizItems[curTQ];
+    const fb = document.getElementById('tQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:10px;padding:6px 14px;font-size:14.5px" onclick="curTQ=(curTQ+1)%tQuizItems.length;renderTQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderTQuiz();
+
+  // ====== 3. 市場定位 (Positioning) ======
+  const diffStrats = [
+    {
+      name: "01 產品差異",
+      en: "Product Differentiation",
+      def: "企業利用其產品的特點來營造與競爭對手的差異（最適合擁有更先進技術，或提供獨特設計與得獎產品的企業）。",
+      examples: [
+        "智能家電品牌研發出具備獨家專利靜音防纏繞技術的吸塵機，設計獨特且性能優越。",
+        "手工雪糕店售賣獨創的「黑松露海鹽及陳皮紅豆」得獎口味雪糕。"
+      ]
+    },
+    {
+      name: "02 服務差異",
+      en: "Service Differentiation",
+      def: "企業透過提供優質服務（包括特別的售前配套或專業的售後維修和保養服務）來營造與競爭對手的差異。",
+      examples: [
+        "大型按摩椅生產商為顧客提供免費上門安裝，以及五年免費上門檢查、維修和保養服務。",
+        "度假酒店在晚上免費提供熱燕麥奶和安神花茶給住客幫助入眠。"
+      ]
+    },
+    {
+      name: "03 人員差異",
+      en: "People Differentiation",
+      def: "與服務差異息息相關，指企業憑藉訓練有素的員工來營造與競爭對手的差異。",
+      examples: [
+        "復康健身中心全線聘用持有註冊物理治療師資格、經驗豐富且對學員細心有禮的專業教練團隊。",
+        "高級法式扒房聘請曾在歐洲星級餐廳工作、熟悉餐酒配搭的資深侍應生團隊。"
+      ]
+    },
+    {
+      name: "04 渠道差異",
+      en: "Channel Differentiation",
+      def: "企業利用把產品送到目標消費者手中的方法（分銷或交付渠道），來營造與競爭對手的差異。",
+      examples: [
+        "寵物保險公司開發全港唯一可透過手機應用程式拍照上傳收據，並在 10 分鐘內即時收取賠償金的平台。",
+        "水耕沙律菜品牌在甲級商廈大堂設置智能保鮮售賣機，讓上班族透過手機預訂並於午膳時一按即取。"
+      ]
+    },
+    {
+      name: "05 形象差異",
+      en: "Image Differentiation",
+      def: "歷史悠久的企業運用自身的企業形象或品牌形象，來營造與競爭對手的差異。",
+      examples: [
+        "專業運動裝備品牌為鞏固其頂級專業形象，與世界冠軍運動員簽訂長期品牌代言合約。",
+        "高級護膚品牌聘請具國際高貴氣質的知名影后擔任全球品牌代言人，強化其典雅形象。"
+      ]
+    }
+  ];
+  let curDiff = 0;
+  function renderDiffSection(idx) {
+    curDiff = idx;
+    document.getElementById('diffMethodList').innerHTML = diffStrats.map((d, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderDiffSection(${i})">
+        <span>${d.name}</span>
+        <span class="sub-txt">${d.en.split(' ')[0]}</span>
+      </button>
+    `).join('');
+    const d = diffStrats[idx];
+    document.getElementById('diffDetailBox').innerHTML = `
+      <h3 style="color:var(--primary);font-size:21px;margin-bottom:8px">${d.name} (${d.en})</h3>
+      <p style="margin:0 0 14px;font-size:17px">${d.def}</p>
+      <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16.5px">
+        <b style="color:var(--ink)">應用例子：</b>
+        <ul style="margin:6px 0 0;padding-left:22px">
+          ${d.examples.map(e => `<li style="margin-bottom:6px">${e}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  renderDiffSection(0);
+
+  const diffQuizItems = [
+    { q: "一家高級日本料理店聘請曾在東京五星級酒店工作二十年、刀工精湛且懂流利日語及粵語的資深壽司師傅與侍應團隊。", ans: "人員差異", exp: "正確。憑藉訓練有素、具資深專業技術與經驗的員工來營造差異，屬於「人員差異」。" },
+    { q: "一家智能空氣清新機生產商為顧客提供免費上門檢測室內空氣質素，以及三年免費上門清洗機器及更換濾網的售後保養服務。", ans: "服務差異", exp: "正確。透過提供優質售前及專業售後維修保養服務來營造差異，屬於「服務差異」。" },
+    { q: "一家甜品店研發出獨創的「低卡路里分子料理楊枝甘露雪葩」，並榮獲亞洲餐飲創意金獎。", ans: "產品差異", exp: "正確。利用產品本身的獨特設計、得獎菜式或先進技術特點來營造差異，屬於「產品差異」。" },
+    { q: "一個高級運動計時腕錶品牌為鞏固其極限運動權威形象，聘請奧運游泳金牌得主出任品牌代言人。", ans: "形象差異", exp: "正確。運用企業或品牌形象（如透過知名代言人強化品牌形象）來營造差異，屬於「形象差異」。" },
+    { q: "一家急凍食材網店開發了連接全港屋苑 24 小時智能急凍自提櫃的配送網絡，讓下班夜歸的顧客可隨時用手機開櫃取貨。", ans: "渠道差異", exp: "正確。利用把產品送到目標消費者手中的方法來營造差異，屬於「渠道差異」。" }
+  ];
+  let curDQ = 0;
+  function renderDiffQuiz() {
+    document.getElementById('diffQuizProg').textContent = `題目 ${curDQ + 1} / ${diffQuizItems.length}`;
+    document.getElementById('diffQuizQ').textContent = diffQuizItems[curDQ].q;
+    document.getElementById('diffQuizFb').innerHTML = '';
+  }
+  function checkDiffQuiz(choice) {
+    const item = diffQuizItems[curDQ];
+    const fb = document.getElementById('diffQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:10px;padding:6px 14px;font-size:14.5px" onclick="curDQ=(curDQ+1)%diffQuizItems.length;renderDiffQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderDiffQuiz();
+
+  const criteriaData = [
+    { name: "(i) 獨特", desc: "競爭對手沒有這項優勢。" },
+    { name: "(ii) 重要", desc: "這項優勢帶來的好處是目標消費者高度重視的。" },
+    { name: "(iii) 優越", desc: "消費者難以透過其他方法獲得相同好處。" },
+    { name: "(iv) 可傳達", desc: "企業可輕易把這項優勢所帶來的好處傳達給目標消費者（例如承諾商業寬頻問題在 3 小時內解決）。" },
+    { name: "(v) 搶佔先機", desc: "這項優勢帶來的好處不易被競爭對手抄襲。" },
+    { name: "(vi) 可負擔", desc: "目標消費者能夠負擔得起這項優勢帶來的好處。" },
+    { name: "(vii) 有利可圖", desc: "企業向目標消費者提供好處時可從中賺取利潤。" }
+  ];
+  let curCrit = 0;
+  function renderCrit(idx) {
+    curCrit = idx;
+    document.getElementById('critChips').innerHTML = criteriaData.map((c, i) => `
+      <button class="chip ${i===idx?'active':''}" style="padding:7px 14px;font-size:15px" onclick="renderCrit(${i})">${c.name}</button>
+    `).join('');
+    document.getElementById('critDetailBox').innerHTML = `<b>${criteriaData[idx].name}：</b>${criteriaData[idx].desc}`;
+  }
+  renderCrit(0);
+
+  // ====== 4. 論點建構問答工作坊 (12題原創情境) ======
+  const workshopQuestions = [
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：韓味館烤肉（行為區隔）", topic: "市場區隔基礎：行為區隔", maxMarks: 2,
+      scenario: "飲食集團計劃創立新品牌「韓味館」，在香港提供韓式烤肉任食服務。市場營銷經理說：「目前我們只按地理區隔選址開店。為了更有效滿足不同食客的需要，除了地理區隔外，我們還可採用其他市場區隔基礎，把整體食客劃分為不同的市場組別。」",
+      question: "除了地理區隔外，試以其中一種市場區隔基礎為例，解釋「韓味館」可以如何劃分韓式烤肉市場。（2 分）",
+      steps: [
+        { label: "第 1 步：指出單一市場區隔基礎及相關變數（1分）", colorClass: "hl-s1", opts: [
+          { text: "韓味館可採用「地理區隔」，按地區劃分市場。", score: 0, status: "wrong", comment: "題目已列明「除了地理區隔外」，重複回答地理區隔未能得分。" },
+          { text: "韓味館可採用「行為區隔」，根據食客對產品的行為反應（例如光顧的「場合」或「使用頻率」）劃分市場。", score: 1, status: "best", comment: "準確指出「行為區隔」並列出相關變數（場合／使用頻率）。" },
+          { text: "韓味館可同時採用「人口區隔、心理區隔及行為區隔」。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，切勿在同一段落一次過羅列多種區隔基礎。" }
+        ]},
+        { label: "第 2 步：針對該單一變數扣連情境並作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如按食客的「收入」劃分，推出高價頂級韓牛餐吸引高收入人士。", score: 0, status: "wrong", comment: "「收入」屬於人口區隔變數，與第 1 步所選的「行為區隔」不符。" },
+          { text: "根據不同食客對產品的行為反應，把韓式烤肉市場分為不同的市場組別。", score: 0, status: "partial", comment: "只重複了行為區隔的定義，未有結合韓式烤肉店解釋不同消費者群組的需要或提供的服務。" },
+          { text: "例如按食客光顧的「場合」劃分，以慶祝生日或畢業聚餐的食客為目標市場，為他們提供獨立派對卡座及免費生日烤肉蛋糕優惠。", score: 1, status: "best", comment: "鎖定行為區隔中的「場合」單一變數，清楚說明目標市場及如何滿足該群消費者。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：綠源有機輕食館（規模和可支付能力）", topic: "評估市場組別的因素", maxMarks: 2,
+      scenario: "連鎖餐飲集團計劃開設「綠源有機輕食館」，提供以空運有機食材製成的沙律、冷壓果汁及健康主菜，定價較一般餐廳高出五成。市場營銷總監說：「經過評估不同市場組別的吸引力後，我認為應選擇『中環及太古坊的高收入專業人士』作為我們的目標市場。」",
+      question: "根據評估市場組別和選定目標市場時須考慮的因素，試以其中一項因素解釋為何「高收入專業人士」對綠源有機輕食館來說是具吸引力的市場組別。（2 分）",
+      steps: [
+        { label: "第 1 步：指出單一評估市場組別因素標題（1分）", colorClass: "hl-s1", opts: [
+          { text: "因為該市場組別符合「服務差異」這項因素。", score: 0, status: "wrong", comment: "服務差異是市場定位中取得競爭優勢的方法，並非評估市場組別吸引力的因素。" },
+          { text: "因為同時考慮了「規模和可支付能力、增長率、結構吸引力、企業目標及企業能力」五項因素。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，應每段只集中闡述一項因素。" },
+          { text: "這是考慮了「市場組別的規模和可支付能力」這項因素。", score: 1, status: "best", comment: "準確指出「市場組別的規模和可支付能力」這項考慮因素。" }
+        ]},
+        { label: "第 2 步：針對該單一因素扣連情境並作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "中環及太古坊聚集了大量注重健康的專業人士（具一定規模足夠餐廳營運），而且他們收入豐厚、有較高的「可支付能力」（有足夠購買力且願意購買定價高出五成的空運有機輕食）。", score: 1, status: "best", comment: "同時說明人數規模足夠營運及高收入帶來高可支付能力（購買力）。" },
+          { text: "因為高收入專業人士很有可支付能力。", score: 0, status: "partial", comment: "只重複了第 1 步的字眼，沒有結合「負擔定價高出五成的空運有機輕食」作解釋。" },
+          { text: "因為高收入專業人士只喜歡購買最廉價的快餐。", score: 0, status: "wrong", comment: "與個案背景矛盾。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：左撇子音樂工坊（集中營銷與壞處）", topic: "目標市場策略：集中營銷", maxMarks: 2,
+      scenario: "「左撇子音樂工坊」是一家資源有限的本地小型樂器店，只專門設計及售賣供「左撇子樂手」使用的反向弦線木結他及電結他。",
+      question: "指出「左撇子音樂工坊」採用了哪種目標市場策略（1分），並解釋採用這種策略的一項壞處（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：指出目標市場策略名稱（1分）", colorClass: "hl-s1", opts: [
+          { text: "採用了「差異營銷」策略。", score: 0, status: "wrong", comment: "工坊只把資源集中在「左撇子樂手」這單一細小縫隙市場上，並非服務多個市場組別的差異營銷。" },
+          { text: "採用了「集中營銷（又稱縫隙市場營銷）」策略（把資源集中在一個細小的市場組別／縫隙市場上）。", score: 1, status: "best", comment: "準確寫出「集中營銷（縫隙市場營銷）」。" },
+          { text: "採用了「無差異營銷」策略。", score: 0, status: "wrong", comment: "左撇子專用結他並非面向整個大眾市場的產品。" }
+        ]},
+        { label: "第 2 步：集中解釋採用「集中營銷」的一項壞處（1分）", colorClass: "hl-s2", opts: [
+          { text: "壞處是須把生產和市場營銷資源分配至多個不同市場組別，導致成本大幅上升。", score: 0, status: "wrong", comment: "「把資源分配至不同市場組別導致成本較高」是差異營銷的壞處，而非集中營銷的壞處。" },
+          { text: "壞處是會有一定風險。", score: 0, status: "partial", comment: "解釋過於簡略，必須說明為何風險較高（如所選縫隙市場的經營環境轉差，銷售額和利潤便可能大幅下跌；或縫隙市場增長迅速引來大型企業加入競爭）。" },
+          { text: "壞處是「風險較高」：工坊依賴『左撇子樂手』這單一縫隙市場，如該縫隙市場的經營環境轉差（或該縫隙市場增長迅速而引來大型樂器連鎖店加入競爭），工坊的銷售額和利潤便可能會大幅下跌。", score: 1, status: "best", comment: "清楚點出集中營銷的壞處（風險較高：環境轉差令銷量利潤大跌 ／ 縫隙市場增長引來大型企業加入競爭）。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：極速商業寬頻（選擇競爭優勢的準則）", topic: "市場定位與選擇競爭優勢的準則", maxMarks: 2,
+      scenario: "「極速商業寬頻」為建立清晰的市場定位，在廣告中向中小型企業客戶作出明確承諾：「凡商業寬頻出現任何連線問題，工程師保證在 3 小時內上門解決，否則免收當月月費。」",
+      question: "根據企業用來建立市場定位的競爭優勢須符合的準則，指出上述「3 小時內解決問題」的承諾符合哪一項準則並加以解釋。（2 分）",
+      steps: [
+        { label: "第 1 步：指出單一競爭優勢準則名稱（1分）", colorClass: "hl-s1", opts: [
+          { text: "符合「無差異營銷」準則。", score: 0, status: "wrong", comment: "無差異營銷是目標市場策略，並非選擇競爭優勢的準則。" },
+          { text: "符合「可傳達」這項準則（或選：「重要」）。", score: 1, status: "best", comment: "準確指出七項準則中的「可傳達（或重要）」。" },
+          { text: "符合所有不同的準則。", score: 0, status: "partial", comment: "未能寫出具體準則名稱（獨特、重要、優越、可傳達、搶佔先機、可負擔、有利可圖）。" }
+        ]},
+        { label: "第 2 步：扣連「保證 3 小時內解決商業寬頻問題」作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "因為「保證 3 小時內解決問題」是一項具體、清晰且量化的服務承諾，讓極速寬頻可輕易把這項維修效率優勢所帶來的好處清楚傳達給目標中小企客戶（而且迅速恢復網絡對分秒必爭的商業客戶而言亦高度「重要」）。", score: 1, status: "best", comment: "清楚解釋如何讓企業「輕易把這項優勢所帶來的好處傳達給目標消費者」。" },
+          { text: "因為 3 小時是一個很短的時間。", score: 0, status: "partial", comment: "必須說明這如何讓企業「輕易把優勢所帶來的好處傳達給目標消費者（可傳達）」或為何「這項好處是目標商業客戶高度重視的（重要）」。" },
+          { text: "因為這會令所有中小企無須再使用互聯網。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：智Fit 智能運動手錶（行為區隔）", topic: "市場區隔基礎：行為區隔", maxMarks: 3,
+      scenario: "「智Fit 科技」計劃在香港推出一系列智能手錶。試舉例闡釋該公司可如何運用「行為區隔」劃分智能手錶市場。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「行為區隔（期望得益）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「行為區隔」基礎並列出其三個相關變數（1分）", colorClass: "hl-s1", opts: [
+          { text: "公司可同時採用「行為區隔、人口區隔及心理區隔」來劃分智能手錶市場。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，應每段只集中闡釋一種區隔基礎。" },
+          { text: "智Fit 科技可採用「行為區隔」，根據消費者對產品的行為反應——包括「場合、期望得益或使用頻率」等變數，把智能手錶市場劃分為不同的市場組別。", score: 1, status: "best", comment: "清楚列出市場區隔基礎及三個相關變數（場合、期望得益、使用頻率）。" },
+          { text: "公司可採用「行為區隔」，按用家的年齡、性別和收入來劃分市場。", score: 0, status: "wrong", comment: "年齡、性別和收入屬於「人口區隔」變數，並非行為區隔變數。" }
+        ]},
+        { label: "第 2 步：詳細解釋「期望得益」變數並說明不同消費者群組的喜好分別（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如不同用家對智能手錶有不同的期望得益。", score: 0, status: "partial", comment: "沒有具體說明不同智能手錶用家期望獲取甚麼不同得益。" },
+          { text: "例如向工廠採購藍寶石玻璃錶面。", score: 0, status: "wrong", comment: "這是生產採購，並非對消費者進行市場區隔。" },
+          { text: "例如按「期望得益」（消費者期望使用產品後可獲取的得益）劃分：長跑及越野跑手期望獲取「精準雙頻 GPS 定位與步頻分析」的得益；而關注健康的中老年人士則期望獲取「24 小時心電圖、血氧監測及跌倒自動求救」的保健得益。", score: 1, status: "best", comment: "清楚解釋「期望得益」變數，並對比跑手群組與關注健康群組的喜好分別。" }
+        ]},
+        { label: "第 3 步：建議合適的目標市場並解釋企業可如何滿足該目標市場的消費者（1分）", colorClass: "hl-s3", opts: [
+          { text: "這樣就會有顧客購買智能手錶。", score: 0, status: "partial", comment: "未有說明企業如何為該目標市場提供相應產品及帶來甚麼好處。" },
+          { text: "智Fit 科技可選擇以追求「健康監測得益」的消費者作為目標市場，為他們度身設計具備大字體屏幕、高準確度心率血壓感應器及一鍵通知家屬功能的健康智能手錶，從而更有效地滿足該目標市場組別的特定需要並提升銷售額。", score: 1, status: "best", comment: "清楚建議目標市場並解釋企業如何提供針對性產品滿足他們。" },
+          { text: "這會令智能手錶無須再用電池。", score: 0, status: "wrong", comment: "推論不合邏輯。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：新成立手工餅店（心理區隔）", topic: "市場區隔基礎：心理區隔", maxMarks: 3,
+      scenario: "本港烘焙市場由多家大型連鎖餅店分佔大部分市場份額。一家新成立的手工烘焙餅店希望透過市場區隔，找出具潛力的目標顧客群。試舉例闡釋這家新餅店可如何運用「心理區隔」劃分烘焙市場。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「心理區隔（生活模式）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「心理區隔」基礎並列出其三個相關變數（1分）", colorClass: "hl-s1", opts: [
+          { text: "新餅店可採用「心理區隔」，根據消費者的「社會階層、生活模式或性格特徵」這三項心理變數，把烘焙市場劃分為不同的市場組別。", score: 1, status: "best", comment: "清楚指出「心理區隔」並完整列出三個變數（社會階層、生活模式、性格特徵）。" },
+          { text: "新餅店可採用「心理區隔」，按消費者的年齡、性別及家庭生命週期來劃分市場。", score: 0, status: "wrong", comment: "年齡、性別及家庭生命週期屬於「人口區隔」，並非心理區隔。" },
+          { text: "新餅店可採用「心理區隔」，按消費者購買蛋糕作為婚宴還是生日場合來劃分市場。", score: 0, status: "wrong", comment: "「場合」屬於行為區隔變數，並非心理區隔。" }
+        ]},
+        { label: "第 2 步：詳細解釋「生活模式」變數並說明不同消費者群組的喜好分別（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如不同人有不同的生活模式，所以對餅店的要求不同。", score: 0, status: "partial", comment: "沒有針對「生活模式」舉出具體的烘焙餅店客群喜好分別。" },
+          { text: "例如擁有不同「生活模式」的消費者對糕點有截然不同的喜好：擁有「健康養生及健身生活模式」的消費者喜歡低糖、高纖、無麩質及純素的有機烘焙食品；而一般大眾消費者則較喜歡傳統高糖牛油忌廉蛋糕。", score: 1, status: "best", comment: "集中以「生活模式」為例，清晰對比健康生活模式消費者與一般大眾的喜好分別。" },
+          { text: "例如在港島及九龍不同地區開設分店。", score: 0, status: "wrong", comment: "按地區開店屬於「地理區隔」，與心理區隔無關。" }
+        ]},
+        { label: "第 3 步：建議合適的目標市場並說明企業如何滿足該群消費者（1分）", colorClass: "hl-s3", opts: [
+          { text: "新餅店可以「擁有健康養生生活模式的消費者」作為目標市場，專門為他們研發採用天然羅漢果代糖、有機奇亞籽及全麥麵粉製成的低卡路里酸種麵包與純素蛋糕，從而有效滿足這群目標顧客的需要並在市場建立知名度。", score: 1, status: "best", comment: "清楚說明選定「健康生活模式消費者」為目標市場，並解釋如何以低卡有機產品滿足他們。" },
+          { text: "這樣餅店便可以用最低成本大規模生產單一標準化白方包。", score: 0, status: "wrong", comment: "大規模生產單一標準化產品屬於無差異營銷。" },
+          { text: "這樣顧客就會去餅店買蛋糕。", score: 0, status: "partial", comment: "論述流於表面。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：新日式放題餐廳（人口區隔）", topic: "市場區隔基礎：人口區隔", maxMarks: 3,
+      scenario: "百喜飲食集團計劃創立新品牌餐廳提供「日式放題（任飲任食）」服務。試舉例闡釋該集團可如何運用「人口區隔」劃分日式放題市場。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「人口區隔（收入）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「人口區隔」基礎並列出相關人口統計變數（1分）", colorClass: "hl-s1", opts: [
+          { text: "集團可採用「人口區隔」，按消費者的性格特徵與生活模式來劃分市場。", score: 0, status: "wrong", comment: "性格特徵與生活模式屬於「心理區隔」，並非人口區隔。" },
+          { text: "集團可採用「人口區隔」，根據主要的人口統計變數——例如消費者的「年齡、性別、收入、職業或家庭生命週期」，把日式放題食客劃分為不同的市場組別。", score: 1, status: "best", comment: "清楚指出「人口區隔」並列出主要人口統計變數。" },
+          { text: "集團可採用「人口區隔」，因為香港有很多人口。", score: 0, status: "partial", comment: "未有指出人口區隔所依據的人口統計變數。" }
+        ]},
+        { label: "第 2 步：詳細解釋「收入」變數並說明不同收入群組的喜好分別（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如按食客的「收入」劃分：由於收入不同的人士有不同的購買力，他們的消費喜好也有差別——高收入消費者外出用膳時較偏好食材頂級名貴、環境舒適的高檔放題；而低收入消費者或學生則傾向選擇價格相宜、抵食飽肚的平價放題。", score: 1, status: "best", comment: "清晰對比高收入與低收入食客的購買力與消費喜好分別。" },
+          { text: "例如不同收入的人都會去吃日式放題。", score: 0, status: "partial", comment: "沒有說明高收入與低收入食客對放題食材與價格的喜好有何分別。" },
+          { text: "例如在屯門住宅區和旺角商業區開設分店。", score: 0, status: "wrong", comment: "按地區選址屬於「地理區隔」，並非人口區隔。" }
+        ]},
+        { label: "第 3 步：解釋餐廳如何為不同收入組別提供相應產品以滿足需要（1分）", colorClass: "hl-s3", opts: [
+          { text: "這會令餐廳的食材全部變成免費。", score: 0, status: "wrong", comment: "不合理的推論。" },
+          { text: "這樣餐廳就可以吸引不同收入的食客。", score: 0, status: "partial", comment: "未有說明餐廳具體提供甚麼產品組合去滿足該目標市場。" },
+          { text: "因此，餐廳可為低收入及學生市場組別提供 $188 午市熟食及火鍋放題套餐；同時為高收入市場組別提供 $688 晚市日本空運海膽、松葉蟹及 A5 和牛刺身放題套餐，藉此有效滿足不同購買力食客的需要並擴大整體營業額。", score: 1, status: "best", comment: "清楚說明如何針對不同收入組別提供相應價位與食材的放題套餐以提升整體營業額。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：智居納米傢具店（市場結構吸引力）", topic: "評估市場組別的因素：結構吸引力", maxMarks: 3,
+      scenario: "一家新成立製造和售賣家用傢具的本地公司，正考慮應選擇哪一個市場組別作為目標市場。試闡釋該公司在評估市場組別和選定目標市場時，應如何考慮「市場組別的結構吸引力」。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「市場組別的結構吸引力」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「市場組別的結構吸引力」因素及其包含的特點（1分）", colorClass: "hl-s1", opts: [
+          { text: "公司應考慮「市場組別的結構吸引力」，即評估該市場組別內是否有進取和具實力的競爭對手、代替品的數目、供應商的議價能力以及買家（消費者）的議價能力。", score: 1, status: "best", comment: "完整指出「市場組別的結構吸引力」及其四項特點。" },
+          { text: "公司應考慮如何把傢具市場進行地理區隔及人口區隔。", score: 0, status: "wrong", comment: "題目問的是「評估市場組別和選定目標市場時須考慮的因素」，而非市場區隔基礎。" },
+          { text: "公司應在同一段落同時討論「規模和可支付能力、增長率、結構吸引力、企業目標及企業能力」全部五項因素。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，必須每段只集中闡釋一項因素。" }
+        ]},
+        { label: "第 2 步：針對該因素設定具體傢具市場例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "如果市場內進取和具實力的競爭對手越多、買家議價能力越強，該市場組別就越有吸引力。", score: 0, status: "wrong", comment: "競爭對手越多、買家議價能力越強，市場組別的吸引力便越低。" },
+          { text: "例如在「一般傳統現成傢具市場」中，已有很多進取和具實力的大型跨國連鎖對手，且因售賣相似產品的競爭對手多，令買家（消費者）有強大的議價能力要求減價；相反，在「納米樓度身訂造智能電動變形傢具市場」中，具實力的競爭對手與代替品均較少。", score: 1, status: "best", comment: "具體對比兩個傢具市場組別在競爭對手數目、代替品數目及買家議價能力上的分別。" },
+          { text: "例如傢具市場有很多不同的結構特點。", score: 0, status: "partial", comment: "未有具體舉出傢具市場例子說明競爭對手數目與買家議價能力的影響。" }
+        ]},
+        { label: "第 3 步：深化論述至企業層面影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "因此，選擇競爭不太激烈、代替品少且買家議價能力較低的「納米樓訂造智能變形傢具市場」作為目標市場，對新成立的傢具公司更具結構吸引力，能避免被迫不斷減價迎合買家，確保較穩定的利潤空間。", score: 1, status: "best", comment: "清楚推演出「競爭少及買家議價能力低 → 免被迫減價 → 確保穩定利潤空間」的因果關係。" },
+          { text: "因此公司應該選擇結構吸引力高的市場組別。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這會令傢具公司無須再採購任何木材原料。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：星海私人遊艇會所（規模和可支付能力）", topic: "評估市場組別的因素：規模和可支付能力", maxMarks: 3,
+      scenario: "「星海遊艇會」計劃在香港拓展海上休閒業務，正在評估不同的消費者群組（例如：大專學生水上活動群組、高收入企業高管及專業人士群組），以決定選定哪個市場組別作為「豪華私人遊艇包船及海島晚宴服務」的目標市場。試闡釋該遊艇會在鎖定目標市場時，應如何考慮「市場組別的規模和可支付能力」。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「市場組別的規模和可支付能力」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一考慮因素名稱與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "遊艇會應考慮採用產品差異策略。", score: 0, status: "wrong", comment: "題目問的是「選定目標市場時須考慮的因素」，而非市場定位的差異策略。" },
+          { text: "遊艇會須考慮「市場組別的規模和可支付能力」：具吸引力的市場組別必須有一定的規模（消費者數量）足夠企業在內營運獲利；同時也應有較高的「可支付能力」，即市場組別內的消費者有足夠的購買力，而且願意購買企業的產品。", score: 1, status: "best", comment: "完整界定「規模（消費者數量足夠營運）」與「可支付能力（有足夠購買力且願意購買）」的定義。" },
+          { text: "遊艇會須考慮顧客喜不喜歡出海玩。", score: 0, status: "partial", comment: "必須使用「市場組別的規模和可支付能力」這項標準術語。" }
+        ]},
+        { label: "第 2 步：針對該單一因素設定遊艇會具體例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如大專學生群組雖然人數多，但收入有限，缺乏可支付能力負擔每次收費數萬元的豪華遊艇晚宴；相反，香港作為國際金融中心，「高收入企業高管、富豪及專業人士」群組不僅人數規模足夠，而且具備極高的可支付能力，負擔得起並願意購買豪華遊艇包船服務。", score: 1, status: "best", comment: "清楚對比大專學生（欠可支付能力）與高收入高管專業人士（兼具足夠規模與高可支付能力）。" },
+          { text: "例如有些市場組別規模很大和很有購買力。", score: 0, status: "partial", comment: "沒有結合高收入專業人士與豪華遊艇包船服務作說明。" },
+          { text: "例如遊艇會向船廠採購救生衣。", score: 0, status: "wrong", comment: "偏離主題。" }
+        ]},
+        { label: "第 3 步：深化論述至企業層面影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於豪華私人遊艇的船隻保養、泊位費、燃油及船長廚師團隊營運成本高昂，鎖定兼具足夠規模及高可支付能力的「高收入高管及專業人士」作為目標市場，才能確保遊艇會透過提供度身訂造的海上晚宴服務賺取足夠營業額與豐厚利潤。", score: 1, status: "best", comment: "圍繞「規模與可支付能力」深入推演至「彌補高昂遊艇保養營運成本並賺取豐厚利潤」。" },
+          { text: "這樣遊艇會便可以決定選擇這一個目標市場。", score: 0, status: "partial", comment: "同義反覆。" },
+          { text: "這樣遊艇會便可以把所有遊艇賣掉。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：極尊跑車製造商（企業的目標）", topic: "評估市場組別的因素：企業的目標", maxMarks: 3,
+      scenario: "「極尊汽車 (Apex Motors)」是一家專門手工製造頂級限量版超級跑車的歐洲車廠。近年，全球「平價小型代步電動車」市場組別迅速擴大，有部門主管提議進軍該平價代步車市場。試以「企業的目標」為核心，闡釋為何該平價市場組別對極尊汽車來說可能不太吸引。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「企業的目標」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一考慮因素名稱與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "車廠決定進入某市場組別前，須考慮「企業的目標」這項因素，即評估進入該市場組別是否符合企業的「長遠目標」；如進入某個市場組別並不符合企業的長遠目標，該市場組別的吸引力便相對較低。", score: 1, status: "best", comment: "準確指出「企業的目標（是否符合長遠目標）」的定義。" },
+          { text: "車廠應考慮原材料供應商的議價能力。", score: 0, status: "wrong", comment: "供應商議價能力屬於「市場組別的結構吸引力」，並非「企業的目標」。" },
+          { text: "車廠只需要考慮進入該市場是否符合其下星期的短期目標。", score: 0, status: "wrong", comment: "評估市場組別時須考慮是否符合企業的「長遠目標」而非短期目標。" }
+        ]},
+        { label: "第 2 步：針對該單一因素設定超級跑車廠具體例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如極尊汽車的長遠目標是鞏固其「頂級奢華、極致性能手工超級跑車」的尊貴市場地位；因此，即使購買平價小型代步車的大眾市場組別不斷擴大，進入該平價大批量市場與極尊汽車鞏固頂級奢華地位的長遠目標背道而馳，故該市場組別對車廠來說並不太吸引。", score: 1, status: "best", comment: "具體說明進軍平價代步車市場如何與鞏固頂級奢華跑車市場地位的長遠目標相違背。" },
+          { text: "例如車廠的目標是製造汽車。", score: 0, status: "partial", comment: "未能結合「頂級限量超跑品牌的長遠尊貴定位目標 vs 平價代步車市場」的衝突作具體說明。" },
+          { text: "例如車廠在德國及意大利設有廠房。", score: 0, status: "wrong", comment: "與企業長遠目標篩選市場組別無關。" }
+        ]},
+        { label: "第 3 步：深化論述至企業層面影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "因此車廠應該把所有超級跑車減價九成賣給學生。", score: 0, status: "wrong", comment: "前後矛盾。" },
+          { text: "若車廠盲目進入不符合其長遠目標的平價代步車市場，會嚴重模糊及貶低「極尊汽車」經年累月建立的頂級奢華品牌形象，令原有的富豪收藏家客戶感到品牌貶值而流失；拒絕進入平價市場才能保護其獨特尊貴地位與高毛利率。", score: 1, status: "best", comment: "清楚推演出「違背長遠目標會貶低奢華品牌形象並流失富豪客群 → 堅守目標才能保護尊貴地位與高毛利」。" },
+          { text: "這樣便能符合車廠的目標。", score: 0, status: "partial", comment: "循環論證。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：活力物理治療及健身中心（人員差異與選擇準則）", topic: "市場定位與競爭優勢：人員差異", maxMarks: 3,
+      scenario: "本港健身服務行業競爭激烈，不少 24 小時自助健身室以低月費吸客。一家大型連鎖健身中心決定不參與減價戰，希望透過「人員差異」取得競爭優勢並建立清晰的市場定位。試闡釋該健身中心可如何運用「人員差異」取得競爭優勢，並說明所選取的競爭優勢為何符合選擇準則。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「人員差異」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「人員差異」方法名稱與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "健身中心應採用大幅減價及派發超市禮券的策略。", score: 0, status: "wrong", comment: "題目列明「不參與減價戰」，並要求運用人員差異取得競爭優勢。" },
+          { text: "健身中心可透過「人員差異」，即憑藉訓練有素的員工來營造與競爭對手的差異，從而向消費者提供比競爭對手更有價值的服務以取得競爭優勢。", score: 1, status: "best", comment: "準確鎖定「人員差異（憑藉訓練有素的員工來營造與競爭對手的差異）」。" },
+          { text: "健身中心可同時運用「產品差異、服務差異、人員差異、渠道差異及形象差異」五種方法。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段應只集中深入闡述一種差異方法。" }
+        ]},
+        { label: "第 2 步：針對「人員差異」設定健身中心具體例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如聘請員工為健身顧客服務。", score: 0, status: "partial", comment: "沒有具體說明員工受過甚麼專業訓練或具備甚麼資格。" },
+          { text: "例如在港鐵站出口旁開設分店並提供網上預約平台。", score: 0, status: "wrong", comment: "分店位置與網上平台屬於「渠道差異」，並非「人員差異」。" },
+          { text: "例如該健身中心所有私人教練均必須持有大學運動科學學位或註冊物理治療師資格，並接受嚴格的內部復康訓練與待客禮儀培訓，能在一對一課堂中精準指導學員正確發力姿勢並預防運動創傷。", score: 1, status: "best", comment: "完全聚焦於「人員差異」，具體舉出「持有運動科學或物理治療資格且受嚴格培訓的教練團隊」。" }
+        ]},
+        { label: "第 3 步：結合「選擇競爭優勢的準則」深化論述其定位效果（1分）", colorClass: "hl-s3", opts: [
+          { text: "這項優勢完全符合選擇競爭優勢的準則：專業防傷指導對目標學員而言高度「重要」，且無人看管的平價自助健身室沒有這項優勢（「獨特」且「搶佔先機」不易被抄襲），能助中心在消費者心中確立「專業安全復康健身專家」的清晰定位並賺取利潤（「有利可圖」）。", score: 1, status: "best", comment: "將「人員差異」與選擇競爭優勢的準則（重要、獨特、搶佔先機、有利可圖）自然結合推演。" },
+          { text: "這樣顧客就會覺得這間健身中心的員工很好。", score: 0, status: "partial", comment: "未有結合選擇競爭優勢的準則及市場定位效果作深入說明。" },
+          { text: "這會令健身中心的租金開支完全消失。", score: 0, status: "wrong", comment: "不合邏輯的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：閃電同城冷鏈速遞（服務差異與定位陳述）", topic: "市場定位：服務差異及定位陳述", maxMarks: 3,
+      scenario: "「閃電冷鏈 (FlashCold)」是一家新成立的本地速遞公司，主要鎖定「售賣急凍和牛及刺身海產的網店商戶」為目標市場。試闡釋該速遞公司可如何透過「服務差異」取得競爭優勢，並為其撰寫一句涵蓋三個必備部分的「定位陳述 (Positioning Statement)」。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「服務差異」及「撰寫定位陳述」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「服務差異」方法名稱與概念定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "閃電冷鏈可運用「服務差異」，即透過提供優質、獨特的服務來營造與一般普通速遞競爭對手的差異，從而取得競爭優勢。", score: 1, status: "best", comment: "清楚鎖定「服務差異（透過提供優質服務營造與競爭對手的差異）」。" },
+          { text: "閃電冷鏈可運用地理區隔及人口區隔。", score: 0, status: "wrong", comment: "題目要求闡釋如何透過「服務差異」取得競爭優勢。" },
+          { text: "閃電冷鏈可以用服務來吸引網店商戶。", score: 0, status: "partial", comment: "未有準確寫出「服務差異」的概念。" }
+        ]},
+        { label: "第 2 步：針對「服務差異」設定冷鏈速遞具體例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如設計一個雪花形狀的公司商標。", score: 0, status: "wrong", comment: "商標設計屬於「形象差異」，並非題目指定的「服務差異」。" },
+          { text: "例如向生鮮網店商戶提供「全港 3 小時內零下 18 度恆溫專車直達、全程 GPS 實時車廂溫度追蹤，以及一旦超時或失溫融化即 100% 原價賠償」的優質保證服務。", score: 1, status: "best", comment: "完全聚焦於「服務差異」，針對急凍刺身網店痛點提出 3 小時恆溫直達、溫度追蹤及融化賠償服務。" },
+          { text: "例如向客戶提供良好的送貨服務。", score: 0, status: "partial", comment: "只重複了「服務」字眼，未有提出具體的優質服務內容。" }
+        ]},
+        { label: "第 3 步：撰寫涵蓋三個部分的「定位陳述」並說明其作用（1分）", colorClass: "hl-s3", opts: [
+          { text: "這樣網店商戶便會幫襯閃電冷鏈。", score: 0, status: "partial", comment: "漏答後半部：題目要求撰寫涵蓋三個部分的「定位陳述」。" },
+          { text: "這會令冷凍貨車的電費完全免費。", score: 0, status: "wrong", comment: "不合理的推論。" },
+          { text: "選定此優勢後，公司可撰寫涵蓋三個必備部分的「定位陳述」——「對售賣高價急凍海產及和牛的本地網店商戶而言【目標消費者】，閃電冷鏈【品牌】是一家專業冷鏈速遞公司，能提供全港 3 小時零下 18 度精準恆溫送達及失溫全額賠償保證【企業提供的獨特好處】」，以此作為指引制定相應營銷策略並傳達予目標客戶。", score: 1, status: "best", comment: "完整涵蓋定位陳述的三個部分：(i) 目標消費者、(ii) 品牌或產品、(iii) 企業提供的獨特好處。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>

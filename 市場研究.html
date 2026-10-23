@@ -1,0 +1,1739 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 市場研究</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 9px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 680px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sidebar-layout { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13px; color: var(--mute); font-weight: 500; flex-shrink: 0; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .case-box {
+      border-left: 4px solid var(--teal);
+      background: var(--teal-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+
+    /* Comparison Table */
+    table.comp-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 16.5px; }
+    table.comp-table th, table.comp-table td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.comp-table th { background: var(--surface); font-weight: 800; color: var(--ink); }
+    table.comp-table tr.highlight-row { background: var(--primary-light); }
+
+    /* Slider & Meter */
+    .slider-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 110px;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 16.5px;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+    .meter-bar { height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin: 8px 0; }
+    .meter-fill { height: 100%; background: var(--primary); transition: width 0.3s ease; }
+
+    /* Sampling Grid */
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      padding: 16px;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      margin: 12px 0;
+    }
+    .person-dot {
+      padding: 10px 6px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      color: var(--mute);
+      transition: all 0.2s;
+    }
+    .person-dot.picked {
+      background: var(--green-light);
+      border-color: var(--green);
+      color: #064e3b;
+      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.15);
+    }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.correct, .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.wrong, .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .grid3, .sidebar-layout, .slider-row { grid-template-columns: 1fr; }
+      .sample-grid { grid-template-columns: repeat(3, 1fr); }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 2 課：市場研究</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-intro">1. 重要性、目標與步驟</button>
+    <button data-tab="sec-data">2. 原始數據與次級數據</button>
+    <button data-tab="sec-methods">3. 四種數據蒐集方法</button>
+    <button data-tab="sec-sampling">4. 抽樣與抽樣技巧</button>
+    <button data-tab="sec-builder">5. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 市場研究的重要性、主要目標與進行步驟 ==================== -->
+<section class="view on" id="sec-intro">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元一：市場研究的定義、重要性與主要目標</span>
+      <h1>市場研究的四項重要性、三大主要目標與四個步驟</h1>
+      <p>市場研究是運用客觀和系統化的方法收集資料，以幫助企業或市務人員作出市場營銷決策的過程。市務人員經常收集的資料包括消費者的喜好和顧客滿意度。企業可以自行進行市場研究，也可以委託市場研究公司進行。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('intro', 0, this)">四項重要性與四個步驟</button>
+      <button onclick="switchSub('intro', 1, this)">三大主要目標與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：市場研究的四項重要性與進行市場研究的四個步驟 -->
+  <div class="sub-view active" id="intro-sub-0">
+    <div class="sidebar-layout" style="margin-bottom:20px">
+      <div class="nav-list" id="mrImpNavList"></div>
+      <div class="card" id="mrImpDetailCard" style="margin-bottom:0"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <span class="badge b-teal">順序排列練習</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">進行市場研究的四個步驟</h3>
+      <p style="font-size:16px;color:var(--ink-sec);margin:0 0 14px">
+        一家日本抹茶甜品店想知道公司應否在香港開設分店，並決定進行市場研究找出香港人的甜品喜好。請按正確次序（第 1 步至第 4 步）順序點擊下方步驟卡片：
+      </p>
+      <div id="mrStepPool" style="display:flex;flex-direction:column;gap:10px"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
+        <span id="mrStepStatus" style="font-size:16.5px;font-weight:700;color:var(--primary)">請依正確次序點擊「第 1 步」開始。</span>
+        <button class="btn btn-outline" onclick="initMrStepGame()">重新洗牌</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：市場研究的三大主要目標與概念辨析 -->
+  <div class="sub-view" id="intro-sub-1">
+    <div class="card">
+      <span class="badge b-blue">三大主要目標</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">企業進行市場研究的三大主要目標</h3>
+      <div class="chips" id="mrGoalChips"></div>
+      <div id="mrGoalDetail" style="margin-top:10px"></div>
+    </div>
+
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">目標 1 配對練習</span>
+        <h3 style="font-size:20px;margin:8px 0 10px">制定市場營銷計劃的資料配對</h3>
+        <p id="planMatchProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="planMatchQ" style="font-size:17px;font-weight:700;padding:16px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="btn" style="padding:9px 12px;font-size:14.5px" onclick="checkPlanMatch('第 1 步：檢討現時表現和進行強弱機危分析')">第 1 步：強弱機危分析</button>
+          <button class="btn btn-teal" style="padding:9px 12px;font-size:14.5px" onclick="checkPlanMatch('第 2 步：訂立市場營銷目標')">第 2 步：訂立營銷目標</button>
+          <button class="btn" style="background:#334155;padding:9px 12px;font-size:14.5px" onclick="checkPlanMatch('第 3 步：選擇目標市場')">第 3 步：選擇目標市場</button>
+          <button class="btn" style="background:var(--amber);padding:9px 12px;font-size:14.5px" onclick="checkPlanMatch('第 4 步：制定市場營銷策略')">第 4 步：制定營銷策略</button>
+        </div>
+        <div id="planMatchFb" style="margin-top:14px;font-size:15.5px;min-height:48px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">概念判斷練習</span>
+        <h3 style="font-size:20px;margin:8px 0 10px">辨析「市場研究的重要性」（共 5 題）</h3>
+        <p id="mrImpQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="mrImpQuizQ" style="font-size:17px;font-weight:700;padding:16px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-green" onclick="checkMrImpQuiz(true)">正確描述</button>
+          <button class="btn" style="background:#334155" onclick="checkMrImpQuiz(false)">不正確（存在誤解）</button>
+        </div>
+        <div id="mrImpQuizFb" style="margin-top:14px;font-size:15.5px;min-height:48px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 原始數據與次級數據 ==================== -->
+<section class="view" id="sec-data">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元二：原始數據（初級資料）與次級數據（次級資料）</span>
+      <h1>比較原始數據與次級數據的來源及優劣</h1>
+      <p>企業進行市場研究時，可選擇蒐集原始數據（一手數據／初級資料）、次級數據（二手數據／次級資料），或同時蒐集兩者。不論蒐集哪種數據，研究人員都須確保所得資料是相關、準確、適時，以及客觀的。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('data', 0, this)">原始與次級數據全面比較</button>
+      <button onclick="switchSub('data', 1, this)">內部與外部來源及分類練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：原始數據 vs 次級數據比較表 -->
+  <div class="sub-view active" id="data-sub-0">
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:10px">
+        <div>
+          <span class="badge b-blue">數據比較</span>
+          <h3 style="font-size:21px;margin-top:4px">原始數據與次級數據的定義、好處及壞處（點擊維度高亮顯示）</h3>
+        </div>
+        <div class="chips" id="dataCompChips" style="margin:0"></div>
+      </div>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width:22%">比較範疇</th>
+            <th style="width:39%">原始數據（一手數據／初級資料）</th>
+            <th style="width:39%">次級數據（二手數據／次級資料）</th>
+          </tr>
+        </thead>
+        <tbody id="dataCompBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：內部與外部次級數據來源 + 分類挑戰 -->
+  <div class="sub-view" id="data-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">次級數據的兩類來源</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">內部次級數據 vs 外部次級數據</h3>
+        <p style="font-size:16px;color:var(--ink-sec);margin:0 0 12px">
+          <b>重要概念：</b>次級數據並不等於由其他機構蒐集的數據；企業過去蒐集的內部數據也屬於次級數據。
+        </p>
+        <div style="background:var(--primary-light);padding:16px 18px;border-radius:12px;border:1px solid var(--primary-border);margin-bottom:12px">
+          <b style="color:var(--primary);font-size:17.5px">1. 內部數據（從企業內部蒐集的現有數據）</b>
+          <ul style="margin:6px 0 0;padding-left:20px;font-size:16px">
+            <li>企業的存貨報告</li>
+            <li>企業的銷售報告</li>
+            <li>企業的顧客資料庫</li>
+            <li>企業過往的市場研究報告</li>
+          </ul>
+        </div>
+        <div style="background:var(--teal-light);padding:16px 18px;border-radius:12px;border:1px solid #99f6e4">
+          <b style="color:var(--teal);font-size:17.5px">2. 外部數據（從企業以外取得的現有數據）</b>
+          <ul style="margin:6px 0 0;padding-left:20px;font-size:16px">
+            <li>書籍及網站</li>
+            <li>統計報告（例如政府統計處的報告）</li>
+            <li>其他機構（例如消費者委員會）的市場研究報告</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">數據分類挑戰</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨識原始數據、內部次級數據與外部次級數據（共 6 題）</h3>
+        <p id="dataQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="dataQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="btn" onclick="checkDataQuiz('原始數據')">原始數據（一手數據／初級資料）</button>
+          <button class="btn btn-teal" onclick="checkDataQuiz('次級數據（內部數據）')">次級數據 — 內部數據</button>
+          <button class="btn" style="background:#334155" onclick="checkDataQuiz('次級數據（外部數據）')">次級數據 — 外部數據</button>
+        </div>
+        <div id="dataQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 四種數據蒐集方法 ==================== -->
+<section class="view" id="sec-methods">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元三：數據蒐集方法（只適用於蒐集原始數據）</span>
+      <h1>調查研究、實驗研究、質性研究與觀察研究</h1>
+      <p>蒐集原始數據的常見方法有四種：(i) 調查研究、(ii) 實驗研究、(iii) 質性研究（深入面談及聚焦小組面談）和 (iv) 觀察研究（神秘顧客、實地觀察及在預設場景中進行觀察）。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('meth', 0, this)">四種數據蒐集方法詳解</button>
+      <button onclick="switchSub('meth', 1, this)">作答結構要點與情境挑戰</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：四種數據蒐集方法詳解（Master-Detail） -->
+  <div class="sub-view active" id="meth-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="methNavList"></div>
+      <div class="card" id="methDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：闡述結構要點 + 8題情境挑戰 -->
+  <div class="sub-view" id="meth-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">結構化表達要點</span>
+        <h3 style="font-size:21px;margin:8px 0 12px">如何準確描述企業採用的「數據蒐集方法」</h3>
+        <div style="background:var(--red-light);padding:15px 18px;border-radius:12px;border-left:4px solid var(--red);margin-bottom:14px;font-size:16px">
+          <b style="color:var(--red)">一、準確寫出四種數據蒐集方法的標準名稱：</b><br>
+          • 寫 <b>「調查研究」</b>（切勿寫成「問卷調查」或「問卷研究」）<br>
+          • 寫 <b>「質性研究」</b>（切勿寫成「質性調查」）<br>
+          • 寫 <b>「實驗研究」</b><br>
+          • 寫 <b>「觀察研究」</b>
+        </div>
+        <div class="note-box" style="margin-top:0">
+          <b>二、解釋企業如何採用該方法時，必須包含兩個部分：</b><br>
+          1. <b>描述企業須要採取的行動</b>（例如：向光顧新分店的顧客派發問卷 ／ 委派研究人員扮成神秘顧客到訪新分店）。<br>
+          2. <b>明確指出企業可蒐集甚麼與市場營銷有關的數據或資料</b>（例如：蒐集他們對新分店的設計和產品的意見 ／ 觀察和記錄售貨員的服務質素）。
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">情境與特徵判斷</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨識四種數據蒐集方法（共 8 題）</h3>
+        <p id="methQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="methQuizQ" style="font-size:17px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn" onclick="checkMethQuiz('調查研究')">調查研究</button>
+          <button class="btn btn-teal" onclick="checkMethQuiz('實驗研究')">實驗研究</button>
+          <button class="btn" style="background:#334155" onclick="checkMethQuiz('質性研究')">質性研究</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkMethQuiz('觀察研究')">觀察研究</button>
+        </div>
+        <div id="methQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 抽樣與抽樣技巧 ==================== -->
+<section class="view" id="sec-sampling">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元四：抽樣的概念、考慮因素與抽樣技巧</span>
+      <h1>目標總體、樣本、抽樣架構與三種抽樣技巧</h1>
+      <p>抽樣指在目標總體（研究人員有興趣進行研究的所有對象）中選取樣本（目標總體的一部分，能夠代表目標總體），然後將研究結果類推至研究對象的總體上。包含在樣本內的研究對象稱為樣本元素。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('samp', 0, this)">抽樣概念與三項考慮因素</button>
+      <button onclick="switchSub('samp', 1, this)">三種抽樣技巧模擬與練習</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 4A：抽樣概念拆解器 + 抽樣時須考慮的三項因素 -->
+  <div class="sub-view active" id="samp-sub-0">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">主要概念拆解</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">目標總體、樣本、樣本元素與抽樣架構</h3>
+        <div class="chips" id="sampConceptChips"></div>
+        <div id="sampConceptDetail" style="margin-top:10px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">抽樣時須考慮的三項主要因素</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">抽取具代表性樣本的三項考慮因素</h3>
+        <div style="font-size:16px;color:var(--ink-sec);margin-bottom:12px">
+          <div style="margin-bottom:6px"><b style="color:var(--ink)">(i) 目標總體：</b>必須根據研究課題清晰界定目標總體，否則便難以獲取有用的研究結果。</div>
+          <div style="margin-bottom:6px"><b style="color:var(--ink)">(ii) 樣本的大小：</b>決定實際研究的對象數量，關乎在研究結果的可靠性和成本效益之間取得平衡（如下方滑桿所示）。</div>
+          <div><b style="color:var(--ink)">(iii) 抽樣技巧：</b>選擇合適的抽樣技巧來挑選樣本元素；假如樣本存在偏差，便不能代表目標總體，研究結果也就變得無效。</div>
+        </div>
+        <div style="background:var(--surface);padding:16px 18px;border-radius:12px;border:1px solid var(--line)">
+          <div class="slider-row" style="margin-bottom:6px">
+            <b>抽取的樣本大小</b>
+            <input type="range" id="sampSizeSlider" min="20" max="2000" step="20" value="400" oninput="updateSampSizeSim()">
+            <span id="lblSampSize" style="font-weight:800;color:var(--primary)">400 人</span>
+          </div>
+          <div id="sampSizeOutput" style="font-size:15px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 4B：三種常見抽樣技巧動態模擬與情境判斷 -->
+  <div class="sub-view" id="samp-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">動態抽樣模擬器</span>
+        <h3 style="font-size:21px;margin:8px 0 6px">隨機抽樣、分層隨機抽樣與便利抽樣</h3>
+        <p style="font-size:15.5px;color:var(--mute);margin:0 0 10px">假設某連鎖健身中心想了解會員對新器械的意見（目標總體為全體會員，下方展示 18 名不同年齡組別的會員，需抽取 6 人作為樣本）：</p>
+        <div class="chips" id="sampSimChips">
+          <button class="chip active" onclick="runSampSim(0)">1. 隨機抽樣</button>
+          <button class="chip" onclick="runSampSim(1)">2. 分層隨機抽樣</button>
+          <button class="chip" onclick="runSampSim(2)">3. 便利抽樣</button>
+        </div>
+        <div class="sample-grid" id="sampGridBox"></div>
+        <div id="sampSimDesc" style="font-size:16px;margin-top:10px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">抽樣技巧判斷練習</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨識企業採用的抽樣技巧（共 6 題）</h3>
+        <p id="sampQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="sampQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="checkSampQuiz('隨機抽樣')">隨機抽樣</button>
+          <button class="btn btn-teal" onclick="checkSampQuiz('分層隨機抽樣')">分層隨機抽樣</button>
+          <button class="btn" style="background:#334155" onclick="checkSampQuiz('便利抽樣')">便利抽樣</button>
+        </div>
+        <div id="sampQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一數據蒐集方法、抽樣技巧或優缺點名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 描述企業須採取的行動，並明確指出可蒐集甚麼與市場營銷有關的資料
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一方法／重要性／抽樣技巧名稱並界定其含義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 針對題目企業描述具體研究行動及所蒐集的市場營銷資料<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至協助管理層作出更佳決策、降低業務風險或提升銷售表現的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 市場研究的重要性、主要目標與進行步驟 ======
+  const mrImpData = [
+    {
+      num: "01",
+      title: "重要性 1：找出消費者的需要和選定目標市場",
+      badge: "辨識市場組別特性・了解消費喜好",
+      def: "市場研究可幫助企業找出不同市場組別消費者的需要和特性，從而選擇最合適的市場組別作為目標市場。企業選定目標市場後，也可進行市場研究來進一步了解目標消費者的消費喜好和模式，並根據研究結果制定合適的市場營銷策略來滿足消費者的需要。",
+      example: "<b>商業應用例子（冷壓果汁生產商）：</b>生產商透過市場研究結果發現，在中環上班的年輕白領較喜歡容易攜帶且具排毒功效的飲品，於是鎖定這群白領為目標市場，並推出 250 毫升迷你便攜裝綠茶冷壓果汁。"
+    },
+    {
+      num: "02",
+      title: "重要性 2：尋找機會和識別危機",
+      badge: "提供經營環境資料・進行強弱機危分析",
+      def: "市場研究能為企業提供有關目前經營環境的資料。企業可根據這些資料進行強弱機危分析，識別自身所面對的機會和危機，然後採取相應行動，這有助企業在競爭中保持領先地位。",
+      example: "<b>商業應用例子（連鎖火鍋店）：</b>市場研究結果顯示消費者越來越注重健康和低脂飲食——傳統麻辣火鍋連鎖店將之視為「危機」，因而推出低脂番茄菌菇湯底及有機蔬菜拼盤供顧客選擇；而素食供應商則將之視為「機會」，擴展純素火鍋食材產品線。"
+    },
+    {
+      num: "03",
+      title: "重要性 3：降低業務風險",
+      badge: "評估顧客對新產品的反應・避免巨額損失",
+      def: "對企業而言，推出新產品是一項重要決策。企業可進行市場研究來收集資料，以評估顧客對新產品的反應和接受程度，然後根據這些資料，決定是否推出新產品，或如何改良產品以迎合顧客需要。這有助企業避免巨額損失。",
+      example: "<b>商業應用例子（植物奶咖啡品牌）：</b>飲品集團打算在香港引進全新的「開心果燕麥奶咖啡」，先透過旗下五間咖啡店提供試飲以測試顧客的接受程度；蒐集充足的市場數據並改良甜度後，才在全港超市正式推出樽裝產品，大幅降低新產品滯銷的業務風險。"
+    },
+    {
+      num: "04",
+      title: "重要性 4：評估市場營銷表現",
+      badge: "了解市場佔有率與品牌認知度",
+      def: "市場研究讓企業可了解本身在市場營銷方面的實際表現，例如市場佔有率和大眾對企業品牌的認知度。這些資料有助企業更有效地評估和控制其市場營銷活動。",
+      example: "<b>商業應用例子（運動服裝品牌）：</b>品牌在贊助本地長跑賽事及舉辦推廣活動後進行市場研究，發現認識公司品牌的消費者比例由 25% 大幅增加至 60%，反映該次推廣活動的成效顯著。"
+    }
+  ];
+
+  function renderMrImp(idx) {
+    document.getElementById('mrImpNavList').innerHTML = mrImpData.map((s, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderMrImp(${i})">
+        <span>${s.title}</span>
+      </button>
+    `).join('');
+    const s = mrImpData[idx];
+    document.getElementById('mrImpDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:21px">${s.title}</h3>
+        <span class="badge b-blue">${s.badge}</span>
+      </div>
+      <p style="margin:0 0 14px;font-weight:600;font-size:17.5px">${s.def}</p>
+      <div class="case-box">${s.example}</div>
+    `;
+  }
+  renderMrImp(0);
+
+  // 進行市場研究的四個步驟排序
+  const correctMrSteps = [
+    { step: 1, text: "界定問題和研究目標（界定企業希望探討的問題如「應否在香港開設分店」，並訂立研究目標如「找出香港人的抹茶甜品喜好」）" },
+    { step: 2, text: "制定研究計劃來收集資料（決定需要的資料種類，以及採用的數據蒐集方法和抽樣技巧）" },
+    { step: 3, text: "執行研究計劃（實行數據蒐集方法並進行數據分析；數據經過處理和分析後便成為資訊或資料）" },
+    { step: 4, text: "詮釋數據和發布結果（詮釋經過分析的數據並得出結論，向管理層及相關人士發布研究結果）" }
+  ];
+  let mrStepExpect = 1;
+  let shuffledMrSteps = [];
+
+  function initMrStepGame() {
+    mrStepExpect = 1;
+    shuffledMrSteps = [...correctMrSteps].sort(() => Math.random() - 0.5);
+    document.getElementById('mrStepStatus').innerHTML = `請依正確次序點擊：<b>第 1 步</b>`;
+    renderMrStepPool();
+  }
+
+  function renderMrStepPool() {
+    document.getElementById('mrStepPool').innerHTML = shuffledMrSteps.map((item, idx) => {
+      const done = item.step < mrStepExpect;
+      return `
+        <button class="opt-card ${done ? 'correct' : ''}" style="margin:0" onclick="clickMrStep(${idx})" ${done ? 'disabled' : ''}>
+          ${done ? `<span class="badge b-green">第 ${item.step} 步</span>` : `<span class="badge b-blue">點擊選擇</span>`}
+          <span style="flex:1">${item.text}</span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  function clickMrStep(idx) {
+    const picked = shuffledMrSteps[idx];
+    const status = document.getElementById('mrStepStatus');
+    if (picked.step === mrStepExpect) {
+      mrStepExpect++;
+      renderMrStepPool();
+      if (mrStepExpect > 4) {
+        status.innerHTML = `<span style="color:var(--green)">全部順序正確，你已掌握進行市場研究的四個步驟。</span>`;
+      } else {
+        status.innerHTML = `<span style="color:var(--green)">順序正確，接下來請點擊：<b>第 ${mrStepExpect} 步</b></span>`;
+      }
+    } else {
+      status.innerHTML = `<span style="color:var(--red)">次序不正確，這並非第 ${mrStepExpect} 步，請重新檢視研究流程。</span>`;
+    }
+  }
+  initMrStepGame();
+
+  // 市場研究的三大主要目標
+  const mrGoalsData = [
+    {
+      name: "目標 1：制定恰當的市場營銷計劃",
+      desc: `市場研究可幫助企業收集對計劃市場營銷活動極為關鍵的資料：<br>
+      • <b>第 1 步（檢討現時表現和進行強弱機危分析）</b>：收集有關「競爭對手的行動和市場營銷策略」及「其他新市場的潛力」的資料。<br>
+      • <b>第 2 步（訂立市場營銷目標）</b>：收集有關「現有市場的前景」及「現時的顧客滿意度」的資料。<br>
+      • <b>第 3 步（選擇目標市場）</b>：收集有關「不同市場組別的大小」及「不同市場組別的購買力」的資料。<br>
+      • <b>第 4 步（制定市場營銷策略）</b>：收集有關「目標顧客的喜好」及「顧客的產品體驗」的資料。`
+    },
+    {
+      name: "目標 2：調整現有的市場營銷策略 (4P)",
+      desc: `市場研究可讓企業更了解消費者對其市場營銷組合 (4P) 的反應，並根據研究結果調整現有的市場營銷組合策略：<br>
+      • <b>產品 (Product)</b>：收集消費者對產品的意見，例如<b>產品質素、包裝設計</b>。<br>
+      • <b>價格 (Price)</b>：收集<b>消費者認為合理的產品價格範圍</b>。<br>
+      • <b>分銷 (Place)</b>：收集<b>消費者喜歡使用的購買產品途徑</b>，例如實體店、網上平台。<br>
+      • <b>推廣 (Promotion)</b>：收集<b>消費者對企業推廣活動的意見</b>。`
+    },
+    {
+      name: "目標 3：有效地控制市場營銷活動",
+      desc: `市場研究可幫助企業評估市場營銷表現，藉此更有效地控制市場營銷活動。有助企業控制市場營銷活動的資料包括：<br>
+      • <b>(i) 顧客滿意度</b><br>
+      • <b>(ii) 企業的市場佔有率</b><br>
+      • <b>(iii) 企業的聲譽和品牌知名度</b>`
+    }
+  ];
+
+  function renderMrGoal(idx) {
+    document.getElementById('mrGoalChips').innerHTML = mrGoalsData.map((g, i) => `
+      <button class="chip ${i===idx?'active':''}" onclick="renderMrGoal(${i})">${g.name}</button>
+    `).join('');
+    const g = mrGoalsData[idx];
+    document.getElementById('mrGoalDetail').innerHTML = `
+      <div style="background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line);font-size:16.5px;line-height:1.8">
+        <b style="color:var(--primary);font-size:18.5px;display:block;margin-bottom:8px">${g.name}</b>
+        ${g.desc}
+      </div>
+    `;
+  }
+  renderMrGoal(0);
+
+  const planMatchItems = [
+    { q: "從市場研究所得的資料：「不同市場組別的大小」及「不同市場組別的購買力」", ans: "第 3 步：選擇目標市場", exp: "正確。了解不同市場組別的大小及購買力，有助企業在「第 3 步：選擇目標市場」時挑選出最合適的目標市場組別。" },
+    { q: "從市場研究所得的資料：「競爭對手的行動和市場營銷策略」及「其他新市場的潛力」", ans: "第 1 步：檢討現時表現和進行強弱機危分析", exp: "正確。掌握競爭對手行動與新市場潛力，有助企業在「第 1 步：檢討現時表現和進行強弱機危分析」中識別外在機會與危機。" },
+    { q: "從市場研究所得的資料：「現有市場的前景」及「現時的顧客滿意度」", ans: "第 2 步：訂立市場營銷目標", exp: "正確。了解現有市場前景與現時顧客滿意度，有助企業在「第 2 步：訂立市場營銷目標」時設定切合實際的目標。" },
+    { q: "從市場研究所得的資料：「目標顧客的喜好」及「顧客的產品體驗」", ans: "第 4 步：制定市場營銷策略", exp: "正確。深入了解目標顧客喜好與產品體驗，有助企業在「第 4 步：制定市場營銷策略」時設計切合顧客需要的組合。" }
+  ];
+  let curPM = 0;
+  function renderPlanMatch() {
+    document.getElementById('planMatchProg').textContent = `題目 ${curPM + 1} / ${planMatchItems.length}`;
+    document.getElementById('planMatchQ').textContent = planMatchItems[curPM].q;
+    document.getElementById('planMatchFb').innerHTML = '';
+  }
+  function checkPlanMatch(choice) {
+    const item = planMatchItems[curPM];
+    const fb = document.getElementById('planMatchFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:5px 12px;font-size:14px" onclick="curPM=(curPM+1)%planMatchItems.length;renderPlanMatch()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderPlanMatch();
+
+  const mrImpQuizItems = [
+    { q: "1. 「幫助企業識別商業機會和危機，並找出不同市場組別的特性與目標消費者的喜好。」", ans: true, exp: "正確。這涵蓋了市場研究的第一及第二項重要性。" },
+    { q: "2. 「進行市場研究能 100% 確保企業不會推出消費者不接納的產品。」", ans: false, exp: "正確（陳述不正確）。市場研究只能「降低業務風險」（協助評估顧客對新產品的接受程度以避免巨額損失），但並不能「確保」絕對不會推出消費者不接納的產品。" },
+    { q: "3. 「讓企業了解市場營銷部內部員工對公司薪酬福利的意見。」", ans: false, exp: "正確（陳述不正確）。了解內部員工對薪酬的意見屬於人力資源管理的僱員調查，並非研究外部消費者與市場的市場研究。" },
+    { q: "4. 「幫助企業了解本身在市場佔有率和品牌認知度方面的實際表現，以評估和控制市場營銷活動。」", ans: true, exp: "正確。這是市場研究的第四項重要性（評估市場營銷表現）。" },
+    { q: "5. 「協助企業收集顧客對新產品的反應，以決定是否推出新產品或如何改良產品，從而降低業務風險。」", ans: true, exp: "正確。這是市場研究的第三項重要性（降低業務風險）。" }
+  ];
+  let curMrImpQ = 0;
+  function renderMrImpQuiz() {
+    document.getElementById('mrImpQuizProg').textContent = `題目 ${curMrImpQ + 1} / ${mrImpQuizItems.length}`;
+    document.getElementById('mrImpQuizQ').textContent = mrImpQuizItems[curMrImpQ].q;
+    document.getElementById('mrImpQuizFb').innerHTML = '';
+  }
+  function checkMrImpQuiz(choice) {
+    const item = mrImpQuizItems[curMrImpQ];
+    const fb = document.getElementById('mrImpQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:5px 12px;font-size:14px" onclick="curMrImpQ=(curMrImpQ+1)%mrImpQuizItems.length;renderMrImpQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">判斷不正確。${item.exp.replace('正確。','').replace('正確（陳述不正確）。','')}</span>`;
+    }
+  }
+  renderMrImpQuiz();
+
+  // ====== 2. 原始數據與次級數據 ======
+  const dataCompRows = [
+    {
+      cat: "蒐集目的與定義",
+      title: "1. 蒐集目的（定義）",
+      pri: "<b>專為特定研究目的（即現時的研究課題）</b>而蒐集的數據。<br><span style='font-size:15px;color:var(--mute)'>例子：企業進行調查以了解顧客對某款新產品的意見。</span>",
+      sec: "<b>現有的數據或資料</b>，這類數據是<b>為現時的研究課題以外的其他目的</b>而蒐集的。<br><span style='font-size:15px;color:var(--mute)'>例子：企業從政府的統計報告或公司過往銷售報告中擷取數據。</span>"
+    },
+    {
+      cat: "時間與成本",
+      title: "2. 蒐集過程（時間與資源）及成本",
+      pri: "• <b>壞處 — 耗費較多時間和資源</b>：蒐集和分析原始數據須耗費較多的時間和資源（例如須要設計蒐集和分析數據的方法）。<br>• <b>壞處 — 成本較高</b>：蒐集新數據的成本較高（例如或須聘請研究人員或委託市場研究公司來蒐集數據）。",
+      sec: "• <b>好處 — 節省時間和資源</b>：蒐集次級數據所需的時間和資源較少，企業可直接使用企業內部或其他機構過往分析和公布的數據。<br>• <b>好處 — 成本較低</b>：由於次級數據是現有的數據，蒐集成本相對較低，企業通常無須聘請研究人員或委託市場研究公司。"
+    },
+    {
+      cat: "相關性與適時性",
+      title: "3. 數據相關性與適時性",
+      pri: "• <b>好處 — 數據較適時</b>：原始數據是企業新蒐集的數據，通常較為適時。<br>• <b>好處 — 數據較相關</b>：原始數據專為現時的研究課題而蒐集，所以與研究課題非常相關，能夠滿足企業的需要。",
+      sec: "• <b>壞處 — 數據可能過時</b>：如次級數據是在一段時間前蒐集的話，便可能會過時。<br>• <b>壞處 — 數據相關性較低</b>：次級數據並非專為現時的研究課題而蒐集，與研究課題的相關性較低，未必能滿足企業的需要。"
+    },
+    {
+      cat: "數據質素",
+      title: "4. 數據質素與真確性",
+      pri: "• <b>好處 — 數據質素較有保證</b>：企業能夠控制和監察蒐集數據的方法，可確保數據的質素和真確性。",
+      sec: "• <b>壞處 — 數據質素沒有保證</b>：如數據取自可信度較低的來源，數據的真確性便值得商榷。"
+    }
+  ];
+
+  function renderDataComp(filterCat) {
+    document.querySelectorAll('#dataCompChips .chip').forEach(c => c.classList.toggle('active', c.dataset.cat === filterCat));
+    document.getElementById('dataCompBody').innerHTML = dataCompRows.map(r => `
+      <tr class="${filterCat !== '全部' && r.cat === filterCat ? 'highlight-row' : ''}">
+        <td><b style="color:var(--primary)">${r.title}</b></td>
+        <td>${r.pri}</td>
+        <td>${r.sec}</td>
+      </tr>
+    `).join('');
+  }
+  document.getElementById('dataCompChips').innerHTML = ['全部', '蒐集目的與定義', '時間與成本', '相關性與適時性', '數據質素'].map((c, i) => `
+    <button class="chip ${i===0?'active':''}" style="padding:6px 14px;font-size:14.5px" data-cat="${c}" onclick="renderDataComp('${c}')">${c}</button>
+  `).join('');
+  renderDataComp('全部');
+
+  const dataQuizItems = [
+    { q: "1. 某有機護膚品牌查閱「香港政府統計處的人口統計報告」及「消費者委員會發表的護膚品測試報告」。", ans: "次級數據（外部數據）", exp: "正確。從企業以外機構（政府統計處、消費者委員會、書籍、網站）取得的現有數據，屬於「次級數據（外部數據）」。" },
+    { q: "2. 某連鎖運動用品店翻查自己公司內部的「企業存貨報告」、「企業銷售報告」及「企業的顧客資料庫」。", ans: "次級數據（內部數據）", exp: "正確。從企業內部蒐集的現有報告與資料庫，屬於「次級數據（內部數據）」。" },
+    { q: "3. 某智能手錶品牌專門為今次「了解顧客對新款血壓監測手錶的意見」研究課題，派員進行問卷調查所新蒐集的數據。", ans: "原始數據", exp: "正確。專為特定研究目的（即現時的研究課題）而新蒐集的一手數據，屬於「原始數據（初級資料）」。" },
+    { q: "4. 某連鎖咖啡店查看自己公司在三年前為另一個項目所做的「企業過往的市場研究報告」。", ans: "次級數據（內部數據）", exp: "正確。企業過往的市場研究報告是現有的內部資料，屬於「次級數據（內部數據）」。" },
+    { q: "5. 某寵物食品商專門為研究狗主對新款鮮食包的接受程度，邀請 8 名狗主進行聚焦小組面談所收集的回應。", ans: "原始數據", exp: "正確。專為現時特定研究課題而直接蒐集的一手資料，屬於「原始數據（初級資料）」。" },
+    { q: "6. 某飲品生產商在研發新茶飲前，從公開商業書籍及行業網站中擷取有關亞洲茶飲市場的現有統計數據。", ans: "次級數據（外部數據）", exp: "正確。從書籍及網站擷取的現有外部資料，屬於「次級數據（外部數據）」。" }
+  ];
+  let curDataQ = 0;
+  function renderDataQuiz() {
+    document.getElementById('dataQuizProg').textContent = `題目 ${curDataQ + 1} / ${dataQuizItems.length}`;
+    document.getElementById('dataQuizQ').textContent = dataQuizItems[curDataQ].q;
+    document.getElementById('dataQuizFb').innerHTML = '';
+  }
+  function checkDataQuiz(choice) {
+    const item = dataQuizItems[curDataQ];
+    const fb = document.getElementById('dataQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curDataQ=(curDataQ+1)%dataQuizItems.length;renderDataQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderDataQuiz();
+
+  // ====== 3. 四種數據蒐集方法 ======
+  const methodsCatalog = [
+    {
+      name: "01 調查研究",
+      en: "Survey Research",
+      def: "透過問卷有系統地蒐集所需資料的方法，是研究人員蒐集原始數據時最常用的方法。企業通常以這種方法了解消費者的態度（如對產品的滿意度及喜好）、習慣（如購買頻率）和認知度（如對某產品的認識）。",
+      details: `
+        <div style="margin-bottom:12px">
+          <b>1. 問卷與問題類型：</b>問卷包含一系列針對研究課題而設計的問題，通常用來收集大量受訪者的回應，並以統計方法分析。問卷的問題一般以<b>封閉式問題</b>（要求受訪者在預設的選項中選取答案）為主，<b>開放式問題</b>（容許受訪者自由作答）通常較少。
+        </div>
+        <div style="margin-bottom:14px">
+          <b>2. 四種調查聯絡方式：</b>(i) <b>個人（面對面的）面談</b>、(ii) <b>電話訪問</b>、(iii) <b>郵件</b>、(iv) <b>電子媒介</b>（例如電郵、網站或流動應用程式）。
+        </div>
+        <div class="grid2" style="gap:14px">
+          <div style="background:var(--green-light);padding:14px 16px;border-radius:12px;border:1px solid #a7f3d0;font-size:16px">
+            <b style="color:var(--green)">調查研究的優點：</b><br>
+            • <b>(i) 容易分析數據</b>：通常採用封閉式問題，蒐集所得的數據一般可量化，可運用不同的統計方法分析。<br>
+            • <b>(ii) 研究結果可類推</b>：通常涉及大量受訪者，從樣本得出的研究結果可類推至目標總體上。<br>
+            • <b>(iii) 可蒐集不同種類的數據</b>：可在問卷中加入不同類型的問題來蒐集態度、意見、習慣、信念和價值觀等數據。
+          </div>
+          <div style="background:var(--red-light);padding:14px 16px;border-radius:12px;border:1px solid #fecdd3;font-size:16px">
+            <b style="color:var(--red)">調查研究的缺點：</b><br>
+            • <b>(i) 收集的資料有欠深入</b>：通常使用封閉式問題，受訪者時常被逼在預設選項中選出答案，未必能完全反映觀點，結果不夠全面。<br>
+            • <b>(ii) 難以控制回應率</b>：難以要求受訪者回答所有問題，也未必能收回所有已發出的問卷（有些人覺得耗時而拒絕回答）。<br>
+            • <b>(iii) 研究結果或欠缺真確性</b>：部分受訪者可能沒有仔細閱讀或思考問題便草率回答；此外，調查研究通常是不記名的，部分受訪者未必會誠實作答。
+          </div>
+        </div>
+      `
+    },
+    {
+      name: "02 實驗研究",
+      en: "Experimental Research",
+      def: "一種科學化的研究方法，目的是解釋變數之間的「因果關係」。這種方法常用於測試某項「假設」或驗證某項策略是否有效。",
+      details: `
+        <div style="margin-bottom:14px">
+          <b>進行實驗研究的步驟與「控制小組（對照小組）」：</b><br>
+          • <b>步驟 (i)</b>：就某項因果關係作出<b>假設</b>（例如假設某項市場營銷策略可增加某款產品的銷售額）。<br>
+          • <b>步驟 (ii)</b>：設計實驗。實驗須同時設有<b>實驗小組</b>和<b>控制小組（對照小組）</b>。除了企業想研究的<b>原因變數</b>外，兩個小組內的實驗對象（如消費者）應具有相似的特徵和接受同等的待遇。<br>
+          • <b>步驟 (iii)</b>：進行實驗，然後比較兩個小組的反應，以驗證企業的假設是否成立。<br>
+          <span style="font-size:15.5px;color:var(--ink-sec)"><i>應用例子：某能量飲品商想研究在運動短片中加入產品展示（原因變數／因）能否提升消費者對飲品的好感度（果）。研究人員邀請特徵相似的兩組消費者：甲組（實驗小組）觀看有產品展示的短片，乙組（控制小組）觀看沒有產品展示的同一短片，最後以問卷量度並比較兩組在實驗前後對飲品的好感度變化。</i></span>
+        </div>
+        <div class="grid2" style="gap:14px">
+          <div style="background:var(--green-light);padding:14px 16px;border-radius:12px;border:1px solid #a7f3d0;font-size:16px">
+            <b style="color:var(--green)">實驗研究的優點：</b><br>
+            • <b>(i) 控制程度高</b>：企業可控制實驗中所有無關的變數，確保研究結果是明確和相關的。<br>
+            • <b>(ii) 研究結果較可信</b>：企業可重複進行實驗來驗證研究結果，能提供更科學化和可信的證據，證明因果關係確實存在。
+          </div>
+          <div style="background:var(--red-light);padding:14px 16px;border-radius:12px;border:1px solid #fecdd3;font-size:16px">
+            <b style="color:var(--red)">實驗研究的缺點：</b><br>
+            • <b>(i) 耗時</b>：企業或須耗費很多時間來設計實驗和測試各項變數，才能找出確實的因果關係。<br>
+            • <b>(ii) 難以設計合適的實驗</b>：要撇除所有不相關的變數（例如實驗對象接受實驗時的情緒）或十分困難，甚至不可能做到，這會影響實驗結果的有效性。
+          </div>
+        </div>
+      `
+    },
+    {
+      name: "03 質性研究",
+      en: "Qualitative Research",
+      def: "以少數的受訪者（總受訪者人數通常少於 30 人）為對象的研究方法，研究人員可從中獲得較具啟發性的資料，以加深對研究議題的理解。這些受訪者大多對研究議題有較深入的認識。質性研究着重資料的深度（如了解競爭地位及購買行為背後的原因），通常採用開放式問題讓受訪者自由發表意見。",
+      details: `
+        <div style="margin-bottom:14px">
+          <b>質性研究的兩種常見形式：</b><br>
+          • <b>(a) 深入面談（有時簡稱為面談）</b>：以<b>單對單形式</b>訪問熟悉議題的受訪者，通常以面對面形式進行（每次只訪問一位受訪者）。<br>
+          • <b>(b) 聚焦小組面談（又稱焦點小組面談）</b>：就特定議題進行討論的<b>小組面談</b>，參與者都經過精心挑選（按性別、年齡、收入和學歷等準則）。每個聚焦小組通常有 <b>6 至 10 名參與者</b>（多可獲得酬勞），每節通常為時一至兩小時；企業通常聘請<b>主持人（協調員）</b>向成員提問並鼓勵他們參與討論。
+        </div>
+        <div class="grid2" style="gap:14px">
+          <div style="background:var(--green-light);padding:14px 16px;border-radius:12px;border:1px solid #a7f3d0;font-size:16px">
+            <b style="color:var(--green)">質性研究的優點：</b><br>
+            • <b>(i) 收集的資料較深入</b>：受訪者可自由發表意見，企業可從中獲得更多啟發，加深對研究課題的了解。<br>
+            • <b>(ii) 可與受訪者進行互動</b>：訪問員或主持人可要求受訪者解釋答案或向受訪者提出跟進問題，從而進一步了解受訪者的態度、理由或動機。
+          </div>
+          <div style="background:var(--red-light);padding:14px 16px;border-radius:12px;border:1px solid #fecdd3;font-size:16px">
+            <b style="color:var(--red)">質性研究的缺點：</b><br>
+            • <b>(i) 難以分析數據</b>：蒐集的並非量化數據，企業難以運用統計方法進行分析。<br>
+            • <b>(ii) 研究結果不可類推</b>：只涉及少量受訪者，企業未必可將研究結果類推至目標總體上。<br>
+            • <b>(iii) 需要技巧較高的訪問員或主持人</b>：需要技巧較高的訪問員或主持人來提出可引發回應的問題，以及詮釋受訪者的答案。
+          </div>
+        </div>
+      `
+    },
+    {
+      name: "04 觀察研究",
+      en: "Observational Research",
+      def: "直接記錄事實信息，或在自然或預設場景中觀察和記錄人們行為表現的過程。企業可透過這種方法了解實際市場情況及人們的真實行為和價值觀（可避免受訪者在調查研究和質性研究中為免尷尬而不把所思所想真實表達出來的問題）。",
+      details: `
+        <div style="margin-bottom:14px">
+          <b>進行觀察研究的三種常見方法（亦可用來收集有關市場、僱員和競爭對手的資料）：</b><br>
+          • <b>(i) 神秘顧客</b>：委派研究人員扮成神秘顧客到訪店鋪，暗中觀察店員的顧客服務質素。<br>
+          • <b>(ii) 實地觀察</b>：例如委派研究人員觀察和記錄某個地區的同類店舖數量以了解市場情況，或觀察顧客在店內的選購行為。<br>
+          • <b>(iii) 在預設場景中進行觀察</b>：例如邀請一群幼兒到放置了各種益智教具的房間，觀察他們如何選擇和使用教具（<b>重要區分：</b>在預設場景中進行觀察和進行實驗研究是不同的，前者<b>不涉及假設和控制小組</b>）。
+        </div>
+        <div class="grid2" style="gap:14px">
+          <div style="background:var(--green-light);padding:14px 16px;border-radius:12px;border:1px solid #a7f3d0;font-size:16px">
+            <b style="color:var(--green)">觀察研究的優點：</b><br>
+            • <b>(i) 研究結果更具真確性</b>：可透過觀察實際市場情況或人們的真實行為來獲得更真確的研究結果。<br>
+            • <b>(ii) 可收集其他方法未能獲取的資料</b>：可從不能以其他方法接觸或訪問的人（如幼童）收集資料；亦適用於一些會令受訪者不願意在面談時討論、或會造成尷尬場面的議題。
+          </div>
+          <div style="background:var(--red-light);padding:14px 16px;border-radius:12px;border:1px solid #fecdd3;font-size:16px">
+            <b style="color:var(--red)">觀察研究的缺點：</b><br>
+            • <b>(i) 難以分析數據</b>：蒐集的多是質性數據，企業或難以運用統計方法進行分析。<br>
+            • <b>(ii) 部分資料不能透過觀察獲得</b>：企業未必能觀察到人們的思想和感受（例如可觀察到顧客選擇某品牌產品，但未必能了解顧客為何作出這個選擇）。<br>
+            • <b>(iii) 可能存在偏見</b>：不同研究人員對觀察所得有不同的詮釋，因此結果可能流於主觀。
+          </div>
+        </div>
+      `
+    }
+  ];
+
+  function renderMethCatalog(idx) {
+    document.getElementById('methNavList').innerHTML = methodsCatalog.map((m, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderMethCatalog(${i})">
+        <span>${m.name}</span>
+        <span class="sub-txt">${m.en.split(' ')[0]}</span>
+      </button>
+    `).join('');
+    const m = methodsCatalog[idx];
+    document.getElementById('methDetailCard').innerHTML = `
+      <h3 style="color:var(--primary);font-size:22px;margin-bottom:8px">${m.name} (${m.en})</h3>
+      <p style="margin:0 0 14px;font-weight:600;font-size:17px">${m.def}</p>
+      <div style="font-size:16.5px;line-height:1.75">${m.details}</div>
+    `;
+  }
+  renderMethCatalog(0);
+
+  const methQuizItems = [
+    { q: "1. 某平板電腦生產商邀請數組消費者（每組 8 人），由主持人帶領就選購平板電腦時所考慮的因素進行小組討論，並提出跟進問題深入了解背後原因。", ans: "質性研究", exp: "正確。透過聚焦小組面談（或單對單深入面談）深入了解少數受訪者購買行為背後的原因，屬於「質性研究」。" },
+    { q: "2. 某大型連鎖藥房向大批會員派發網上問卷，採用封閉式問題了解他們的購買保健品習慣及消費頻率，並以統計方法分析數據。", ans: "調查研究", exp: "正確。透過問卷（經電子媒介、郵件、電話或個人面談）向大量受訪者有系統地蒐集可量化數據，屬於「調查研究」。" },
+    { q: "3. 某連鎖咖啡店讓兩組顧客分別在兩家分店消費：一家分店散發濃郁烘焙咖啡豆香氣（實驗小組），另一家則無特別香氣（控制小組），比較兩組顧客甜品加購率以驗證因果關係。", ans: "實驗研究", exp: "正確。設立實驗小組和控制小組以提供科學化證據驗證變數之間的因果關係，屬於「實驗研究」。" },
+    { q: "4. 某商場委派研究人員在場內記錄顧客在各樓層指示牌前的停留與尋找方向行為；而某連鎖餐廳則委派研究人員扮成「神秘顧客」暗中記錄侍應的服務質素。", ans: "觀察研究", exp: "正確。在自然或預設場景中直接觀察和記錄人們的真實行為表現，屬於「觀察研究」。" },
+    { q: "5. 某幼兒圖書出版商邀請一群小孩子到一個放置了各類繪本的閱讀室，在不設任何假設和控制小組的情況下，觀察他們如何選擇和翻閱圖書。", ans: "觀察研究", exp: "正確。這是「觀察研究」中的「在預設場景中進行觀察」（因不涉及假設和控制小組，故不屬於實驗研究）。" },
+    { q: "6. 這種方法雖然能記錄顧客在貨架前挑選了哪個品牌的洗髮水，但卻無法得知顧客的思想、感受及為何作出這個選擇，且不同研究人員的詮釋可能存在偏見。", ans: "觀察研究", exp: "正確。「無法觀察思想感受」及「研究人員詮釋可能存在主觀偏見」正是「觀察研究」的核心缺點。" },
+    { q: "7. 這種方法可透過個人面談、電話訪問、郵件或電子媒介進行，數據容易量化作統計分析且結果可類推至目標總體，但收集的資料有欠深入且難以控制回應率。", ans: "調查研究", exp: "正確。這是「調查研究」的聯絡方式與優缺點。" },
+    { q: "8. 某商用咖啡機批發商的經理與數名合作餐廳的採購總監進行單對單面談，自由深入探討餐廳對新款全自動咖啡機的看法。", ans: "質性研究", exp: "正確。單對單的深入面談屬於「質性研究」。" }
+  ];
+  let curMethQ = 0;
+  function renderMethQuiz() {
+    document.getElementById('methQuizProg').textContent = `題目 ${curMethQ + 1} / ${methQuizItems.length}`;
+    document.getElementById('methQuizQ').textContent = methQuizItems[curMethQ].q;
+    document.getElementById('methQuizFb').innerHTML = '';
+  }
+  function checkMethQuiz(choice) {
+    const item = methQuizItems[curMethQ];
+    const fb = document.getElementById('methQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curMethQ=(curMethQ+1)%methQuizItems.length;renderMethQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderMethQuiz();
+
+  // ====== 4. 抽樣與抽樣技巧 ======
+  const sampConceptCases = [
+    {
+      name: "案例一：電訊公司研究手機月費客戶意見",
+      pop: "<b>• 目標總體</b>：電訊公司的所有月費計劃客戶（研究人員有興趣進行研究的所有對象）。",
+      frame: "<b>• 抽樣架構</b>：電訊公司的完整客戶資料庫名單（列出目標總體中所有元素的名單；只適用於隨機抽樣和分層隨機抽樣）。",
+      sample: "<b>• 樣本</b>：被抽出的其中 500 名電訊公司客戶群組（目標總體的一部分，能夠代表目標總體）。",
+      elem: "<b>• 樣本元素</b>：該 500 名獲選客戶中的每一名個別客戶（包含在樣本內的研究對象）。"
+    },
+    {
+      name: "案例二：跨境高鐵研究不同車廂等級乘客滿意度",
+      pop: "<b>• 目標總體</b>：所有乘搭跨境高鐵列車的乘客。",
+      frame: "<b>• 抽樣架構</b>：列車的實名售票乘客座位名單（列出特等座、一等座及二等座所有乘客名單）。",
+      sample: "<b>• 樣本</b>：從特等座、一等座及二等座三個分層中隨機抽取出來填寫問卷的 300 名乘客群組。",
+      elem: "<b>• 樣本元素</b>：獲選填寫問卷的每一位個別高鐵乘客。"
+    }
+  ];
+
+  function renderSampConcept(idx) {
+    document.getElementById('sampConceptChips').innerHTML = sampConceptCases.map((c, i) => `
+      <button class="chip ${i===idx?'active':''}" style="padding:6px 14px;font-size:14.5px" onclick="renderSampConcept(${i})">${c.name}</button>
+    `).join('');
+    const c = sampConceptCases[idx];
+    document.getElementById('sampConceptDetail').innerHTML = `
+      <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16.5px;line-height:1.8">
+        <div style="margin-bottom:6px">${c.pop}</div>
+        <div style="margin-bottom:6px;color:var(--primary)">${c.frame}</div>
+        <div style="margin-bottom:6px;color:var(--teal)">${c.sample}</div>
+        <div style="color:var(--ink-sec)">${c.elem}</div>
+      </div>
+    `;
+  }
+  renderSampConcept(0);
+
+  function updateSampSizeSim() {
+    const sz = +document.getElementById('sampSizeSlider').value;
+    document.getElementById('lblSampSize').textContent = sz + ' 人';
+    const relPct = Math.min(98, Math.round(20 + (sz / 2000) * 78));
+    const costPct = Math.min(98, Math.round(10 + (sz / 2000) * 88));
+
+    let msg = sz < 100 ? "樣本過小：雖然花費的時間和金錢較少，但研究結果的可靠性偏低，未必能代表目標總體。" :
+              sz <= 800 ? "理想平衡：在「研究結果的可靠性」與「成本效益（時間和金錢）」之間取得了良好平衡。" :
+              "樣本極大：研究結果非常可靠，但意味著須要花費更多時間和金錢。" ;
+
+    document.getElementById('sampSizeOutput').innerHTML = `
+      <div style="display:flex;justify-content:space-between;font-size:14.5px"><span>研究結果的可靠性：</span><b style="color:var(--green)">${relPct}%</b></div>
+      <div class="meter-bar"><div class="meter-fill" style="width:${relPct}%;background:var(--green)"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:6px"><span>所需花費的時間和金錢：</span><b style="color:var(--red)">${costPct}%</b></div>
+      <div class="meter-bar"><div class="meter-fill" style="width:${costPct}%;background:var(--red)"></div></div>
+      <div style="margin-top:8px;color:var(--ink)">${msg}</div>
+    `;
+  }
+  updateSampSizeSim();
+
+  const peopleList = [
+    { id: 1, group: "18–30歲", label: "會員 #1" }, { id: 2, group: "18–30歲", label: "會員 #2" },
+    { id: 3, group: "18–30歲", label: "會員 #3" }, { id: 4, group: "18–30歲", label: "會員 #4" },
+    { id: 5, group: "18–30歲", label: "會員 #5" }, { id: 6, group: "18–30歲", label: "會員 #6" },
+    { id: 7, group: "31–60歲", label: "會員 #7" }, { id: 8, group: "31–60歲", label: "會員 #8" },
+    { id: 9, group: "31–60歲", label: "會員 #9" }, { id: 10, group: "31–60歲", label: "會員 #10" },
+    { id: 11, group: "31–60歲", label: "會員 #11" }, { id: 12, group: "31–60歲", label: "會員 #12" },
+    { id: 13, group: "60歲或以上", label: "會員 #13" }, { id: 14, group: "60歲或以上", label: "會員 #14" },
+    { id: 15, group: "60歲或以上", label: "會員 #15" }, { id: 16, group: "60歲或以上", label: "會員 #16" },
+    { id: 17, group: "60歲或以上", label: "會員 #17" }, { id: 18, group: "60歲或以上", label: "會員 #18" }
+  ];
+
+  function runSampSim(mode) {
+    document.querySelectorAll('#sampSimChips .chip').forEach((c, i) => c.classList.toggle('active', i === mode));
+    let pickedIds = [];
+    let descHtml = '';
+
+    if (mode === 0) {
+      const pool = [...peopleList].sort(() => Math.random() - 0.5);
+      pickedIds = pool.slice(0, 6).map(p => p.id);
+      descHtml = `<div style="background:var(--surface);padding:14px 18px;border-radius:12px;border:1px solid var(--line)">
+        <b style="color:var(--primary)">1. 隨機抽樣（簡單隨機抽樣）：</b><br>
+        • <b>原理與做法：</b>目標總體內每個元素被抽中的機會是<b>可知和均等的</b>。企業須從<b>抽樣架構</b>（如會員名單或顧客資料庫）中直接隨機挑選樣本元素。<br>
+        <button class="btn btn-outline" style="padding:5px 14px;font-size:14px;margin-top:8px" onclick="runSampSim(0)">重新隨機抽選</button>
+      </div>`;
+    } else if (mode === 1) {
+      const g1 = peopleList.slice(0, 6).sort(() => Math.random() - 0.5).slice(0, 2);
+      const g2 = peopleList.slice(6, 12).sort(() => Math.random() - 0.5).slice(0, 2);
+      const g3 = peopleList.slice(12, 18).sort(() => Math.random() - 0.5).slice(0, 2);
+      pickedIds = [...g1, ...g2, ...g3].map(p => p.id);
+      descHtml = `<div style="background:var(--surface);padding:14px 18px;border-radius:12px;border:1px solid var(--line)">
+        <b style="color:var(--primary)">2. 分層隨機抽樣：</b><br>
+        • <b>原理與做法：</b>須使用<b>抽樣架構</b>。(i) 先把目標總體中的所有研究對象，按年齡、收入、教育程度等分為多個<b>互相排斥的小組（稱為層）</b>；(ii) 然後按抽樣架構從<b>每個小組中隨機挑選</b>樣本元素。<br>
+        • <b>優點：</b>如研究結果須反映總體的多樣性（如研究年齡與喜好之間的關係），分層隨機抽樣可確保樣本中包含所有組別的研究對象，即使個別組別的人數較少，也不會被忽略。<br>
+        <button class="btn btn-outline" style="padding:5px 14px;font-size:14px;margin-top:8px" onclick="runSampSim(1)">重新分層隨機抽選</button>
+      </div>`;
+    } else {
+      pickedIds = [1, 2, 3, 4, 5, 6];
+      descHtml = `<div style="background:var(--surface);padding:14px 18px;border-radius:12px;border:1px solid var(--line)">
+        <b style="color:var(--primary)">3. 便利抽樣：</b><br>
+        • <b>原理與做法：</b>研究人員挑選<b>最容易接觸到的研究對象</b>作為樣本元素（例如訪問街上的行人、分店門口最先遇到的顧客，或在社交媒體網站專頁內張貼網上問卷連結讓願意作答者參與）。<br>
+        • <b>特點與限制：</b><b>無須使用抽樣架構</b>；然而，採用便利抽樣所抽取的樣本<b>未必能代表目標總體</b>。
+      </div>`;
+    }
+
+    document.getElementById('sampGridBox').innerHTML = peopleList.map(p => `
+      <div class="person-dot ${pickedIds.includes(p.id) ? 'picked' : ''}">
+        <div>${p.label}</div>
+        <small>${p.group}</small>
+      </div>
+    `).join('');
+    document.getElementById('sampSimDesc').innerHTML = descHtml;
+  }
+  runSampSim(0);
+
+  const sampQuizItems = [
+    { q: "1. 某渡輪公司在碼頭閘口訪問等候上船的乘客，了解他們是否滿意渡輪的班次服務。", ans: "便利抽樣", exp: "正確。在碼頭或街頭挑選最容易接觸到的乘客進行訪問，無須抽樣架構，屬於「便利抽樣」。" },
+    { q: "2. 一家大型有機超市從完整的會員名單（抽樣架構）中直接隨機挑選 500 名會員，並向他們發送網上問卷，每位會員被抽中的機會均等。", ans: "隨機抽樣", exp: "正確。從會員名單（抽樣架構）中直接隨機挑選，每個元素被抽中的機會可知和均等，屬於「隨機抽樣（簡單隨機抽樣）」。" },
+    { q: "3. 某私人銀行把客戶按「資產淨值水平」分為三個互相排斥的組別，然後根據客戶名單在每個組別中隨機挑選客戶，探討他們的理財產品喜好。", ans: "分層隨機抽樣", exp: "正確。先把目標總體按特徵分為多個互相排斥的小組（層），再按抽樣架構從每組隨機挑選樣本元素，屬於「分層隨機抽樣」。" },
+    { q: "4. 某郵輪公司計劃在航程中向旅客派發問卷了解對船上餐飲的意見，並希望確保所蒐集的資料可同時包含「內艙房、海景露台房和皇家套房」三個艙等旅客的意見（人數較少的皇家套房旅客亦不會被忽略）。", ans: "分層隨機抽樣", exp: "正確。把旅客按艙房等級分為三個互相排斥的小組，再從每個小組隨機抽取旅客，能確保人數較少的組別也不會被忽略，屬於「分層隨機抽樣」。" },
+    { q: "5. 某保健品公司為了節省時間和資源，聘請臨時市場研究人員在商場門外直接向路過的中年人士進行街頭問卷訪問。", ans: "便利抽樣", exp: "正確。在街頭訪問最容易接觸到的途人屬於「便利抽樣」。" },
+    { q: "6. 某運動品牌在自己的社交媒體專頁內張貼網上問卷連結，任何瀏覽專頁並願意回答問卷的顧客便會成為樣本元素。", ans: "便利抽樣", exp: "正確。在社交媒體網站專頁張貼問卷連結讓願意回答者成為樣本元素，無須抽樣架構，屬於「便利抽樣」。" }
+  ];
+  let curSampQ = 0;
+  function renderSampQuiz() {
+    document.getElementById('sampQuizProg').textContent = `題目 ${curSampQ + 1} / ${sampQuizItems.length}`;
+    document.getElementById('sampQuizQ').textContent = sampQuizItems[curSampQ].q;
+    document.getElementById('sampQuizFb').innerHTML = '';
+  }
+  function checkSampQuiz(choice) {
+    const item = sampQuizItems[curSampQ];
+    const fb = document.getElementById('sampQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curSampQ=(curSampQ+1)%sampQuizItems.length;renderSampQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderSampQuiz();
+
+  // ====== 5. 論點建構問答工作坊 (12題 100% 原創香港商業情境) ======
+  const workshopQuestions = [
+    // ================= 第一類：短答題／個案題（每個獨立論點滿分 2 分 — 2 步建構） =================
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：家居生活百貨店（運用次級數據的好處）", topic: "原始數據與次級數據：運用次級數據的好處", maxMarks: 2,
+      scenario: "「尚品生活館」是一家大型連鎖家居百貨店，計劃進行市場研究以了解本港家庭用品市場趨勢，並決定先運用「次級數據」而非「原始數據」來進行分析。",
+      question: "試以其中一項好處為例，解釋該家居百貨店運用「次級數據」而非「原始數據」來進行市場研究的好處。（2 分）",
+      steps: [
+        { label: "第 1 步：指出運用「次級數據」的單一核心好處（1分）", colorClass: "hl-s1", opts: [
+          { text: "數據專為現時的研究課題而蒐集，相關性最高且絕對不會過時。", score: 0, status: "wrong", comment: "「專為現時課題蒐集、相關性高且較適時」是原始數據的好處，而非次級數據。" },
+          { text: "蒐集次級數據的成本較低（或選：「可節省時間和資源」）。", score: 1, status: "best", comment: "清楚點出次級數據「成本較低（或節省時間和資源）」的核心好處。" },
+          { text: "同時具有成本較低、節省時間、數據最適時及質素最有保證四項好處。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，且次級數據質素未必有保證。" }
+        ]},
+        { label: "第 2 步：扣連「家居百貨店」說明為何次級數據具此好處（1分）", colorClass: "hl-s2", opts: [
+          { text: "因為次級數據可以幫家居百貨店節省金錢。", score: 0, status: "partial", comment: "同義反覆，未有解釋為何次級數據成本較低（因為是現有數據，無須聘請研究人員或委託研究公司重新蒐集）。" },
+          { text: "因為百貨店必須聘請大批訪問員在街頭向數千名市民做問卷調查。", score: 0, status: "wrong", comment: "這是蒐集原始數據的做法。" },
+          { text: "由於次級數據（如政府統計處的住戶統計報告或百貨店過往的內部銷售報告）屬於現有的數據，百貨店可直接使用而無須聘請研究人員或委託市場研究公司重新蒐集，故蒐集成本相對較低。", score: 1, status: "best", comment: "清楚說明次級數據屬現有數據，無須聘請研究人員或委託市場研究公司重新蒐集。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：智廚洗碗碟機生產商（運用次級數據的限制）", topic: "原始數據與次級數據：運用次級數據的壞處／限制", maxMarks: 2,
+      scenario: "歐洲廚房家電商「智廚公司」主要生產座枱式洗碗碟機，計劃進軍香港市場。行政總裁引用一些現有的公開報告（次級數據），指出香港雙職家庭收入高。市場總監則指出：「次級數據存有一些限制，我們應同時蒐集原始數據，以更深入了解香港消費者對座枱式洗碗碟機的需要和喜好。」",
+      question: "試以其中一項限制為例，解釋智廚公司運用「次級數據」來了解香港消費者需要和喜好的限制。（2 分）",
+      steps: [
+        { label: "第 1 步：指出運用「次級數據」的單一核心限制／壞處（1分）", colorClass: "hl-s1", opts: [
+          { text: "蒐集次級數據需要耗費極多時間去設計實驗和問卷，因此成本極為高昂。", score: 0, status: "wrong", comment: "耗費大量時間與高昂成本是「原始數據」的壞處。" },
+          { text: "數據相關性較低（或選：「數據可能過時」／「數據質素沒有保證」）。", score: 1, status: "best", comment: "準確指出次級數據三大壞處（數據可能過時、數據相關性較低、數據質素沒有保證）中的其中一項。" },
+          { text: "次級數據有數據可能過時、數據相關性較低及數據質素沒有保證三項限制。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段應只集中深入闡釋一項限制。" }
+        ]},
+        { label: "第 2 步：扣連「智廚座枱式洗碗碟機」作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "因為現有的公開報告是為現時研究課題以外的其他目的而蒐集的（例如只統計一般家庭收入），並非專為研究「座枱式洗碗碟機」而蒐集，與現時研究課題的相關性較低，未必能滿足智廚公司了解香港消費者對洗碗機尺寸與功能喜好的需要。", score: 1, status: "best", comment: "緊扣「現有報告為其他目的蒐集，並非專為現時洗碗碟機研究課題而蒐集，相關性較低」完成解釋。" },
+          { text: "因為那些次級數據和智廚公司的研究沒有關係。", score: 0, status: "partial", comment: "未有說明次級數據為何相關性低（即為現時研究課題以外的其他目的而蒐集）。" },
+          { text: "因為政府統計處的報告全部都是偽造的。", score: 0, status: "wrong", comment: "不合理的陳述。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：手工雪糕品牌（質性研究與其限制）", topic: "數據蒐集方法：質性研究（聚焦小組面談）及其限制", maxMarks: 2,
+      scenario: "「冰極雪糕店」計劃在夏季推出新口味的低糖手工雪糕。它決定聘請研究人員（主持人）帶領數場小組討論（每組 8 名顧客），參與者會自由討論他們對新口味雪糕的意見。",
+      question: "指出上述雪糕店計劃採用哪種數據蒐集方法（1分），並解釋採用這種數據蒐集方法來進行市場研究的一項限制（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：寫出該數據蒐集方法的標準名稱（1分）", colorClass: "hl-s1", opts: [
+          { text: "採用了「調查研究（問卷調查）」。", score: 0, status: "wrong", comment: "聘請主持人帶領少數顧客進行小組討論，屬於「質性研究（聚焦小組面談）」，而非派發問卷的調查研究。" },
+          { text: "採用了「質性研究（聚焦小組面談）」。", score: 1, status: "best", comment: "準確寫出「質性研究（聚焦小組面談）」的標準名稱。" },
+          { text: "採用了「實驗研究」。", score: 0, status: "wrong", comment: "小組討論並不涉及設立實驗小組與控制小組驗證因果假設。" }
+        ]},
+        { label: "第 2 步：集中解釋採用「質性研究」的一項限制／缺點（1分）", colorClass: "hl-s2", opts: [
+          { text: "限制是受訪者被逼在預設的封閉式選項中選取答案，令收集的雪糕意見有欠深入。", score: 0, status: "wrong", comment: "「使用封閉式問題令資料有欠深入」是調查研究（問卷）的缺點，而質性研究收集的資料較深入。" },
+          { text: "限制是「研究結果不可類推」：因為聚焦小組面談只涉及少量受訪者（少數參與者），雪糕店未必可將這少數參與者的雪糕口味偏好類推至目標總體（全港消費者）上。", score: 1, status: "best", comment: "準確指出質性研究「只涉及少量受訪者，研究結果未必可類推至目標總體上」（或選：「非量化數據難以運用統計方法進行分析」／「需要技巧較高的主持人」）。" },
+          { text: "限制是有一些缺點。", score: 0, status: "partial", comment: "必須具體指出「研究結果不可類推」、「難以用統計方法分析非量化數據」或「需要技巧較高的主持人」。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：樂途運動鞋品牌（分層隨機抽樣）", topic: "抽樣技巧：如何採用「分層隨機抽樣」蒐集資料", maxMarks: 2,
+      scenario: "連鎖運動品牌「樂途公司」計劃推出新款緩震跑鞋。市場營銷經理建議在設計跑鞋之前，利用公司的會員名單（抽樣架構），以「分層隨機抽樣」作市場研究，探討不同年齡組別會員對跑鞋的喜好。",
+      question: "闡釋「樂途公司」可如何以「分層隨機抽樣」來蒐集資料。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「分層（劃分互相排斥小組）」的操作步驟（1分）", colorClass: "hl-s1", opts: [
+          { text: "委派研究人員在運動店門口，直接訪問任何路過且願意受訪的顧客。", score: 0, status: "wrong", comment: "訪問門口最易接觸的顧客屬於「便利抽樣」。" },
+          { text: "先把目標總體中的所有會員，按「年齡」分為多個互相排斥的小組（稱為層），例如 18–29 歲、30–49 歲及 50 歲或以上。", score: 1, status: "best", comment: "清楚說明先按年齡把目標總體中的所有研究對象分為多個互相排斥的小組（層）。" },
+          { text: "不作任何分組，直接從會員名單中隨便抽出幾個名字。", score: 0, status: "wrong", comment: "沒有進行「分層」步驟，屬於簡單隨機抽樣。" }
+        ]},
+        { label: "第 2 步：指出「按抽樣架構從每個小組中隨機挑選樣本元素」的操作步驟（1分）", colorClass: "hl-s2", opts: [
+          { text: "然後只揀選其中一個年齡小組的全部會員進行訪問，完全忽略其他年齡小組。", score: 0, status: "wrong", comment: "分層隨機抽樣必須從「每一個小組」中抽取樣本，以確保樣本包含所有組別的研究對象。" },
+          { text: "然後再挑選一些會員。", score: 0, status: "partial", comment: "必須明確寫出「根據抽樣架構（會員名單），從每個小組中隨機挑選會員（樣本元素）」。" },
+          { text: "然後根據公司的會員名單（抽樣架構），從每個年齡小組中隨機挑選會員作為樣本元素，並向他們派發問卷或進行訪問。", score: 1, status: "best", comment: "清楚點出「按抽樣架構從每個小組中隨機挑選樣本元素」。" }
+        ]}
+      ]
+    },
+
+    // ================= 第二類：進階論述題（每個獨立論點滿分 3 分 — 3 步深度建構，100% 原創商業情境） =================
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：開設大型室內攀石及體能中心（重要性：降低業務風險）", topic: "市場研究的重要性：降低業務風險", maxMarks: 3,
+      scenario: "一家生產戶外運動裝備的上市公司正考慮在香港開設一所大型室內攀石及體能訓練中心，並打算先進行市場研究來了解香港市場。試以上述公司為例，解釋進行市場研究的重要性。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「降低業務風險」這項市場研究重要性為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一重要性名稱與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "進行市場研究可以同時找出消費者需要、尋找機會和識別危機、降低業務風險及評估市場營銷表現。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，四項重要性應分為四個獨立段落闡釋。" },
+          { text: "進行市場研究有助該公司「降低業務風險」：推出新產品或新服務是一項涉及龐大資金的重要決策，企業可進行市場研究來收集資料，以評估顧客對新服務的反應和接受程度。", score: 1, status: "best", comment: "準確鎖定「降低業務風險」並點出「評估顧客對新產品／服務的反應和接受程度」的核心概念。" },
+          { text: "進行市場研究可以令公司完全不用繳付攀石場的租金。", score: 0, status: "wrong", comment: "不合理的陳述。" }
+        ]},
+        { label: "第 2 步：針對「在香港開設大型室內攀石中心」設定具體研究例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如公司可以做市場研究看看香港人喜不喜歡。", score: 0, status: "partial", comment: "未有結合「在香港開設大型室內攀石及體能訓練中心」的具體設施、課程或收費模式作說明。" },
+          { text: "例如該運動裝備商在斥巨資租用高樓底廠廈及興建大型攀石牆前，可先透過市場研究測試香港消費者對室內抱石及攀石運動的接受程度、偏好的攀石路線難度、新手教練指導班及月費通行證收費模式的反應。", score: 1, status: "best", comment: "緊扣「開設大型室內攀石中心」，具體說明在投入巨資前如何測試市民對攀石設施、教練班與收費模式的反應。" },
+          { text: "例如公司決定以股本融資發行新股籌集資金。", score: 0, status: "wrong", comment: "屬於財務融資決策，並非解釋市場研究的重要性。" }
+        ]},
+        { label: "第 3 步：深化論述至改良服務設計與避免投資巨額損失的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "管理層可根據這些研究資料，審慎決定是否在香港開設該攀石中心，或預先改良場館設施配套與收費模式以迎合本地顧客需要，從而避免因盲目推出不受歡迎的服務而招致巨額損失。", score: 1, status: "best", comment: "清楚推演出「根據資料決定是否推出或如何改良以迎合顧客需要，有助企業避免巨額損失」。" },
+          { text: "這樣公司便降低了業務風險。", score: 0, status: "partial", comment: "同義反覆，未有說明研究結果如何幫助管理層調整決策以避免巨額投資損失。" },
+          { text: "這會令攀石裝備永遠不會磨損。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：開設大型室內攀石及體能中心（重要性：尋找機會和識別危機）", topic: "市場研究的重要性：尋找機會和識別危機", maxMarks: 3,
+      scenario: "承上題，該戶外運動裝備上市公司正考慮在香港開設一所大型室內攀石及體能訓練中心。除了降低業務風險外，試以「尋找機會和識別危機」為例，解釋進行市場研究對該公司的重要性。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「尋找機會和識別危機」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一重要性名稱與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "進行市場研究有助公司「尋找機會和識別危機」：市場研究能為企業提供有關目前經營環境的資料，企業可根據這些資料進行強弱機危分析，識別自身所面對的機會和危機。", score: 1, status: "best", comment: "清楚指出「尋找機會和識別危機」及「提供目前經營環境資料作強弱機危分析」的核心概念。" },
+          { text: "尋找機會和識別危機是指盤點倉庫內有多少對攀石鞋存貨。", score: 0, status: "wrong", comment: "盤點內部存貨並非識別外在經營環境的機會與危機。" },
+          { text: "市場研究可以幫公司找機會和危機。", score: 0, status: "partial", comment: "未有說明市場研究如何「提供有關目前經營環境的資料以供企業進行強弱機危分析」。" }
+        ]},
+        { label: "第 2 步：針對「香港室內攀石及運動市場」設定具體的機會與危機例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如香港市場有很多機會，但同時也有很多危機。", score: 0, status: "partial", comment: "沒有舉出香港室內運動市場具體有甚麼外在機會或競爭危機。" },
+          { text: "例如透過市場研究，公司可發現近年攀石被列為奧運項目後，香港年輕人及親子家庭對室內抱石運動的興趣急升（機會）；同時亦可識別出核心區大型商場租金高昂，以及區內已有數間連鎖健身室增設小型攀石牆所帶來的競爭（危機）。", score: 1, status: "best", comment: "緊扣室內攀石市場，具體列舉奧運帶動年輕及親子攀石熱潮（機會）及同業競爭與高租金（危機）。" },
+          { text: "例如公司聘請了一名新的會計師計算稅款。", score: 0, status: "wrong", comment: "與市場研究識別外在機會危機無關。" }
+        ]},
+        { label: "第 3 步：深化論述至及早採取相應行動與保持競爭領先地位的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "掌握這些經營環境資料後，該公司便能採取相應行動（如增設兒童親子攀石安全體驗區以把握市場機會，並選址租金較相宜的活化工業大廈以應對高租金危機），這有助企業在競爭中保持領先地位。", score: 1, status: "best", comment: "清楚推演出「識別外在機危 → 採取相應行動把握機會及應對危機 → 有助企業在競爭中保持領先地位」。" },
+          { text: "這樣公司便知道有甚麼機會和危機。", score: 0, status: "partial", comment: "未有說明識別機會和危機後如何採取相應行動以在競爭中保持領先地位。" },
+          { text: "這會令香港所有其他運動場館自動結業。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：降噪無線耳機生產商（目標 2：利用研究資料調整 4P 產品策略）", topic: "市場研究的主要目標：利用研究資料調整市場營銷組合策略（產品策略）", maxMarks: 3,
+      scenario: "「聲悅科技」是一家無線藍牙耳機生產商。為了增加銷售額，公司決定進行市場研究，了解可如何調整現有的市場營銷組合策略（4P）。試根據市場營銷組合的元素，舉例說明該耳機生產商可如何利用市場研究所得的資料來調整市場營銷組合策略，以增加銷售額。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以調整市場營銷組合中的「產品 (Product)」元素為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一營銷組合元素及市場研究可提供的相關資料（1分）", colorClass: "hl-s1", opts: [
+          { text: "生產商可同時利用研究資料調整產品、價格、分銷及推廣四項元素。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，4P 的四個元素應分為四個獨立段落作答。" },
+          { text: "在「產品」元素方面，市場研究可幫助耳機生產商收集消費者對現有耳機產品的意見（例如對產品質素、功能特點、佩戴舒適度及充電盒包裝設計的評價）。", score: 1, status: "best", comment: "清楚鎖定「產品」元素，並點出市場研究可收集「消費者對產品質素、功能及包裝設計的意見」。" },
+          { text: "在「產品」元素方面，市場研究主要收集消費者喜歡在實體店還是網上平台買耳機的資料。", score: 0, status: "wrong", comment: "消費者喜歡使用的購買產品途徑（實體店或網上平台）屬於「分銷 (Place)」元素的資料，並非「產品」元素。" }
+        ]},
+        { label: "第 2 步：針對「無線藍牙耳機」設定根據研究資料調整產品策略的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如生產商知道消費者的意見後，便可以改良耳機。", score: 0, status: "partial", comment: "沒有具體說明研究發現了顧客對耳機的甚麼意見，以及生產商如何調整產品設計或質素。" },
+          { text: "例如若市場研究結果顯示，消費者普遍反映現有耳機長時間佩戴會令耳道脹痛，且在地鐵車廂內的通話降噪效果欠佳；生產商便可根據這些研究資料調整產品策略，在新一代耳機中改用超輕巧人體工學矽膠耳塞，並升級人工智能通話降噪晶片。", score: 1, status: "best", comment: "緊扣無線耳機產品，具體說明如何根據研究發現的「佩戴脹痛與通話降噪痛點」改良耳機質素與設計。" },
+          { text: "例如生產商在社交媒體投放更多耳機廣告。", score: 0, status: "wrong", comment: "屬於推廣元素，並非調整產品策略。" }
+        ]},
+        { label: "第 3 步：深化論述至提升產品吸引力、滿足顧客需要與增加銷售額的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過根據市場研究結果針對性地改良耳機質素與設計，能確保調整後的產品更切合目標用家的需要，提升顧客滿意度與產品競爭力，從而吸引更多顧客購買並增加銷售額。", score: 1, status: "best", comment: "清楚推演出「依研究結果改良耳機 → 切合用家需要、提升滿意度 → 吸引購買並增加銷售額」。" },
+          { text: "這樣生產商便調整了產品策略。", score: 0, status: "partial", comment: "未有說明調整產品策略後如何吸引顧客及增加銷售額。" },
+          { text: "這會令耳機的生產成本變成零元。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：降噪無線耳機生產商（進行「調查研究」的好處）", topic: "數據蒐集方法：進行「調查研究」的好處（容易分析數據）", maxMarks: 3,
+      scenario: "承上題，「聲悅科技」決定以「調查研究（派發問卷）」方式向消費者蒐集原始數據。試解釋該耳機生產商進行調查研究的好處。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「數據一般可量化故容易運用統計方法分析」這項好處為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「調查研究」的單一核心好處與原因（1分）", colorClass: "hl-s1", opts: [
+          { text: "調查研究的好處是訪問員可以單對單向受訪者不斷追問開放式跟進問題，獲取最深入的心理動機。", score: 0, status: "wrong", comment: "單對單追問跟進問題以獲取深入動機是「質性研究（深入面談）」的優點，而調查研究收集的資料一般有欠深入。" },
+          { text: "進行調查研究的一大好處是「容易分析數據」：因為調查研究使用的問卷通常採用封閉式問題，因此蒐集所得的數據一般可量化，企業較容易運用不同的統計方法來分析數據。", score: 1, status: "best", comment: "清楚指出「採用封閉式問題 ➔ 數據一般可量化 ➔ 容易運用統計方法分析數據」的核心邏輯。" },
+          { text: "進行調查研究有很多不同的好處和壞處。", score: 0, status: "partial", comment: "必須明確寫出「容易分析量化數據」、「研究結果可類推至目標總體」或「可蒐集不同種類數據」。" }
+        ]},
+        { label: "第 2 步：針對「無線耳機生產商問卷」設定具體量化分析例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如耳機生產商可以很容易地分析問卷數據。", score: 0, status: "partial", comment: "未有結合耳機問卷的封閉式題目（如評分題或預設選項題）說明如何進行量化統計。" },
+          { text: "例如耳機生產商在問卷中設立封閉式問題，讓受訪者以 1 至 7 分為耳機的音質、降噪能力及電池續航力評分，或在預設選項中勾選認為合理的價格範圍；研究人員收回問卷後，可輕易利用統計方法計算各項功能的平均分及各價格區間的百分比。", score: 1, status: "best", comment: "緊扣無線耳機問卷，具體展示「1至7分評分題與預設價格選項（封閉式問題）」如何轉化為平均分與百分比統計數據。" },
+          { text: "例如耳機生產商派神秘顧客去分店觀察售貨員。", score: 0, status: "wrong", comment: "這是觀察研究，並非調查研究。" }
+        ]},
+        { label: "第 3 步：深化論述至客觀比較數據與協助管理層快速決策的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "清晰客觀的量化統計結果（如得知 72% 受訪者最重視主動降噪功能），能讓耳機生產商管理層清楚掌握顧客偏好次序，避免主觀詮釋偏差，從而更有效率地作出調整市場營銷組合的決策。", score: 1, status: "best", comment: "清楚推演出「量化統計數據 → 客觀掌握偏好次序、避免主觀偏差 → 協助管理層有效作出決策」。" },
+          { text: "這樣研究人員便分析完了那些數據。", score: 0, status: "partial", comment: "未有說明容易進行量化統計分析對管理層作出市場營銷決策有何幫助。" },
+          { text: "這會令所有受訪者都一定會 100% 誠實作答。", score: 0, status: "wrong", comment: "調查研究通常不記名，部分受訪者未必誠實作答（這是調查研究的缺點）。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：純素能量棒生產商（數據蒐集方法：實驗研究）", topic: "數據蒐集方法：描述如何採用「實驗研究」蒐集數據", maxMarks: 3,
+      scenario: "「綠力食品」是一家純素蛋白能量棒生產商，希望研究「在超市貨架旁播放運動員宣傳短片」能否提高消費者對能量棒的購買率。公司打算進行市場研究來蒐集原始數據，以協助管理層作出決策。試描述該公司可如何採用「實驗研究」來蒐集所需數據。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「實驗研究 (Experimental Research)」為核心，結合控制小組機制建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「實驗研究」的標準名稱與核心機制（假設與控制小組 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "公司可同時採用調查研究、實驗研究、質性研究及觀察研究四種方法。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每種數據蒐集方法應獨立成段描述。" },
+          { text: "公司可採用「實驗研究」：這是一種科學化的研究方法，旨在透過設立「實驗小組」和「控制小組（對照小組）」，控制其他無關變數並比較兩組反應，以解釋變數之間的因果關係及驗證假設是否成立。", score: 1, status: "best", comment: "清楚寫出「實驗研究」標準名稱，並點出「設立實驗小組與控制小組以驗證因果關係假設」的核心機制。" },
+          { text: "公司可採用「實驗研究」，即上網下載政府統計處的現有人口報告。", score: 0, status: "wrong", comment: "下載政府報告屬於蒐集次級數據，並非蒐集原始數據的實驗研究。" }
+        ]},
+        { label: "第 2 步：設定具體的實驗設計行動與所蒐集的市場營銷數據（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如公司做一個實驗看看顧客買不買能量棒。", score: 0, status: "partial", comment: "未有說明如何劃分「實驗小組」與「控制小組」，以及比較甚麼具體數據。" },
+          { text: "例如公司先作出因果假設（假設在貨架旁播放運動員短片這原因變數能增加能量棒銷量）；然後挑選兩間地段人流及客群特徵相似的超市分店，在甲分店貨架旁播放運動員宣傳短片（實驗小組），而在乙分店則不播放短片（控制小組），並記錄及比較兩間分店在實驗期間的能量棒實際銷售數量變化。", score: 1, status: "best", comment: "完整呈現作出因果假設、設立條件相似的實驗小組與控制小組，並明確指出蒐集及比較兩店的銷售量數據。" },
+          { text: "例如邀請一位健身教練進行單對單面談兩小時。", score: 0, status: "wrong", comment: "這是質性研究中的深入面談，並非實驗研究。" }
+        ]},
+        { label: "第 3 步：深化論述至提供科學化因果證據與協助管理層決策的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於實驗控制了其他無關變數並可重複驗證，透過比較實驗小組與控制小組的銷售數據，能為管理層提供科學化和可信的證據，證明播放宣傳短片與銷量上升之間是否確實存在因果關係，從而協助管理層決定應否在全港超市全面推行該項推廣策略。", score: 1, status: "best", comment: "清楚推演出「比較兩組反應 → 提供科學化和可信證據證明因果關係 → 協助管理層決定應否全面推行策略」。" },
+          { text: "這樣公司便完成了實驗研究。", score: 0, status: "partial", comment: "未有說明實驗結果如何為管理層提供科學化因果證據以作決策。" },
+          { text: "這會令實驗完全不需要花費任何時間。", score: 0, status: "wrong", comment: "實驗研究的缺點正是較為耗時。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：連鎖精品咖啡店（數據蒐集方法：觀察研究及其限制）", topic: "數據蒐集方法：描述如何採用「觀察研究」蒐集數據及其限制", maxMarks: 3,
+      scenario: "「醇香咖啡」是一家連鎖精品咖啡店，希望了解各分店咖啡師的真實服務質素，以及加深對附近競爭對手的了解，計劃採用「觀察研究」來蒐集原始數據。試描述該咖啡店可如何應用「觀察研究」收集所需資料，並指出採用這方法的一項限制。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「觀察研究 (Observational Research)」的應用與其核心限制為題，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「觀察研究」的標準名稱、定義與常見形式（1分）", colorClass: "hl-s1", opts: [
+          { text: "咖啡店可採用「觀察研究」：這是指直接記錄事實信息，或在自然或預設場景中觀察和記錄人們行為表現的過程（常見形式包括委派神秘顧客、實地觀察或在預設場景中進行觀察）。", score: 1, status: "best", comment: "清楚寫出「觀察研究」標準名稱及其觀察和記錄人們真實行為表現的定義。" },
+          { text: "咖啡店可採用「觀察研究」，即向所有會員發送電郵問卷要求他們填寫。", score: 0, status: "wrong", comment: "發送問卷屬於「調查研究」，而非觀察研究。" },
+          { text: "咖啡店可以去觀察一下店員和對手。", score: 0, status: "partial", comment: "必須明確寫出「觀察研究」四字及「在自然或預設場景中觀察和記錄人們行為表現」。" }
+        ]},
+        { label: "第 2 步：設定具體的觀察行動及所蒐集的市場營銷資料（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如派人去店舖看一看。", score: 0, status: "partial", comment: "未有明確指出研究人員觀察和記錄甚麼「與市場營銷有關的具體數據或資料」。" },
+          { text: "例如咖啡店可委派研究人員扮成「神秘顧客」到訪旗下各分店，暗中觀察和記錄咖啡師的沖調速度、待客禮貌及顧客服務質素；同時可委派研究人員在同區街道進行「實地觀察」，觀察和記錄附近競爭對手咖啡店的數量、人流及餐牌定價。", score: 1, status: "best", comment: "既描述了企業採取的具體行動（委派神秘顧客／實地觀察），又明確指出了所蒐集的市場營銷資料（店員服務質素、競爭對手數量與人流）。" },
+          { text: "例如研究人員直接邀請顧客進入會議室進行一小時的單對單深入面談。", score: 0, status: "wrong", comment: "這是質性研究中的深入面談，並非觀察研究。" }
+        ]},
+        { label: "第 3 步：深化論述至觀察研究的優勢與其內在限制（無法觀察思想感受及主觀偏見 · 1分）", colorClass: "hl-s3", opts: [
+          { text: "雖然觀察研究能記錄實際市場情況與人們的真實行為（研究結果更具真確性），但它的主要限制是「部分資料不能透過觀察獲得」——研究人員未必能觀察到顧客內心的思想、感受及作出選擇背後的原因；此外，不同研究人員對服務質素的詮釋可能存在主觀偏見。", score: 1, status: "best", comment: "準確點出觀察研究的核心限制——「未必能觀察到人們的思想和感受，且不同研究人員對觀察所得有不同的詮釋而可能流於主觀」。" },
+          { text: "這樣咖啡店便拿到了所有資料，沒有任何限制。", score: 0, status: "wrong", comment: "忽略了題目要求指出限制。" },
+          { text: "限制是受訪者被逼在預設的封閉式問卷選項中選取答案。", score: 0, status: "wrong", comment: "這是調查研究（問卷）的限制，觀察研究並不使用問卷。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：連鎖健身中心（抽樣技巧：分層隨機抽樣及其優點）", topic: "抽樣技巧：描述如何使用「分層隨機抽樣」及其優點", maxMarks: 3,
+      scenario: "「動感健身中心」擁有完整的會員資料庫名單（抽樣架構）。中心希望進行調查研究，探討不同年齡組別會員對健身課程的喜好，並考慮採用「分層隨機抽樣」來抽取樣本。試闡釋該健身中心可如何採用「分層隨機抽樣」蒐集原始數據，並說明採用這技巧的好處。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「分層隨機抽樣 (Stratified Random Sampling)」的操作與優點為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出「分層隨機抽樣」的定義與所需條件（抽樣架構 · 1分）", colorClass: "hl-s1", opts: [
+          { text: "健身中心可同時採用隨機抽樣、分層隨機抽樣及便利抽樣。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每種抽樣技巧應獨立成段闡釋。" },
+          { text: "「分層隨機抽樣」是指把目標總體中的所有研究對象，先按特定特徵（如年齡、收入、教育程度）分為多個互相排斥的小組（稱為層），然後按「抽樣架構」（列出目標總體中所有元素的名單）從每個小組中隨機挑選樣本元素。", score: 1, status: "best", comment: "清楚寫出「分為多個互相排斥的小組（層）」及「按抽樣架構從每個小組中隨機挑選樣本元素」的定義。" },
+          { text: "分層隨機抽樣無須使用任何抽樣架構，只需在街頭隨便拉人訪問。", score: 0, status: "wrong", comment: "分層隨機抽樣必須使用抽樣架構（會員名單），無須抽樣架構的是便利抽樣。" }
+        ]},
+        { label: "第 2 步：針對「連鎖健身中心」設定具體的分層與抽樣步驟例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如健身中心可以把會員分層然後抽樣。", score: 0, status: "partial", comment: "未有說明健身中心以甚麼具體特徵（如年齡組別）分組，以及如何運用會員名單抽取。" },
+          { text: "例如健身中心利用「會員資料庫名單」作為抽樣架構，先把所有會員（目標總體）按年齡分為三個互相排斥的小組：18–29 歲青年組、30–49 歲中年組及 50 歲或以上銀髮組；然後根據會員名單，從每個年齡小組中隨機挑選一定數目的會員派發問卷。", score: 1, status: "best", comment: "緊扣健身中心會員名單（抽樣架構），具體展示按年齡分為三個互相排斥小組再從每組隨機挑選會員的過程。" },
+          { text: "例如健身中心把問卷放在前台，讓路過的行人自由填寫。", score: 0, status: "wrong", comment: "這是便利抽樣的做法，並非分層隨機抽樣。" }
+        ]},
+        { label: "第 3 步：深化論述至反映總體多樣性與確保少數組別不被忽略的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於不同年齡組別會員對高強度重訓與養生伸展課程的喜好差異很大，採用分層隨機抽樣能確保樣本中包含所有年齡組別的研究對象（即使 50 歲或以上銀髮組別的會員人數較少，也不會被忽略），使研究結果能充分反映總體的多樣性，更具代表性。", score: 1, status: "best", comment: "緊扣核心優點——「反映總體的多樣性，可確保樣本中包含所有組別的研究對象，即使個別組別的人數較少，也不會被忽略」。" },
+          { text: "這樣健身中心便抽出了樣本。", score: 0, status: "partial", comment: "未有說明分層隨機抽樣在「確保所有組別均被包含、反映總體多樣性與提高樣本代表性」上的好處。" },
+          { text: "這會令健身中心無須再聘請任何健身教練。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：護脊床褥品牌（抽樣技巧：便利抽樣與代表性限制）", topic: "抽樣技巧：便利抽樣的應用與限制", maxMarks: 3,
+      scenario: "「舒眠床褥公司」正考慮推出針對香港在職人士的新款護脊床褥。營業經理提議為了節省時間和資源，可聘請臨時研究人員在星期二上午於荃灣某商場門外，直接向路過的行人進行街頭問卷訪問。市場總監則提醒，抽樣時須考慮多項因素，務求得到具代表性的樣本。試辨識營業經理提議的抽樣技巧，並闡釋其特點與限制。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「便利抽樣 (Convenience Sampling)」的操作、特點及代表性限制為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：辨識「便利抽樣」的名稱與核心定義（1分）", colorClass: "hl-s1", opts: [
+          { text: "營業經理提議採用的是「隨機抽樣」，因為在商場門外遇到誰是隨機的。", score: 0, status: "wrong", comment: "在街頭或商場門外訪問途人並無使用完整的抽樣架構名單，且沒有在該時段出現在該處的目標對象被抽中的機會為零（並非每個元素被抽中的機會可知和均等），因此屬於「便利抽樣」而非隨機抽樣。" },
+          { text: "營業經理提議採用的是「便利抽樣」：這是指研究人員挑選最容易接觸到的研究對象作為樣本元素，而且在抽樣過程中無須使用抽樣架構。", score: 1, status: "best", comment: "清楚點出「便利抽樣（挑選最容易接觸到的研究對象作為樣本元素，無須使用抽樣架構）」的定義。" },
+          { text: "營業經理提議採用的是「分層隨機抽樣」。", score: 0, status: "wrong", comment: "街頭截訪並無使用抽樣架構分層隨機抽取。" }
+        ]},
+        { label: "第 2 步：扣連「商場門外街頭訪問」說明其便利性與操作（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如床褥公司在商場門外訪問行人。", score: 0, status: "partial", comment: "未有說明為何這種做法無須抽樣架構及如何節省時間和資源。" },
+          { text: "例如床褥公司並沒有全港所有在職人士的完整名單（沒有抽樣架構），委派臨時研究人員直接在商場門外訪問路過且願意受訪的行人，操作簡單方便，能節省建立抽樣架構與尋找特定受訪者的時間和資源。", score: 1, status: "best", comment: "緊扣床褥公司個案，說明在缺乏完整抽樣架構名單下，訪問最容易接觸到的商場行人如何節省時間和資源。" },
+          { text: "例如床褥公司從政府部門非法取得全港市民的私人地址名單。", score: 0, status: "wrong", comment: "不合理的例子。" }
+        ]},
+        { label: "第 3 步：深化論述至便利抽樣的主要限制（樣本偏差與代表性不足 · 1分）", colorClass: "hl-s3", opts: [
+          { text: "然而，便利抽樣的主要限制是「所抽取的樣本未必能代表目標總體」：因為研究人員只挑選在星期二上午出現在荃灣商場門外、最容易接觸到的行人（當中可能主要是退休長者或家庭主婦，反而忽略了正在上班的目標在職人士），導致樣本存在偏差，研究結果也就變得無效。", score: 1, status: "best", comment: "緊扣「由於只挑選最容易接觸到的研究對象，所抽取的樣本未必能代表目標總體；假如樣本存在偏差，研究結果也就變得無效」。" },
+          { text: "這樣床褥公司便能得到最完美、最科學化的因果關係證據。", score: 0, status: "wrong", comment: "驗證因果關係是實驗研究，且便利抽樣代表性較低。" },
+          { text: "所以便利抽樣有好處也有壞處。", score: 0, status: "partial", comment: "必須明確指出「所抽取的樣本可能存在偏差，未必能代表目標總體」這一核心限制。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>

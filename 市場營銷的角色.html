@@ -1,0 +1,1661 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>市場營銷管理 — 市場營銷的角色</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --green: #059669;
+      --green-light: #ecfdf5;
+      --red: #e11d48;
+      --red-light: #fff1f2;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 60px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    /* Top Navigation Bar */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .home-link {
+      text-decoration: none;
+      color: var(--ink-sec);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 800; color: var(--ink); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .main-tabs {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 5px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+    .main-tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 18px;
+      border-radius: 9px;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .main-tabs button:hover { color: var(--ink); }
+    .main-tabs button.on {
+      background: var(--card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Main Container & Views */
+    .view { display: none; max-width: 1160px; margin: 0 auto; padding: 28px 24px; animation: fadeIn 0.25s ease; }
+    .view.on { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Section Header Banner */
+    .sec-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .sec-banner h1 { font-size: 25px; margin: 6px 0 8px; }
+    .sec-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 680px; }
+
+    /* Sub-navigation Switcher */
+    .sub-nav {
+      display: inline-flex;
+      background: #f1f5f9;
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .sub-nav button {
+      border: 0;
+      background: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--mute);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-nav button:hover { color: var(--ink); }
+    .sub-nav button.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .sub-view { display: none; }
+    .sub-view.active { display: block; animation: fadeIn 0.2s ease; }
+
+    /* Cards & Grids */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sidebar-layout { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid #99f6e4; }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid #fde68a; }
+    .b-green { background: var(--green-light); color: var(--green); border: 1px solid #a7f3d0; }
+    .b-red { background: var(--red-light); color: var(--red); border: 1px solid #fecdd3; }
+
+    /* Interactive Selector Lists */
+    .nav-list { display: flex; flex-direction: column; gap: 10px; }
+    .nav-item {
+      text-align: left;
+      padding: 15px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .nav-item:hover { border-color: var(--primary); background: var(--primary-light); }
+    .nav-item.active {
+      background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.22);
+    }
+    .nav-item.active span.sub-txt { color: #e0e7ff; }
+    .sub-txt { font-size: 13px; color: var(--mute); font-weight: 500; flex-shrink: 0; }
+
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn {
+      border: 0;
+      background: var(--primary);
+      color: #ffffff;
+      font: 700 16px 'Noto Sans TC', sans-serif;
+      padding: 11px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-teal { background: var(--teal); }
+    .btn-teal:hover { background: #0f766e; }
+    .btn-green { background: var(--green); }
+    .btn-green:hover { background: #047857; }
+    .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .note-box {
+      border-left: 4px solid var(--primary);
+      background: var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .case-box {
+      border-left: 4px solid var(--teal);
+      background: var(--teal-light);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+
+    /* Organization Chart Tree */
+    .org-tree {
+      text-align: center;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      margin: 14px 0;
+    }
+    .org-top {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      padding: 10px 28px;
+      border-radius: 10px;
+      font-size: 16.5px;
+      margin-bottom: 16px;
+    }
+    .org-branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      border-top: 2px solid var(--primary-border);
+      padding-top: 16px;
+    }
+    .org-leaf {
+      background: var(--card);
+      color: var(--ink);
+      border: 1.5px solid var(--primary-border);
+      border-radius: 10px;
+      padding: 12px 10px;
+      font-weight: 700;
+      font-size: 15.5px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Toggle Switch Cards */
+    .toggle-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+    }
+    .toggle-card:hover { border-color: var(--primary); }
+    .toggle-card.on {
+      background: var(--green-light);
+      border-color: var(--green);
+      color: #064e3b;
+    }
+    .toggle-pill {
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: var(--mute);
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .toggle-card.on .toggle-pill {
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    /* Builder Specific */
+    .builder-stage {
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .opt-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      width: 100%;
+      text-align: left;
+      padding: 15px 18px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      font: 500 16.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.65;
+    }
+    .opt-card:hover { border-color: var(--primary); background: var(--surface); }
+    .opt-card.selected { border-color: var(--primary); background: var(--primary-light); font-weight: 600; }
+    .opt-card.correct, .opt-card.graded-best { border-color: var(--green); background: var(--green-light); color: #064e3b; }
+    .opt-card.graded-partial { border-color: var(--amber); background: var(--amber-light); color: #78350f; }
+    .opt-card.wrong, .opt-card.graded-wrong { border-color: var(--red); background: var(--red-light); color: #881337; }
+    .opt-letter {
+      display: inline-grid;
+      place-items: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14.5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .opt-card.selected .opt-letter { background: var(--primary); color: #ffffff; }
+
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+
+    .critique-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-left: 5px solid var(--line);
+      background: var(--card);
+    }
+    .critique-item.c-best { border-left-color: var(--green); background: var(--green-light); }
+    .critique-item.c-partial { border-left-color: var(--amber); background: var(--amber-light); }
+    .critique-item.c-wrong { border-left-color: var(--red); background: var(--red-light); }
+
+    details.guide-Collapsible {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    details.guide-Collapsible summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .grid2, .grid3, .sidebar-layout { grid-template-columns: 1fr; }
+      header { padding: 12px 18px; }
+      .main-tabs { width: 100%; justify-content: center; margin-top: 8px; }
+      .sec-banner h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="市場營銷管理_目錄.html" class="home-link">返回單元目錄</a>
+  <select onchange="if(this.value) location.href=this.value" style="padding:7px 12px;border-radius:10px;border:1px solid var(--primary-border);background:var(--primary-light);color:var(--primary);font:700 14.5px 'Noto Sans TC',sans-serif;cursor:pointer">
+    <option value="">快速切換課室／測驗...</option>
+    <option value="市場營銷管理_目錄.html">單元總目錄</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <div class="brand">
+    <span>市場營銷管理</span>
+    <span class="brand-tag">第 1 課：市場營銷的角色</span>
+  </div>
+  <nav class="main-tabs" id="mainTabs">
+    <button class="on" data-tab="sec-concept">1. 市場營銷概念與重要性</button>
+    <button data-tab="sec-plan">2. 計劃市場營銷活動與競爭地位</button>
+    <button data-tab="sec-org">3. 組織、執行與控制活動</button>
+    <button data-tab="sec-builder">4. 論點建構工作坊</button>
+  </nav>
+</header>
+
+<!-- ==================== 1. 市場營銷概念與重要性 ==================== -->
+<section class="view on" id="sec-concept">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元一：市場營銷概念與商業功能重要性</span>
+      <h1>市場營銷概念（顧客導向）與四大重要性</h1>
+      <p>市場營銷概念指出，企業應：(i) 分析顧客的需要，並採取合適的措施來滿足這些需要，藉此賺取利潤；以及 (ii) 比競爭對手更有效和更具效率地滿足顧客。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('con', 0, this)">核心概念與四大重要性</button>
+      <button onclick="switchSub('con', 1, this)">概念診斷與職責辨析</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 1A：市場營銷概念與四大重要性 -->
+  <div class="sub-view active" id="con-sub-0">
+    <div class="sidebar-layout">
+      <div class="nav-list" id="conImpNavList"></div>
+      <div class="card" id="conImpDetailCard" style="margin-bottom:0"></div>
+    </div>
+  </div>
+
+  <!-- 子分頁 1B：概念診斷與商業功能辨析練習 -->
+  <div class="sub-view" id="con-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">情境診斷練習</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">判斷企業有否應用「市場營銷概念」</h3>
+        <p id="mcQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="mcQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-green" onclick="checkMcQuiz(true)">有應用市場營銷概念</button>
+          <button class="btn" style="background:#334155" onclick="checkMcQuiz(false)">沒有應用市場營銷概念</button>
+        </div>
+        <div id="mcQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">職責界線辨析</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨別「市場營銷」作為商業功能的重要性</h3>
+        <p id="impQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="impQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="checkImpQuiz(true)">屬於市場營銷的重要性</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkImpQuiz(false)">不屬於（屬其他商業功能）</button>
+        </div>
+        <div id="impQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. 計劃市場營銷活動與競爭地位 ==================== -->
+<section class="view" id="sec-plan">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元二：市場營銷過程第 1 步 — 計劃市場營銷活動</span>
+      <h1>制定市場營銷計劃、強弱機危分析與四類競爭地位</h1>
+      <p>市場營銷過程包括計劃、組織、執行和控制市場營銷活動四項主要工作。計劃市場營銷活動的工作包括訂立市場營銷目標及決定如何達成目標，並按四個步驟制定市場營銷計劃。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('plan', 0, this)">制定市場營銷計劃四步驟</button>
+      <button onclick="switchSub('plan', 1, this)">強弱機危分析 (SWOT)</button>
+      <button onclick="switchSub('plan', 2, this)">四類競爭地位與 4P 組合</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 2A：制定市場營銷計劃的四個步驟與文件內容 -->
+  <div class="sub-view active" id="plan-sub-0">
+    <div class="sidebar-layout" style="margin-bottom:20px">
+      <div class="nav-list" id="planStepNavList"></div>
+      <div class="card" id="planStepDetailCard" style="margin-bottom:0"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <span class="badge b-teal">順序排列練習</span>
+      <h3 style="font-size:21px;margin:8px 0 8px">實戰排序：制定市場營銷計劃的四個步驟</h3>
+      <p style="font-size:16px;color:var(--ink-sec);margin:0 0 14px">
+        一家連鎖運動用品店正準備為新分店制定市場營銷計劃。請按正確次序（第 1 步至第 4 步）順序點擊下方步驟卡片：
+      </p>
+      <div id="planOrderPool" style="display:flex;flex-direction:column;gap:10px"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
+        <span id="planOrderStatus" style="font-size:16.5px;font-weight:700;color:var(--primary)">請依正確次序點擊「第 1 步」開始。</span>
+        <button class="btn btn-outline" onclick="initPlanOrderGame()">重新洗牌</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2B：強弱機危分析 (SWOT Analysis) -->
+  <div class="sub-view" id="plan-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">狀況分析概念</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">強弱機危分析（內在情況 vs 外在環境）</h3>
+        <p style="font-size:16px;color:var(--ink-sec);margin:0 0 14px">強弱機危分析是對企業的強項和弱項（內在情況），以及經營環境中的機會和危機（外在環境）作出的分析，有助企業善用其內在的強項來把握市場機會：</p>
+        <div class="grid2" style="gap:12px;font-size:15.5px">
+          <div style="background:var(--primary-light);padding:14px 16px;border-radius:12px;border:1px solid var(--primary-border)">
+            <b style="color:var(--primary)">強項（內在因素 · 正面）</b><br>
+            讓企業取得競爭優勢（相對於其他競爭對手的優勢）的內在優點。<br>
+            <span style="font-size:14.5px;color:var(--ink-sec)">例子：店舖位置便利、品牌知名度高、擁有大量忠誠顧客、研發團隊優秀。</span>
+          </div>
+          <div style="background:var(--red-light);padding:14px 16px;border-radius:12px;border:1px solid #fecdd3">
+            <b style="color:var(--red)">弱項（內在因素 · negative）</b><br>
+            令企業相對於競爭對手處於劣勢的內在限制。<br>
+            <span style="font-size:14.5px;color:var(--ink-sec)">例子：位置偏僻、品牌知名度低、資源和資金有限、店面裝修殘舊。</span>
+          </div>
+          <div style="background:var(--green-light);padding:14px 16px;border-radius:12px;border:1px solid #a7f3d0">
+            <b style="color:var(--green)">機會（外在因素 · 正面）</b><br>
+            讓企業有機會提升競爭優勢的外在因素。<br>
+            <span style="font-size:14.5px;color:var(--ink-sec)">例子：經濟蓬勃、科技進步、有利的市場趨勢（如市民健康意識抬頭）。</span>
+          </div>
+          <div style="background:var(--amber-light);padding:14px 16px;border-radius:12px;border:1px solid #fde68a">
+            <b style="color:var(--amber)">危機（外在因素 · 負面）</b><br>
+            可能影響企業表現的外在不利因素。<br>
+            <span style="font-size:14.5px;color:var(--ink-sec)">例子：經濟蕭條、競爭激烈（附近有新對手開業）、租金和工資上升、不利的市場趨勢。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">分類挑戰</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨別強項、弱項、機會與危機（共 6 題）</h3>
+        <p id="swotQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="swotQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn" onclick="checkSwotQuiz('強項')">強項（內在正面）</button>
+          <button class="btn" style="background:var(--red)" onclick="checkSwotQuiz('弱項')">弱項（內在負面）</button>
+          <button class="btn btn-green" onclick="checkSwotQuiz('機會')">機會（外在正面）</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkSwotQuiz('危機')">危機（外在負面）</button>
+        </div>
+        <div id="swotQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 2C：四類競爭地位與市場營銷策略 -->
+  <div class="sub-view" id="plan-sub-2">
+    <div class="sidebar-layout" style="margin-bottom:20px">
+      <div class="nav-list" id="compPosNavList"></div>
+      <div class="card" id="compPosDetailCard" style="margin-bottom:0"></div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span class="badge b-teal">競爭地位判斷練習</span>
+        <span id="posQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute)"></span>
+      </div>
+      <div id="posQuizQ" style="font-size:17.5px;font-weight:700;margin-bottom:14px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" onclick="checkPosQuiz('市場領導者')">市場領導者</button>
+        <button class="btn btn-teal" onclick="checkPosQuiz('市場挑戰者')">市場挑戰者</button>
+        <button class="btn" style="background:#334155" onclick="checkPosQuiz('市場追隨者')">市場追隨者</button>
+        <button class="btn" style="background:var(--amber)" onclick="checkPosQuiz('市場補缺者')">市場補缺者</button>
+      </div>
+      <div id="posQuizFb" style="margin-top:14px;font-size:16px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 組織、執行與控制市場營銷活動 ==================== -->
+<section class="view" id="sec-org">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-blue">單元三：市場營銷過程第 2 至第 4 步</span>
+      <h1>組織、執行與控制市場營銷活動</h1>
+      <p>制定市場營銷計劃後，企業須採用合適的組織結構來分類、整合和協調各項市場營銷活動，繼而將計劃付諸實行（執行），並透過控制過程監控活動表現。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchSub('org', 0, this)">組織市場營銷活動 (4種結構)</button>
+      <button onclick="switchSub('org', 1, this)">執行與控制市場營銷活動</button>
+    </div>
+  </div>
+
+  <!-- 子分頁 3A：四種市場營銷組織結構 -->
+  <div class="sub-view active" id="org-sub-0">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">組織市場營銷活動</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">四種常用組織結構與決定因素</h3>
+        <p style="font-size:15.5px;color:var(--ink-sec);margin:0 0 10px">
+          <b>決定組織結構時應考慮的四項因素：</b>(1) 企業的規模和資源、(2) 企業的地域覆蓋範圍、(3) 提供的產品種類數目、(4) 服務的顧客種類數目。
+        </p>
+        <div class="chips" id="orgStructChips"></div>
+        <div id="orgStructVisual"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">組織結構配對練習</span>
+        <h3 style="font-size:21px;margin:8px 0 10px">辨識企業採用的市場營銷組織結構（共 5 題）</h3>
+        <p id="orgQuizProg" style="font-size:14.5px;font-weight:600;color:var(--mute);margin:0 0 10px"></p>
+        <div id="orgQuizQ" style="font-size:17.5px;font-weight:700;padding:18px;background:var(--surface);border-radius:12px;border:1px solid var(--line);margin-bottom:14px"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn" onclick="checkOrgQuiz('功能組織')">功能組織</button>
+          <button class="btn btn-teal" onclick="checkOrgQuiz('產品組織')">產品組織</button>
+          <button class="btn" style="background:#334155" onclick="checkOrgQuiz('區域組織')">區域組織</button>
+          <button class="btn" style="background:var(--amber)" onclick="checkOrgQuiz('顧客管理組織')">顧客管理組織</button>
+        </div>
+        <div id="orgQuizFb" style="margin-top:14px;font-size:16px;min-height:52px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 子分頁 3B：執行與控制市場營銷活動 -->
+  <div class="sub-view" id="org-sub-1">
+    <div class="grid2">
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-blue">市場營銷過程第 3 步：執行</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">影響「執行市場營銷活動」的三項因素</h3>
+        <p style="font-size:16px;color:var(--ink-sec);margin:0 0 12px">執行市場營銷活動是指把市場營銷計劃付諸實行（市務人員須與企業內部和外部人員共同合作）。點擊切換以下三項因素，檢視其對執行成效的影響：</p>
+        <div id="implToggles"></div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);margin-top:14px;font-size:16px" id="implResultBox"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <span class="badge b-teal">市場營銷過程第 4 步：控制</span>
+        <h3 style="font-size:21px;margin:8px 0 8px">控制市場營銷活動的四個步驟與糾正行動</h3>
+        <p style="font-size:15.5px;color:var(--ink-sec);margin:0 0 10px">
+          <b>常用表現標準：</b>市場佔有率、銷售額增長率、新顧客數目和顧客投訴數目（注意：市場營銷部的員工流失率並非控制市場營銷活動常用的表現標準）。
+        </p>
+        <div class="chips" id="ctrlStepChips"></div>
+        <div id="ctrlStepDetail" style="margin-top:10px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 論點建構問答工作坊 (12題原創情境) ==================== -->
+<section class="view" id="sec-builder">
+  <div class="sec-banner">
+    <div>
+      <span class="badge b-amber">實戰寫作訓練</span>
+      <h1>「一段一個獨立重點」論點建構工作坊</h1>
+      <p>收錄 4 道短答題（2 步建構 · 2 分）及 8 道進階論述題（3 步建構 · 3 分）。請選擇題目並逐步點選最準確的商業論述。</p>
+    </div>
+    <div class="sub-nav">
+      <button class="active" onclick="switchBuilderCat('short', this)">短答題訓練 (4題)</button>
+      <button onclick="switchBuilderCat('essay', this)">進階論述題訓練 (8題)</button>
+    </div>
+  </div>
+
+  <details class="guide-Collapsible">
+    <summary>查看「一段一個重點」建構結構指南（點擊展開 / 收起）</summary>
+    <div class="grid2" style="margin-top:14px;font-size:16px">
+      <div style="background:var(--primary-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--primary)">短答題／個案題模式（每段滿分 2 分 — 2 步建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 準確指出單一核心概念、策略或影響因素名稱<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 針對該單一論點結合個案背景作具體說明
+      </div>
+      <div style="background:var(--teal-light);padding:14px 18px;border-radius:10px">
+        <b style="color:var(--teal)">進階論述題模式（每段滿分 3 分 — 3 步深度建構）</b><br>
+        <span class="hl-s1">第 1 步 (1分)</span> 指出單一核心概念／步驟／結構名稱並界定其含義<br>
+        <span class="hl-s2">第 2 步 (1分)</span> 設定具體商業例子，解釋其運作方式<br>
+        <span class="hl-s3">第 3 步 (1分)</span> 深化推論至顧客滿意度、市場佔有率、營運效率或長遠利潤的影響
+      </div>
+    </div>
+  </details>
+
+  <div class="card" style="padding:18px 22px;margin-bottom:18px">
+    <div style="font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px" id="builderCatLabel">選擇短答題（每題滿分 2 分）：</div>
+    <div class="chips" id="questionChips" style="margin:0"></div>
+  </div>
+
+  <div id="builderWorkspace"></div>
+</section>
+
+<script>
+  // Main Tab Switching
+  document.querySelectorAll('#mainTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('on');
+    });
+  });
+
+  // Sub-view Switching
+  function switchSub(prefix, idx, btn) {
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll(`[id^="${prefix}-sub-"]`).forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ====== 1. 市場營銷概念與四大重要性 ======
+  const conImpCatalog = [
+    {
+      num: "核心",
+      title: "市場營銷概念 (Marketing Concept)",
+      badge: "以顧客為主導（顧客導向）",
+      def: "市場營銷概念在引導企業運作方面扮演舉足輕重的角色。它指出企業應：(i) 分析顧客的需要，並採取合適的措施來滿足這些需要，藉此賺取利潤；以及 (ii) 比競爭對手更有效和更具效率地滿足顧客。",
+      points: [
+        "<b>兩個重要部分</b>：<b>顧客需要</b>和<b>利潤</b>是市場營銷概念中兩個重要的部分。市場營銷有助企業向顧客提供他們真正需要的貨品和服務，而非要他們購買根本不需要的貨品和服務。",
+        "<b>不實踐的後果</b>：假如企業不實踐市場營銷概念（例如不分析顧客需要或無視競爭對手的行動），便無法有效滿足顧客，導致顧客流失予競爭對手，使企業銷量下跌甚至錄得虧損。"
+      ],
+      caseEx: "<b>商業應用例子（智能寵物用品品牌）：</b>品牌先分析都市寵物主人的需要（發現主人上班時擔心愛寵獨留在家挨餓），遂研發出可透過手機遙距視像餵食的智能餵食器，比競爭對手更有效滿足主人需要，主人在購買產品滿足需要的同時，亦讓企業賺取利潤。"
+    },
+    {
+      num: "01",
+      title: "重要性 1：找出和滿足顧客的需要",
+      badge: "選定目標市場・進行市場研究",
+      def: "市場營銷幫助企業辨別誰是顧客，即選定「目標市場」（企業要服務的顧客群，這些顧客擁有相似的需要）。企業選定目標市場後，便可透過進行「市場研究」找出目標顧客的需要，並制定策略來滿足這些需要。",
+      points: [
+        "先辨別目標市場，再深入了解該群顧客的生活模式、喜好與具體要求，能確保企業提供的貨品或服務切合目標客群所需。"
+      ],
+      caseEx: "<b>商業應用例子（手工精品茶室）：</b>茶室以注重養生與慢活的都市白領為目標市場，透過市場研究發現他們喜愛無咖啡因的草本飲品及寧靜的閱讀空間，遂在店內供應有機花草茶並設立獨立靜音閱讀座位，有效滿足目標顧客需要。"
+    },
+    {
+      num: "02",
+      title: "重要性 2：制定策略以應付競爭",
+      badge: "留意對手舉動・創造收益和利潤",
+      def: "企業要比競爭對手更能滿足顧客的需要，便須時刻留意競爭對手的舉動，從而制定合適的市場營銷策略來應付競爭。",
+      points: [
+        "如果企業比競爭對手更能滿足顧客的需要，顧客便會選擇向其購買貨品或服務，企業也就能賺取收益和利潤。"
+      ],
+      caseEx: "<b>商業應用例子（連鎖家用電器店）：</b>當電器店發現主要競爭對手為冷氣機提供免費基本安裝服務及減價優惠時，立即制定相應的價格匹配的減價策略並加送兩年免費上門洗機保養，以維持競爭力並留住客源。"
+    },
+    {
+      num: "03",
+      title: "重要性 3：與顧客維持長遠關係",
+      badge: "提升顧客忠誠度・留住顧客與口碑推介",
+      def: "市場營銷有助企業與顧客建立和維持長遠關係。企業持續滿足顧客的需要，便可提升「顧客忠誠度」（顧客願意長久支持某產品或品牌，並重複購買該產品或品牌的程度）和留住顧客。",
+      points: [
+        "<b>忠誠顧客的雙重貢獻</b>：忠誠的顧客不但會<b>繼續購買企業的貨品或服務</b>，更會<b>介紹其他人前來光顧</b>。"
+      ],
+      caseEx: "<b>商業應用例子（精品咖啡連鎖店）：</b>咖啡店推出手機應用程式常客儲印章獎勵計劃（買滿十杯送一杯）以鼓勵重複購買，並為堂食顧客提供免費高速充電及無線上網等附加服務，成功與顧客維持長遠關係。"
+    },
+    {
+      num: "04",
+      title: "重要性 4：監察和應對市場變化",
+      badge: "緊貼市場變化・把握機會和應對危機",
+      def: "營商環境以及顧客的要求和喜好不斷轉變。市場營銷讓企業（透過進行市場研究和研究消費者行為）緊貼市場變化，從而作出相應的行動，這有助企業把握機會和應對危機。",
+      points: [
+        "持續監察顧客飲食、科技或消費習慣的轉變，能協助企業及時調整產品與推廣策略。"
+      ],
+      caseEx: "<b>商業應用例子（傳統茶餐廳）：</b>茶餐廳過往只提供多油多肉的傳統常餐；近年透過監察市場變化，察覺市民出現「以合理價格享用低卡高蛋白健康餐點」的新需要，遂在餐牌增設慢煮雞胸肉配藜麥沙律套餐，成功把握健康飲食商機。"
+    }
+  ];
+
+  let curConImp = 0;
+  function renderConImp(idx) {
+    curConImp = idx;
+    document.getElementById('conImpNavList').innerHTML = conImpCatalog.map((item, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderConImp(${i})">
+        <span>${item.title}</span>
+      </button>
+    `).join('');
+    const item = conImpCatalog[idx];
+    document.getElementById('conImpDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="color:var(--primary);font-size:22px">${item.title}</h3>
+        <span class="badge b-blue">${item.badge}</span>
+      </div>
+      <p style="margin:0 0 12px;font-weight:600;font-size:17.5px">${item.def}</p>
+      <ul style="margin:0;padding-left:22px;font-size:16.5px;color:var(--ink-sec)">
+        ${item.points.map(p => `<li style="margin-bottom:8px">${p}</li>`).join('')}
+      </ul>
+      <div class="case-box">${item.caseEx}</div>
+    `;
+  }
+  renderConImp(0);
+
+  const mcQuizItems = [
+    {
+      q: "1. 某空氣清新機生產商透過市場分析，發現鼻敏感家庭對殺滅致敏原有殷切需求，遂推出配備醫療級濾網的新型號空氣清新機以回應顧客需求。",
+      ans: true,
+      exp: "正確（有應用）。該生產商先分析顧客對殺滅致敏原的需要，並推出相應的新型號產品來滿足這些需要，藉此賺取利潤。"
+    },
+    {
+      q: "2. 某戶外服裝店見其加厚鵝絨雪地大衣在北歐非常暢銷，在沒有分析香港亞熱帶氣候與顧客需要的情況下，直接將大批厚重雪地大衣引進香港門市作主打產品。",
+      ans: false,
+      exp: "正確（沒有應用）。該店沒有先分析香港顧客的需要（香港冬季溫暖，厚重雪地大衣不切合本地日常需要），便直接引進產品。"
+    },
+    {
+      q: "3. 某運動手環生產商在主要競爭對手推出功能更全面、定價更相宜的新一代手環後，完全沒有採取任何相應行動。",
+      ans: false,
+      exp: "正確（沒有應用）。市場營銷概念要求企業「比競爭對手更有效和更具效率地滿足顧客」；面對對手推出更佳產品卻不作回應，無法比對手更有效滿足顧客。"
+    },
+    {
+      q: "4. 一位大廚熱衷鑽研傳統分子料理，開辦餐廳時只考慮如何支付昂貴的器材成本而將每位收費定於 $3,000，完全不了解目標顧客的負擔能力及同區競爭對手的價格水平，結果顧客因定價太高而流失。",
+      ans: false,
+      exp: "正確（沒有應用）。該大廚定價時只考慮餐廳內部成本，沒有分析顧客的需要與接受程度，亦不了解競爭對手的價格水平。"
+    }
+  ];
+  let curMcQ = 0;
+  function renderMcQuiz() {
+    document.getElementById('mcQuizProg').textContent = `題目 ${curMcQ + 1} / ${mcQuizItems.length}`;
+    document.getElementById('mcQuizQ').textContent = mcQuizItems[curMcQ].q;
+    document.getElementById('mcQuizFb').innerHTML = '';
+  }
+  function checkMcQuiz(choice) {
+    const item = mcQuizItems[curMcQ];
+    const fb = document.getElementById('mcQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curMcQ=(curMcQ+1)%mcQuizItems.length;renderMcQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">判斷不正確。${item.exp.replace('正確（有應用）。','').replace('正確（沒有應用）。','')}</span>`;
+    }
+  }
+  renderMcQuiz();
+
+  const impQuizItems = [
+    { q: "1. 「緊貼市場變化，並制定合適的市場營銷策略來應對變化，以把握機會和應對危機。」", ans: true, exp: "正確（屬於）。這是市場營銷的第四項重要性（監察和應對市場變化）。" },
+    { q: "2. 「為企業進行人力資源規劃、招聘及建立優質的銷售團隊。」", ans: false, exp: "正確（不屬於）。招聘及建立優質團隊屬於「人力資源管理」功能，並非市場營銷本身的功能。" },
+    { q: "3. 「選定目標市場，並透過進行市場研究找出目標顧客的需要。」", ans: true, exp: "正確（屬於）。這是市場營銷的第一項重要性（找出和滿足顧客的需要）。" },
+    { q: "4. 「控制生產成本和日常開支，並在工廠車間管理生產線以維持產品品質。」", ans: false, exp: "正確（不屬於）。控制成本開支與管理生產線品質屬於「財務管理」及「營運／生產管理」功能。" },
+    { q: "5. 「與顧客建立和維持長遠關係以提高顧客忠誠度；並制定合適的市場營銷策略來應付競爭。」", ans: true, exp: "正確（屬於）。這涵蓋了市場營銷的第二及第三項重要性。" }
+  ];
+  let curImpQ = 0;
+  function renderImpQuiz() {
+    document.getElementById('impQuizProg').textContent = `題目 ${curImpQ + 1} / ${impQuizItems.length}`;
+    document.getElementById('impQuizQ').textContent = impQuizItems[curImpQ].q;
+    document.getElementById('impQuizFb').innerHTML = '';
+  }
+  function checkImpQuiz(choice) {
+    const item = impQuizItems[curImpQ];
+    const fb = document.getElementById('impQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curImpQ=(curImpQ+1)%impQuizItems.length;renderImpQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">判斷不正確。${item.exp.replace('正確（屬於）。','').replace('正確（不屬於）。','')}</span>`;
+    }
+  }
+  renderImpQuiz();
+
+  // ====== 2. 計劃市場營銷活動與競爭地位 ======
+  const planStepsData = [
+    {
+      num: "01",
+      title: "第 1 步：檢視現時表現和進行強弱機危分析",
+      badge: "評估競爭地位・內外在環境分析",
+      content: `<p style="margin:0 0 10px">• <b>檢視現時表現</b>：企業應首先檢視本身的市場營銷表現（如<b>銷售收益</b>和<b>市場佔有率</b>等數據），以評估現時的<b>競爭地位（競爭位置）</b>。</p>
+      <p style="margin:0">• <b>進行強弱機危分析 (SWOT analysis)</b>：對企業的<b>強項和弱項（內在情況）</b>，以及經營環境中的<b>機會和危機（外在環境）</b>作出分析，以深入了解自己面對的內在情況和外在環境，有助企業<b>善用其內在的強項來把握市場機會</b>。</p>`
+    },
+    {
+      num: "02",
+      title: "第 2 步：訂立市場營銷目標",
+      badge: "引導部門和員工・用作控制標準",
+      content: `<p style="margin:0 0 10px">• 企業可利用強弱機危分析訂立<b>市場營銷目標</b>，以引導部門和員工進行市場營銷活動；這些目標也可用作日後<b>控制市場營銷活動的標準</b>。</p>
+      <p style="margin:0">• 市場營銷目標應根據企業的市場營銷表現或財務表現而定，並符合良好目標 (SMART) 規則。常見範疇包括：<b>(1) 提升品牌知名度、(2) 吸引新顧客、(3) 留住現有顧客、(4) 提高銷售收益、(5) 增加淨利、(6) 增加市場佔有率</b>（例如：「在下月將銷售收益提高 5%」）。</p>`
+    },
+    {
+      num: "03",
+      title: "第 3 步：選擇目標市場",
+      badge: "了解市場組別購買行為",
+      content: `<p style="margin:0 0 10px">• 市場通常包含不同種類的顧客，這些顧客各有不同的購買行為。企業應了解不同<b>市場組別</b>（一群購買行為模式相近的顧客）的購買行為，從而選擇最合適的一個或多個市場組別作為<b>目標市場</b>。</p>
+      <p style="margin:0">• <b>例子</b>：由於年輕運動愛好者通常願意花費較多金錢購買高規格穿戴式裝置，運動手錶生產商在訂下提高銷售收益 10% 的目標後，遂選擇這個市場組別作為目標市場。</p>`
+    },
+    {
+      num: "04",
+      title: "第 4 步：制定市場營銷策略",
+      badge: "按競爭地位制定策略・設計 4P 組合",
+      content: `<p style="margin:0 0 10px">• 企業選定目標市場後，便要制定<b>市場營銷策略</b>，以幫助企業達成第 2 步所訂立的市場營銷目標，並鞏固及提升企業在市場的競爭地位。</p>
+      <p style="margin:0">• 企業採用的市場營銷策略視乎其在市場的<b>競爭地位（市場領導者、市場挑戰者、市場追隨者、市場補缺者）</b>而定；同時應設計<b>市場營銷組合策略（4P：產品、價格、分銷和推廣）</b>。</p>`
+    },
+    {
+      num: "文件",
+      title: "認識「市場營銷計劃」文件（7 項內容）",
+      badge: "提供詳盡而可行的指引",
+      content: `<p style="margin:0 0 10px">• <b>定義</b>：企業完成以上四個步驟後，便可制定詳盡的<b>市場營銷計劃（市場計劃）</b>。它是一份文件，(i) 概述市務人員對市場的了解；(ii) 詳述企業如何達成所列出的市場營銷目標；及 (iii) 詳列執行市場營銷策略時須進行的所有活動。</p>
+      <p style="margin:0">• <b>市場營銷計劃應包含的 7 項內容</b>：<br>
+      1. 企業產品的描述<br>
+      2. 企業產品的競爭地位，包括競爭對手的資料（從第 1 步取得）<br>
+      3. 企業的強弱機危分析（從第 1 步取得）<br>
+      4. 市場營銷目標（從第 2 步取得）<br>
+      5. 產品的目標市場（從第 3 步取得）<br>
+      6. 市場營銷策略，包括市場營銷組合策略（從第 4 步取得）<br>
+      7. 市場營銷預算（即達成上述市場營銷目標所需的開支）</p>`
+    }
+  ];
+
+  function renderPlanStep(idx) {
+    document.getElementById('planStepNavList').innerHTML = planStepsData.map((p, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderPlanStep(${i})">
+        <span>${p.title}</span>
+      </button>
+    `).join('');
+    const p = planStepsData[idx];
+    document.getElementById('planStepDetailCard').innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+        <h3 style="color:var(--primary);font-size:21px">${p.title}</h3>
+        <span class="badge b-blue">${p.badge}</span>
+      </div>
+      <div style="font-size:17px;color:var(--ink-sec);line-height:1.8">${p.content}</div>
+    `;
+  }
+  renderPlanStep(0);
+
+  const correctPlanSteps = [
+    { step: 1, text: "檢視現時表現和進行強弱機危分析（以銷售收益及市佔率評估競爭地位，並分析內在強弱項與外在機會危機）" },
+    { step: 2, text: "訂立市場營銷目標（根據表現及強弱機危分析，訂立如「在下季將銷售收益提高 8%」的具體目標）" },
+    { step: 3, text: "選擇目標市場（了解不同市場組別的購買行為，選擇最合適的一個或多個市場組別作為目標市場）" },
+    { step: 4, text: "制定市場營銷策略（按本身在市場中的競爭地位制定策略，並設計產品、價格、分銷和推廣 4P 組合策略）" }
+  ];
+  let planCurrentExpect = 1;
+  let shuffledPlan = [];
+
+  function initPlanOrderGame() {
+    planCurrentExpect = 1;
+    shuffledPlan = [...correctPlanSteps].sort(() => Math.random() - 0.5);
+    document.getElementById('planOrderStatus').innerHTML = `請依正確次序點擊：<b>第 1 步</b>`;
+    renderPlanPool();
+  }
+
+  function renderPlanPool() {
+    document.getElementById('planOrderPool').innerHTML = shuffledPlan.map((item, idx) => {
+      const done = item.step < planCurrentExpect;
+      return `
+        <button class="opt-card ${done ? 'correct' : ''}" style="margin:0" onclick="clickPlanStep(${idx})" ${done ? 'disabled' : ''}>
+          ${done ? `<span class="badge b-green">第 ${item.step} 步</span>` : `<span class="badge b-blue">點擊選擇</span>`}
+          <span style="flex:1">${item.text}</span>
+        </button>
+      `;
+    }).join('');
+  }
+
+  function clickPlanStep(idx) {
+    const picked = shuffledPlan[idx];
+    const status = document.getElementById('planOrderStatus');
+    if (picked.step === planCurrentExpect) {
+      planCurrentExpect++;
+      renderPlanPool();
+      if (planCurrentExpect > 4) {
+        status.innerHTML = `<span style="color:var(--green)">全部順序正確。完成這四個步驟後，企業便可進一步制定詳盡的市場營銷計劃文件。</span>`;
+      } else {
+        status.innerHTML = `<span style="color:var(--green)">順序正確，接下來請點擊：<b>第 ${planCurrentExpect} 步</b></span>`;
+      }
+    } else {
+      status.innerHTML = `<span style="color:var(--red)">次序不正確，這並非第 ${planCurrentExpect} 步，請再檢視計劃步驟。</span>`;
+    }
+  }
+  initPlanOrderGame();
+
+  // SWOT 分類練習（100% 原創例子）
+  const swotQuizItems = [
+    { q: "1. 某本地手工烘焙坊：「烘焙坊的主廚曾獲國際甜點大賽金獎，且在區內擁有大批忠實熟客。」", ans: "強項", exp: "正確。優秀廚師團隊、良好聲譽與擁有大量忠誠顧客，均屬於讓企業取得競爭優勢的內在優點，即「強項」。" },
+    { q: "2. 某初創智能家居公司：「公司在本地消費者心目中的品牌知名度不高，且可用於推廣的資金非常有限。」", ans: "弱項", exp: "正確。品牌知名度低、資源和資金有限，屬於令企業相對於競爭對手處於劣勢的內在限制，即「弱項」。" },
+    { q: "3. 某純素食品生產商：「隨着近年市民健康與環保意識抬頭，市場對植物肉及純素食品的需求持續大增。」", ans: "機會", exp: "正確。有利的市場趨勢（市民對純素健康食品需求增加）屬於讓企業有機會提升競爭優勢的外在因素，即「機會」。" },
+    { q: "4. 某獨立書店：「店舖所在商場下月將大幅調高租金三成，且附近新開了一家大型連鎖書店。」", ans: "危機", exp: "正確。租金上升及新競爭對手加入帶來激烈競爭，屬於可能影響企業表現的外在不利因素，即「危機」。" },
+    { q: "5. 某西貢度假村：「度假村位置偏僻、遠離市中心，交通較為不便。」", ans: "弱項", exp: "正確。位置偏僻（遠離市中心）屬於企業本身的內在限制，即「弱項」。" },
+    { q: "6. 某運動用品店：「香港將於明年主辦大型國際馬拉松及多項體育盛事，帶動全民運動熱潮。」", ans: "機會", exp: "正確。城市主辦大型體育盛事帶動運動熱潮，屬於有利的外在環境因素，即「機會」。" }
+  ];
+  let curSwotQ = 0;
+  function renderSwotQuiz() {
+    document.getElementById('swotQuizProg').textContent = `題目 ${curSwotQ + 1} / ${swotQuizItems.length}`;
+    document.getElementById('swotQuizQ').textContent = swotQuizItems[curSwotQ].q;
+    document.getElementById('swotQuizFb').innerHTML = '';
+  }
+  function checkSwotQuiz(choice) {
+    const item = swotQuizItems[curSwotQ];
+    const fb = document.getElementById('swotQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curSwotQ=(curSwotQ+1)%swotQuizItems.length;renderSwotQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderSwotQuiz();
+
+  // 四類競爭地位與 4P 組合
+  const compPosData = [
+    {
+      name: "01 市場領導者 (Market Leader)",
+      def: "某市場中，市場佔有率最高的企業。",
+      strats: [
+        "<b>(i) 擴展整體市場以增加顧客數量</b>：例如具市場領導地位的智能科技公司推出全新類別的穿戴式健康設備，吸引從未使用過該類產品的新顧客進入市場。",
+        "<b>(ii) 增加在現有市場的市場佔有率</b>：例如具市場領導地位的植物奶生產商推出燕麥奶、杏仁奶、開心果奶等多種不同口味與配方，吸引現有市場內更多顧客選購。",
+        "<b>(iii) 保持現有的市場佔有率</b>：例如具市場領導地位的連鎖咖啡店在全港各區增設更多分店及自助點餐機方便顧客光顧，以鞏固及保持現有的市場佔有率。"
+      ]
+    },
+    {
+      name: "02 市場挑戰者 (Market Challenger)",
+      def: "某市場中，市場佔有率比市場領導者低的企業，它試圖挑戰市場領導者的地位。",
+      strats: [
+        "<b>(i) 攻擊市場領導者或其他競爭對手的弱項</b>：針對領導者服務緩慢或功能欠奉的弱點發動針對性攻勢。",
+        "<b>(ii) 提升現有產品的質量</b>：例如吸塵機市場的市場挑戰者研發並配置激光探測微塵技術及更強吸力馬達，以爭奪市場領導者的市場佔有率。",
+        "<b>(iii) 降低產品價格</b>：例如新興連鎖超市降低日用品售價，以價格優勢爭奪競爭對手的市場佔有率。"
+      ]
+    },
+    {
+      name: "03 市場追隨者 (Market Follower)",
+      def: "滿足於現時的市場佔有率，並跟隨主要品牌的策略的企業。",
+      strats: [
+        "<b>模仿主要品牌的產品</b>：市場追隨者通常欠缺資源作大規模擴張，只會<b>模仿主要品牌產品的名字、設計和包裝等</b>，以節省產品開發成本和推廣費用（例如某小型運動鞋店推出外觀設計及顏色與知名品牌極為相似的跑鞋）。"
+      ]
+    },
+    {
+      name: "04 市場補缺者 (Market Nicher)",
+      def: "專門服務一個或數個細小市場組別（稱為「縫隙市場」或「小眾市場」）的企業。由於這些市場太小，大型企業通常不會有興趣向這些市場提供貨品或服務。",
+      strats: [
+        "<b>集中資源為縫隙市場度身訂造市場營銷組合</b>：以更有效地滿足這些細小市場的需要（例如專門為「嚴重食物過敏兒童」研發及售賣無麩質、無蛋奶生日蛋糕的烘焙工坊）。"
+      ]
+    },
+    {
+      name: "05 設計市場營銷組合策略 (4P)",
+      def: "企業按照本身在市場中的競爭地位制定市場營銷策略時，應同時設計市場營銷組合策略（包含四項重要元素，統稱為 4P）：",
+      strats: [
+        "<b>• 產品 (Product)</b>：企業為滿足目標顧客的需要而提供的貨品和服務組合。",
+        "<b>• 價格 (Price)</b>：目標顧客購買產品時須支付的金額。",
+        "<b>• 分銷 (Place)</b>：企業讓目標顧客取得產品的活動。",
+        "<b>• 推廣 (Promotion)</b>：企業把產品的特點和優點告知目標顧客，並遊說他們購買產品的活動。"
+      ]
+    }
+  ];
+
+  function renderCompPos(idx) {
+    document.getElementById('compPosNavList').innerHTML = compPosData.map((c, i) => `
+      <button class="nav-item ${i===idx?'active':''}" onclick="renderCompPos(${i})">
+        <span>${c.name.split(' (')[0]}</span>
+      </button>
+    `).join('');
+    const c = compPosData[idx];
+    document.getElementById('compPosDetailCard').innerHTML = `
+      <h3 style="color:var(--primary);font-size:21px;margin-bottom:8px">${c.name}</h3>
+      <p style="margin:0 0 14px;font-weight:600;font-size:17.5px">${c.def}</p>
+      <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16.5px;line-height:1.75">
+        ${c.strats.map(s => `<div style="margin-bottom:8px">${s}</div>`).join('')}
+      </div>
+    `;
+  }
+  renderCompPos(0);
+
+  const posQuizItems = [
+    { q: "1. 某新興電訊商降低月費計劃的價格，並提供雙倍本地數據量，試圖爭奪現有電訊巨頭的市場佔有率。", ans: "市場挑戰者", exp: "正確。透過降低產品價格、提升產品質量或攻擊對手弱項來爭奪市場佔有率，屬於「市場挑戰者」。" },
+    { q: "2. 某小型家電廠欠缺資金進行研發，只模仿市場上最暢銷品牌的氣炸鍋外觀設計、顏色與包裝推出平價產品，以節省開發成本和推廣費用。", ans: "市場追隨者", exp: "正確。滿足於現時市場佔有率，跟隨主要品牌策略並模仿其產品的名字、設計和包裝，屬於「市場追隨者」。" },
+    { q: "3. 某市場佔有率最高的連鎖洗髮水品牌推出多款針對不同髮質的新配方洗髮水，以進一步增加在洗髮水市場的市場佔有率。", ans: "市場領導者", exp: "正確。擴展整體市場、增加在現有市場的市場佔有率或保持現有市場佔有率，屬於「市場領導者」的策略。" },
+    { q: "4. 某小型眼鏡工坊專門服務「需要佩戴超高度數潛水鏡及運動護目鏡的人士」這個細小的縫隙市場，為顧客度身訂造鏡片。", ans: "市場補缺者", exp: "正確。專門服務一個或數個細小市場組別（縫隙市場）並度身訂造市場營銷組合，屬於「市場補缺者」。" }
+  ];
+  let curPosQ = 0;
+  function renderPosQuiz() {
+    document.getElementById('posQuizProg').textContent = `題目 ${curPosQ + 1} / ${posQuizItems.length}`;
+    document.getElementById('posQuizQ').textContent = posQuizItems[curPosQ].q;
+    document.getElementById('posQuizFb').innerHTML = '';
+  }
+  function checkPosQuiz(choice) {
+    const item = posQuizItems[curPosQ];
+    const fb = document.getElementById('posQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curPosQ=(curPosQ+1)%posQuizItems.length;renderPosQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderPosQuiz();
+
+  // ====== 3. 組織、執行與控制市場營銷活動 ======
+  const orgStructsData = [
+    {
+      name: "功能組織 (Functional Organisation)",
+      rule: "按<b>功能</b>劃分市場營銷活動，委派經理分別負責不同的市場營銷功能。",
+      nodes: ["銷售經理", "市場推廣經理", "市務行政經理", "市場研究經理"],
+      suit: "<b>適用企業：</b>常用於<b>小型企業</b>和<b>只出售數種產品的企業</b>。"
+    },
+    {
+      name: "產品組織 (Product Organisation)",
+      rule: "又稱<b>產品管理組織</b>，按<b>產品類別</b>劃分市場營銷活動，委派<b>產品經理</b>分別負責不同的產品類別。",
+      nodes: ["產品經理 (個人護理)", "產品經理 (家庭清潔)", "產品經理 (嬰兒用品)", "產品經理 (保健食品)"],
+      suit: "<b>優點與適用企業：</b>讓企業可更有效地滿足顧客對不同產品的需要；常用於<b>擁有很多品牌或產品類別的企業</b>。"
+    },
+    {
+      name: "區域組織 (Geographical Organisation)",
+      rule: "按<b>地區</b>劃分市場營銷活動，委派<b>區域經理</b>分別負責不同的地區市場。",
+      nodes: ["區域經理 (美洲)", "區域經理 (歐洲)", "區域經理 (大中華區)", "區域經理 (東南亞)"],
+      suit: "<b>優點與適用企業：</b>讓企業可更有效地滿足不同地區顧客的需要；常用於<b>在多個地區出售產品的企業</b>。"
+    },
+    {
+      name: "顧客管理組織 (Customer Management Organisation)",
+      rule: "按<b>顧客類別</b>劃分市場營銷活動，委派<b>顧客關係經理</b>分別負責不同的顧客類別。",
+      nodes: ["顧客關係經理 (個人客戶)", "顧客關係經理 (中小企客戶)", "顧客關係經理 (大型企業及政府客戶)"],
+      suit: "<b>優點與適用企業：</b>讓企業可更有效地滿足不同顧客群的需要，並與他們建立良好的關係；常用於<b>擁有不同顧客類別的企業</b>。"
+    }
+  ];
+
+  function renderOrgStruct(idx) {
+    document.querySelectorAll('#orgStructChips .chip').forEach((c, i) => c.classList.toggle('active', i === idx));
+    const o = orgStructsData[idx];
+    document.getElementById('orgStructVisual').innerHTML = `
+      <div style="background:var(--surface);padding:16px 20px;border-radius:14px;border:1px solid var(--line);font-size:16px">
+        <b style="color:var(--primary);font-size:18px">${o.name}</b>
+        <p style="margin:6px 0 10px">${o.rule}</p>
+        <div class="org-tree">
+          <div class="org-top">市場營銷總監</div>
+          <div class="org-branches">
+            ${o.nodes.map(n => `<div class="org-leaf">${n}</div>`).join('')}
+          </div>
+        </div>
+        <div class="note-box" style="margin-top:12px">${o.suit}</div>
+      </div>
+    `;
+  }
+  document.getElementById('orgStructChips').innerHTML = ['功能組織', '產品組織', '區域組織', '顧客管理組織'].map((name, i) => `
+    <button class="chip ${i===0?'active':''}" style="padding:7px 14px;font-size:15px" onclick="renderOrgStruct(${i})">${name}</button>
+  `).join('');
+  renderOrgStruct(0);
+
+  const orgQuizItems = [
+    { q: "1. 某電訊集團委派不同經理分別負責「個人住宅用戶、中小型企業客戶及跨國機構客戶」三個不同顧客群的市場。", ans: "顧客管理組織", exp: "正確。按顧客類別劃分市場營銷活動並委派顧客關係經理負責，屬於「顧客管理組織」。" },
+    { q: "2. 某本地小型烘焙品牌委派不同經理分別管轄「門市銷售、市場推廣和市場研究」等不同市場營銷功能的工作。", ans: "功能組織", exp: "正確。按不同的市場營銷功能劃分活動，屬於「功能組織」。" },
+    { q: "3. 某跨國飲品集團委派不同經理分別負責「港澳區、華南區、日本區和歐洲區」四個不同地區的市場。", ans: "區域組織", exp: "正確。按地區劃分市場營銷活動並委派區域經理負責，屬於「區域組織」。" },
+    { q: "4. 某大型家品集團委派不同經理分別管理「客廳傢俬、廚房電器、床上用品和浴室潔具」四類不同的產品線。", ans: "產品組織", exp: "正確。按產品類別劃分市場營銷活動並委派產品經理負責，屬於「產品組織（產品管理組織）」。" }
+  ];
+  let curOrgQ = 0;
+  function renderOrgQuiz() {
+    document.getElementById('orgQuizProg').textContent = `題目 ${curOrgQ + 1} / ${orgQuizItems.length}`;
+    document.getElementById('orgQuizQ').textContent = orgQuizItems[curOrgQ].q;
+    document.getElementById('orgQuizFb').innerHTML = '';
+  }
+  function checkOrgQuiz(choice) {
+    const item = orgQuizItems[curOrgQ];
+    const fb = document.getElementById('orgQuizFb');
+    if (choice === item.ans) {
+      fb.innerHTML = `<span style="color:var(--green);font-weight:700">${item.exp}</span> <button class="btn btn-outline" style="margin-left:8px;padding:6px 14px;font-size:14.5px" onclick="curOrgQ=(curOrgQ+1)%orgQuizItems.length;renderOrgQuiz()">下一題</button>`;
+    } else {
+      fb.innerHTML = `<span style="color:var(--red);font-weight:700">答案不正確，應為「${item.ans}」。${item.exp.replace('正確。','')}</span>`;
+    }
+  }
+  renderOrgQuiz();
+
+  // 影響執行市場營銷活動的三項因素
+  const implFactors = [
+    { name: "(i) 市場營銷計劃是否完善（活動是否可行及是否有周詳計劃）", on: true },
+    { name: "(ii) 所需資源是否足夠（財政資源、人力資源、科技資源）", on: true },
+    { name: "(iii) 市場營銷經理是否具備領導才能（能否帶領和激勵下屬完成計劃）", on: false }
+  ];
+
+  function renderImplSim() {
+    document.getElementById('implToggles').innerHTML = implFactors.map((f, i) => `
+      <div class="toggle-card ${f.on ? 'on' : ''}" onclick="implFactors[${i}].on=!implFactors[${i}].on;renderImplSim()">
+        <b>${f.name}</b>
+        <span class="toggle-pill">${f.on ? '具備條件' : '欠缺'}</span>
+      </div>
+    `).join('');
+
+    const cnt = implFactors.filter(f => f.on).length;
+    let msg = '';
+    if (cnt === 3) {
+      msg = `<b style="color:var(--green)">三項因素俱全，能妥善執行市場營銷活動：</b><br>企業既擁有周詳可行的市場營銷計劃，又具備充足的<b>財政資源</b>（舉辦推廣活動所需的資金）、<b>人力資源</b>（推廣員和市場研究人員）及<b>科技資源</b>（開發流動購物平台所需的科技），加上市場營銷經理具備領導才能帶領和激勵下屬完成計劃。`;
+    } else if (implFactors[0].on && implFactors[1].on && !implFactors[2].on) {
+      msg = `<b style="color:var(--amber)">注意重要概念：單有完善計劃和充足資源，未必能妥善執行！</b><br>即使企業擁有完善的市場營銷計劃和充足的資源，假如<b>市場營銷經理欠缺領導才能</b>（無法有效帶領和激勵下屬完成計劃），市場營銷活動仍然可能無法妥善執行。`;
+    } else {
+      msg = `<b style="color:var(--red)">執行受阻（目前只具備 ${cnt}/3 項條件）：</b><br>影響市場營銷活動執行的三項因素包括：(1) 市場營銷計劃是否完善、(2) 所需資源是否足夠、(3) 市場營銷經理是否具備領導才能。請點擊開啟上方全部三項條件。`;
+    }
+    document.getElementById('implResultBox').innerHTML = msg;
+  }
+  renderImplSim();
+
+  // 控制市場營銷活動的四個步驟
+  const ctrlStepsData = [
+    {
+      step: "第 1 步：訂立表現標準",
+      desc: "市場營銷經理先決定要控制哪些市場營銷活動，並訂立<b>表現標準</b>來控制這些活動（常用表現標準包括：<b>市場佔有率、銷售額增長率、新顧客數目和顧客投訴數目</b>等）。",
+      caseEx: "<b>商業應用例子（天然護膚品生產商）：</b>市場營銷經理為未來六個月的面霜銷售額訂下「增長 15%」的表現標準。"
+    },
+    {
+      step: "第 2 步：量度實際表現",
+      desc: "市場營銷經理就活動收集資料，然後<b>以數字量度市場營銷活動的實際表現</b>。",
+      caseEx: "<b>商業應用例子（天然護膚品生產商）：</b>六個月後，經理收集各門市及網店的銷售數據，發現面霜的實際銷售額只增加了 5%。"
+    },
+    {
+      step: "第 3 步：比較實際表現與標準",
+      desc: "市場營銷經理把<b>實際的市場營銷表現與第 1 步所訂立的表現標準作比較</b>。如果實際表現嚴重偏離表現標準，便算是不可接受的。",
+      caseEx: "<b>商業應用例子（天然護膚品生產商）：</b>實際銷售額增長（5%）遠低於預先訂立的表現標準（15%），嚴重偏離標準，屬於不可接受。"
+    },
+    {
+      step: "第 4 步：分析差異並採取糾正行動（及修訂標準）",
+      desc: "如果實際表現不可接受，經理便會<b>分析差異，找出出現問題的原因，然後採取糾正行動</b>；假如表現標準訂得太高或太低，便應<b>修訂或調整表現標準</b>。<br>• 若因<b>競爭對手帶來的激烈競爭</b> ➔ 減價或提升產品質量<br>• 若因<b>品牌知名度低</b> ➔ 推出更多廣告和派發免費樣本來提升品牌知名度<br>• 若因<b>市場趨勢轉變導致需求下降</b> ➔ 設計新產品以迎合新的市場趨勢",
+      caseEx: "<b>商業應用例子（天然護膚品生產商）：</b>經理分析差異後，(1) 發現純素防敏護膚品今年大受消費者歡迎（市場趨勢轉變），建議推出新的純素防敏面霜配方來改善銷售情況；(2) 發現 15% 表現標準訂得太高，決定將表現標準修訂為增長 10%。"
+    }
+  ];
+
+  function renderCtrlStep(idx) {
+    document.getElementById('ctrlStepChips').innerHTML = ctrlStepsData.map((c, i) => `
+      <button class="chip ${i===idx?'active':''}" style="padding:6px 14px;font-size:14.5px" onclick="renderCtrlStep(${i})">第 ${i+1} 步</button>
+    `).join('');
+    const c = ctrlStepsData[idx];
+    document.getElementById('ctrlStepDetail').innerHTML = `
+      <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:16px;line-height:1.7">
+        <b style="color:var(--primary);font-size:17.5px">${c.step}</b>
+        <p style="margin:6px 0 10px">${c.desc}</p>
+        <div class="case-box" style="margin-top:8px">${c.caseEx}</div>
+      </div>
+    `;
+  }
+  renderCtrlStep(3);
+
+  // ====== 4. 論點建構問答工作坊 (12題 100% 原創香港商業情境) ======
+  const workshopQuestions = [
+    // ================= 第一類：短答題／個案題（每個獨立論點滿分 2 分 — 2 步建構） =================
+    {
+      id: "s1", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 1：智寵自動餵食器（應用市場營銷概念）", topic: "市場營銷概念的定義與應用", maxMarks: 2,
+      scenario: "「智寵科技」是一家寵物用品生產商，打算在業務中應用「市場營銷概念」，採取以顧客為主導的經營方式。",
+      question: "何謂市場營銷概念（1分）？試舉出一個例子，解釋該寵物用品生產商可如何在業務中應用市場營銷概念（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「市場營銷概念」的核心意思（1分）", colorClass: "hl-s1", opts: [
+          { text: "市場營銷概念是指企業只須減低生產成本，要求顧客購買他們根本不需要的產品。", score: 0, status: "wrong", comment: "概念相反：市場營銷概念有助企業向顧客提供他們真正需要的貨品，而非要他們購買根本不需要的產品。" },
+          { text: "市場營銷概念指出，企業應分析顧客的需要，並採取合適的措施來滿足這些需要，藉此賺取利潤，以及比競爭對手更有效和更具效率地滿足顧客。", score: 1, status: "best", comment: "完整寫出「分析並滿足顧客需要藉此賺取利潤，以及比競爭對手更有效和更具效率地滿足顧客」的定義。" },
+          { text: "市場營銷概念是指將市場營銷部門按區域組織劃分。", score: 0, status: "wrong", comment: "這是組織市場營銷活動的方式，並非市場營銷概念的定義。" }
+        ]},
+        { label: "第 2 步：扣連「寵物用品生產商」舉出一項具體應用例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如生產商應該滿足顧客的需要來賺取利潤。", score: 0, status: "partial", comment: "只重複了第 1 步的抽象字眼，沒有針對「寵物用品生產商」舉出具體例子。" },
+          { text: "例如生產商在沒有進行任何市場調查下，直接將外國滯銷的大型犬鐵籠運來香港銷售。", score: 0, status: "wrong", comment: "未經分析本地目標顧客需要便直接引進產品，違反市場營銷概念。" },
+          { text: "例如生產商透過市場調查發現香港雙職狗主上班時擔心愛寵挨餓，遂研發可透過手機遙距視像餵食及定時出糧的智能餵食器，比競爭對手更有效滿足狗主需要以賺取利潤。", score: 1, status: "best", comment: "緊扣寵物用品生產商，具體說明如何先分析狗主需要，再推出智能視像餵食器滿足他們。" }
+        ]}
+      ]
+    },
+    {
+      id: "s2", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 2：實惠小型家電廠（市場追隨者策略）", topic: "四類競爭地位：市場追隨者的策略", maxMarks: 2,
+      scenario: "「實惠家電廠」是一家小型廚房電器生產商，在市場上屬於「市場追隨者」，欠缺資源作大規模擴張。",
+      question: "解釋這家屬於「市場追隨者」的小型家電廠所採用的市場營銷策略（1分），並列舉一個例子加以說明（1分）。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「市場追隨者」所採用的核心市場營銷策略（1分）", colorClass: "hl-s1", opts: [
+          { text: "主動攻擊市場領導者的弱項，並投入巨額資金研發尖端科技以爭奪領導地位。", score: 0, status: "wrong", comment: "攻擊領導者弱項以爭奪市佔率屬於「市場挑戰者」的策略。" },
+          { text: "專門服務一個被大型企業忽略的細小縫隙市場。", score: 0, status: "wrong", comment: "專門服務細小縫隙市場屬於「市場補缺者」的策略。" },
+          { text: "滿足於現時的市場佔有率，跟隨主要品牌的策略並模仿主要品牌的產品，以節省產品開發成本和推廣費用。", score: 1, status: "best", comment: "清楚指出市場追隨者「滿足於現時市場佔有率、跟隨主要品牌策略並模仿主要品牌產品」的核心特點。" }
+        ]},
+        { label: "第 2 步：扣連「小型廚房家電廠」舉出具體模仿例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如該家電廠模仿市場上主要知名家電品牌最暢銷氣炸鍋或多功能煮食鍋的名字、外觀設計、顏色和包裝推出類似產品，從而減省產品開發與宣傳開支。", score: 1, status: "best", comment: "緊扣小型廚房家電廠，具體說明如何模仿主要品牌產品的名字、設計和包裝。" },
+          { text: "例如該家電廠跟隨主要品牌的策略。", score: 0, status: "partial", comment: "未有結合廚房家電廠舉出如模仿主要品牌產品的名字、設計或包裝等具體例子。" },
+          { text: "例如該家電廠在全港開設五十間大型體驗旗艦店以保持最高市場佔有率。", score: 0, status: "wrong", comment: "這是市場領導者的策略。" }
+        ]}
+      ]
+    },
+    {
+      id: "s3", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 3：綠洲植物奶生產商（市場領導者策略）", topic: "四類競爭地位：市場領導者可採用的策略", maxMarks: 2,
+      scenario: "「綠洲植物奶」在本港植物奶飲品市場的市場佔有率最高，屬於「市場領導者」。",
+      question: "試以其中一種策略為例，描述這家屬於「市場領導者」的植物奶生產商可採用的市場營銷策略。（2 分）",
+      steps: [
+        { label: "第 1 步：指出「市場領導者」可採用的單一核心策略（1分）", colorClass: "hl-s1", opts: [
+          { text: "同時採用擴展整體市場、增加現有市場佔有率及保持現有市場佔有率三種策略。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每一段落只應集中描述一種市場領導者策略並配對例子。" },
+          { text: "可採用「增加在現有市場的市場佔有率」策略（或「擴展整體市場以增加顧客數量」／「保持現有的市場佔有率」）。", score: 1, status: "best", comment: "清晰鎖定市場領導者三種標準策略中的其中一種。" },
+          { text: "模仿其他小型飲品品牌的包裝和名字以節省開發成本。", score: 0, status: "wrong", comment: "模仿主要品牌是「市場追隨者」的做法，而非市場領導者。" }
+        ]},
+        { label: "第 2 步：扣連「植物奶生產商」舉出具體做法說明（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如植物奶生產商會設法增加自己的市場佔有率。", score: 0, status: "partial", comment: "只重複了第 1 步的策略名稱，沒有結合植物奶生產商提出具體做法。" },
+          { text: "例如植物奶生產商結束所有飲品業務，改為經營服裝店。", score: 0, status: "wrong", comment: "偏離現有植物奶市場情境。" },
+          { text: "例如該生產商除了原味燕麥奶外，推出無糖杏仁奶、黑芝麻豆奶、咖啡師專用拉花燕麥奶等不同口味和配方的植物奶產品，吸引更多現有市場顧客購買以增加市場佔有率。", score: 1, status: "best", comment: "緊扣植物奶生產商情境，具體說明如何透過提供不同口味和配方的產品來增加在現有市場的市場佔有率。" }
+        ]}
+      ]
+    },
+    {
+      id: "s4", cat: "short", typeBadge: "短答題（2 分 · 2 步建構）",
+      title: "短答 4：星海虛擬銀行（影響執行市場營銷活動的因素）", topic: "市場營銷過程：影響「執行市場營銷活動」的因素", maxMarks: 2,
+      scenario: "「星海虛擬銀行」的市場營銷經理制定了一份市場營銷計劃，以吸納年輕客戶並增加市場佔有率，現準備將該計劃付諸實行（執行市場營銷活動）。",
+      question: "試以其中一項因素為例，描述甚麼因素可能會影響該虛擬銀行執行市場營銷計劃內的市場營銷活動。（2 分）",
+      steps: [
+        { label: "第 1 步：指出影響執行市場營銷活動的單一核心因素（1分）", colorClass: "hl-s1", opts: [
+          { text: "受「所需資源是否足夠」這項因素影響（或「市場營銷計劃是否完善」／「市場營銷經理是否具備領導才能」）。", score: 1, status: "best", comment: "準確指出影響市場營銷活動執行的三項核心因素之一。" },
+          { text: "同時受市場營銷計劃是否完善、所需資源是否足夠及經理是否具領導才能三項因素影響。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每段只應集中描述一項影響因素。" },
+          { text: "受地理區隔和人口區隔影響。", score: 0, status: "wrong", comment: "市場區隔屬於選擇目標市場的方法，並非影響執行階段的因素。" }
+        ]},
+        { label: "第 2 步：扣連「虛擬銀行」情境作扼要解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "即該虛擬銀行是否擁有足夠的財政資源（如舉辦開戶現金回贈推廣活動所需的資金）、人力資源（如推廣及市場研究人員）及科技資源（如開發流暢手機開戶及理財平台所需的科技）來執行計劃中的活動。", score: 1, status: "best", comment: "清楚說明執行計劃所需的財政、人力及科技資源如何影響活動的落實。" },
+          { text: "即銀行有沒有足夠的資源去執行活動。", score: 0, status: "partial", comment: "未有具體說明所需資源包括哪些（如財政推廣資金、人力推廣人員或科技資源）。" },
+          { text: "即銀行完全不需要任何資金或員工便能執行所有推廣活動。", score: 0, status: "wrong", comment: "不正確的陳述。" }
+        ]}
+      ]
+    },
+
+    // ================= 第二類：進階論述題（每個獨立論點滿分 3 分 — 3 步深度建構，100% 原創商業情境） =================
+    {
+      id: "e1", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 1：鮮達連鎖生鮮食品店（重要性：找出和滿足顧客需要）", topic: "市場營銷作為商業功能的重要性：找出和滿足顧客的需要", maxMarks: 3,
+      scenario: "「鮮達食品」是一家連鎖生鮮食材及急凍食品專門店。東主認為市場營銷是企業最重要的商業功能。試舉例說明市場營銷作為商業功能對該生鮮食品專門店的重要性。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「找出和滿足顧客的需要」這項重要性為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一重要性名稱與核心概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "市場營銷可以同時幫助專門店找出和滿足顧客需要、制定策略應付競爭、與顧客維持長遠關係及監察市場變化。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，四項重要性應分為四個獨立段落作答。" },
+          { text: "市場營銷能幫助鮮達食品「找出和滿足顧客的需要」：協助企業辨別誰是顧客（選定擁有相似需要的目標市場），並透過進行市場研究找出目標顧客的需要，從而制定合適策略來滿足他們。", score: 1, status: "best", comment: "準確鎖定「找出和滿足顧客的需要」並點出選定目標市場與進行市場研究的概念。" },
+          { text: "市場營銷的唯一作用是替專門店招聘店員及計算員工薪酬。", score: 0, status: "wrong", comment: "混淆人力資源功能與市場營銷功能。" }
+        ]},
+        { label: "第 2 步：針對「連鎖生鮮食品店」設定具體商業例子並作基本解釋（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如專門店會賣很多不同的食材給顧客。", score: 0, status: "partial", comment: "未有說明專門店如何針對目標顧客的特定需要提供相應的貨品或服務。" },
+          { text: "例如鮮達食品以工作繁忙的在職家庭為目標市場，透過市場研究發現他們下班後追求在 15 分鐘內煮好健康晚餐，遂推出「已洗切並附秘製醬汁的免切免醃餸菜包」及提供「手機落單冷鏈直送上門服務」。", score: 1, status: "best", comment: "緊扣生鮮食品店情境，具體展示如何辨識在職家庭需要並提供免切餸菜包及冷鏈送貨服務。" },
+          { text: "例如專門店向銀行借取短期貸款交租。", score: 0, status: "wrong", comment: "屬於財務融資，與找出和滿足顧客需要無關。" }
+        ]},
+        { label: "第 3 步：深化論述至吸引顧客購買與為專門店創造收益利潤的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過向目標顧客提供他們真正需要的免切餸菜包與便利配送服務，鮮達食品能有效滿足在職家庭的日常煮食需要，吸引他們持續購買，從而為專門店帶來穩定的銷售收益和利潤。", score: 1, status: "best", comment: "清楚推演出「提供真正需要的貨品與服務 → 有效滿足顧客並吸引購買 → 為企業賺取收益和利潤」。" },
+          { text: "這樣顧客便滿足了他們的需要。", score: 0, status: "partial", comment: "未有進一步推論滿足顧客需要如何為專門店帶來營業收益與利潤回報。" },
+          { text: "這會令專門店無須再向食材供應商入貨。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e2", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 2：鮮達連鎖生鮮食品店（重要性：與顧客維持長遠關係）", topic: "市場營銷作為商業功能的重要性：與顧客維持長遠關係", maxMarks: 3,
+      scenario: "承上題，「鮮達食品」東主認為市場營銷是企業最重要的商業功能。除了找出顧客需要外，試舉例說明「與顧客維持長遠關係」這項市場營銷功能對該生鮮食品專門店的重要性。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「與顧客維持長遠關係（提升顧客忠誠度）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一重要性名稱與「顧客忠誠度」概念（1分）", colorClass: "hl-s1", opts: [
+          { text: "市場營銷有助鮮達食品「與顧客建立和維持長遠關係」；當企業持續滿足顧客的需要，便可提升「顧客忠誠度」（顧客願意長久支持某產品或品牌，並重複購買該產品或品牌的程度）和留住顧客。", score: 1, status: "best", comment: "清楚指出「與顧客維持長遠關係」並準確界定「顧客忠誠度」的意思。" },
+          { text: "與顧客維持長遠關係是指強迫顧客簽訂十年不能取消的買菜合約。", score: 0, status: "wrong", comment: "長遠關係是透過持續滿足顧客需要與獎勵計劃建立，而非強迫簽約。" },
+          { text: "專門店要和顧客保持關係。", score: 0, status: "partial", comment: "未有點出「持續滿足需要以提升顧客忠誠度及留住顧客」的核心概念。" }
+        ]},
+        { label: "第 2 步：針對「連鎖生鮮食品店」設定維持長遠關係的具體措施例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如專門店把所有食材加價五成。", score: 0, status: "wrong", comment: "大幅加價會令顧客流失，無助維持長遠關係。" },
+          { text: "例如鮮達食品推出「鮮達會員儲分獎賞計劃」（會員每次購物可儲積分換取免費和牛或現金券），並提供附加服務（如透過手機應用程式免費提供每日營養師健康食譜教學及不新鮮無條件退換保證）。", score: 1, status: "best", comment: "緊扣生鮮食品店業務，具體列舉會員儲分獎賞計劃及免費食譜教學等附加服務。" },
+          { text: "例如專門店對顧客很好。", score: 0, status: "partial", comment: "未有說明專門店採用甚麼具體獎勵計劃或附加服務來維繫顧客。" }
+        ]},
+        { label: "第 3 步：深化論述至重複購買、口碑介紹與穩定長遠收益的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "這會令專門店的店舖租金自動減半。", score: 0, status: "wrong", comment: "因果無關。" },
+          { text: "這樣顧客就會成為忠誠顧客。", score: 0, status: "partial", comment: "未有說明忠誠顧客會為專門店帶來甚麼具體好處（繼續重複購買及介紹他人光顧）。" },
+          { text: "提升顧客忠誠度後，這些忠誠顧客不但會長久支持並繼續在鮮達食品重複購買日常食材，更會向身邊街坊及親友介紹前來光顧，協助專門店抵禦同區對手競爭並賺取長遠穩定的利潤。", score: 1, status: "best", comment: "清楚點出「忠誠的顧客不但會繼續購買企業的貨品或服務，更會介紹其他人前來光顧」。" }
+        ]}
+      ]
+    },
+    {
+      id: "e3", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 3：松本日本藥妝專門店（計劃第 1 步：強弱機危分析）", topic: "制定市場營銷計劃的步驟：第 1 步「檢視現時表現和進行強弱機危分析」", maxMarks: 3,
+      scenario: "一家日本藥妝及個人護理用品店打算在香港開設新分店，並會為新分店制定市場營銷計劃。試描述該藥妝店為新分店制定市場營銷計劃的步驟。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以制定市場營銷計劃的第 1 步「檢視現時表現和進行強弱機危分析」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出第 1 步的準確名稱與核心內容（1分）", colorClass: "hl-s1", opts: [
+          { text: "制定市場營銷計劃的第一步是「檢視現時表現和進行強弱機危分析」：先以銷售收益和市場佔有率等數據檢視現時表現以評估競爭地位，再對企業內在的強項和弱項，以及外在經營環境中的機會和危機作出分析。", score: 1, status: "best", comment: "準確指出第 1 步名稱，並清楚涵蓋「檢視表現評估競爭地位」與「強弱機危內外在分析」。" },
+          { text: "制定市場營銷計劃的第一步是直接決定新分店的貨品售價和印製傳單。", score: 0, status: "wrong", comment: "決定售價和推廣屬於第 4 步「制定市場營銷策略（4P）」，並非第 1 步。" },
+          { text: "制定市場營銷計劃包括檢視表現、訂立目標、選擇目標市場及制定策略四個步驟。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每個步驟應獨立成段並配對例子作深入描述。" }
+        ]},
+        { label: "第 2 步：針對「日本藥妝店」設定具體的強弱機危分析例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如藥妝店要分析自己的強項、弱項、機會和危機。", score: 0, status: "partial", comment: "沒有結合「在香港開設日本藥妝店新分店」舉出具體的強弱機危例子。" },
+          { text: "例如該日本藥妝店評估自身的內在「強項」（如擁有日本藥廠獨家代理權及正貨保證）與「弱項」（如新分店在當區知名度低），同時分析外在環境的「機會」（如香港市民對日本保健品及美妝需求殷切）與「危機」（如大型個人護理連鎖店減價促銷構成激烈競爭）。", score: 1, status: "best", comment: "緊扣日本藥妝店情境，具體列舉內在強弱項（獨家代理權 vs 知名度低）及外在機會危機（需求殷切 vs 大型連鎖店競爭）。" },
+          { text: "例如藥妝店計算店面裝修工程的回收期。", score: 0, status: "wrong", comment: "屬於財務資本投資評估，並非強弱機危分析。" }
+        ]},
+        { label: "第 3 步：深化論述至善用強項把握機會及指導後續目標訂立的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "這有助該藥妝店深入了解自己面對的內在情況和外在環境，從而善用其日本獨家正貨貨源的內在強項去把握市民熱愛日本保健美妝品的市場機會，並為下一步「訂立市場營銷目標」提供客觀依據。", score: 1, status: "best", comment: "清楚點出「深入了解自己面對的內在情況和外在環境，有助企業善用其內在的強項來把握市場機會」。" },
+          { text: "這樣藥妝店便完成了第一步。", score: 0, status: "partial", comment: "未有說明強弱機危分析如何幫助企業善用強項把握機會。" },
+          { text: "這會令藥妝店無須再繳交任何舖租。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e4", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 4：松本日本藥妝專門店（計劃第 2 步：訂立目標）", topic: "制定市場營銷計劃的步驟：第 2 步「訂立市場營銷目標」", maxMarks: 3,
+      scenario: "承上題，該日本藥妝專門店在完成第 1 步「檢視現時表現和進行強弱機危分析」後，接下來須進行第 2 步。試描述制定市場營銷計劃的第 2 步「訂立市場營銷目標」。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以第 2 步「訂立市場營銷目標」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出第 2 步的準確名稱與目標範疇（1分）", colorClass: "hl-s1", opts: [
+          { text: "第二步是「訂立市場營銷目標」：企業可利用強弱機危分析的結果，根據市場營銷表現或財務表現訂立符合良好目標 (SMART) 規則的目標（範疇包括提升品牌知名度、吸引新顧客、留住現有顧客、提高銷售收益、增加淨利或增加市場佔有率）。", score: 1, status: "best", comment: "清楚指出第 2 步「訂立市場營銷目標」及其相關範疇。" },
+          { text: "第二步是按功能組織或區域組織劃分市場營銷部門。", score: 0, status: "wrong", comment: "劃分組織結構屬於市場營銷過程的第 2 步「組織市場營銷活動」，而非制定市場營銷計劃內的步驟。" },
+          { text: "第二步是訂立一個目標。", score: 0, status: "partial", comment: "未有說明市場營銷目標應根據強弱機危分析及市場營銷／財務表現而定，亦未點出目標範疇。" }
+        ]},
+        { label: "第 2 步：針對「日本藥妝專門店新分店」設定具體的市場營銷目標例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如日本藥妝店希望新分店生意興隆。", score: 0, status: "partial", comment: "「生意興隆」缺乏具體數字與明確時限，不符合良好目標 (SMART) 規則。" },
+          { text: "例如該藥妝店為新分店訂立「在開業首季內吸引 8,000 名新顧客登記成為會員」或「在未來一年將新分店的每月銷售收益提高 12%」作為具體的市場營銷目標。", score: 1, status: "best", comment: "緊扣日本藥妝店新分店，舉出符合 SMART 規則（具時限及量化指標）的具體目標例子。" },
+          { text: "例如藥妝店在店內安裝防盜閘門。", score: 0, status: "wrong", comment: "這是店舖保安措施，並非市場營銷目標。" }
+        ]},
+        { label: "第 3 步：深化論述至引導員工活動及作為日後控制標準的作用（1分）", colorClass: "hl-s3", opts: [
+          { text: "訂立清晰的市場營銷目標，不但能引導新分店的部門和員工進行市場營銷活動（為緊接選擇目標市場及制定策略提供方向），更可用作日後「控制市場營銷活動」時的表現標準，以衡量新分店的實際表現是否理想。", score: 1, status: "best", comment: "清楚點出兩大作用——「引導部門和員工進行市場營銷活動」以及「可用作控制市場營銷活動的標準」。" },
+          { text: "這樣藥妝店便訂立了市場營銷目標。", score: 0, status: "partial", comment: "未有說明市場營銷目標在「引導員工進行活動」及「作為日後控制標準」上的重要作用。" },
+          { text: "這會令藥妝店所有貨品自動售罄。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e5", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 5：極光智能運動手錶品牌（競爭地位：市場挑戰者）", topic: "不同競爭地位的市場營銷策略：市場挑戰者", maxMarks: 3,
+      scenario: "「極光科技」是一家智能運動手錶生產商，在市場營銷過程中按照本身在市場的競爭地位制定策略。目前該品牌在市場上屬於「市場挑戰者」，試舉例說明該公司可採取的市場營銷策略。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「市場挑戰者」及其策略為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：界定「市場挑戰者」的競爭地位並指出策略方向（1分）", colorClass: "hl-s1", opts: [
+          { text: "市場挑戰者是指市場佔有率最高、只求保持現有市場份額的企業。", score: 0, status: "wrong", comment: "市場佔有率最高的是「市場領導者」。" },
+          { text: "「市場挑戰者」是指市場佔有率比市場領導者低，但試圖挑戰市場領導者地位的企業；極光科技可採取「提升現有產品的質量」、「攻擊市場領導者的弱項」或「降低產品價格」的策略來爭奪競爭對手的市場佔有率。", score: 1, status: "best", comment: "清楚界定「市場挑戰者」並指出其爭奪市場佔有率的三項策略方向。" },
+          { text: "市場挑戰者只會模仿主要品牌的名字和包裝以節省成本。", score: 0, status: "wrong", comment: "模仿主要品牌屬於「市場追隨者」的做法。" }
+        ]},
+        { label: "第 2 步：針對「智能運動手錶品牌」設定具體競爭措施例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如該公司可以提升質素或者減價。", score: 0, status: "partial", comment: "只重複了策略標題，沒有結合智能運動手錶的功能、技術或定價舉出具體例子。" },
+          { text: "例如極光科技針對市場領導者手錶「電池續航力僅得一天」的弱項發動攻擊，研發並推出「太陽能充電可連續使用 14 天、配備更精準雙頻衛星定位及醫療級心電圖功能」的高質量新型號手錶，同時定價比領導者低兩成。", score: 1, status: "best", comment: "緊扣智能運動手錶業務，具體描述如何攻擊領導者電池弱項、提升產品質量及降低價格。" },
+          { text: "例如該公司改為經營連鎖快餐店。", score: 0, status: "wrong", comment: "偏離智能手錶業務情境。" }
+        ]},
+        { label: "第 3 步：深化論述至吸引對手用家轉投及爭奪市場佔有率的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過提供比市場領導者更長續航力、更高質量且價格更相宜的智能運動手錶，極光科技能有效吸引原本購買市場領導者品牌的運動用家轉投其懷抱，從而成功爭奪競爭對手的市場佔有率並提升自身的競爭地位。", score: 1, status: "best", comment: "清楚推演出「提供更高質量與性價比產品 → 吸引對手用家轉投 → 成功爭奪市場領導者的市場佔有率」。" },
+          { text: "這樣該公司便採取了市場挑戰者的策略。", score: 0, status: "partial", comment: "未有說明該策略如何幫助公司從競爭對手手中奪取客源及提升市場佔有率。" },
+          { text: "這會令市場上所有其他手錶品牌立即倒閉。", score: 0, status: "wrong", comment: "武斷且誇大的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e6", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 6：無敏純素烘焙工坊（競爭地位：市場補缺者）", topic: "不同競爭地位的市場營銷策略：市場補缺者", maxMarks: 3,
+      scenario: "「安心烘焙」是一家本地小型烘焙工坊，在烘焙市場上屬於「市場補缺者」。試舉例說明該小型烘焙工坊可採取的市場營銷策略。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「市場補缺者（集中資源為縫隙市場度身訂造市場營銷組合）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：界定「市場補缺者」與「縫隙市場」並指出核心策略（1分）", colorClass: "hl-s1", opts: [
+          { text: "「市場補缺者」是指專門服務一個或數個細小市場組別（稱為「縫隙市場」或「小眾市場」）的企業；其核心策略是集中資源為該縫隙市場度身訂造市場營銷組合（4P），以更有效地滿足這些市場的需要。", score: 1, status: "best", comment: "準確點出「專門服務細小縫隙市場」及「集中資源度身訂造市場營銷組合」的標準概念。" },
+          { text: "市場補缺者是指在全港地鐵站開設最多分店、服務所有大眾市民的最大型連鎖餅店。", score: 0, status: "wrong", comment: "服務大眾且市佔率最高的是市場領導者。" },
+          { text: "市場補缺者會服務一個細小的市場。", score: 0, status: "partial", comment: "未有寫出「縫隙市場」術語，亦未指出「集中資源為縫隙市場度身訂造市場營銷組合」的策略。" }
+        ]},
+        { label: "第 2 步：針對「小型烘焙工坊」設定縫隙市場與度身訂造 4P 的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如該工坊售賣普通的菠蘿包和蛋撻給一般街坊。", score: 0, status: "partial", comment: "普通菠蘿包面向一般大眾，未能體現被大餅店忽略的「細小縫隙市場」及「度身訂造營銷組合」。" },
+          { text: "例如大型連鎖餅店通常不願專門開設無致敏原獨立生產線；安心烘焙遂專門鎖定「對雞蛋、牛奶及麩質有嚴重食物過敏的兒童及家長」這個細小的縫隙市場，度身訂造專屬 4P 組合：在無致敏原工場用有機米穀粉及植物奶客製化卡通生日蛋糕、定立合理專門價格、提供全港抗敏保鮮直送服務，並透過兒科過敏關注組織推廣。", score: 1, status: "best", comment: "以「無蛋奶無麩質抗敏兒童蛋糕」為例，清晰呈現大型餅店忽略的縫隙市場及度身訂造的 4P 組合。" },
+          { text: "例如該工坊大幅減價與大型連鎖餅店正面打價格戰。", score: 0, status: "wrong", comment: "小型補缺者資源有限，與大企業正面打價格戰會處於劣勢。" }
+        ]},
+        { label: "第 3 步：深化論述至避開大企業競爭與建立高忠誠度的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於這類縫隙市場規模太小，大型連鎖餅店通常不會有興趣提供服務；安心烘焙集中有限資源深耕此特定客群，既能避開與大型餅店正面交鋒，又能比一般餅店更有效地滿足過敏兒童家庭的特殊需要，從而建立深厚口碑並賺取穩定利潤。", score: 1, status: "best", comment: "緊扣「大型企業通常不會有興趣向這些細小市場提供服務，補缺者可集中資源更有效地滿足其需要」。" },
+          { text: "這樣就會有家長來買蛋糕。", score: 0, status: "partial", comment: "未有說明此策略如何協助小型工坊避開大集團競爭及提升目標客群滿意度。" },
+          { text: "這會令該小型工坊立即成為全港分店數量最多的市場領導者。", score: 0, status: "wrong", comment: "縫隙市場規模細小，補缺者並非追求成為大眾市場規模最大的領導者。" }
+        ]}
+      ]
+    },
+    {
+      id: "e7", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 7：環球智能家電集團（組織結構：區域組織）", topic: "組織市場營銷活動：四種常用組織結構（區域組織）", maxMarks: 3,
+      scenario: "「環球智能家電集團」在世界各地（包括北美洲、歐洲、大中華區及中東）銷售冷暖空調、抽濕機及廚房電器。今年，它計劃重組市場營銷部門。試描述該家電集團的市場營銷部門可採用的組織結構。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以「區域組織 (Geographical Organisation)」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出單一組織結構名稱與劃分原則（1分）", colorClass: "hl-s1", opts: [
+          { text: "集團可同時採用功能組織、產品組織、區域組織及顧客管理組織四種結構。", score: 0, status: "partial", comment: "違反「一段一個重點」原則，每種組織結構應獨立成段闡釋。" },
+          { text: "該跨國家電集團可採用「區域組織」，即按地區劃分市場營銷活動，在市場營銷總監下委派不同的「區域經理」分別負責不同的地區市場（常用於在多個地區出售產品的企業）。", score: 1, status: "best", comment: "清楚指出「區域組織」及其「按地區劃分活動、委派區域經理負責不同地區市場」的定義。" },
+          { text: "該集團可採用「區域組織」，即按空調、抽濕機和廚房電器劃分部門。", score: 0, status: "wrong", comment: "按空調、抽濕機、廚房電器劃分屬於「產品組織」，並非「區域組織」。" }
+        ]},
+        { label: "第 2 步：針對「跨國家電集團」設定具體區域劃分例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如委派不同的區域經理管理不同的地方。", score: 0, status: "partial", comment: "未有結合跨國家電集團的業務地區（如歐洲、大中華區、中東）及各地氣候差異作說明。" },
+          { text: "例如該家電集團在多個地區出售產品，可分別委派大中華區區域經理、歐洲區域經理、北美洲區域經理及中東區域經理，各自統籌該地區的家電推廣、定價及分銷渠道。", score: 1, status: "best", comment: "緊扣跨國家電集團，具體列舉大中華區、歐洲、北美洲及中東區域經理的分工。" },
+          { text: "例如委派經理分別負責個人帳戶、中小企帳戶及關鍵帳戶。", score: 0, status: "wrong", comment: "按個人、中小企及關鍵帳戶劃分屬於「顧客管理組織」。" }
+        ]},
+        { label: "第 3 步：深化論述至迎合不同地區顧客需要與提升營銷效率的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "由於不同國家和地區的氣候環境、電壓標準及居住空間差異極大（如潮濕的華南地區急需抽濕機，而乾燥炎熱的中東地區則主力需要大匹數冷氣機），採用區域組織能讓各區域經理緊貼當地市場，更有效地滿足不同地區顧客的需要。", score: 1, status: "best", comment: "清楚推演出「各地氣候居住環境不同 → 區域組織讓企業更有效地滿足不同地區顧客的需要」。" },
+          { text: "這樣家電集團便重組了市場營銷部門。", score: 0, status: "partial", comment: "未有說明採用區域組織如何幫助跨國家電集團更有效地滿足不同地區顧客的需要。" },
+          { text: "這會令集團無須再生產任何電器。", score: 0, status: "wrong", comment: "不合理的推論。" }
+        ]}
+      ]
+    },
+    {
+      id: "e8", cat: "essay", typeBadge: "進階論述題（3 分 · 3 步深度建構）",
+      title: "論述 8：清泉天然護膚品牌（控制步驟：分析差異並採取糾正行動）", topic: "控制市場營銷活動的步驟：第 4 步「分析差異並採取糾正行動」", maxMarks: 3,
+      scenario: "「清泉護膚」為確保市場營銷活動依照計劃順利進行，會透過控制過程監控所有的活動。試舉例說明該護膚品牌控制市場營銷活動時所涉及的步驟。",
+      question: "請遵循「一段一個獨立重點」原則，單獨以控制過程的第 4 步「分析差異並採取糾正行動（及修訂表現標準）」為核心，建構一個 3 分深度論述段落（每步 1 分）：",
+      steps: [
+        { label: "第 1 步：指出第 4 步的準確名稱與核心內容（1分）", colorClass: "hl-s1", opts: [
+          { text: "在比較實際表現與預先訂立的表現標準後，第四步是「分析差異並採取糾正行動」：如果實際的市場營銷表現嚴重偏離標準而不可接受，市場營銷經理便會分析差異，找出出現問題的原因，然後採取糾正行動（或修訂不切實際的表現標準）。", score: 1, status: "best", comment: "準確指出第 4 步「分析差異並採取糾正行動」及修訂表現標準的機制。" },
+          { text: "控制市場營銷活動的第四步是進行強弱機危分析並選擇目標市場。", score: 0, status: "wrong", comment: "強弱機危分析與選擇目標市場屬於「計劃市場營銷活動」的步驟，而非「控制」步驟。" },
+          { text: "第四步是採取一些行動。", score: 0, status: "partial", comment: "必須明確寫出「當實際表現不可接受時，分析差異以找出問題原因，並採取糾正行動或修訂表現標準」。" }
+        ]},
+        { label: "第 2 步：針對「天然護膚品牌」設定分析原因與採取糾正行動的具體例子（1分）", colorClass: "hl-s2", opts: [
+          { text: "例如護膚品牌發現表現不好，於是叫員工努力工作。", score: 0, status: "partial", comment: "未有結合具體原因（如激烈競爭、品牌知名度低、市場趨勢轉變或標準訂得太高）提出相應營銷糾正行動。" },
+          { text: "例如當經理發現過去半年面霜實際銷售額只增長了 4%，遠低於預先訂立增長 16% 的表現標準（不可接受）時，經分析差異後發現原因是「品牌知名度低，且市場趨勢轉向純素防敏配方」，遂採取糾正行動：推出更多廣告和派發免費樣本提升知名度，並設計新純素防敏面霜迎合新趨勢，同時將過高的表現標準修訂為增長 10%。", score: 1, status: "best", comment: "結合實際表現低於標準的數字、找出品牌知名度低及市場趨勢轉變原因、派發免費樣本與設計新產品糾正，以及修訂過高標準。" },
+          { text: "例如護膚品牌用市場營銷部的員工流失率作為唯一的表現標準。", score: 0, status: "wrong", comment: "員工流失率並非控制市場營銷活動時常用的表現標準（常用標準為市場佔有率、銷售額增長率、新顧客數目、顧客投訴數目）。" }
+        ]},
+        { label: "第 3 步：深化論述至修正偏差與確保達成市場營銷目標的影響（1分）", colorClass: "hl-s3", opts: [
+          { text: "透過及時找出銷量落後於標準的真正成因並對症下藥採取糾正行動，清泉護膚能迅速改善銷售情況，確保市場營銷活動能重回正軌並依照計劃順利達成目標。", score: 1, status: "best", comment: "清楚推演出「對症下藥糾正偏差 → 改善銷售情況 → 確保市場營銷活動依照計劃順利進行」。" },
+          { text: "這樣護膚品牌便控制了市場營銷活動。", score: 0, status: "partial", comment: "未有說明分析差異及採取糾正行動對改善銷售表現及確保達成計劃目標的作用。" },
+          { text: "這會令護膚品牌以後再也不用訂立任何表現標準。", score: 0, status: "wrong", comment: "控制是一個持續循環的過程，修訂表現標準後仍需繼續監控。" }
+        ]}
+      ]
+    }
+  ];
+
+  let curBuilderCat = 'short';
+  let curQIdx = 0;
+  let userSelections = {};
+  let isSubmitted = false;
+
+  function switchBuilderCat(cat, btn) {
+    curBuilderCat = cat;
+    btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('builderCatLabel').textContent = cat === 'short' ? '選擇短答題（每題滿分 2 分）：' : '選擇進階論述題（每題滿分 3 分）：';
+    curQIdx = cat === 'short' ? 0 : 4;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function renderQuestionChips() {
+    document.getElementById('questionChips').innerHTML = workshopQuestions
+      .map((q, i) => ({ q, i }))
+      .filter(x => x.q.cat === curBuilderCat)
+      .map(x => `<button class="chip ${x.i===curQIdx?'active':''}" onclick="selectWorkshopQ(${x.i})">${x.q.title}</button>`)
+      .join('');
+  }
+
+  function selectWorkshopQ(idx) {
+    curQIdx = idx;
+    userSelections = {};
+    isSubmitted = false;
+    renderQuestionChips();
+    renderWorkshop();
+  }
+
+  function pickStepOption(sIdx, oIdx) {
+    userSelections[sIdx] = oIdx;
+    isSubmitted = false;
+    renderWorkshop();
+  }
+
+  function submitConstructedAnswer() {
+    const q = workshopQuestions[curQIdx];
+    if (Object.keys(userSelections).length < q.steps.length) {
+      alert(`請先完成全部 ${q.steps.length} 個步驟的選擇，再點擊批改。`);
+      return;
+    }
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function fillBestChoices() {
+    const q = workshopQuestions[curQIdx];
+    q.steps.forEach((st, sIdx) => {
+      userSelections[sIdx] = st.opts.findIndex(o => o.status === 'best');
+    });
+    isSubmitted = true;
+    renderWorkshop();
+  }
+
+  function renderWorkshop() {
+    const q = workshopQuestions[curQIdx];
+    const letters = ['A', 'B', 'C'];
+
+    let totalScore = 0;
+    q.steps.forEach((st, sIdx) => {
+      if (userSelections[sIdx] !== undefined) {
+        totalScore += st.opts[userSelections[sIdx]].score;
+      }
+    });
+
+    const previewParts = q.steps.map((st, sIdx) => {
+      const selIdx = userSelections[sIdx];
+      if (selIdx === undefined) {
+        return `<span style="color:var(--mute);border-bottom:1px dashed var(--mute)">［未選擇第 ${sIdx + 1} 步］</span>`;
+      }
+      return `<span class="${st.colorClass}">${st.opts[selIdx].text}</span>`;
+    });
+
+    document.getElementById('builderWorkspace').innerHTML = `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <div>
+            <span class="badge b-blue">${q.typeBadge}</span>
+            <span class="badge b-teal">${q.topic}</span>
+          </div>
+          <b style="color:var(--primary);font-size:16px">本段滿分：${q.maxMarks} 分</b>
+        </div>
+        <div style="background:var(--surface);padding:16px 20px;border-radius:12px;border-left:4px solid var(--primary);font-size:16.5px;margin-bottom:14px"><b>背景情境：</b>${q.scenario}</div>
+        <div style="font-size:18px;font-weight:800;color:var(--ink)">${q.question}</div>
+      </div>
+
+      ${q.steps.map((st, sIdx) => {
+        const selIdx = userSelections[sIdx];
+        return `
+          <div class="builder-stage">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <h4 style="font-size:16.5px"><span class="${st.colorClass}">${st.label}</span></h4>
+              <span style="font-size:14px;font-weight:600;color:var(--mute)">${selIdx !== undefined ? '已選 ' + letters[selIdx] : '請點選一項'}</span>
+            </div>
+            ${st.opts.map((o, oIdx) => {
+              const isSel = selIdx === oIdx;
+              let gradeCls = '';
+              if (isSubmitted && isSel) {
+                gradeCls = o.status === 'best' ? 'graded-best' : o.status === 'partial' ? 'graded-partial' : 'graded-wrong';
+              }
+              return `
+                <button class="opt-card ${isSel ? 'selected' : ''} ${gradeCls}" onclick="pickStepOption(${sIdx}, ${oIdx})">
+                  <span class="opt-letter">${letters[oIdx]}</span>
+                  <span style="flex:1">${o.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }).join('')}
+
+      <div class="card" style="border:2px solid var(--primary);margin-bottom:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+          <h3 style="color:var(--primary);font-size:19px">建構段落預覽</h3>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-green" onclick="submitConstructedAnswer()">批改答案</button>
+            <button class="btn btn-outline" onclick="fillBestChoices()">示範完整建構</button>
+          </div>
+        </div>
+        <div style="font-size:17px;line-height:1.85;background:var(--surface);padding:18px 22px;border-radius:12px;border:1px solid var(--line)">
+          ${previewParts.join(' ')}
+        </div>
+
+        ${isSubmitted ? `
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+              <h4 style="font-size:17.5px">分步批改回饋</h4>
+              <span class="badge ${totalScore === q.maxMarks ? 'b-green' : totalScore >= 1 ? 'b-amber' : 'b-red'}" style="font-size:15px;padding:6px 14px">
+                得分：${totalScore} / ${q.maxMarks} 分
+              </span>
+            </div>
+            ${q.steps.map((st, sIdx) => {
+              const chosen = st.opts[userSelections[sIdx]];
+              const cCls = chosen.status === 'best' ? 'c-best' : chosen.status === 'partial' ? 'c-partial' : 'c-wrong';
+              return `
+                <div class="critique-item ${cCls}">
+                  <b>第 ${sIdx + 1} 步（選項 ${letters[userSelections[sIdx]]} · ${chosen.score} 分）：</b>${chosen.comment}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  renderQuestionChips();
+  renderWorkshop();
+</script>
+</body>
+</html>
