@@ -8,32 +8,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* 市場營銷管理專屬配色：勃艮第酒紅 (Burgundy) × 深邃岩灰 (Slate) × 琥珀金 (Amber) */
-      --bg: #f6f4f5;
+      /* 與市場營銷管理第 1–7 課課題分頁及目錄完全一致的「靛藍 × 青綠」配色 */
+      --bg: #f4f6fb;
       --card: #ffffff;
-      --surface: #fbf9fa;
-      --ink: #1e1318;
-      --ink-sec: #3f2e36;
-      --mute: #6e5a63;
-      --line: #e5dce0;
-      --primary: #9f1239;
-      --primary-dark: #881337;
-      --primary-light: #fff1f2;
-      --primary-border: #fecdd3;
-      --teal: #0369a1;
-      --teal-light: #f0f9ff;
-      --teal-border: #bae6fd;
-      --purple: #4338ca;
-      --purple-light: #eef2ff;
-      --purple-border: #c7d2fe;
-      --amber: #b45309;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --teal-border: #99f6e4;
+      --purple: #0284c7;
+      --purple-light: #e0f2fe;
+      --purple-border: #bae6fd;
+      --amber: #d97706;
       --amber-light: #fffbeb;
-      --green: #065f46;
+      --green: #059669;
       --green-light: #ecfdf5;
-      --red: #be123c;
+      --red: #e11d48;
       --red-light: #fff1f2;
       --radius: 16px;
-      --shadow: 0 4px 20px -2px rgba(136, 19, 55, 0.06), 0 2px 6px -1px rgba(136, 19, 55, 0.04);
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
     }
     * { box-sizing: border-box; }
     body {
@@ -55,7 +55,7 @@
       gap: 12px;
       padding: 14px 28px;
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
@@ -74,7 +74,7 @@
       transition: all 0.2s;
     }
     .home-link:hover { color: var(--primary); border-color: var(--primary-border); background: var(--primary-light); }
-    .brand { display: flex; align-items: center; gap: 10px; font-size: 18.5px; font-weight: 800; color: var(--primary-dark); }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 18.5px; font-weight: 800; color: var(--ink); }
     .brand-badge {
       background: var(--primary-light);
       color: var(--primary);
@@ -137,7 +137,7 @@
       margin-left: auto;
       display: flex;
       gap: 5px;
-      background: #ece4e7;
+      background: #e2e8f0;
       padding: 5px;
       border-radius: 12px;
       flex-wrap: wrap;
@@ -156,7 +156,7 @@
     .tabs button.on {
       background: var(--card);
       color: var(--primary);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
     }
 
     /* Views & Banners */
@@ -233,7 +233,12 @@
       transition: all 0.2s;
     }
     .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-    .chip.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
 
     .btn {
       border: 0;
@@ -249,11 +254,11 @@
     }
     .btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
     .btn-green { background: var(--green); }
-    .btn-green:hover { background: #064e3b; }
+    .btn-green:hover { background: #047857; }
     .btn-teal { background: var(--teal); }
-    .btn-teal:hover { background: #075985; }
+    .btn-teal:hover { background: #0f766e; }
     .btn-purple { background: var(--purple); }
-    .btn-purple:hover { background: #312e81; }
+    .btn-purple:hover { background: #0369a1; }
     .btn-amber { background: var(--amber); }
     .btn-outline { background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); }
     .btn-outline:hover { background: var(--primary-light); }
@@ -287,7 +292,7 @@
       min-width: 30px;
       height: 30px;
       border-radius: 8px;
-      background: #ece4e7;
+      background: #f1f5f9;
       color: var(--ink);
       font-weight: 800;
       font-size: 14.5px;
@@ -345,9 +350,9 @@
     .score-pill:hover { background: var(--teal-light); }
     .score-pill.picked { background: var(--teal); color: #fff; }
 
-    .hl-s1 { background: #ffe4e6; color: #9f1239; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s1 { background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
     .hl-s2 { background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
-    .hl-s3 { background: #e0f2fe; color: #075985; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
+    .hl-s3 { background: #d1fae5; color: #065f46; padding: 3px 8px; border-radius: 6px; font-weight: 700; }
 
     .critique-item {
       padding: 14px 18px;
@@ -364,7 +369,7 @@
     /* Report Progress Meters & Tables */
     .meter-wrap { margin-bottom: 14px; }
     .meter-label { display: flex; justify-content: space-between; font-size: 15.5px; font-weight: 700; margin-bottom: 6px; }
-    .meter-bg { height: 14px; background: #e5dce0; border-radius: 999px; overflow: hidden; }
+    .meter-bg { height: 14px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
     .meter-fill { height: 100%; border-radius: 999px; transition: width 0.4s ease; }
 
     table.cutoff-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 15px; }
