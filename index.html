@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BAFS 商業管理互動課室 — 市場營銷管理單元目錄</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f4f5;
+      --card: #ffffff;
+      --surface: #fbf9fa;
+      --ink: #1e1318;
+      --ink-sec: #3f2e36;
+      --mute: #6e5a63;
+      --line: #e5dce0;
+      --primary: #9f1239;
+      --primary-dark: #881337;
+      --primary-light: #fff1f2;
+      --primary-border: #fecdd3;
+      --teal: #0369a1;
+      --teal-light: #f0f9ff;
+      --teal-border: #bae6fd;
+      --amber: #b45309;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+      --green: #065f46;
+      --green-light: #ecfdf5;
+      --green-border: #a7f3d0;
+      --radius: 16px;
+      --shadow: 0 4px 20px -2px rgba(136, 19, 55, 0.06), 0 2px 6px -1px rgba(136, 19, 55, 0.04);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      padding-bottom: 64px;
+      font-size: 17.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { margin: 0; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 32px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 900; color: var(--primary-dark); }
+    .brand-tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+    .quick-jump {
+      padding: 8px 12px;
+      border-radius: 9px;
+      border: 1.5px solid var(--primary-border);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font: 700 14.5px 'Noto Sans TC', sans-serif;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 9px;
+      font: 700 14.5px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+      border-color: var(--primary-border);
+      background: var(--primary-light);
+    }
+    .nav-links a.exam-nav {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .nav-links a.exam-nav:hover { background: var(--primary-dark); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 28px 24px; }
+
+    .hero-banner {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 7px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .hero-banner h1 { font-size: 27px; margin: 8px 0 10px; }
+    .hero-banner p { margin: 0; color: var(--ink-sec); font-size: 16.5px; max-width: 720px; }
+    .stat-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 14px 18px;
+      border-radius: 12px;
+      min-width: 120px;
+      text-align: center;
+    }
+    .stat-box b { display: block; font-size: 22px; color: var(--primary); }
+    .stat-box span { font-size: 13.5px; color: var(--mute); font-weight: 600; }
+
+    .process-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .proc-step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--primary);
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .proc-step .step-num { font-size: 13px; font-weight: 800; color: var(--primary); letter-spacing: 0.04em; }
+    .proc-step h4 { font-size: 17px; margin: 4px 0 6px; }
+    .proc-step p { margin: 0; font-size: 14.5px; color: var(--mute); line-height: 1.55; }
+
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 8px 0 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .sec-head h2 { font-size: 22px; color: var(--ink); }
+    .sec-head span { font-size: 14.5px; color: var(--mute); font-weight: 600; }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .ch-card {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s ease;
+      box-shadow: var(--shadow);
+    }
+    .ch-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 28px -4px rgba(159, 18, 57, 0.12);
+    }
+    .ch-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .ch-num {
+      font-size: 14px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+    }
+    .ch-phase { font-size: 13.5px; font-weight: 700; color: var(--mute); }
+    .ch-card h3 { font-size: 20.5px; margin-bottom: 10px; color: var(--ink); }
+    .ch-desc { font-size: 15.5px; color: var(--ink-sec); margin: 0 0 16px; line-height: 1.65; }
+
+    .topic-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .topic-pill {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--ink-sec);
+      border: 1px solid var(--line);
+    }
+
+    .ch-footer {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .ch-meta { font-size: 13.5px; color: var(--mute); font-weight: 600; }
+    .ch-link {
+      text-decoration: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      transition: all 0.2s;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .ch-link:hover { background: var(--primary-dark); }
+
+    .exam-card {
+      background: linear-gradient(135deg, #fff1f2 0%, #fffbeb 100%);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 26px 30px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .exam-card h3 { font-size: 22px; color: var(--primary-dark); margin: 6px 0 8px; }
+    .exam-card p { margin: 0 0 12px; font-size: 16px; color: var(--ink-sec); max-width: 740px; }
+    .exam-parts { display: flex; gap: 8px; flex-wrap: wrap; }
+    .exam-part-tag {
+      background: var(--card);
+      border: 1px solid var(--primary-border);
+      color: var(--ink);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+    .exam-btn {
+      text-decoration: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 26px;
+      border-radius: 12px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(159, 18, 57, 0.25);
+      flex-shrink: 0;
+    }
+    .exam-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+    }
+    .chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+    .chip {
+      border: 1.5px solid var(--line);
+      background: var(--card);
+      padding: 9px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: 700 15px 'Noto Sans TC', sans-serif;
+      color: var(--ink-sec);
+      transition: all 0.2s;
+    }
+    .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .chip.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+
+    table.comp-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15.5px; }
+    table.comp-table th, table.comp-table td { padding: 12px 15px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.comp-table th { background: var(--surface); font-weight: 800; color: var(--ink); }
+    table.comp-table tr.highlight-row { background: var(--primary-light); }
+
+    .badge {
+      display: inline-block;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .b-rose { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-border); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    @media (max-width: 900px) {
+      .process-bar, .grid2 { grid-template-columns: 1fr; }
+      header { padding: 14px 18px; }
+      .nav-links { width: 100%; justify-content: center; margin-top: 6px; }
+    }
+    @media (max-width: 600px) {
+      .chapter-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span>BAFS 商業管理互動課室</span>
+    <span class="brand-tag">商業管理 3：市場營銷管理</span>
+  </div>
+  <select class="quick-jump" onchange="if(this.value) location.href=this.value">
+    <option value="">快速跳轉至各課室／測驗...</option>
+    <option value="市場營銷的角色.html">第 1 課：市場營銷的角色</option>
+    <option value="市場研究.html">第 2 課：市場研究</option>
+    <option value="消費者行為.html">第 3 課：消費者行為</option>
+    <option value="市場區隔、鎖定目標市場及定位.html">第 4 課：市場區隔、鎖定目標市場及定位</option>
+    <option value="產品及服務的市場營銷策略（一）.html">第 5 課：產品及服務的市場營銷策略（一）</option>
+    <option value="產品及服務的市場營銷策略（二）.html">第 6 課：產品及服務的市場營銷策略（二）</option>
+    <option value="顧客關係管理.html">第 7 課：顧客關係管理</option>
+    <option value="市場營銷管理_單元綜合測驗.html">單元綜合模擬試卷 (72分)</option>
+  </select>
+  <nav class="nav-links">
+    <a href="#sec-chapters">七課互動課室</a>
+    <a href="#sec-review">跨課題速查室</a>
+    <a href="市場營銷管理_單元綜合測驗.html" class="exam-nav">進入單元綜合模擬試卷 (72分)</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <div class="hero-banner">
+    <div>
+      <span class="badge b-rose">新高中企業、會計與財務概論 · 商業管理 3（選修部分）</span>
+      <h1>市場營銷管理 (Marketing Management) 互動課室目錄</h1>
+      <p>嚴格按照課程第 1 至 7 課結構編排：由「第 1 課：市場營銷的角色」、「第 2 課：市場研究」及「第 3 課：消費者行為」，推進至「第 4 課：市場區隔、鎖定目標市場及定位」、「第 5 課：產品及服務的市場營銷策略（一）（4P 市場營銷組合）」及「第 6 課：產品及服務的市場營銷策略（二）（產品生命週期、服務市場學與電子市場營銷）」，最後以「第 7 課：顧客關係管理」總結。</p>
+    </div>
+    <div class="stat-group">
+      <div class="stat-box"><b>第 1–7 課</b><span>完整課程結構</span></div>
+      <div class="stat-box"><b>STP + 4P</b><span>核心策略框架</span></div>
+      <div class="stat-box"><b>72 分</b><span>DSE 模擬試卷</span></div>
+    </div>
+  </div>
+
+  <div class="process-bar">
+    <div class="proc-step">
+      <span class="step-num">第一部分 · 第 1 至 3 課</span>
+      <h4>認識市場營銷與分析顧客</h4>
+      <p>掌握市場營銷概念、計劃、組織、執行與控制過程（第1課）、進行市場研究蒐集原始與次級數據（第2課），並剖析個人與商業買家決策過程（第3課）。</p>
+    </div>
+    <div class="proc-step">
+      <span class="step-num">第二部分 · 第 4 課</span>
+      <h4>市場區隔、目標市場與定位</h4>
+      <p>按地理、人口、心理及行為基礎進行市場區隔，選擇目標市場策略（無差異、差異、集中營銷），並透過五種差異方法確立定位（第4課）。</p>
+    </div>
+    <div class="proc-step">
+      <span class="step-num">第三部分 · 第 5 至 6 課</span>
+      <h4>產品及服務的市場營銷策略</h4>
+      <p>規劃 4P 組合：產品、定價、分銷與推廣策略（第5課），並配合產品生命週期 (PLC) 四階段、服務的四項特性及電子市場營銷策略（第6課）。</p>
+    </div>
+    <div class="proc-step">
+      <span class="step-num">第四部分 · 第 7 課</span>
+      <h4>顧客關係管理 (CRM)</h4>
+      <p>理解顧客終身價值、交叉銷售與向上銷售，分析影響顧客忠誠度的三大因素，並透過五項策略建立和維持長遠顧客關係（第7課）。</p>
+    </div>
+  </div>
+
+  <div id="sec-chapters" class="sec-head">
+    <h2>第 1 至 7 課互動課室目錄</h2>
+    <span>點擊各課按鈕進入對應互動課室與「一段一重點」論點建構工作坊</span>
+  </div>
+  <div class="chapter-grid" id="mktChapterGrid"></div>
+
+  <div class="exam-card">
+    <div>
+      <span class="badge b-amber">DSE Paper 2B 標準格式實戰評核</span>
+      <h3>市場營銷管理 — 單元綜合模擬試卷（滿分 72 分）</h3>
+      <p>完全仿照 HKDSE 企會財卷二乙（商業管理單元）結構設計，支援「自訂倒數計時器」、「互動建構模式 vs 紙筆寫作練習模式（隱藏組合選項並附 DSE 評卷參考自評）」一鍵切換，完成後自動生成雙軌等級換算（Level 1 至 Level 5**）及第 1 至 7 課強弱項能力診斷報告。</p>
+      <div class="exam-parts">
+        <span class="exam-part-tag">甲部：短答題 (6題 · 24分)</span>
+        <span class="exam-part-tag">乙部：單一商業個案分析題 (4分題 · 24分)</span>
+        <span class="exam-part-tag">丙部：進階論述題 (2大題 · 24分)</span>
+        <span class="exam-part-tag">丁部：成績單與七課能力診斷</span>
+      </div>
+    </div>
+    <a href="市場營銷管理_單元綜合測驗.html" class="exam-btn">開始綜合模擬試卷</a>
+  </div>
+
+  <div id="sec-review" class="review-card">
+    <span class="badge b-rose">跨課題溫習速查室</span>
+    <h3 style="font-size:22px;margin:8px 0 6px">《市場營銷管理》四大高頻跨課核心架構對照</h3>
+    <p style="font-size:15.5px;color:var(--ink-sec);margin:0 0 12px">點擊下方按鈕，快速溫習貫穿第 1 至 7 課的核心比較表與答題框架：</p>
+    <div class="chips" id="mktRevChips">
+      <button class="chip active" onclick="renderMktRev(0)">1. 市場營銷過程與四類競爭地位策略 (第1課)</button>
+      <button class="chip" onclick="renderMktRev(1)">2. 市場營銷組合 4P 核心策略總覽 (第5課)</button>
+      <button class="chip" onclick="renderMktRev(2)">3. 產品生命週期 (PLC) 四階段特徵與 4P 配合 (第6課)</button>
+      <button class="chip" onclick="renderMktRev(3)">4. 服務的四項特性 (第6課) 與顧客關係管理 CRM (第7課)</button>
+    </div>
+    <div id="mktRevBox" style="margin-top:12px"></div>
+  </div>
+
+</main>
+
+<script>
+  const mktChapters = [
+    {
+      num: "第 1 課",
+      phase: "概念、計劃、組織與控制",
+      title: "市場營銷的角色",
+      file: "市場營銷的角色.html",
+      desc: "認識市場營銷概念（顧客導向）與四大重要性，掌握計劃市場營銷活動的四個步驟、強弱機危分析 (SWOT) 與四類競爭地位（市場領導者、挑戰者、追隨者、補缺者），以及組織（功能、產品、區域、顧客管理組織）、執行與控制市場營銷活動。",
+      topics: ["市場營銷概念與重要性", "強弱機危分析 (SWOT)", "四類競爭地位策略", "四種組織結構・執行與控制"],
+      meta: "第 1 課・含 12 道論點建構題"
+    },
+    {
+      num: "第 2 課",
+      phase: "數據蒐集與抽樣技巧",
+      title: "市場研究",
+      file: "市場研究.html",
+      desc: "探討市場研究的四項重要性、三大主要目標與四個步驟，比較原始數據與次級數據（內部與外部數據）的好處和壞處，並深入剖析四種數據蒐集方法（調查研究、實驗研究、質性研究、觀察研究）以及三種抽樣技巧（隨機抽樣、分層隨機抽樣、便利抽樣）。",
+      topics: ["原始數據 vs 次級數據", "調查・實驗・質性・觀察研究", "目標總體・樣本・抽樣架構", "隨機・分層隨機・便利抽樣"],
+      meta: "第 2 課・含 12 道論點建構題"
+    },
+    {
+      num: "第 3 課",
+      phase: "個人與商業買家決策",
+      title: "消費者行為",
+      file: "消費者行為.html",
+      desc: "剖析個人消費者作出購買決定的五個步驟（確認需要、搜集資料、評估方案、購買決定、購買後行為），全面分析影響消費者決定的社會文化因素（文化、社會階層、參考團體）與心理因素（動機、性格和自我概念、感知、學習、信念和態度），並比較商業消費市場與個人消費市場的分別。",
+      topics: ["個人消費者決策五步驟", "社會文化因素(3項)・心理因素(5項)", "四類商業消費市場・決策五步驟", "商業市場 vs 個人市場七項分別"],
+      meta: "第 3 課・含 12 道論點建構題"
+    },
+    {
+      num: "第 4 課",
+      phase: "STP 目標市場與定位",
+      title: "市場區隔、鎖定目標市場及定位",
+      file: "市場區隔、鎖定目標市場及定位.html",
+      desc: "掌握四大市場區隔基礎（地理區隔、人口區隔、心理區隔、行為區隔）與變數，學習評估市場組別吸引力的五項因素與三種目標市場策略（無差異營銷、差異營銷、集中營銷），並透過五種差異方法（產品、服務、人員、渠道、形象差異）與七項準則建立定位及撰寫定位陳述。",
+      topics: ["地理・人口・心理・行為區隔", "評估市場組別五項因素", "無差異・差異・集中營銷", "五種差異方法・定位陳述"],
+      meta: "第 4 課・含 12 道論點建構題"
+    },
+    {
+      num: "第 5 課",
+      phase: "市場營銷組合 4P 策略",
+      title: "產品及服務的市場營銷策略（一）",
+      file: "產品及服務的市場營銷策略（一）.html",
+      desc: "全面剖析市場營銷組合 4P 策略：(1) 產品策略（產品項目層面 5 個事項：產品特質、品牌建立、包裝、標籤、產品支援服務；產品線延伸與產品線填補）；(2) 定價策略（內在 3 因素與外在 4 因素、新產品撇油性定價 vs 滲透性定價）；(3) 分銷策略（途徑成員、直接 vs 間接分銷、密集性／獨家性／選擇性分銷）；及 (4) 推廣策略（廣告、促銷、公共關係、個人銷售、直接行銷）。",
+      topics: ["產品項目5事項・產品線延伸與填補", "定價內外因素・撇油性 vs 滲透性", "直接 vs 間接分銷・三種分銷密集度", "五種推廣組合工具與選擇因素"],
+      meta: "第 5 課・含 12 道論點建構題"
+    },
+    {
+      num: "第 6 課",
+      phase: "PLC・服務市場學與電子營銷",
+      title: "產品及服務的市場營銷策略（二）",
+      file: "產品及服務的市場營銷策略（二）.html",
+      desc: "深入探討三大進階課題：(1) 產品生命週期 (PLC) 四個階段（介紹期、成長期、成熟期、衰退期）的特徵與對應 4P 策略；(2) 服務市場學——服務的四項特性（無形性、不可分割性、異質性、易逝性）及應付方法；以及 (3) 傳統市場營銷與電子市場營銷的 4P 策略比較及採用電子市場營銷的四項好處。",
+      topics: ["產品生命週期 (PLC) 四階段與 4P", "服務四項特性：無形・不可分割・異質・易逝", "傳統 vs 電子市場營銷 4P 比較", "採用電子市場營銷的四項好處"],
+      meta: "第 6 課・含 12 道論點建構題"
+    },
+    {
+      num: "第 7 課",
+      phase: "顧客忠誠度與關係維繫",
+      title: "顧客關係管理",
+      file: "顧客關係管理.html",
+      desc: "理解顧客關係管理 (CRM) 的三項特徵與三項目標（吸引新顧客、留住現有顧客與顧客終身價值、透過交叉銷售和向上銷售擴充關係），掌握 CRM 在市場營銷過程中的四項重要性，以及影響顧客忠誠度的三大因素與提升顧客忠誠度的五項策略（CRM 個人化策略、會員計劃財務與社交聯繫、附加服務、處理投訴與員工授權、夥伴關係管理）。",
+      topics: ["顧客終身價值・交叉與向上銷售", "CRM 在營銷過程中的四項重要性", "影響顧客忠誠度的三大因素", "提升顧客忠誠度的五項策略"],
+      meta: "第 7 課・含 12 道論點建構題"
+    }
+  ];
+
+  document.getElementById('mktChapterGrid').innerHTML = mktChapters.map(ch => `
+    <div class="ch-card">
+      <div>
+        <div class="ch-top">
+          <span class="ch-num">${ch.num}</span>
+          <span class="ch-phase">${ch.phase}</span>
+        </div>
+        <h3>${ch.title}</h3>
+        <p class="ch-desc">${ch.desc}</p>
+        <div class="topic-pills">
+          ${ch.topics.map(t => `<span class="topic-pill">${t}</span>`).join('')}
+        </div>
+      </div>
+      <div class="ch-footer">
+        <span class="ch-meta">${ch.meta}</span>
+        <a href="${ch.file}" class="ch-link">進入互動課室</a>
+      </div>
+    </div>
+  `).join('');
+
+  const mktRevData = [
+    `<table class="comp-table">
+      <thead><tr><th style="width:22%">四類競爭地位 (第1課)</th><th style="width:36%">地位定義與市場特徵</th><th style="width:42%">可採用的市場營銷策略</th></tr></thead>
+      <tbody>
+        <tr class="highlight-row"><td><b>1. 市場領導者</b><br>(Market Leader)</td><td>某市場中，<b>市場佔有率最高</b>的企業。</td><td>• <b>(i) 擴展整體市場</b>以增加顧客數量；<br>• <b>(ii) 增加在現有市場的市場佔有率</b>（如推出更多口味與配方）；<br>• <b>(iii) 保持現有的市場佔有率</b>（如增設分店鞏固地位）。</td></tr>
+        <tr><td><b>2. 市場挑戰者</b><br>(Market Challenger)</td><td>市場佔有率比市場領導者低，但<b>試圖挑戰市場領導者地位</b>的企業。</td><td>• <b>(i) 攻擊市場領導者或其他競爭對手的弱項</b>；<br>• <b>(ii) 提升現有產品的質量</b>；<br>• <b>(iii) 降低產品價格</b>以爭奪市場佔有率。</td></tr>
+        <tr><td><b>3. 市場追隨者</b><br>(Market Follower)</td><td><b>滿足於現時的市場佔有率</b>，並跟隨主要品牌的策略的企業（通常欠缺資源作大規模擴張）。</td><td>• <b>模仿主要品牌產品的名字、設計和包裝等</b>，以節省產品開發成本和推廣費用。</td></tr>
+        <tr><td><b>4. 市場補缺者</b><br>(Market Nicher)</td><td>專門服務一個或數個細小市場組別（<b>縫隙市場／小眾市場</b>）的企業（大型企業通常無興趣服務）。</td><td>• <b>集中資源為縫隙市場度身訂造市場營銷組合 (4P)</b>，以更有效地滿足這些細小市場的需要。</td></tr>
+      </tbody>
+    </table>`,
+    `<table class="comp-table" style="font-size:15px">
+      <thead><tr><th style="width:18%">4P 組合元素 (第5課)</th><th style="width:40%">核心分類與策略選項</th><th style="width:42%">選擇策略時的考慮因素與要點</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. 產品策略</b><br>(Product)</td><td>• <b>產品項目層面 (5項)</b>：產品特質、品牌建立、包裝、標籤、產品支援服務<br>• <b>產品線層面 (2項)</b>：產品線延伸（上向／下向延伸）vs 產品線填補</td><td><b>產品線延伸</b>旨在吸納現有顧客以外的消費者（高檔次或低檔次客群）；<b>產品線填補</b>旨在提供更多尺寸、口味或顏色選擇以滿足及留住現有顧客。</td></tr>
+        <tr><td><b>2. 定價策略</b><br>(Price)</td><td>• <b>內在因素 (3項)</b>：市場營銷目標、市場營銷組合策略、成本<br>• <b>外在因素 (4項)</b>：市場性質、顧客觀感、市場可負擔能力、競爭對手策略<br>• <b>新產品定價</b>：撇油性定價策略 vs 滲透性定價策略</td><td><b>撇油性定價</b>最初以最高價售予對價格敏感度低的顧客以賺取最多短期利潤；<b>滲透性定價</b>最初以低價售予價格敏感顧客以在最短時間內奪取市場佔有率。</td></tr>
+        <tr class="highlight-row"><td><b>3. 分銷策略</b><br>(Place)</td><td>• <b>分銷方式</b>：直接分銷（自設門市／網站）vs 間接分銷（使用批發商、零售商、分銷商／買手、代理）<br>• <b>分銷密集度</b>：密集性分銷、獨家性分銷、選擇性分銷</td><td>決定直接或間接分銷須考慮：<b>成本、對產品市場營銷的控制權、與顧客的關係、顧客基礎、企業的專業知識和資源</b>。</td></tr>
+        <tr><td><b>4. 推廣策略</b><br>(Promotion)</td><td>• <b>五種推廣組合工具</b>：廣告、促銷、公共關係、個人銷售（人員銷售）、直接行銷</td><td>選擇推廣工具須考慮：<b>目標受眾</b>（途徑成員 vs 最終消費者）、<b>市場種類</b>（個人市場重廣告促銷；商業市場重個人銷售）及<b>溝通目標</b>。</td></tr>
+      </tbody>
+    </table>`,
+    `<table class="comp-table" style="font-size:15px">
+      <thead><tr><th style="width:14%">PLC 階段 (第6課)</th><th style="width:26%">市場與財務特徵</th><th style="width:60%">市場營銷組合 (4P) 策略配合</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. 介紹期</b><br>(Introduction)</td><td>• 銷售額低且增長緩慢<br>• 推廣費用高昂，<b>利潤為負數</b><br>• 競爭對手少，顧客為<b>創新者</b></td><td>• <b>目標</b>：建立品牌認知度和吸引嘗試<br>• <b>產品</b>：提供最基本的產品型號 ｜ <b>定價</b>：考慮高昂的推廣成本<br>• <b>分銷</b>：採用<b>選擇性分銷</b> ｜ <b>推廣</b>：非常依賴<b>廣告和促銷</b></td></tr>
+        <tr><td><b>2. 成長期</b><br>(Growth)</td><td>• 銷售額和利潤<b>大幅增長（上升）</b><br>• 每名顧客平均成本降低<br>• 顧客為<b>早期採用者</b>，<b>競爭對手數目增加</b></td><td>• <b>目標</b>：盡量擴大市場佔有率<br>• <b>產品</b>：提升質素、加入新特點提供更多版本 ｜ <b>定價</b>：降低價格進一步滲透市場<br>• <b>分銷</b>：改用<b>密集性分銷</b> ｜ <b>推廣</b>：繼續依賴廣告，但可<b>減少促銷活動</b></td></tr>
+        <tr class="highlight-row"><td><b>3. 成熟期</b><br>(Maturity)</td><td>• 銷售額到達頂點，增長開始放緩<br>• 競爭越趨激烈，<b>價格競爭普遍，利潤開始下降</b><br>• 顧客為大部分消費者，較弱對手被淘汰</td><td>• <b>目標</b>：捍衛現有市場佔有率，盡量增加短期利潤<br>• <b>產品</b>：繼續加入新特點、推出多元化品牌和型號（如產品線延伸）<br>• <b>定價</b>：貼近對手甚至更吸引（具競爭力） ｜ <b>分銷</b>：<b>更密集性分銷</b><br>• <b>推廣</b>：透過更多廣告、促銷甚至個人銷售強調<b>產品差異</b>以吸引轉換品牌</td></tr>
+        <tr><td><b>4. 衰退期</b><br>(Decline)</td><td>• 銷售額和利潤<b>均見下降</b><br>• 顧客為<b>晚用者</b>，更多競爭對手被市場淘汰</td><td>• <b>目標</b>：減省非必要開支，盡量從產品賺取更多利潤<br>• <b>產品</b>：逐步淘汰較不受歡迎的型號 ｜ <b>定價</b>：降低價格刺激購買<br>• <b>分銷</b>：採用<b>選擇性分銷</b>，棄用不能獲利的途徑成員<br>• <b>推廣</b>：盡量減少推廣預算，集中人力物力留住最忠誠的顧客</td></tr>
+      </tbody>
+    </table>`,
+    `<div style="background:var(--surface);padding:16px 20px;border-radius:12px;border:1px solid var(--line);font-size:15.5px;line-height:1.8">
+      <div class="grid2">
+        <div style="background:var(--card);padding:14px 16px;border-radius:12px;border-left:5px solid var(--primary)">
+          <b style="color:var(--primary);font-size:17px">第 6 課：服務的四項特性與應付方法</b><br>
+          • <b>1. 無形性 (Intangibility)</b>：購買前看不到、感受不到 ➔ 提供<b>有形或實體的證據</b>（提供清潔舒適環境、維持員工專業外形／制服、展示服務成效照片）。<br>
+          • <b>2. 不可分割性 (Inseparability)</b>：服務與提供服務的人不可分割 ➔ <b>聘請經驗豐富和熟練的員工</b>，並<b>向員工提供培訓</b>改善溝通技巧與服務態度。<br>
+          • <b>3. 異質性／多變性 (Heterogeneity)</b>：服務質素因人、因時、因地而異 ➔ <b>將提供服務的程序標準化、建立良好的招聘和培訓系統（及考績制度）、監察顧客的滿意程度</b>。<br>
+          • <b>4. 易逝性 (Perishability)</b>：服務不可儲存留待日後使用 ➔ 協調供求：<b>需求方面</b>（繁忙時段加價／非繁忙時段提供折扣、設立預約系統）；<b>供應方面</b>（聘請兼職員工、繁忙時段專注重要工作、增加顧客參與程度如自助點餐機／掃瞄 QR 碼、將工序自動化、增加設施）。
+        </div>
+        <div style="background:var(--card);padding:14px 16px;border-radius:12px;border-left:5px solid var(--teal)">
+          <b style="color:var(--teal);font-size:17px">第 7 課：顧客關係管理 (CRM) 與提升忠誠度五項策略</b><br>
+          • <b>留住現有顧客的兩大財務原因</b>：(i) 流失現有顧客等同失去他們帶來的<b>顧客終身價值</b>；(ii) <b>吸引新顧客的成本通常比留住現有顧客高</b>。<br>
+          • <b>影響顧客忠誠度的三大因素</b>：(1) 顧客滿意度、(2) 與顧客的溝通、(3) 如何處理顧客的投訴。<br>
+          • <b>有助提升顧客忠誠度的五項策略</b>：<br>
+          &nbsp;&nbsp;1. <b>運用 CRM 系統制定個人化的市場營銷策略</b>；<br>
+          &nbsp;&nbsp;2. <b>推出會員計劃建立緊密聯繫</b>（<b>財務聯繫</b>：折扣、服務升級、積分獎賞；<b>社交聯繫</b>：舉辦工作坊、定期發送電子通訊）；<br>
+          &nbsp;&nbsp;3. <b>提供附加服務（增值服務）</b>；<br>
+          &nbsp;&nbsp;4. <b>有效地處理顧客投訴</b>（迅速回應、<b>員工授權</b>即時處理與補償、公平對待）；<br>
+          &nbsp;&nbsp;5. <b>夥伴關係管理</b>（與內部其他部門及外部商業夥伴緊密合作提供更高價值）。
+        </div>
+      </div>
+    </div>`
+  ];
+
+  function renderMktRev(idx) {
+    document.querySelectorAll('#mktRevChips .chip').forEach((c, i) => c.classList.toggle('active', i === idx));
+    document.getElementById('mktRevBox').innerHTML = mktRevData[idx];
+  }
+  renderMktRev(0);
+</script>
+</body>
+</html>
