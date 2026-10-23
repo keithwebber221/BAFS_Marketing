@@ -8,28 +8,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f4f5;
+      /* 與市場營銷管理第 1–7 課課題分頁完全一致的配色 */
+      --bg: #f4f6fb;
       --card: #ffffff;
-      --surface: #fbf9fa;
-      --ink: #1e1318;
-      --ink-sec: #3f2e36;
-      --mute: #6e5a63;
-      --line: #e5dce0;
-      --primary: #9f1239;
-      --primary-dark: #881337;
-      --primary-light: #fff1f2;
-      --primary-border: #fecdd3;
-      --teal: #0369a1;
-      --teal-light: #f0f9ff;
-      --teal-border: #bae6fd;
-      --amber: #b45309;
+      --surface: #f8fafc;
+      --ink: #0f172a;
+      --ink-sec: #334155;
+      --mute: #64748b;
+      --line: #e2e8f0;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --primary-light: #eef2ff;
+      --primary-border: #c7d2fe;
+      --teal: #0d9488;
+      --teal-light: #f0fdfa;
+      --teal-border: #99f6e4;
+      --amber: #d97706;
       --amber-light: #fffbeb;
       --amber-border: #fde68a;
-      --green: #065f46;
+      --green: #059669;
       --green-light: #ecfdf5;
       --green-border: #a7f3d0;
+      --red: #e11d48;
+      --red-light: #fff1f2;
       --radius: 16px;
-      --shadow: 0 4px 20px -2px rgba(136, 19, 55, 0.06), 0 2px 6px -1px rgba(136, 19, 55, 0.04);
+      --shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -50,7 +53,7 @@
       align-items: center;
       gap: 14px;
       padding: 16px 32px;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
       position: sticky;
@@ -58,7 +61,7 @@
       z-index: 40;
       flex-wrap: wrap;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 900; color: var(--primary-dark); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 900; color: var(--ink); }
     .brand-tag {
       background: var(--primary-light);
       color: var(--primary);
@@ -73,7 +76,7 @@
       border-radius: 9px;
       border: 1.5px solid var(--primary-border);
       background: var(--primary-light);
-      color: var(--primary-dark);
+      color: var(--primary);
       font: 700 14.5px 'Noto Sans TC', sans-serif;
       cursor: pointer;
     }
@@ -185,7 +188,7 @@
     .ch-card:hover {
       transform: translateY(-4px);
       border-color: var(--primary);
-      box-shadow: 0 12px 28px -4px rgba(159, 18, 57, 0.12);
+      box-shadow: 0 12px 28px -4px rgba(79, 70, 229, 0.14);
     }
     .ch-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
     .ch-num {
@@ -236,7 +239,7 @@
     .ch-link:hover { background: var(--primary-dark); }
 
     .exam-card {
-      background: linear-gradient(135deg, #fff1f2 0%, #fffbeb 100%);
+      background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 100%);
       border: 2px solid var(--primary);
       border-radius: var(--radius);
       padding: 26px 30px;
@@ -269,7 +272,7 @@
       padding: 14px 26px;
       border-radius: 12px;
       transition: all 0.2s;
-      box-shadow: 0 4px 14px rgba(159, 18, 57, 0.25);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
       flex-shrink: 0;
     }
     .exam-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
@@ -293,7 +296,12 @@
       transition: all 0.2s;
     }
     .chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
-    .chip.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+    .chip.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+    }
 
     table.comp-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15.5px; }
     table.comp-table th, table.comp-table td { padding: 12px 15px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -308,7 +316,8 @@
       border-radius: 6px;
       margin-right: 8px;
     }
-    .b-rose { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-blue { background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary-border); }
+    .b-teal { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-border); }
     .b-amber { background: var(--amber-light); color: var(--amber); border: 1px solid var(--amber-border); }
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
@@ -351,7 +360,7 @@
 
   <div class="hero-banner">
     <div>
-      <span class="badge b-rose">新高中企業、會計與財務概論 · 商業管理 3（選修部分）</span>
+      <span class="badge b-blue">新高中企業、會計與財務概論 · 商業管理 3（選修部分）</span>
       <h1>市場營銷管理 (Marketing Management) 互動課室目錄</h1>
       <p>嚴格按照課程第 1 至 7 課結構編排：由「第 1 課：市場營銷的角色」、「第 2 課：市場研究」及「第 3 課：消費者行為」，推進至「第 4 課：市場區隔、鎖定目標市場及定位」、「第 5 課：產品及服務的市場營銷策略（一）（4P 市場營銷組合）」及「第 6 課：產品及服務的市場營銷策略（二）（產品生命週期、服務市場學與電子市場營銷）」，最後以「第 7 課：顧客關係管理」總結。</p>
     </div>
@@ -393,7 +402,7 @@
 
   <div class="exam-card">
     <div>
-      <span class="badge b-amber">DSE Paper 2B 標準格式實戰評核</span>
+      <span class="badge b-teal">DSE Paper 2B 標準格式實戰評核</span>
       <h3>市場營銷管理 — 單元綜合模擬試卷（滿分 72 分）</h3>
       <p>完全仿照 HKDSE 企會財卷二乙（商業管理單元）結構設計，支援「自訂倒數計時器」、「互動建構模式 vs 紙筆寫作練習模式（隱藏組合選項並附 DSE 評卷參考自評）」一鍵切換，完成後自動生成雙軌等級換算（Level 1 至 Level 5**）及第 1 至 7 課強弱項能力診斷報告。</p>
       <div class="exam-parts">
@@ -407,7 +416,7 @@
   </div>
 
   <div id="sec-review" class="review-card">
-    <span class="badge b-rose">跨課題溫習速查室</span>
+    <span class="badge b-blue">跨課題溫習速查室</span>
     <h3 style="font-size:22px;margin:8px 0 6px">《市場營銷管理》四大高頻跨課核心架構對照</h3>
     <p style="font-size:15.5px;color:var(--ink-sec);margin:0 0 12px">點擊下方按鈕，快速溫習貫穿第 1 至 7 課的核心比較表與答題框架：</p>
     <div class="chips" id="mktRevChips">
